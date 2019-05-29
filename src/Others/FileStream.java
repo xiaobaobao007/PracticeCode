@@ -22,7 +22,7 @@ public class FileStream {
         main.BufferedReader();
     }
 
-    String path = "./src/resouse/sord.text";
+    String path = "./src/resouse/sord.txt";
 
     /**
      * 一次性读取多大的文件

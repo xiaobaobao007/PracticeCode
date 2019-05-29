@@ -10,7 +10,7 @@ import java.util.Random;
 public class Main {
 
     private int[] testNums;
-    private String path = "./src/resouse/sord.text";
+    private String path = "./src/resouse/sord.txt";
     private boolean isTest = true;
     private long findTimes;
     private long changeTimes;

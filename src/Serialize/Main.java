@@ -3,6 +3,9 @@ package Serialize;
 import java.io.*;
 import java.text.MessageFormat;
 
+/**
+ * 对象进行序列化
+ */
 public class Main {
 
     private static String path = "./src/resouse/Breads.txt";

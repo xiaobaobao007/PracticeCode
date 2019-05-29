@@ -4,6 +4,9 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
+/**
+ * 各种排序
+ */
 public class Main {
 
     private int[] testNums;
@@ -359,7 +362,7 @@ public class Main {
         for (int i = 0; i < length; i++) {
             stringBuffer.append(num[i]).append(',');
         }
-        byte[] bytes = stringBuffer.toString().substring(0, stringBuffer.length() - 1).getBytes(StandardCharsets.ISO_8859_1);
+        byte[] bytes = stringBuffer.toString().substring(0, stringBuffer.length() - 1).getBytes(StandardCharsets.UTF_8);
         FileOutputStream fileOut = new FileOutputStream(path);
         BufferedOutputStream out = new BufferedOutputStream(fileOut);
         out.write(bytes);

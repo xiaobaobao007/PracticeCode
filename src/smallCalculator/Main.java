@@ -2,6 +2,9 @@ package smallCalculator;
 
 import java.util.Scanner;
 
+/**
+ * 小型计算器
+ */
 public class Main {
     private long type = 10;
     private long TenNum;

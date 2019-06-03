@@ -10,6 +10,9 @@ public class Person implements Serializable {
     private String name;
     private String sex;
 
+    public Person() {
+    }
+
     public int getAge() {
         return age;
     }

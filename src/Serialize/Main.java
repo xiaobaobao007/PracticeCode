@@ -8,7 +8,7 @@ import java.text.MessageFormat;
  */
 public class Main {
 
-    private static String path = "./src/resouse/Breads.txt";
+    private static String path = "./src/resouse/Person.txt";
 
     public static void main(String[] args) {
         try {
@@ -24,9 +24,9 @@ public class Main {
     private static void SerializePerson() throws
             IOException {
         Person person = new Person();
-        person.setName("gacl");
-        person.setAge(25);
-        person.setSex("男");
+        person.setName("1");
+        person.setAge(2);
+        person.setSex("3");
         // ObjectOutputStream 对象输出流，将Person对象存储到E盘的Person.txt文件中，完成对Person对象的序列化操作
         File r = new File(path);
         FileOutputStream fileOutputStream = new FileOutputStream(r);

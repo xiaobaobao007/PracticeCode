@@ -8,7 +8,7 @@ public class Person implements Serializable {
 
     private int age;
     private String name;
-    private String sex;
+    transient private String sex;
 
     public Person() {
     }

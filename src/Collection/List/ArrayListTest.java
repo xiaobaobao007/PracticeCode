@@ -4,13 +4,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ArrayListTest {
     public static void main(String[] args) {
         test();
     }
 
-    public static void test() {
+    private static void test() {
+//        List<Integer> list = Collections.synchronizedList(new ArrayList<>());//synchronized
+//        CopyOnWriteArrayList<Integer> copyOnWriteArrayList = new CopyOnWriteArrayList<>();//并发容器
         Collection<String> stringCollection = new ArrayList<>();
         stringCollection.add("1");
         stringCollection.add("2");

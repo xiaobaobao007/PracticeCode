@@ -12,6 +12,8 @@ public class HashMapTest {
             put(string, i);
         }
         sout(string);
+
+        System.out.println(1^2);
     }
 
     private static void put(Map<Integer, Integer> map, Integer value) {

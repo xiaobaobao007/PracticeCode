@@ -13,9 +13,13 @@ abstract class AbstractTest {
         System.out.print("1a");
     }
 
-    public AbstractTest() {
+    AbstractTest() {
         System.out.print("2a");
     }
 
+    public static void init(){
+    }
+
     abstract public void abCon();
+
 }

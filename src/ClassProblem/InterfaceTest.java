@@ -12,5 +12,12 @@ interface InterfaceTest {
         System.out.println(123);
     }
 
-    void inTe();
+    default void inTe(){
+        System.out.println("===============1");
+    }
+
+    default void inTT(){
+        System.out.println("================2");
+    }
+
 }

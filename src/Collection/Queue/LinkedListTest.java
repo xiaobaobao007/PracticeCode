@@ -1,4 +1,4 @@
-package Collection.List;
+package Collection.Queue;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -8,7 +8,7 @@ public class LinkedListTest {
         test();
     }
 
-    public static void test() {
+    private static void test() {
         LinkedList<Integer> linkedList = new LinkedList<>();
 
         linkedList.add(1);
@@ -32,11 +32,9 @@ public class LinkedListTest {
         sout(linkedList);
     }
 
-    public static void sout(LinkedList<Integer> linkedList){
-        Iterator<Integer> iterator = linkedList.iterator();
-        while (iterator.hasNext()) {
-            Integer next = iterator.next();
-            System.out.printf("%4d",next);
+    private static void sout(LinkedList<Integer> linkedList){
+        for (Integer next : linkedList) {
+            System.out.printf("%4d", next);
         }
         System.out.println();
     }

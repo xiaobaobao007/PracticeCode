@@ -11,6 +11,9 @@ public class HashMapTest {
         for (int i = 0, j = 0; j < 10; i += 100, j++) {
             put(string, i);
         }
+        //如果存在0则返回值否则2
+        System.out.println(string.getOrDefault(0, 2));
+        System.out.println(string.getOrDefault(-1, 2));
         sout(string);
 
         System.out.println(1^2);

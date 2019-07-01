@@ -102,6 +102,7 @@ public class Main {
     }
 
     /**
+     * 选取锚点左边比锚点小右边比锚点大
      * @param name
      */
     private void quicklySort(String name) {

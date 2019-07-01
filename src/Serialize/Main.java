@@ -8,7 +8,7 @@ import java.text.MessageFormat;
  */
 public class Main {
 
-    private static String path = "./src/resouse/Person.txt";
+    private static String path = "./src/resouse/Model.Person.txt";
 
     public static void main(String[] args) {
         try {

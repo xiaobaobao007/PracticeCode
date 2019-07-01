@@ -4,15 +4,18 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * date使用calender来代替
+ * 如果是 JDK8 的应用，可以使用 Instant 代替 Date，LocalDateTime 代替 Calendar，
+ * DateTimeFormatter 代替 SimpleDateFormat，官方给出的解释：simple beautiful strong immutable
+ * thread-safe。date使用calender来代替
  */
-public class Main {
+public class CalendarTest {
 
     public static String PATTERN = "yyyy-MM-dd HH:mm:ss";
     public static String PATTERN_FULL = "yyyy-MM-dd HH:mm:ss.SSS";
     public static String PATTERN_DATE_NUMBER = "yyyyMMdd";
 
     public static int getTodaySec() {
+
         Calendar now = Calendar.getInstance();
         Calendar todayStart = Calendar.getInstance();
         todayStart.set(Calendar.HOUR_OF_DAY, 0);

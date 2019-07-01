@@ -13,11 +13,13 @@ public class Main {
     Main() {
         breads = new Breads();
         Producer producer = new Producer(1001, breads);
-        new Thread(producer).start();
-        new Consumer(1, breads).start();
-        new Consumer(2, breads).start();
-        new Consumer(3, breads).start();
-        new Consumer(4, breads).start();
+        Thread thread = new Thread(producer);
+        thread.start();
+        thread.start();
+//        new Consumer(1, breads).start();
+//        new Consumer(2, breads).start();
+//        new Consumer(3, breads).start();
+//        new Consumer(4, breads).start();
     }
 
     public static void main(String[] args) {

@@ -5,7 +5,7 @@ public class ChildrenTest extends AbstractTest implements InterfaceTest{
         System.out.print("1b");
     }
 
-    ChildrenTest() {
+    public ChildrenTest() {
         System.out.print("2b");
     }
 

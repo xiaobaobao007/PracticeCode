@@ -2,6 +2,7 @@ package StringOperator;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * @author xiaobaobao
@@ -42,9 +43,14 @@ public class Main1 {
         System.out.println(S.substring(min, max + 1));
     }
 
-    public static void main(String[] args) {
-        new Main1();
-    }
+        public static void main(String[] args) {
+            for(int i=0;i<10;i++){
+                String uuid = UUID.randomUUID().toString();
+                System.out.println(uuid);
+            }
+//        new Main1();
+        }
+
 
     public void reset() {
         min = Integer.MAX_VALUE;

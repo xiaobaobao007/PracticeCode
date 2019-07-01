@@ -1,8 +1,5 @@
 public class Main {
 
-    /**
-     * @param args
-     */
     public static void main(String[] args) {
         Father fs = new Son();
         System.out.println(fs.getClass());
@@ -12,13 +9,11 @@ public class Main {
 
         System.out.println("---------------------------");
 
-//        Son sf = (Son) new Father();
-//        System.out.println(sf.getClass());
-//        sf.sayHi();
-//        sf.ff();
-//        sf.ss();
-
-
+        Son sf = (Son) new Father();
+        System.out.println(sf.getClass());
+        sf.sayHi();
+        sf.ff();
+        sf.ss();
     }
 
 }
@@ -28,7 +23,7 @@ class Father {
     Father() {
     }
 
-    public void ff() {
+    void ff() {
         System.out.println("Hi,aa!I'm Father.");
     }
 
@@ -40,7 +35,7 @@ class Father {
 
 class Son extends Father {
 
-    public void ss() {
+    void ss() {
         System.out.println("Hello,World!I'm Son.");
     }
 

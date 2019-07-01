@@ -1,3 +1,5 @@
+package Model;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -13,6 +15,10 @@ public class Person implements Serializable {//实体
     private Integer age;
     private String school;
     private String[] hobby;
+
+    public Person(String name) {
+        this.name = name;
+    }
 
     public Person(String name, Integer sex, Integer age, String school, String[] hobby) {
         this.name = name;

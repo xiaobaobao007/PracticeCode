@@ -38,4 +38,8 @@ public class LinkedListTest {
         }
         System.out.println();
     }
+
+    private int test11(){
+        return 1;
+    }
 }

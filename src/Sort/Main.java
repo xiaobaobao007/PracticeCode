@@ -14,7 +14,7 @@ public class Main {
 
     private int[] testNums;
     private String path = "./src/resouse/sord.txt";
-    private boolean isTest = true;
+    private boolean isTest = false;
     private long findTimes;
     private long changeTimes;
 

@@ -8,22 +8,36 @@ import java.util.regex.Pattern;
 
 public class CarNumber {
     public static void main(String[] args) {
-        String[] check = {"沪A79K82", "沪B8039P", "沪b8098C", "沪A82092", "沪A79037", "沪A704#7", "沪A45KKK", "沪A45K43", "沪A675R0", "沪A794S5", "沪A09K61", "沪AE57T6", "沪A7SS4", "沪A796K3", "沪B35K3",};
+        long start = System.currentTimeMillis();
+        String[] check = {"沪A79K8", "沪B809P", "沪B8098C", "沪A8092", "沪A7097", "沪B70#7", "沪A45KKK", "沪A45K3", "沪A67R0",
+                "沪A79S5", "沪A09K1", "沪A357T6", "沪A7SS4", "沪A79K0", "沪B79K3", "沪B3K3","沪A79K8", "沪B809P", "沪B8098C", "沪A8092", "沪A7097", "沪B70#7", "沪A45KKK", "沪A45K3", "沪A67R0",
+                "沪A79S5", "沪A09K1", "沪A357T6", "沪A7SS4", "沪A79K0", "沪B79K3", "沪B3K3","沪A79K8", "沪B809P", "沪B8098C", "沪A8092", "沪A7097", "沪B70#7", "沪A45KKK", "沪A45K3", "沪A67R0",
+                "沪A79S5", "沪A09K1", "沪A357T6", "沪A7SS4", "沪A79K0", "沪B79K3", "沪B3K3","沪A79K8", "沪B809P", "沪B8098C", "沪A8092", "沪A7097", "沪B70#7", "沪A45KKK", "沪A45K3", "沪A67R0",
+                "沪A79S5", "沪A09K1", "沪A357T6", "沪A7SS4", "沪A79K0", "沪B79K3", "沪B3K3","沪A79K8", "沪B809P", "沪B8098C", "沪A8092", "沪A7097", "沪B70#7", "沪A45KKK", "沪A45K3", "沪A67R0",
+                "沪A79S5", "沪A09K1", "沪A357T6", "沪A7SS4", "沪A79K0", "沪B79K3", "沪B3K3","沪A79K8", "沪B809P", "沪B8098C", "沪A8092", "沪A7097", "沪B70#7", "沪A45KKK", "沪A45K3", "沪A67R0",
+                "沪A79S5", "沪A09K1", "沪A357T6", "沪A7SS4", "沪A79K0", "沪B79K3", "沪B3K3","沪A79K8", "沪B809P", "沪B8098C", "沪A8092", "沪A7097", "沪B70#7", "沪A45KKK", "沪A45K3", "沪A67R0",
+                "沪A79S5", "沪A09K1", "沪A357T6", "沪A7SS4", "沪A79K0", "沪B79K3", "沪B3K3","沪A79K8", "沪B809P", "沪B8098C", "沪A8092", "沪A7097", "沪B70#7", "沪A45KKK", "沪A45K3", "沪A67R0",
+                "沪A79S5", "沪A09K1", "沪A357T6", "沪A7SS4", "沪A79K0", "沪B79K3", "沪B3K3","沪A79K8", "沪B809P", "沪B8098C", "沪A8092", "沪A7097", "沪B70#7", "沪A45KKK", "沪A45K3", "沪A67R0",
+                "沪A79S5", "沪A09K1", "沪A357T6", "沪A7SS4", "沪A79K0", "沪B79K3", "沪B3K3","沪A79K8", "沪B809P", "沪B8098C", "沪A8092", "沪A7097", "沪B70#7", "沪A45KKK", "沪A45K3", "沪A67R0",
+                "沪A79S5", "沪A09K1", "沪A357T6", "沪A7SS4", "沪A79K0", "沪B79K3", "沪B3K3"};
         String[] tips = {"星期一", "星期二", "星期三", "星期四", "星期五"};
+        String[] errorTips = {"车牌位数错误", "车牌号非法"};
+
         Map<Integer, List<String>> tipsMap=new HashMap<>(10,0.8F);
+        List<ErrorTips> errorTipsList = new ArrayList<>();
         for (String string : check) {
             if (string.length() != 7) {
-                System.out.println(string + "车牌位数错误");
+                errorTipsList.add(new ErrorTips(string, 0));
                 continue;
             }
             String substring = string.substring(1);
             if (!isTrue(substring)) {
-                System.out.println(string + "车牌号非法");
+                errorTipsList.add(new ErrorTips(string, 1));
                 continue;
             }
             Integer num = number(substring);
             if (num == null) {
-                System.out.println(string + "车牌号非法");
+                errorTipsList.add(new ErrorTips(string, 1));
                 continue;
             }
             int tipsIndex = dayLimit(num);
@@ -35,12 +49,17 @@ public class CarNumber {
             }
             list.add(oneTip);
         }
+        for (ErrorTips error : errorTipsList) {
+            System.out.println(error.getCarCode()+":"+errorTips[error.getErrorCode()]);
+        }
         for (Map.Entry<Integer, List<String>> entry : tipsMap.entrySet()) {
             System.out.print("\n"+tips[entry.getKey()]+":");
             for (String s : entry.getValue()) {
                 System.out.print(s+",");
             }
         }
+        System.out.println();
+        System.out.println("mm"+check.length+(System.currentTimeMillis()-start));
     }
 
     public static int dayLimit(int num) {
@@ -69,5 +88,31 @@ public class CarNumber {
     public static boolean isTrue(String string) {
         String pattern = "^[A-Z0-9]{6}$";
         return Pattern.matches(pattern, string);
+    }
+
+    static class ErrorTips{
+        private String carCode;
+        private int errorCode;
+
+        public ErrorTips(String carCode, int errorCode) {
+            this.carCode = carCode;
+            this.errorCode = errorCode;
+        }
+
+        public String getCarCode() {
+            return carCode;
+        }
+
+        public void setCarCode(String carCode) {
+            this.carCode = carCode;
+        }
+
+        public int getErrorCode() {
+            return errorCode;
+        }
+
+        public void setErrorCode(int errorCode) {
+            this.errorCode = errorCode;
+        }
     }
 }

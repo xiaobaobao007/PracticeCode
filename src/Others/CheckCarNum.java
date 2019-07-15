@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
  * 3. 再对车牌号最后一位做判断, 当为数字的时候 去判断是限行的哪一天, 如果不为数字,则往前判断一位,继续判断是否为数字
  * 4. 得到第三步骤的数字 再根据当天限行的号码 进行判断 如果车牌中没有数字 添加到非法集合当中 其他的添加到相应的限行集合当中
  */
+@SuppressWarnings("ALL")
 public class CheckCarNum {
     public static void main(String[] args) {
         long start =System.currentTimeMillis();
@@ -68,7 +69,7 @@ public class CheckCarNum {
         System.out.println("            ***************************");
         System.out.println("            车牌位数不正确: " + bianli(falseList));
         System.out.println("            车牌号非法: " + bianli(feifaList));
-        System.out.println("pp："+strArr.length+(System.currentTimeMillis()-start));
+        System.out.println(strArr.length+"pp"+(System.currentTimeMillis()-start));
     }
 
 

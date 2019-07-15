@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+@SuppressWarnings("ALL")
 public class CarNumber {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
@@ -59,7 +60,7 @@ public class CarNumber {
             }
         }
         System.out.println();
-        System.out.println("mm"+check.length+(System.currentTimeMillis()-start));
+        System.out.println(check.length+"mm"+(System.currentTimeMillis()-start));
     }
 
     public static int dayLimit(int num) {

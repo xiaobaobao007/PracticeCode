@@ -1,6 +1,5 @@
-package Game;
+package Game.PropKit;
 
-import com.jfinal.kit.Prop;
 import com.jfinal.kit.PropKit;
 
 /**
@@ -9,7 +8,7 @@ import com.jfinal.kit.PropKit;
  */
 public class PropKitTest {
     public static void main(String[] args) {
-        PropKit.use("Game/server.conf");
+        PropKit.use("Game/PropKit/server.conf");
         String id = PropKit.get("server.id");
         System.out.println(id);
         String bmy = PropKit.get("fasfasdf","no key");

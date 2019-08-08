@@ -13,10 +13,10 @@ public class SynchronousQueueTest {
 
     static class SynchronousQueueProducer implements Runnable {
 
-        protected BlockingQueue<String> blockingQueue;
+        BlockingQueue<String> blockingQueue;
         final Random random = new Random();
 
-        public SynchronousQueueProducer(BlockingQueue<String> queue) {
+        SynchronousQueueProducer(BlockingQueue<String> queue) {
             this.blockingQueue = queue;
         }
 
@@ -30,6 +30,7 @@ public class SynchronousQueueTest {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+                    break;
                 }
             }
         }
@@ -38,9 +39,9 @@ public class SynchronousQueueTest {
 
     static class SynchronousQueueConsumer implements Runnable {
 
-        protected BlockingQueue<String> blockingQueue;
+        BlockingQueue<String> blockingQueue;
 
-        public SynchronousQueueConsumer(BlockingQueue<String> queue) {
+        SynchronousQueueConsumer(BlockingQueue<String> queue) {
             this.blockingQueue = queue;
         }
 
@@ -53,7 +54,7 @@ public class SynchronousQueueTest {
                     System.out.println(System.currentTimeMillis() - start + "//" + Thread.currentThread().getName() + " take(): " + data);
 //                    Thread.sleep(2000);
                 } catch (InterruptedException e) {
-                    System.out.println(Thread.currentThread().getName() + " 没有拿到");
+                    break;
                 }
             }
         }
@@ -61,7 +62,7 @@ public class SynchronousQueueTest {
     }
 
     public static void main(String[] args) {
-        final BlockingQueue<String> synchronousQueue = new SynchronousQueue<String>(true);//公平锁
+        final BlockingQueue<String> synchronousQueue = new SynchronousQueue<>(true);//公平锁,非公平锁是false或者无参
 
         SynchronousQueueProducer queueProducer1 = new SynchronousQueueProducer(synchronousQueue);
         new Thread(queueProducer1).start();

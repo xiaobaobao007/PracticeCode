@@ -13,8 +13,7 @@ public class SynchronousQueueTest {
 
     static class SynchronousQueueProducer implements Runnable {
 
-        BlockingQueue<String> blockingQueue;
-        final Random random = new Random();
+        private BlockingQueue<String> blockingQueue;
 
         SynchronousQueueProducer(BlockingQueue<String> queue) {
             this.blockingQueue = queue;
@@ -39,7 +38,7 @@ public class SynchronousQueueTest {
 
     static class SynchronousQueueConsumer implements Runnable {
 
-        BlockingQueue<String> blockingQueue;
+        private BlockingQueue<String> blockingQueue;
 
         SynchronousQueueConsumer(BlockingQueue<String> queue) {
             this.blockingQueue = queue;

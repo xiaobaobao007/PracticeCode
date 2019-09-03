@@ -14,7 +14,7 @@ import javax.mail.internet.MimeMessage;
 
 public class Email {
 
-    public static void main(String[] args) throws AddressException, MessagingException {
+    public static void main(String[] args) throws MessagingException {
         Properties properties = new Properties();
         properties.put("mail.transport.protocol", "smtp");// 连接协议
         properties.put("mail.smtp.host", "smtp.qq.com");// 主机名

@@ -9,10 +9,16 @@ import java.util.List;
  */
 public class Stream {
     public static void main(String[] args) {
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            list.add(i+",");
-        }
-        list.parallelStream().forEach(System.out::print);
+        test1(Stream::test2);
+//        test1(System.out::println);
+    }
+
+    public static void test1(Runnable runnable) {
+        runnable.run();
+        System.out.println(2);
+    }
+
+    public static void test2() {
+        System.out.println(1);
     }
 }

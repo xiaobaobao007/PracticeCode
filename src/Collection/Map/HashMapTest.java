@@ -7,6 +7,9 @@ public class HashMapTest {
 
     public static void main(String[] argv) {
         Map<Integer, Integer> string = new HashMap<>();
+        string.put(null, 1);
+        string.put(1, null);
+        string.put(1, 1);
         put(string, null);
         for (int i = 0, j = 0; j < 10; i += 100, j++) {
             put(string, i);

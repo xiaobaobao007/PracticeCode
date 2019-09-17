@@ -13,8 +13,9 @@ import java.util.concurrent.Executors;
  */
 public class CountDownLatchTest implements Runnable{
 
+    static final CountDownLatchTest me = new CountDownLatchTest();
+
     static final CountDownLatch latch = new CountDownLatch(10);
-    static final CountDownLatchTest demo = new CountDownLatchTest();
 
     @Override
     public void run() {
@@ -34,7 +35,7 @@ public class CountDownLatchTest implements Runnable{
     public static void main(String[] args) throws InterruptedException {
         ExecutorService exec = Executors.newFixedThreadPool(10);
         for (int i=0; i<10; i++){
-            exec.submit(demo);
+            exec.submit(me);
         }
 
         // 等待检查

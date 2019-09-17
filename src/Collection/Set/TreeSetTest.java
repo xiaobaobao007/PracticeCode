@@ -32,13 +32,13 @@ public class TreeSetTest {
     }
 
     private static void test() {
-//        List<People> stringCollection = new ArrayList<>();
-//        stringCollection.add(new People(1));
-//        stringCollection.add(new People(51));
-//        stringCollection.add(new People(21));
-//        stringCollection.add(new People(12));
-//        TreeSet<People> treeSet1 = new TreeSet<>(stringCollection);
-//        sout(treeSet1);
+        List<People> stringCollection = new ArrayList<>();
+        stringCollection.add(new People(1));
+        stringCollection.add(new People(51));
+        stringCollection.add(new People(21));
+        stringCollection.add(new People(12));
+        TreeSet<People> treeSet1 = new TreeSet<>(stringCollection);
+        sout(treeSet1);
 
         Vector<Integer> vector = new Vector<>();
         TreeSet<People> treeSet = new TreeSet<>((o1, o2) -> o2.age-o1.age);

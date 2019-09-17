@@ -2,26 +2,43 @@ package Collection.Map;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-public class ConcurrentHashMapTest {
+import static javax.swing.UIManager.put;
+
+public class ConcurrentHashMapTest implements Runnable {
+
+    private Map<Integer, Integer> map;
+
+    public ConcurrentHashMapTest(Map<Integer, Integer> map) {
+        this.map = map;
+    }
 
     public static void main(String[] argv) {
-        Map<Integer, Integer> string = new ConcurrentHashMap<>();
-        put(string, null);
-        for (int i = 0, j = 0; j < 10; i += 100, j++) {
-            put(string, i);
-        }
-        sout(string);
+        Map<Integer, Integer> map = new ConcurrentHashMap<>();
+        Runnable run = new ConcurrentHashMapTest(map);
+        ExecutorService threadPool = Executors.newCachedThreadPool();
+        threadPool.submit(run);
+        threadPool.submit(run);
+        threadPool.submit(run);
     }
 
-    private static void put(Map<Integer, Integer> map, Integer value) {
-        map.put(value, value);
-    }
-
-    private static void sout(Map<Integer, Integer> map) {
-        for (Object o : map.keySet()) {
-            System.out.println(o + "," + map.get(o));
+    @Override
+    public void run() {
+        Random random = new Random();
+        try {
+            while (true) {
+                Thread.sleep(1000);
+                int i = random.nextInt(10);
+                Integer value = map.getOrDefault(i, 0);
+                map.put(i, value + 1);
+                System.out.println(Thread.currentThread().getId() + ":" + map.toString());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

@@ -1,6 +1,8 @@
+package SpiralArry;
 
 /**
- * 螺旋数组
+ * 螺旋数组,见比人写的比较好的代码,很简洁{@link SpiralArry2}
+ *
  * 7  8  9
  * 6  1  2
  * 5  4  3
@@ -12,14 +14,14 @@
  * 17 16 15 14 13
  *
  * @author xiaobaobao
- * @date 2019/6/28 14:38
+ * @date 2019/9/18 16:38
  */
 public class SpiralArry {
 
     public static int length;
     public static int[][] map;
-    public static int nowStep;
-    public static int allStep;
+    private static int nowStep;
+    private static int allStep;
 
     public static void main(String[] args) {
         new SpiralArry(2);
@@ -27,7 +29,7 @@ public class SpiralArry {
         new SpiralArry(4);
     }
 
-    SpiralArry(int n) {
+    private SpiralArry(int n) {
         length = 2 * n - 1;
         allStep = length * length;
         map = new int[length][length];
@@ -44,14 +46,14 @@ public class SpiralArry {
      * 0 -1 up
      * 1  0 right
      *
-     * @param x
-     * @param y
-     * @param lineAllStep
-     * @param step
-     * @param xAdd
-     * @param yAdd
+     * @param x x坐标
+     * @param y y坐标
+     * @param lineAllStep 当前的总步数
+     * @param step 当前的步数
+     * @param xAdd x加多少
+     * @param yAdd y加多少
      */
-    public void doIt(int x, int y, int lineAllStep, int step, int xAdd, int yAdd) {
+    private void doIt(int x, int y, int lineAllStep, int step, int xAdd, int yAdd) {
         if (nowStep > allStep) {
             return;
         }
@@ -71,7 +73,7 @@ public class SpiralArry {
         }
     }
 
-    public void sout() {
+    private void sout() {
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < length; j++) {
                 System.out.printf("%-3d", map[i][j]);

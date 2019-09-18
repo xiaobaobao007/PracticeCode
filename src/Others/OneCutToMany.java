@@ -42,26 +42,12 @@ public class OneCutToMany {
     }
 
     public boolean transInts(int[] ints, int from, int to) {
-        if (ints[from] <= 1) {
+        if (ints[from] <= 1 || ints[from] <= ints[to] + 1) {
             return false;
         }
         ints[from]--;
         ints[to]++;
-        if (intsCanContinue(ints)) {
-            return true;
-        }
-        ints[from]++;
-        ints[to]--;
-        return false;
-    }
-
-
-    public boolean intsCanContinue(int[] ints) {
-        for (int i = 0; i < ints.length - 1; i++) {
-            if (ints[i] > ints[i + 1]) {
-                return false;
-            }
-        }
         return true;
     }
+
 }

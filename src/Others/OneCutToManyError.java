@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * 这写的什么鬼，这么麻烦，数据量这么大
+ * 这写的什么鬼，这么麻烦，数据量这么大,请参考{@link OneCutToMany}
  *
  * @author xiaobaobao
  * @date 2019/8/26 9:09
@@ -32,7 +32,7 @@ class Composition extends ArrayList<Integer> {
     }
 }
 
-public class test {
+public class OneCutToManyError {
     public static void main(String[] args) {
         int n = 6;
         System.out.println(toStr(calc(n)));

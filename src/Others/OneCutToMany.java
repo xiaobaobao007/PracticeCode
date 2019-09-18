@@ -3,6 +3,8 @@ package Others;
 import java.util.Arrays;
 
 /**
+ * {@link OneCutToManyError},这是个错误的例子
+ *
  * 把一个数分成多个整数，如4=1,3;2,2;1,1,2;1,1,1,1
  *
  * @author xiaobaobao

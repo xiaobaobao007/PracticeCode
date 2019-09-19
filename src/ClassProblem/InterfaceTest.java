@@ -20,4 +20,7 @@ interface InterfaceTest {
         System.out.println("================2");
     }
 
+    void inTr();
+
+
 }

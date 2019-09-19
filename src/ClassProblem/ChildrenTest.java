@@ -28,4 +28,9 @@ public class ChildrenTest extends AbstractTest implements InterfaceTest{
         new ChildrenTest().inTe();
         new ChildrenTest().inTT();
     }
+
+    @Override
+    public void inTr() {
+
+    }
 }

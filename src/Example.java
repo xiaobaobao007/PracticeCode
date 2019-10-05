@@ -1,24 +1,31 @@
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-
 /**
  * @author xiaobaobao
  * @date 2019/6/28 14:38
  */
-public class Example {
-    public static void main(String args[]) {
+public class Example extends Thread {
+    public static void main(String args[]) throws InterruptedException {
+        Thread example1 = new Example(1);
+        Thread example2 = new Example(2);
+        example1.start();
+        example1.join();
+        example2.start();
+    }
 
-        Map<Integer, Integer> map = new HashMap<>(16, 1.0F);
-        Random random = new Random();
-        for (int i = 0; i < 20; i++) {
-            int j = random.nextInt(150);
-            map.put(j, j);
-//            map.put(i,i);
-        }
-        for (Integer i : map.keySet()) {
-            System.out.println(i);
+    public Example(int id) {
+        this.id = id;
+    }
+
+    private int id;
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 10; i++) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+            }
+            System.out.println(id);
         }
     }
+
 }

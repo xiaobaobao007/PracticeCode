@@ -1,17 +1,33 @@
 package ThreadProblem;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.*;
+import java.util.function.Consumer;
+
+
 public class Main {
-    //        ExecutorService executorService = Executors.newSingleThreadExecutor();
-//        ExecutorService executorService = Executors.newFixedThreadPool(10);
-    public static ExecutorService executorService = Executors.newScheduledThreadPool(10);
+    //    public static ExecutorService executorService = Executors.newSingleThreadExecutor();
+    public static ExecutorService executorService = Executors.newFixedThreadPool(10);
+//    public static ScheduledExecutorService executorService = Executors.newScheduledThreadPool(10);
+//    private static ScheduledThreadPoolExecutor executorService = new ScheduledThreadPoolExecutor(5);
+
+    public static void tick() {
+        System.out.println("我被执行了");
+    }
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        //        threadFactory factory = new threadFactory();
-//        factory.newThread(new thread("1"));
 
+
+//        executorService.schedule(Main::tick, 10, TimeUnit.SECONDS);
+//        int i = 10;
+//        while (i >= -5) {
+//            System.out.println(i--);
+//            try {
+//                Thread.sleep(1000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
 //        Future future = executorService.submit(new Callable() {
 //            public Object call() throws Exception {
 //                System.out.println("Starting");
@@ -20,17 +36,66 @@ public class Main {
 //                return "Callable Result";
 //            }
 //        });
-        System.out.println(-1 << 29);
-        Future future = executorService.submit(() -> {
-            System.out.println("Starting");
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        Map<Integer, Integer> map = new HashMap<>();
+
+        Random random = new Random();
+        executorService.execute(() -> {
+            while (true) {
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                int i = random.nextInt(100);
+                map.put(i, i);
+                System.out.println("++++++++=" + i + ":::" + map.size());
             }
-            System.out.println("Ending");
         });
-        System.out.println(future.isCancelled());
+
+        executorService.execute(() ->
+        {
+            while (true) {
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                int i = random.nextInt(100);
+                map.remove(i);
+                System.out.println("---------=" + i + ":::" + map.size());
+            }
+        });
+        executorService.execute(() ->
+        {
+            while (true) {
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                int i = 0;
+                for (Integer value : map.values()) {
+                    if (value != null) {
+                        i++;
+                    } else {
+                        i++;
+                    }
+                }
+                System.out.println("===========" + i);
+            }
+        });
+
+//        Future future = executorService.submit(() -> {
+//            System.out.println("Starting");
+//            try {
+//                Thread.sleep(2000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//            System.out.println("Ending");
+//        });
+//        System.out.println(future.isCancelled());
 //        Set<Callable<String>> callables = new HashSet<Callable<String>>();
 //
 //        callables.add(new Callable<String>() {
@@ -55,5 +120,36 @@ public class Main {
 //        System.out.println("result = " + result);
 //
         executorService.shutdown();
+    }
+
+    static void forEach(Consumer<? super List> action) {
+        Objects.requireNonNull(action);
+
+    }
+
+    static class Test {
+        private int a;
+        private int b;
+
+        public Test(int a, int b) {
+            this.a = a;
+            this.b = b;
+        }
+
+        public int getA() {
+            return a;
+        }
+
+        public void setA(int a) {
+            this.a = a;
+        }
+
+        public int getB() {
+            return b;
+        }
+
+        public void setB(int b) {
+            this.b = b;
+        }
     }
 }

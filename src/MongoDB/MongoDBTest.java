@@ -12,37 +12,35 @@ import org.bson.Document;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class MongoDBTest {
 
+    static String Collection_Name = "user";
 
     public static void main(String args[]) {
         try {
 
-            //ServerAddress()两个参数分别为 服务器地址 和 端口
             ServerAddress serverAddress = new ServerAddress("192.168.0.222", 27017);
-            //MongoCredential.createScramSha1Credential()三个参数分别为 用户名 数据库名称 密码
             MongoCredential credential = MongoCredential.createScramSha1Credential("bmy", "admin", "password".toCharArray());
-            //通过连接认证获取MongoDB连接
-            MongoClient mongoClient = new MongoClient(Arrays.asList(serverAddress), Arrays.asList(credential));
-            //连接到数据库
+            MongoClient mongoClient = new MongoClient(Collections.singletonList(serverAddress), Collections.singletonList(credential));
             MongoDatabase mongoDatabase = mongoClient.getDatabase("ceshidata");
-            System.out.println("<______________Mongodb数据库连接成功！_____________>");
 
-            create(mongoDatabase); //创建集合
-//            add(mongoDatabase);//新增数据
-//            find(mongoDatabase);//查看数据
-//            update(mongoDatabase);//修改数据
-//            delete(mongoDatabase);//删除数据
+            create(mongoDatabase);//创建集合
+            add(mongoDatabase);//新增数据
+            find(mongoDatabase);//查看数据
+            update(mongoDatabase);//修改数据
+            delete(mongoDatabase);//删除数据
+
         } catch (Exception e) {
-            System.err.println("！！MongoDB数据库连接异常：" + e.getMessage());
+            e.printStackTrace();
         }
     }
 
     public static void create(MongoDatabase a) {
         try {
-            a.createCollection("user");
+            a.createCollection(Collection_Name);
             System.out.println("集合创建成功");
         } catch (Exception e) {
             System.err.println("！！集合创建异常：" + e.getMessage());
@@ -51,7 +49,7 @@ public class MongoDBTest {
 
     public static void find(MongoDatabase a) {
         try {
-            MongoCollection<Document> list = a.getCollection("user");
+            MongoCollection<Document> list = a.getCollection(Collection_Name);
             FindIterable<Document> findIterable = list.find();
             MongoCursor<Document> mongoCursor = findIterable.iterator();
             while (mongoCursor.hasNext()) {
@@ -66,7 +64,7 @@ public class MongoDBTest {
     public static void add(MongoDatabase a) {
         try {
             //新增两个学生和教师的数据
-            MongoCollection<Document> collections = a.getCollection("user");
+            MongoCollection<Document> collections = a.getCollection(Collection_Name);
             Document document1 = new Document("name", "学生").
                     append("age", 18).
                     append("type", "学生").
@@ -83,7 +81,7 @@ public class MongoDBTest {
                     append("age", 30).
                     append("type", "教师").
                     append("likeTv", "星空卫视");
-            List<Document> documents = new ArrayList<Document>();
+            List<Document> documents = new ArrayList<>();
             documents.add(document1);
             documents.add(document2);
             documents.add(document3);
@@ -98,7 +96,7 @@ public class MongoDBTest {
 
     public static void update(MongoDatabase a) {
         try {
-            MongoCollection<Document> mongoCollection = a.getCollection("user");
+            MongoCollection<Document> mongoCollection = a.getCollection(Collection_Name);
             //修改满足条件的第一条数据
             mongoCollection.updateOne(Filters.eq("name", "老师"), new Document("$set", new Document("address", "深圳市福田区")));
             //修改所以满足条件的数据
@@ -115,7 +113,7 @@ public class MongoDBTest {
 
     public static void delete(MongoDatabase a) {
         try {
-            MongoCollection<Document> collection = a.getCollection("user");
+            MongoCollection<Document> collection = a.getCollection(Collection_Name);
             //删除符合条件的第一个文档
             collection.deleteOne(Filters.eq("name", "老师"));
             //删除所有符合条件的文档

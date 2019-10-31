@@ -14,12 +14,14 @@ public class ArrayListTest {
     private static void test() {
 //        List<Integer> list = Collections.synchronizedList(new ArrayList<>());//synchronized
 //        CopyOnWriteArrayList<Integer> copyOnWriteArrayList = new CopyOnWriteArrayList<>();//并发容器
-        Collection<String> stringCollection = new ArrayList<>();
+        ArrayList<String> stringCollection = new ArrayList<>();
         stringCollection.add("1");
         stringCollection.add("2");
         stringCollection.add("3");
         stringCollection.add("4");
 
+        stringCollection.subList(1, 2).clear();
+        stringCollection.forEach(System.out::println);
         List<String> stringList = new ArrayList<>(stringCollection);
 
         int length=5;

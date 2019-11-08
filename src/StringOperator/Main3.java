@@ -14,34 +14,34 @@ package StringOperator;
  * 问题：无法检测出s1含有相同字符
  */
 public class Main3 {
-    Main3() {
-        String s1 = "dabc";
-        int size = s1.length();
-        char[] array = s1.toCharArray();
-        String s2 = "eidbcaooo";
-        char[] array2 = s2.toCharArray();
-        int[] s1Array = new int[300];
-        for (char c : array) {
-            s1Array[c] = 1;
-        }
-        int[] clone = s1Array.clone();
-        int i = 0;
-        for (char c : array2) {
-            if (clone[c] == 1) {
-                if (++i == size) {
-                    System.out.println("yes");
-                    return;
-                }
-                clone[c] = 0;
-            } else {
-                i = 0;
-                clone = s1Array.clone();
-            }
-        }
-        System.out.println("no");
-    }
+	Main3() {
+		String s1 = "dabc";
+		int size = s1.length();
+		char[] array = s1.toCharArray();
+		String s2 = "eidbcaooo";
+		char[] array2 = s2.toCharArray();
+		int[] s1Array = new int[300];
+		for (char c : array) {
+			s1Array[c] = 1;
+		}
+		int[] clone = s1Array.clone();
+		int i = 0;
+		for (char c : array2) {
+			if (clone[c] == 1) {
+				if (++i == size) {
+					System.out.println("yes");
+					return;
+				}
+				clone[c] = 0;
+			} else {
+				i = 0;
+				clone = s1Array.clone();
+			}
+		}
+		System.out.println("no");
+	}
 
-    public static void main(String[] args) {
-        new Main3();
-    }
+	public static void main(String[] args) {
+		new Main3();
+	}
 }

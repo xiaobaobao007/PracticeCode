@@ -14,26 +14,26 @@ package StringOperator;
  */
 public class Main2 {
 
-    Main2() {
-        String s = "abcabcbb";
-        int size = 0;
-        int max = 0;
-        int[] result = new int[300];
-        for (char c : s.toCharArray()) {
-            if (result[c] == 0) {
-                result[c] = 1;
-                if (++size > max) {
-                    max = size;
-                }
-            } else {
-                result[c] = 0;
-                size--;
-            }
-        }
-        System.out.println(max);
-    }
+	Main2() {
+		String s = "abcabcbb";
+		int size = 0;
+		int max = 0;
+		int[] result = new int[300];
+		for (char c : s.toCharArray()) {
+			if (result[c] == 0) {
+				result[c] = 1;
+				if (++size > max) {
+					max = size;
+				}
+			} else {
+				result[c] = 0;
+				size--;
+			}
+		}
+		System.out.println(max);
+	}
 
-    public static void main(String[] args) {
-        new Main2();
-    }
+	public static void main(String[] args) {
+		new Main2();
+	}
 }

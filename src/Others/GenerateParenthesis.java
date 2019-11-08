@@ -1,6 +1,7 @@
 package Others;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 给出 n = 3，生成结果为：

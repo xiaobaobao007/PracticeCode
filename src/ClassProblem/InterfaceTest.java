@@ -5,22 +5,22 @@ package ClassProblem;
  */
 interface InterfaceTest {
 
-    int a = 1234;
-    Integer aa = null;
+	int a = 1234;
+	Integer aa = null;
 
-    static void a() {
-        System.out.println(123);
-    }
+	static void a() {
+		System.out.println(123);
+	}
 
-    default void inTe(){
-        System.out.println("===============1");
-    }
+	default void inTe() {
+		System.out.println("===============1");
+	}
 
-    default void inTT(){
-        System.out.println("================2");
-    }
+	default void inTT() {
+		System.out.println("================2");
+	}
 
-    void inTr();
+	void inTr();
 
 
 }

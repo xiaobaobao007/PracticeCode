@@ -1,21 +1,23 @@
 package ThreadProblem;
 
 import java.util.*;
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.function.Consumer;
 
 
 public class Main {
-    //    public static ExecutorService executorService = Executors.newSingleThreadExecutor();
-    public static ExecutorService executorService = Executors.newFixedThreadPool(10);
+	//    public static ExecutorService executorService = Executors.newSingleThreadExecutor();
+	public static ExecutorService executorService = Executors.newFixedThreadPool(10);
 //    public static ScheduledExecutorService executorService = Executors.newScheduledThreadPool(10);
 //    private static ScheduledThreadPoolExecutor executorService = new ScheduledThreadPoolExecutor(5);
 
-    public static void tick() {
-        System.out.println("我被执行了");
-    }
+	public static void tick() {
+		System.out.println("我被执行了");
+	}
 
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
+	public static void main(String[] args) throws ExecutionException, InterruptedException {
 
 
 //        executorService.schedule(Main::tick, 10, TimeUnit.SECONDS);
@@ -36,55 +38,55 @@ public class Main {
 //                return "Callable Result";
 //            }
 //        });
-        Map<Integer, Integer> map = new HashMap<>();
+		Map<Integer, Integer> map = new HashMap<>();
 
-        Random random = new Random();
-        executorService.execute(() -> {
-            while (true) {
-                try {
-                    Thread.sleep(1);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                int i = random.nextInt(100);
-                map.put(i, i);
-                System.out.println("++++++++=" + i + ":::" + map.size());
-            }
-        });
+		Random random = new Random();
+		executorService.execute(() -> {
+			while (true) {
+				try {
+					Thread.sleep(1);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				int i = random.nextInt(100);
+				map.put(i, i);
+				System.out.println("++++++++=" + i + ":::" + map.size());
+			}
+		});
 
-        executorService.execute(() ->
-        {
-            while (true) {
-                try {
-                    Thread.sleep(1);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+		executorService.execute(() ->
+		{
+			while (true) {
+				try {
+					Thread.sleep(1);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 
-                int i = random.nextInt(100);
-                map.remove(i);
-                System.out.println("---------=" + i + ":::" + map.size());
-            }
-        });
-        executorService.execute(() ->
-        {
-            while (true) {
-                try {
-                    Thread.sleep(1);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                int i = 0;
-                for (Integer value : map.values()) {
-                    if (value != null) {
-                        i++;
-                    } else {
-                        i++;
-                    }
-                }
-                System.out.println("===========" + i);
-            }
-        });
+				int i = random.nextInt(100);
+				map.remove(i);
+				System.out.println("---------=" + i + ":::" + map.size());
+			}
+		});
+		executorService.execute(() ->
+		{
+			while (true) {
+				try {
+					Thread.sleep(1);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				int i = 0;
+				for (Integer value : map.values()) {
+					if (value != null) {
+						i++;
+					} else {
+						i++;
+					}
+				}
+				System.out.println("===========" + i);
+			}
+		});
 
 //        Future future = executorService.submit(() -> {
 //            System.out.println("Starting");
@@ -119,37 +121,37 @@ public class Main {
 //
 //        System.out.println("result = " + result);
 //
-        executorService.shutdown();
-    }
+		executorService.shutdown();
+	}
 
-    static void forEach(Consumer<? super List> action) {
-        Objects.requireNonNull(action);
+	static void forEach(Consumer<? super List> action) {
+		Objects.requireNonNull(action);
 
-    }
+	}
 
-    static class Test {
-        private int a;
-        private int b;
+	static class Test {
+		private int a;
+		private int b;
 
-        public Test(int a, int b) {
-            this.a = a;
-            this.b = b;
-        }
+		public Test(int a, int b) {
+			this.a = a;
+			this.b = b;
+		}
 
-        public int getA() {
-            return a;
-        }
+		public int getA() {
+			return a;
+		}
 
-        public void setA(int a) {
-            this.a = a;
-        }
+		public void setA(int a) {
+			this.a = a;
+		}
 
-        public int getB() {
-            return b;
-        }
+		public int getB() {
+			return b;
+		}
 
-        public void setB(int b) {
-            this.b = b;
-        }
-    }
+		public void setB(int b) {
+			this.b = b;
+		}
+	}
 }

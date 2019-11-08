@@ -9,25 +9,25 @@ package Others;
  */
 public class ContinueNumToOne {
 
-    public static ContinueNumToOne me = new ContinueNumToOne();
+	public static ContinueNumToOne me = new ContinueNumToOne();
 
-    public static void main(String[] args) {
-        int f1 = 0, f2 = 0, f3 = 2;
-        int M = 5;
-        for (int i = 3; i < M; i++) {
-            f3 += f2;
-            f2 = f1;
-            f1 = f3;
-            System.out.println(f1 + f2 + f3);
-        }
-        f1 = 1;
-        f2 = 1;
-        int f;
-        for (int i = 3; i < M; i++) {
-            f = f2;
-            f2 = f1 + f2;
-            f1 = f;
-            System.out.println(f2);
-        }
-    }
+	public static void main(String[] args) {
+		int f1 = 0, f2 = 0, f3 = 2;
+		int M = 5;
+		for (int i = 3; i < M; i++) {
+			f3 += f2;
+			f2 = f1;
+			f1 = f3;
+			System.out.println(f1 + f2 + f3);
+		}
+		f1 = 1;
+		f2 = 1;
+		int f;
+		for (int i = 3; i < M; i++) {
+			f = f2;
+			f2 = f1 + f2;
+			f1 = f;
+			System.out.println(f2);
+		}
+	}
 }

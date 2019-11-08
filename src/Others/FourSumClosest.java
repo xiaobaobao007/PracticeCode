@@ -1,6 +1,8 @@
 package Others;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * 给定数组 nums = [1, 0, -1, 0, -2, 2]，和 target = 0。

@@ -1,4 +1,4 @@
-package MathTool;
+package Tools;
 
 public class Gauss {
 
@@ -130,7 +130,7 @@ public class Gauss {
 		return arr;
 	}
 
-	public void printArr(float arr[][]) {
+	public void printArr(float[][] arr) {
 		for (int i = 0; i < arr.length; i++) {
 			for (int j = 0; j < arr[0].length; j++) {
 				System.out.printf("%-5.0f", arr[i][j]);
@@ -142,7 +142,7 @@ public class Gauss {
 
 
 	public static void main(String[] args) {
-		float arr[][] = {{
+		float[][] arr = {{
 				36, 77, 588.2f}, {
 				59, 95, 764.8f}};
 

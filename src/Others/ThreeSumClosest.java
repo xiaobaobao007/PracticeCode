@@ -13,7 +13,7 @@ import java.util.Arrays;
 public class ThreeSumClosest {
 
 	public static void main(String[] args) {
-		System.out.println(new ThreeSumClosest().threeSumClosest(new int[]{0,0,0}, 1));
+		System.out.println(new ThreeSumClosest().threeSumClosest(new int[]{0, 0, 0}, 1));
 	}
 
 	public int threeSumClosest(int[] nums, int target) {

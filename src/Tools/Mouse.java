@@ -1,4 +1,4 @@
-package MathTool;
+package Tools;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -24,7 +24,7 @@ public class Mouse extends JPanel implements MouseMotionListener, MouseListener 
 		jFrame.setLocation(1500, 300);
 		jFrame.setSize(300, 300);
 		JButton button = new JButton("邮件");
-		button.setSize(300,300);
+		button.setSize(300, 300);
 		button.addActionListener((q) -> {
 			doit();
 		});
@@ -56,7 +56,7 @@ public class Mouse extends JPanel implements MouseMotionListener, MouseListener 
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		robot.mouseMove(1600	, 500);
+		robot.mouseMove(1600, 500);
 	}
 
 	@Override

@@ -9,17 +9,17 @@ package ClassProblem;
  * 5. 抽象类的子类必须给出抽象类中的抽象方法的具体实现，除非该子类也是抽象类。
  */
 abstract class AbstractTest {
-    static {
-        System.out.print("1a");
-    }
+	static {
+		System.out.print("1a");
+	}
 
-    AbstractTest() {
-        System.out.print("2a");
-    }
+	AbstractTest() {
+		System.out.print("2a");
+	}
 
-    public static void init(){
-    }
+	public static void init() {
+	}
 
-    abstract public void abCon();
+	abstract public void abCon();
 
 }

@@ -19,6 +19,11 @@ public class Person implements Serializable, Comparable<Person> {//实体
 		this.age = age;
 	}
 
+	public Person(Integer sex, Integer age) {
+		this.sex = sex;
+		this.age = age;
+	}
+
 	public Person(String name, Integer sex, Integer age, String school, String[] hobby) {
 		this.name = name;
 		this.sex = sex;
@@ -69,6 +74,16 @@ public class Person implements Serializable, Comparable<Person> {//实体
 
 	@Override
 	public int compareTo(Person o) {
-		return this.age - o.getAge();
+		if (o.getAge() > this.getAge()) {
+			return 1;
+		} else if (o.getAge() < this.getAge()) {
+			return -1;
+		}
+		return o.getSex() - this.getSex() > 0 ? 1 : 0;
+	}
+
+	@Override
+	public String toString() {
+		return "Person{" + "sex=" + sex + ", age=" + age + '}';
 	}
 }

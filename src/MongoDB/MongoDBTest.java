@@ -1,5 +1,7 @@
 package MongoDB;
 
+import org.bson.Document;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -12,7 +14,6 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
-import org.bson.Document;
 
 public class MongoDBTest {
 
@@ -20,6 +21,13 @@ public class MongoDBTest {
 
 	public static void main(String[] args) {
 		try {
+
+//			MongoCredential credential = MongoCredential.createCredential("bmy", "admin", "password".toCharArray());
+//			MongoClientSettings settings = MongoClientSettings.builder()
+//					.credential(credential)
+//					.applyToClusterSettings(builder -> builder.hosts(Collections.singletonList(new ServerAddress("192.168.0.222", 27017))))
+//					.build();
+//			MongoClient mongoClient = MongoClients.create(settings);
 
 			ServerAddress serverAddress = new ServerAddress("192.168.0.222", 27017);
 			MongoCredential credential = MongoCredential.createScramSha1Credential("bmy", "admin", "password".toCharArray());

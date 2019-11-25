@@ -143,8 +143,10 @@ public class Gauss {
 
 	public static void main(String[] args) {
 		float[][] arr = {{
-				36, 77, 588.2f}, {
-				59, 95, 764.8f}};
+				100, 1896, 40, 271, 1354}, {
+				100, 1896, 1, 33, 1797}, {
+				100, 1948, 1, 33, 1846}, {
+				100, 2008, 1, 33, 1903}};
 
 		Gauss gauss = new Gauss();
 		System.out.println("高斯消元求解前：");

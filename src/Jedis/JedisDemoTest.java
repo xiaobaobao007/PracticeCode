@@ -1,11 +1,11 @@
 package Jedis;
 
-import java.util.Set;
-
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
+
+import java.util.concurrent.CountDownLatch;
 
 /**
  * Jedis测试
@@ -13,23 +13,21 @@ import redis.clients.jedis.JedisPoolConfig;
  * @author xiaobaobao
  * @date 2019/7/11 16:33
  */
-public class JedisDemo1 {
+public class JedisDemoTest {
 	@Test
-	public void demo1() {
+	public void test1() {
 		Jedis jedis = new Jedis("127.0.0.1", 6379);
-//        jedis.set("name", "xbb");
-//        jedis.flushAll();
-//        String name = jedis.get("name");
-//        System.out.println(name);
-		Set<String> keys = jedis.keys("*");
-		for (String key : keys) {
-			System.out.println(key);
+		long start = System.currentTimeMillis();
+		jedis.flushAll();
+		for (int i = 0; i < 10000; i++) {
+			jedis.set("" + i, "" + i);
 		}
+		System.out.println(System.currentTimeMillis() - start);
 		jedis.close();
 	}
 
 	@Test
-	public void demo2() {
+	public void test2() {
 		JedisPoolConfig config = new JedisPoolConfig();
 		//最大连接数
 		config.setMaxTotal(30);
@@ -38,7 +36,7 @@ public class JedisDemo1 {
 		Jedis jedis = null;
 		try {
 			jedis = jedisPool.getResource();
-			jedis.set("name", "demo2");
+			jedis.set("name", "test2");
 			System.out.println(jedis.get("name"));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -50,6 +48,39 @@ public class JedisDemo1 {
 			jedisPool.close();
 		}
 	}
+
+
+	@Test
+	public void test3() throws InterruptedException {
+		Jedis jedis = new Jedis("127.0.0.1", 6379);
+		jedis.flushAll();
+		jedis.close();
+
+		JedisPoolConfig config = new JedisPoolConfig();
+		config.setMaxTotal(30);
+		config.setMaxIdle(10);
+		JedisPool jedisPool = new JedisPool(config, "127.0.0.1", 6379);
+
+		int threads = 3;
+		int nums = 10000;
+		CountDownLatch latch = new CountDownLatch(threads);
+		Runnable runnable = () -> {
+			Jedis jedis1 = jedisPool.getResource();
+			for (int i = 0; i < nums; i++) {
+				jedis1.set("" + i, "" + i);
+			}
+			latch.countDown();
+			jedis1.close();
+		};
+		long start = System.currentTimeMillis();
+		for (int i = 0; i < threads; i++) {
+			new Thread(runnable).start();
+		}
+		latch.await();
+		System.out.println(System.currentTimeMillis() - start);
+
+	}
+
 }
 
 /*

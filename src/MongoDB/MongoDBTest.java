@@ -6,13 +6,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.mongodb.MongoClient;
+import com.mongodb.MongoClientSettings;
 import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
-import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.*;
 import com.mongodb.client.model.Filters;
 
 public class MongoDBTest {
@@ -21,24 +18,27 @@ public class MongoDBTest {
 
 	public static void main(String[] args) {
 		try {
+			MongoCredential credential = MongoCredential.createCredential("bmy", "admin", "password".toCharArray());
+			MongoClientSettings settings = MongoClientSettings.builder()
+					.credential(credential)
+					.applyToClusterSettings(builder -> builder.hosts(Collections.singletonList(new ServerAddress("192.168.0.222", 27017))))
+					.build();
+			MongoClient mongoClient = MongoClients.create(settings);
 
-//			MongoCredential credential = MongoCredential.createCredential("bmy", "admin", "password".toCharArray());
-//			MongoClientSettings settings = MongoClientSettings.builder()
-//					.credential(credential)
-//					.applyToClusterSettings(builder -> builder.hosts(Collections.singletonList(new ServerAddress("192.168.0.222", 27017))))
-//					.build();
-//			MongoClient mongoClient = MongoClients.create(settings);
-
-			ServerAddress serverAddress = new ServerAddress("192.168.0.222", 27017);
-			MongoCredential credential = MongoCredential.createScramSha1Credential("bmy", "admin", "password".toCharArray());
-			MongoClient mongoClient = new MongoClient(Collections.singletonList(serverAddress), Collections.singletonList(credential));
+//			ServerAddress serverAddress = new ServerAddress("192.168.0.222", 27017);
+//			MongoClient mongoClient = new MongoClient(Collections.singletonList(serverAddress), Collections.singletonList(credential));
 			MongoDatabase mongoDatabase = mongoClient.getDatabase("ceshidata");
 
-			create(mongoDatabase);//创建集合
-			add(mongoDatabase);//新增数据
-			find(mongoDatabase);//查看数据
-			update(mongoDatabase);//修改数据
-			delete(mongoDatabase);//删除数据
+			//创建集合
+			create(mongoDatabase);
+			//新增数据
+			add(mongoDatabase);
+			//查看数据
+			find(mongoDatabase);
+			//修改数据
+			update(mongoDatabase);
+			//删除数据
+			delete(mongoDatabase);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,6 +47,7 @@ public class MongoDBTest {
 
 	public static void create(MongoDatabase a) {
 		try {
+			MongoIterable<String> strings = a.listCollectionNames();
 			a.createCollection(Collection_Name);
 			System.out.println("集合创建成功");
 		} catch (Exception e) {

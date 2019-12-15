@@ -1,18 +1,16 @@
-package NIO.Netty;
+package NIO.Netty.client;
 
 
-import java.util.concurrent.TimeUnit;
-
+import NIO.Netty.JDKDecoder;
+import NIO.Netty.JDKEncoder;
 import io.netty.bootstrap.Bootstrap;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.DelimiterBasedFrameDecoder;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.timeout.IdleStateHandler;
+
+import java.util.concurrent.TimeUnit;
 
 public class NettyClient {
 
@@ -36,11 +34,9 @@ public class NettyClient {
 					@Override
 					protected void initChannel(SocketChannel socketChannel) throws Exception {
 						ChannelPipeline pipeline = socketChannel.pipeline();
-						pipeline.addLast(new DelimiterBasedFrameDecoder(Integer.MAX_VALUE,
-								Unpooled.copiedBuffer(System.getProperty("line.separator").getBytes())));
 						//字符串编码解码
-						pipeline.addLast("decoder", new StringDecoder());
-						pipeline.addLast("encoder", new StringEncoder());
+						pipeline.addLast("decoder", new JDKDecoder());
+						pipeline.addLast("encoder", new JDKEncoder());
 						//心跳检测
 						pipeline.addLast(new IdleStateHandler(0, 4, 0, TimeUnit.SECONDS));
 						//客户端的逻辑执行
@@ -51,23 +47,17 @@ public class NettyClient {
 
 	public void start() {
 		ChannelFuture f = b.connect(host, port);
-		//断线重连
-		f.addListener(new ChannelFutureListener() {
-			@Override
-			public void operationComplete(ChannelFuture channelFuture) throws Exception {
-				if (!channelFuture.isSuccess()) {
-					final EventLoop loop = channelFuture.channel().eventLoop();
-					loop.schedule(new Runnable() {
-						@Override
-						public void run() {
-							System.out.println("not connect service");
-							start();
-						}
-					}, 1L, TimeUnit.SECONDS);
-				} else {
-					channel = channelFuture.channel();
-					System.out.println("connected");
-				}
+		//监听消息发送结果，如果消息写入网络Socket成功,则调用此方法
+		f.addListener((ChannelFutureListener) channelFuture -> {
+			if (!channelFuture.isSuccess()) {
+				final EventLoop loop = channelFuture.channel().eventLoop();
+				loop.schedule(() -> {
+					System.out.println("disconnect");
+					start();
+				}, 1L, TimeUnit.SECONDS);
+			} else {
+				channel = channelFuture.channel();
+				System.out.println("connect successful");
 			}
 		});
 	}

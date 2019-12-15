@@ -1,17 +1,17 @@
-package NIO.Netty;
+package NIO.Netty.client;
 
-import java.util.concurrent.TimeUnit;
-
+import NIO.Netty.Msg;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.EventLoop;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 
+import java.util.concurrent.TimeUnit;
+
 public class NettyClientHandler extends SimpleChannelInboundHandler {
 
 	private NettyClient nettyClient;
-	private String tenantId;
 	private int attempts = 0;
 
 	public NettyClientHandler(NettyClient nettyClient) {
@@ -19,8 +19,13 @@ public class NettyClientHandler extends SimpleChannelInboundHandler {
 	}
 
 	@Override
-	protected void channelRead0(ChannelHandlerContext channelHandlerContext, Object o) throws Exception {
-		System.out.println("service send message：" + o.toString());
+	protected void channelRead0(ChannelHandlerContext channelHandlerContext, Object o) {
+		if (o instanceof Msg) {
+			Msg msg = (Msg) o;
+			System.out.println("service：" + msg.getMsg());
+		} else {
+			System.out.println(o.toString());
+		}
 	}
 
 	/**
@@ -50,12 +55,7 @@ public class NettyClientHandler extends SimpleChannelInboundHandler {
 			attempts++;
 		}
 		int timeout = 2 << attempts;
-		eventLoop.schedule(new Runnable() {
-			@Override
-			public void run() {
-				nettyClient.start();
-			}
-		}, timeout, TimeUnit.SECONDS);
+		eventLoop.schedule(() -> nettyClient.start(), timeout, TimeUnit.SECONDS);
 		ctx.fireChannelInactive();
 	}
 
@@ -68,8 +68,7 @@ public class NettyClientHandler extends SimpleChannelInboundHandler {
 			} else if (event.state().equals(IdleState.WRITER_IDLE)) {
 				System.out.println("WRITER_IDLE");
 				//发送心跳，保持长连接
-				String s = "NettyClient" + System.getProperty("line.separator");
-				ctx.channel().writeAndFlush(s);  //发送心跳成功
+				ctx.channel().writeAndFlush("Heart");  //发送心跳成功
 			} else if (event.state().equals(IdleState.ALL_IDLE)) {
 				System.out.println("ALL_IDLE");
 			}

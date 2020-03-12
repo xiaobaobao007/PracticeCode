@@ -19,7 +19,7 @@ public class Test {
 			}
 			System.out.println("==============");
 			pstmt = conn.prepareStatement("select * from user where account = ? and password=?;");
-			pstmt.setString(1, "root or 1=1;#");
+			pstmt.setString(1, "'root' or 1=1;#''");
 			pstmt.setString(2, "error");
 			rs = pstmt.executeQuery();
 			while (rs.next()) {

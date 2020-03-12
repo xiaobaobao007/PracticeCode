@@ -44,7 +44,6 @@ public class JedisDemoTest {
 			if (jedis != null) {
 				jedis.close();
 			}
-			jedisPool.returnResourceObject(jedis);
 			jedisPool.close();
 		}
 	}

@@ -9,9 +9,14 @@ import java.util.Random;
  */
 public class Main {
 
+	//测试数量
+	private int length = 10000;
 	private int[] testNums;
+	//测试文本路径
 	private String path = "./src/resouse/sord.txt";
-	private boolean isTest = false;
+	//	private String path = "";
+	//fasle用文本数据
+	private boolean isTest = true;
 	private long findTimes;
 	private long changeTimes;
 
@@ -21,7 +26,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		Main main = new Main();
 
-//        main.write();
+		main.write();
 		main.read();
 
 		//交换排序
@@ -50,7 +55,7 @@ public class Main {
 		findTimes = 0;
 		changeTimes = 0;
 		int[] nums = testNums.clone();
-		long time = System.currentTimeMillis();
+		long time = System.nanoTime();
 		for (int i = 0; i < nums.length; i++) {
 			for (int j = i + 1; j < nums.length; j++) {
 				findTimes++;
@@ -74,7 +79,7 @@ public class Main {
 		findTimes = 0;
 		changeTimes = 0;
 		int[] nums = testNums.clone();
-		long time = System.currentTimeMillis();
+		long time = System.nanoTime();
 		for (int i = 0; i < nums.length / 2; i++) {
 			for (int j = i; j < nums.length - i - 1; j++) {
 				findTimes++;
@@ -107,7 +112,7 @@ public class Main {
 		findTimes = 0;
 		changeTimes = 0;
 		int[] nums = testNums.clone();
-		long time = System.currentTimeMillis();
+		long time = System.nanoTime();
 		quickly(nums, 0, nums.length - 1);
 		sout(name, nums, time);
 	}
@@ -138,7 +143,7 @@ public class Main {
 		nums[min] = nums[i];
 		nums[i] = point;
 		quickly(nums, min, i - 1);
-		quickly(nums, j + 1, max);
+		quickly(nums, i + 1, max);
 	}
 
 	/**
@@ -151,7 +156,7 @@ public class Main {
 		findTimes = 0;
 		changeTimes = 0;
 		int[] nums = testNums.clone();
-		long time = System.currentTimeMillis();
+		long time = System.nanoTime();
 		for (int i = 1; i < nums.length; i++) {
 			int min = nums[i];
 			for (int j = i - 1; j >= 0; j--) {
@@ -177,7 +182,7 @@ public class Main {
 		findTimes = 0;
 		changeTimes = 0;
 		int[] nums = testNums.clone();
-		long time = System.currentTimeMillis();
+		long time = System.nanoTime();
 		int d = nums.length;
 
 		int addNum = 0;
@@ -216,7 +221,7 @@ public class Main {
 		findTimes = 0;
 		changeTimes = 0;
 		int[] nums = testNums.clone();
-		long time = System.currentTimeMillis();
+		long time = System.nanoTime();
 		for (int i = 0; i < nums.length; i++) {
 			int minIndex = i;
 			for (int j = i + 1; j < nums.length; j++) {
@@ -245,7 +250,7 @@ public class Main {
 		findTimes = 0;
 		changeTimes = 0;
 		int[] nums = testNums.clone();
-		long time = System.currentTimeMillis();
+		long time = System.nanoTime();
 		merge(nums, 0, nums.length);
 		sout(name, nums, time);
 	}
@@ -303,7 +308,7 @@ public class Main {
 		findTimes = 0;
 		changeTimes = 0;
 		int[] nums = testNums.clone();
-		long time = System.currentTimeMillis();
+		long time = System.nanoTime();
 		int[] counts = new int[nums.length];
 		for (int i = 0; i < nums.length; i++) {
 			counts[nums[i]] = 1;
@@ -320,7 +325,7 @@ public class Main {
 		findTimes = 0;
 		changeTimes = 0;
 		int[] nums = testNums.clone();
-		long time = System.currentTimeMillis();
+		long time = System.nanoTime();
 		for (Integer num : nums) {
 			new Thread(() -> {
 				try {
@@ -337,7 +342,7 @@ public class Main {
 	}
 
 	private void sout(String name, int[] nums, long time) {
-		System.out.printf("%s：%5dms,%13d次查找,%10d次交换,", name, System.currentTimeMillis() - time, findTimes, changeTimes);
+		System.out.printf("%s：%15fms,%13d次查找,%13d次交换,", name, (System.nanoTime() - time) * 1.0 / 1000000.0, findTimes, changeTimes);
 		if (isTest) {
 			for (int num : nums) {
 				System.out.printf("%3d", num);
@@ -347,7 +352,6 @@ public class Main {
 	}
 
 	private void write() throws IOException {
-		int length = 10000;
 		int[] num = new int[length];
 		for (int i = 0; i < length; i++) {
 			num[i] = i;
@@ -360,7 +364,12 @@ public class Main {
 			num[b] = num[a] ^ num[b];
 			num[a] = num[a] ^ num[b];
 		}
-		StringBuffer stringBuffer = new StringBuffer();
+		if (path == null || "".equals(path)) {
+			testNums = num;
+			System.out.println("本地已建好数据,测试" + length + "组数据");
+			return;
+		}
+		StringBuilder stringBuffer = new StringBuilder();
 		for (int i = 0; i < length; i++) {
 			stringBuffer.append(num[i]).append(',');
 		}
@@ -374,6 +383,9 @@ public class Main {
 	}
 
 	private void read() throws IOException {
+		if (path == null || "".equals(path)) {
+			return;
+		}
 		if (isTest) {
 			testNums = new int[]{6, 10, 11, 15, 8, 0, 9, 12, 18, 19, 5, 7, 3, 1, 2, 16, 17, 4, 13, 14};
 			System.out.printf("排序%d个随机数\n", testNums.length);

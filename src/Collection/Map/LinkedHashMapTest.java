@@ -13,15 +13,18 @@ public class LinkedHashMapTest<K, V> extends LinkedHashMap<K, V> {
 	}
 
 	public static void main(String[] args) {
+		//第三个参数为是否为访问顺序
 		Map<Integer, Integer> map = new LinkedHashMapTest<>(10, 0.75F, true);
 		map.put(1, 1);
 		map.put(2, 2);
 		map.put(3, 3);
-		map.forEach((k, v) -> System.out.println(k + "," + v));
+		System.out.println(map.toString());
+		map.get(2);
+		System.out.println(map.toString());
 	}
 
-//    @Override
-//    protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
-//        return size() > 2;
-//    }
+	@Override
+	protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
+		return size() > 2;
+	}
 }

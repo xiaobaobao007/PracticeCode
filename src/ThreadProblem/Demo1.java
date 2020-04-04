@@ -1,5 +1,7 @@
 package ThreadProblem;
 
+import java.util.OptionalInt;
+
 /**
  * @author xiaobaobao
  * @date 2020/3/29，23:21
@@ -66,24 +68,32 @@ class MyThread2 implements Runnable {
 }
 
 public class Demo1 {
-	public static void main(String[] args) throws InterruptedException {
-		Object lock = new Object();
-		MyThread1 myThread1 = new MyThread1(lock);
-		Thread thread1 = new Thread(myThread1);
-		MyThread2 myThread2 = new MyThread2(lock, thread1);
+	volatile static int a = 1;
 
-		Thread thread2 = new Thread(myThread2);
-		thread1.start();
-		thread2.start();
+	public static void main(String[] args) {
+//		new Demo1();
+//		new Demo1();
+		StringBuilder sb = new StringBuilder();
+		sb.append("123456");
+		System.out.println(sb);
+		sb.deleteCharAt(sb.length() - 1);
+		System.out.println(sb);
 
+		OptionalInt.of(a);
+	}
 
-		System.out.println("主线程结束");
+	public Demo1() {
+//		new test();
+	}
 
-//        Thread.sleep(7000);
-//
-//        System.out.println("thread1 7秒alive ： " + thread1.isAlive());
-//        System.out.println("thread2 7秒alive ： " + thread2.isAlive());
+	static class test {
+		static {
+			System.out.println("1111");
+		}
 
+		public test() {
+			System.out.println("2222");
+		}
 	}
 }
 

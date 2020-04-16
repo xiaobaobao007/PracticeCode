@@ -19,7 +19,7 @@ public class FutureTaskTest {
 		{
 			for (int i = 0; i < 10; i++) {
 				try {
-					Thread.sleep(100);
+					Thread.sleep(20);
 					System.out.println(i);
 				} catch (Exception e) {
 					System.out.println("error");
@@ -32,7 +32,7 @@ public class FutureTaskTest {
 			FutureTask<String> futureTask = new FutureTask<>(callable);
 //            System.out.println(futureTask.cancel(false));
 			new Thread(futureTask).start();
-			futureTask.get(100, TimeUnit.MILLISECONDS);
+			System.out.println(futureTask.get(500, TimeUnit.MILLISECONDS));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

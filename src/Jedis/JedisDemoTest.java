@@ -14,6 +14,7 @@ import java.util.concurrent.CountDownLatch;
  * @date 2019/7/11 16:33
  */
 public class JedisDemoTest {
+
 	@Test
 	public void test1() {
 		Jedis jedis = new Jedis("127.0.0.1", 6379);
@@ -77,6 +78,37 @@ public class JedisDemoTest {
 		}
 		latch.await();
 		System.out.println(System.currentTimeMillis() - start);
+
+	}
+
+	transient static int time = 10;
+
+	@Test
+	public void test4() {
+		Jedis jedis = new Jedis("127.0.0.1", 6379);
+		new Thread(() -> {
+			while (--time > 5) {
+				synchronized (jedis) {
+					jedis.lpush("KEY", String.valueOf(time));
+				}
+			}
+		}).start();
+
+		new Thread(() -> {
+			while (time > 0) {
+				synchronized (jedis) {
+					System.out.println(jedis.brpop(20, "KEY"));
+					time--;
+				}
+			}
+			jedis.close();
+		}).start();
+
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 
 	}
 

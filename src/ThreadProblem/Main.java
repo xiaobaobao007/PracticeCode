@@ -1,9 +1,7 @@
 package ThreadProblem;
 
 import java.util.*;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 import java.util.function.Consumer;
 
 
@@ -17,7 +15,38 @@ public class Main {
 		System.out.println("我被执行了");
 	}
 
+	static void errorMethod() {
+//		try {
+//			Thread.sleep(200);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//		System.out.println((System.currentTimeMillis() - L) / 100);
+		try {
+			throw new Exception("123");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	public static void main(String[] args) throws ExecutionException, InterruptedException {
+
+		ScheduledExecutorService service = Executors.newScheduledThreadPool(10);
+//		service.execute(AttributeKeyTest::doqwe);
+//		Future<String> submit = service.submit(new Callable<String>() {
+//			@Override
+//			public String call() throws Exception {
+//				if (1 == 1) {
+//					throw new Exception("666");
+//				}
+//				return "123";
+//			}
+//		});
+
+		Future<String> submit = service.submit(Main::errorMethod, "123");
+
+//		System.out.println("+++++++++");
+		System.out.println(submit.get());
 
 
 //        executorService.schedule(Main::tick, 10, TimeUnit.SECONDS);

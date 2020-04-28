@@ -1114,6 +1114,1654 @@ public final class Helloworld {
 
   }
 
+  public interface allValueOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PB.allValue)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>double doubleValue = 1;</code>
+     */
+    double getDoubleValue();
+
+    /**
+     * <code>float floatValue = 2;</code>
+     */
+    float getFloatValue();
+
+    /**
+     * <code>bool boolValue = 3;</code>
+     */
+    boolean getBoolValue();
+
+    /**
+     * <code>int32 int32Value = 4;</code>
+     */
+    int getInt32Value();
+
+    /**
+     * <code>int64 int64Value = 5;</code>
+     */
+    long getInt64Value();
+
+    /**
+     * <code>uint32 uint32Value = 6;</code>
+     */
+    int getUint32Value();
+
+    /**
+     * <code>uint64 uint64Value = 7;</code>
+     */
+    long getUint64Value();
+
+    /**
+     * <code>sint32 sint32Value = 8;</code>
+     */
+    int getSint32Value();
+
+    /**
+     * <code>sint64 sint64Value = 9;</code>
+     */
+    long getSint64Value();
+
+    /**
+     * <code>fixed32 fixed32Value = 10;</code>
+     */
+    int getFixed32Value();
+
+    /**
+     * <code>fixed64 fixed64Value = 11;</code>
+     */
+    long getFixed64Value();
+
+    /**
+     * <code>sfixed32 sfixed32Value = 12;</code>
+     */
+    int getSfixed32Value();
+
+    /**
+     * <code>sfixed64 sfixed64Value = 13;</code>
+     */
+    long getSfixed64Value();
+
+    /**
+     * <code>string stringValue = 14;</code>
+     */
+    java.lang.String getStringValue();
+    /**
+     * <code>string stringValue = 14;</code>
+     */
+    com.google.protobuf.ByteString
+        getStringValueBytes();
+
+    /**
+     * <code>bytes bytesValue = 15;</code>
+     */
+    com.google.protobuf.ByteString getBytesValue();
+
+    /**
+     * <code>.PB.allValue.EnumValue enumValue = 16;</code>
+     */
+    int getEnumValueValue();
+    /**
+     * <code>.PB.allValue.EnumValue enumValue = 16;</code>
+     */
+    NIO.PB.HelloWorld.Helloworld.allValue.EnumValue getEnumValue();
+  }
+  /**
+   * Protobuf type {@code PB.allValue}
+   */
+  public  static final class allValue extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:PB.allValue)
+      allValueOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use allValue.newBuilder() to construct.
+    private allValue(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private allValue() {
+      doubleValue_ = 0D;
+      floatValue_ = 0F;
+      boolValue_ = false;
+      int32Value_ = 0;
+      int64Value_ = 0L;
+      uint32Value_ = 0;
+      uint64Value_ = 0L;
+      sint32Value_ = 0;
+      sint64Value_ = 0L;
+      fixed32Value_ = 0;
+      fixed64Value_ = 0L;
+      sfixed32Value_ = 0;
+      sfixed64Value_ = 0L;
+      stringValue_ = "";
+      bytesValue_ = com.google.protobuf.ByteString.EMPTY;
+      enumValue_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private allValue(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 9: {
+
+              doubleValue_ = input.readDouble();
+              break;
+            }
+            case 21: {
+
+              floatValue_ = input.readFloat();
+              break;
+            }
+            case 24: {
+
+              boolValue_ = input.readBool();
+              break;
+            }
+            case 32: {
+
+              int32Value_ = input.readInt32();
+              break;
+            }
+            case 40: {
+
+              int64Value_ = input.readInt64();
+              break;
+            }
+            case 48: {
+
+              uint32Value_ = input.readUInt32();
+              break;
+            }
+            case 56: {
+
+              uint64Value_ = input.readUInt64();
+              break;
+            }
+            case 64: {
+
+              sint32Value_ = input.readSInt32();
+              break;
+            }
+            case 72: {
+
+              sint64Value_ = input.readSInt64();
+              break;
+            }
+            case 85: {
+
+              fixed32Value_ = input.readFixed32();
+              break;
+            }
+            case 89: {
+
+              fixed64Value_ = input.readFixed64();
+              break;
+            }
+            case 101: {
+
+              sfixed32Value_ = input.readSFixed32();
+              break;
+            }
+            case 105: {
+
+              sfixed64Value_ = input.readSFixed64();
+              break;
+            }
+            case 114: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              stringValue_ = s;
+              break;
+            }
+            case 122: {
+
+              bytesValue_ = input.readBytes();
+              break;
+            }
+            case 128: {
+              int rawValue = input.readEnum();
+
+              enumValue_ = rawValue;
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return NIO.PB.HelloWorld.Helloworld.internal_static_PB_allValue_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return NIO.PB.HelloWorld.Helloworld.internal_static_PB_allValue_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              NIO.PB.HelloWorld.Helloworld.allValue.class, NIO.PB.HelloWorld.Helloworld.allValue.Builder.class);
+    }
+
+    /**
+     * Protobuf enum {@code PB.allValue.EnumValue}
+     */
+    public enum EnumValue
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>a = 0;</code>
+       */
+      a(0),
+      /**
+       * <code>b = 1;</code>
+       */
+      b(1),
+      /**
+       * <code>c = 2;</code>
+       */
+      c(2),
+      UNRECOGNIZED(-1),
+      ;
+
+      /**
+       * <code>a = 0;</code>
+       */
+      public static final int a_VALUE = 0;
+      /**
+       * <code>b = 1;</code>
+       */
+      public static final int b_VALUE = 1;
+      /**
+       * <code>c = 2;</code>
+       */
+      public static final int c_VALUE = 2;
+
+
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
+
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static EnumValue valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static EnumValue forNumber(int value) {
+        switch (value) {
+          case 0: return a;
+          case 1: return b;
+          case 2: return c;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<EnumValue>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          EnumValue> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<EnumValue>() {
+              public EnumValue findValueByNumber(int number) {
+                return EnumValue.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return NIO.PB.HelloWorld.Helloworld.allValue.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final EnumValue[] VALUES = values();
+
+      public static EnumValue valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        if (desc.getIndex() == -1) {
+          return UNRECOGNIZED;
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private EnumValue(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:PB.allValue.EnumValue)
+    }
+
+    public static final int DOUBLEVALUE_FIELD_NUMBER = 1;
+    private double doubleValue_;
+    /**
+     * <code>double doubleValue = 1;</code>
+     */
+    public double getDoubleValue() {
+      return doubleValue_;
+    }
+
+    public static final int FLOATVALUE_FIELD_NUMBER = 2;
+    private float floatValue_;
+    /**
+     * <code>float floatValue = 2;</code>
+     */
+    public float getFloatValue() {
+      return floatValue_;
+    }
+
+    public static final int BOOLVALUE_FIELD_NUMBER = 3;
+    private boolean boolValue_;
+    /**
+     * <code>bool boolValue = 3;</code>
+     */
+    public boolean getBoolValue() {
+      return boolValue_;
+    }
+
+    public static final int INT32VALUE_FIELD_NUMBER = 4;
+    private int int32Value_;
+    /**
+     * <code>int32 int32Value = 4;</code>
+     */
+    public int getInt32Value() {
+      return int32Value_;
+    }
+
+    public static final int INT64VALUE_FIELD_NUMBER = 5;
+    private long int64Value_;
+    /**
+     * <code>int64 int64Value = 5;</code>
+     */
+    public long getInt64Value() {
+      return int64Value_;
+    }
+
+    public static final int UINT32VALUE_FIELD_NUMBER = 6;
+    private int uint32Value_;
+    /**
+     * <code>uint32 uint32Value = 6;</code>
+     */
+    public int getUint32Value() {
+      return uint32Value_;
+    }
+
+    public static final int UINT64VALUE_FIELD_NUMBER = 7;
+    private long uint64Value_;
+    /**
+     * <code>uint64 uint64Value = 7;</code>
+     */
+    public long getUint64Value() {
+      return uint64Value_;
+    }
+
+    public static final int SINT32VALUE_FIELD_NUMBER = 8;
+    private int sint32Value_;
+    /**
+     * <code>sint32 sint32Value = 8;</code>
+     */
+    public int getSint32Value() {
+      return sint32Value_;
+    }
+
+    public static final int SINT64VALUE_FIELD_NUMBER = 9;
+    private long sint64Value_;
+    /**
+     * <code>sint64 sint64Value = 9;</code>
+     */
+    public long getSint64Value() {
+      return sint64Value_;
+    }
+
+    public static final int FIXED32VALUE_FIELD_NUMBER = 10;
+    private int fixed32Value_;
+    /**
+     * <code>fixed32 fixed32Value = 10;</code>
+     */
+    public int getFixed32Value() {
+      return fixed32Value_;
+    }
+
+    public static final int FIXED64VALUE_FIELD_NUMBER = 11;
+    private long fixed64Value_;
+    /**
+     * <code>fixed64 fixed64Value = 11;</code>
+     */
+    public long getFixed64Value() {
+      return fixed64Value_;
+    }
+
+    public static final int SFIXED32VALUE_FIELD_NUMBER = 12;
+    private int sfixed32Value_;
+    /**
+     * <code>sfixed32 sfixed32Value = 12;</code>
+     */
+    public int getSfixed32Value() {
+      return sfixed32Value_;
+    }
+
+    public static final int SFIXED64VALUE_FIELD_NUMBER = 13;
+    private long sfixed64Value_;
+    /**
+     * <code>sfixed64 sfixed64Value = 13;</code>
+     */
+    public long getSfixed64Value() {
+      return sfixed64Value_;
+    }
+
+    public static final int STRINGVALUE_FIELD_NUMBER = 14;
+    private volatile java.lang.Object stringValue_;
+    /**
+     * <code>string stringValue = 14;</code>
+     */
+    public java.lang.String getStringValue() {
+      java.lang.Object ref = stringValue_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        stringValue_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string stringValue = 14;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStringValueBytes() {
+      java.lang.Object ref = stringValue_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        stringValue_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BYTESVALUE_FIELD_NUMBER = 15;
+    private com.google.protobuf.ByteString bytesValue_;
+    /**
+     * <code>bytes bytesValue = 15;</code>
+     */
+    public com.google.protobuf.ByteString getBytesValue() {
+      return bytesValue_;
+    }
+
+    public static final int ENUMVALUE_FIELD_NUMBER = 16;
+    private int enumValue_;
+    /**
+     * <code>.PB.allValue.EnumValue enumValue = 16;</code>
+     */
+    public int getEnumValueValue() {
+      return enumValue_;
+    }
+    /**
+     * <code>.PB.allValue.EnumValue enumValue = 16;</code>
+     */
+    public NIO.PB.HelloWorld.Helloworld.allValue.EnumValue getEnumValue() {
+      @SuppressWarnings("deprecation")
+      NIO.PB.HelloWorld.Helloworld.allValue.EnumValue result = NIO.PB.HelloWorld.Helloworld.allValue.EnumValue.valueOf(enumValue_);
+      return result == null ? NIO.PB.HelloWorld.Helloworld.allValue.EnumValue.UNRECOGNIZED : result;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (doubleValue_ != 0D) {
+        output.writeDouble(1, doubleValue_);
+      }
+      if (floatValue_ != 0F) {
+        output.writeFloat(2, floatValue_);
+      }
+      if (boolValue_ != false) {
+        output.writeBool(3, boolValue_);
+      }
+      if (int32Value_ != 0) {
+        output.writeInt32(4, int32Value_);
+      }
+      if (int64Value_ != 0L) {
+        output.writeInt64(5, int64Value_);
+      }
+      if (uint32Value_ != 0) {
+        output.writeUInt32(6, uint32Value_);
+      }
+      if (uint64Value_ != 0L) {
+        output.writeUInt64(7, uint64Value_);
+      }
+      if (sint32Value_ != 0) {
+        output.writeSInt32(8, sint32Value_);
+      }
+      if (sint64Value_ != 0L) {
+        output.writeSInt64(9, sint64Value_);
+      }
+      if (fixed32Value_ != 0) {
+        output.writeFixed32(10, fixed32Value_);
+      }
+      if (fixed64Value_ != 0L) {
+        output.writeFixed64(11, fixed64Value_);
+      }
+      if (sfixed32Value_ != 0) {
+        output.writeSFixed32(12, sfixed32Value_);
+      }
+      if (sfixed64Value_ != 0L) {
+        output.writeSFixed64(13, sfixed64Value_);
+      }
+      if (!getStringValueBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 14, stringValue_);
+      }
+      if (!bytesValue_.isEmpty()) {
+        output.writeBytes(15, bytesValue_);
+      }
+      if (enumValue_ != NIO.PB.HelloWorld.Helloworld.allValue.EnumValue.a.getNumber()) {
+        output.writeEnum(16, enumValue_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (doubleValue_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(1, doubleValue_);
+      }
+      if (floatValue_ != 0F) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(2, floatValue_);
+      }
+      if (boolValue_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(3, boolValue_);
+      }
+      if (int32Value_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, int32Value_);
+      }
+      if (int64Value_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(5, int64Value_);
+      }
+      if (uint32Value_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(6, uint32Value_);
+      }
+      if (uint64Value_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(7, uint64Value_);
+      }
+      if (sint32Value_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeSInt32Size(8, sint32Value_);
+      }
+      if (sint64Value_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeSInt64Size(9, sint64Value_);
+      }
+      if (fixed32Value_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFixed32Size(10, fixed32Value_);
+      }
+      if (fixed64Value_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFixed64Size(11, fixed64Value_);
+      }
+      if (sfixed32Value_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeSFixed32Size(12, sfixed32Value_);
+      }
+      if (sfixed64Value_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeSFixed64Size(13, sfixed64Value_);
+      }
+      if (!getStringValueBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(14, stringValue_);
+      }
+      if (!bytesValue_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(15, bytesValue_);
+      }
+      if (enumValue_ != NIO.PB.HelloWorld.Helloworld.allValue.EnumValue.a.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(16, enumValue_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof NIO.PB.HelloWorld.Helloworld.allValue)) {
+        return super.equals(obj);
+      }
+      NIO.PB.HelloWorld.Helloworld.allValue other = (NIO.PB.HelloWorld.Helloworld.allValue) obj;
+
+      boolean result = true;
+      result = result && (
+          java.lang.Double.doubleToLongBits(getDoubleValue())
+          == java.lang.Double.doubleToLongBits(
+              other.getDoubleValue()));
+      result = result && (
+          java.lang.Float.floatToIntBits(getFloatValue())
+          == java.lang.Float.floatToIntBits(
+              other.getFloatValue()));
+      result = result && (getBoolValue()
+          == other.getBoolValue());
+      result = result && (getInt32Value()
+          == other.getInt32Value());
+      result = result && (getInt64Value()
+          == other.getInt64Value());
+      result = result && (getUint32Value()
+          == other.getUint32Value());
+      result = result && (getUint64Value()
+          == other.getUint64Value());
+      result = result && (getSint32Value()
+          == other.getSint32Value());
+      result = result && (getSint64Value()
+          == other.getSint64Value());
+      result = result && (getFixed32Value()
+          == other.getFixed32Value());
+      result = result && (getFixed64Value()
+          == other.getFixed64Value());
+      result = result && (getSfixed32Value()
+          == other.getSfixed32Value());
+      result = result && (getSfixed64Value()
+          == other.getSfixed64Value());
+      result = result && getStringValue()
+          .equals(other.getStringValue());
+      result = result && getBytesValue()
+          .equals(other.getBytesValue());
+      result = result && enumValue_ == other.enumValue_;
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + DOUBLEVALUE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getDoubleValue()));
+      hash = (37 * hash) + FLOATVALUE_FIELD_NUMBER;
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+          getFloatValue());
+      hash = (37 * hash) + BOOLVALUE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getBoolValue());
+      hash = (37 * hash) + INT32VALUE_FIELD_NUMBER;
+      hash = (53 * hash) + getInt32Value();
+      hash = (37 * hash) + INT64VALUE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getInt64Value());
+      hash = (37 * hash) + UINT32VALUE_FIELD_NUMBER;
+      hash = (53 * hash) + getUint32Value();
+      hash = (37 * hash) + UINT64VALUE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getUint64Value());
+      hash = (37 * hash) + SINT32VALUE_FIELD_NUMBER;
+      hash = (53 * hash) + getSint32Value();
+      hash = (37 * hash) + SINT64VALUE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getSint64Value());
+      hash = (37 * hash) + FIXED32VALUE_FIELD_NUMBER;
+      hash = (53 * hash) + getFixed32Value();
+      hash = (37 * hash) + FIXED64VALUE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getFixed64Value());
+      hash = (37 * hash) + SFIXED32VALUE_FIELD_NUMBER;
+      hash = (53 * hash) + getSfixed32Value();
+      hash = (37 * hash) + SFIXED64VALUE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getSfixed64Value());
+      hash = (37 * hash) + STRINGVALUE_FIELD_NUMBER;
+      hash = (53 * hash) + getStringValue().hashCode();
+      hash = (37 * hash) + BYTESVALUE_FIELD_NUMBER;
+      hash = (53 * hash) + getBytesValue().hashCode();
+      hash = (37 * hash) + ENUMVALUE_FIELD_NUMBER;
+      hash = (53 * hash) + enumValue_;
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static NIO.PB.HelloWorld.Helloworld.allValue parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static NIO.PB.HelloWorld.Helloworld.allValue parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static NIO.PB.HelloWorld.Helloworld.allValue parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static NIO.PB.HelloWorld.Helloworld.allValue parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static NIO.PB.HelloWorld.Helloworld.allValue parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static NIO.PB.HelloWorld.Helloworld.allValue parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static NIO.PB.HelloWorld.Helloworld.allValue parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static NIO.PB.HelloWorld.Helloworld.allValue parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static NIO.PB.HelloWorld.Helloworld.allValue parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static NIO.PB.HelloWorld.Helloworld.allValue parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static NIO.PB.HelloWorld.Helloworld.allValue parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static NIO.PB.HelloWorld.Helloworld.allValue parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(NIO.PB.HelloWorld.Helloworld.allValue prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code PB.allValue}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:PB.allValue)
+        NIO.PB.HelloWorld.Helloworld.allValueOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return NIO.PB.HelloWorld.Helloworld.internal_static_PB_allValue_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return NIO.PB.HelloWorld.Helloworld.internal_static_PB_allValue_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                NIO.PB.HelloWorld.Helloworld.allValue.class, NIO.PB.HelloWorld.Helloworld.allValue.Builder.class);
+      }
+
+      // Construct using NIO.PB.HelloWorld.Helloworld.allValue.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        doubleValue_ = 0D;
+
+        floatValue_ = 0F;
+
+        boolValue_ = false;
+
+        int32Value_ = 0;
+
+        int64Value_ = 0L;
+
+        uint32Value_ = 0;
+
+        uint64Value_ = 0L;
+
+        sint32Value_ = 0;
+
+        sint64Value_ = 0L;
+
+        fixed32Value_ = 0;
+
+        fixed64Value_ = 0L;
+
+        sfixed32Value_ = 0;
+
+        sfixed64Value_ = 0L;
+
+        stringValue_ = "";
+
+        bytesValue_ = com.google.protobuf.ByteString.EMPTY;
+
+        enumValue_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return NIO.PB.HelloWorld.Helloworld.internal_static_PB_allValue_descriptor;
+      }
+
+      @java.lang.Override
+      public NIO.PB.HelloWorld.Helloworld.allValue getDefaultInstanceForType() {
+        return NIO.PB.HelloWorld.Helloworld.allValue.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public NIO.PB.HelloWorld.Helloworld.allValue build() {
+        NIO.PB.HelloWorld.Helloworld.allValue result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public NIO.PB.HelloWorld.Helloworld.allValue buildPartial() {
+        NIO.PB.HelloWorld.Helloworld.allValue result = new NIO.PB.HelloWorld.Helloworld.allValue(this);
+        result.doubleValue_ = doubleValue_;
+        result.floatValue_ = floatValue_;
+        result.boolValue_ = boolValue_;
+        result.int32Value_ = int32Value_;
+        result.int64Value_ = int64Value_;
+        result.uint32Value_ = uint32Value_;
+        result.uint64Value_ = uint64Value_;
+        result.sint32Value_ = sint32Value_;
+        result.sint64Value_ = sint64Value_;
+        result.fixed32Value_ = fixed32Value_;
+        result.fixed64Value_ = fixed64Value_;
+        result.sfixed32Value_ = sfixed32Value_;
+        result.sfixed64Value_ = sfixed64Value_;
+        result.stringValue_ = stringValue_;
+        result.bytesValue_ = bytesValue_;
+        result.enumValue_ = enumValue_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof NIO.PB.HelloWorld.Helloworld.allValue) {
+          return mergeFrom((NIO.PB.HelloWorld.Helloworld.allValue)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(NIO.PB.HelloWorld.Helloworld.allValue other) {
+        if (other == NIO.PB.HelloWorld.Helloworld.allValue.getDefaultInstance()) return this;
+        if (other.getDoubleValue() != 0D) {
+          setDoubleValue(other.getDoubleValue());
+        }
+        if (other.getFloatValue() != 0F) {
+          setFloatValue(other.getFloatValue());
+        }
+        if (other.getBoolValue() != false) {
+          setBoolValue(other.getBoolValue());
+        }
+        if (other.getInt32Value() != 0) {
+          setInt32Value(other.getInt32Value());
+        }
+        if (other.getInt64Value() != 0L) {
+          setInt64Value(other.getInt64Value());
+        }
+        if (other.getUint32Value() != 0) {
+          setUint32Value(other.getUint32Value());
+        }
+        if (other.getUint64Value() != 0L) {
+          setUint64Value(other.getUint64Value());
+        }
+        if (other.getSint32Value() != 0) {
+          setSint32Value(other.getSint32Value());
+        }
+        if (other.getSint64Value() != 0L) {
+          setSint64Value(other.getSint64Value());
+        }
+        if (other.getFixed32Value() != 0) {
+          setFixed32Value(other.getFixed32Value());
+        }
+        if (other.getFixed64Value() != 0L) {
+          setFixed64Value(other.getFixed64Value());
+        }
+        if (other.getSfixed32Value() != 0) {
+          setSfixed32Value(other.getSfixed32Value());
+        }
+        if (other.getSfixed64Value() != 0L) {
+          setSfixed64Value(other.getSfixed64Value());
+        }
+        if (!other.getStringValue().isEmpty()) {
+          stringValue_ = other.stringValue_;
+          onChanged();
+        }
+        if (other.getBytesValue() != com.google.protobuf.ByteString.EMPTY) {
+          setBytesValue(other.getBytesValue());
+        }
+        if (other.enumValue_ != 0) {
+          setEnumValueValue(other.getEnumValueValue());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        NIO.PB.HelloWorld.Helloworld.allValue parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (NIO.PB.HelloWorld.Helloworld.allValue) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private double doubleValue_ ;
+      /**
+       * <code>double doubleValue = 1;</code>
+       */
+      public double getDoubleValue() {
+        return doubleValue_;
+      }
+      /**
+       * <code>double doubleValue = 1;</code>
+       */
+      public Builder setDoubleValue(double value) {
+        
+        doubleValue_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double doubleValue = 1;</code>
+       */
+      public Builder clearDoubleValue() {
+        
+        doubleValue_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private float floatValue_ ;
+      /**
+       * <code>float floatValue = 2;</code>
+       */
+      public float getFloatValue() {
+        return floatValue_;
+      }
+      /**
+       * <code>float floatValue = 2;</code>
+       */
+      public Builder setFloatValue(float value) {
+        
+        floatValue_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>float floatValue = 2;</code>
+       */
+      public Builder clearFloatValue() {
+        
+        floatValue_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      private boolean boolValue_ ;
+      /**
+       * <code>bool boolValue = 3;</code>
+       */
+      public boolean getBoolValue() {
+        return boolValue_;
+      }
+      /**
+       * <code>bool boolValue = 3;</code>
+       */
+      public Builder setBoolValue(boolean value) {
+        
+        boolValue_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool boolValue = 3;</code>
+       */
+      public Builder clearBoolValue() {
+        
+        boolValue_ = false;
+        onChanged();
+        return this;
+      }
+
+      private int int32Value_ ;
+      /**
+       * <code>int32 int32Value = 4;</code>
+       */
+      public int getInt32Value() {
+        return int32Value_;
+      }
+      /**
+       * <code>int32 int32Value = 4;</code>
+       */
+      public Builder setInt32Value(int value) {
+        
+        int32Value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 int32Value = 4;</code>
+       */
+      public Builder clearInt32Value() {
+        
+        int32Value_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long int64Value_ ;
+      /**
+       * <code>int64 int64Value = 5;</code>
+       */
+      public long getInt64Value() {
+        return int64Value_;
+      }
+      /**
+       * <code>int64 int64Value = 5;</code>
+       */
+      public Builder setInt64Value(long value) {
+        
+        int64Value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 int64Value = 5;</code>
+       */
+      public Builder clearInt64Value() {
+        
+        int64Value_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int uint32Value_ ;
+      /**
+       * <code>uint32 uint32Value = 6;</code>
+       */
+      public int getUint32Value() {
+        return uint32Value_;
+      }
+      /**
+       * <code>uint32 uint32Value = 6;</code>
+       */
+      public Builder setUint32Value(int value) {
+        
+        uint32Value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 uint32Value = 6;</code>
+       */
+      public Builder clearUint32Value() {
+        
+        uint32Value_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long uint64Value_ ;
+      /**
+       * <code>uint64 uint64Value = 7;</code>
+       */
+      public long getUint64Value() {
+        return uint64Value_;
+      }
+      /**
+       * <code>uint64 uint64Value = 7;</code>
+       */
+      public Builder setUint64Value(long value) {
+        
+        uint64Value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 uint64Value = 7;</code>
+       */
+      public Builder clearUint64Value() {
+        
+        uint64Value_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int sint32Value_ ;
+      /**
+       * <code>sint32 sint32Value = 8;</code>
+       */
+      public int getSint32Value() {
+        return sint32Value_;
+      }
+      /**
+       * <code>sint32 sint32Value = 8;</code>
+       */
+      public Builder setSint32Value(int value) {
+        
+        sint32Value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>sint32 sint32Value = 8;</code>
+       */
+      public Builder clearSint32Value() {
+        
+        sint32Value_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long sint64Value_ ;
+      /**
+       * <code>sint64 sint64Value = 9;</code>
+       */
+      public long getSint64Value() {
+        return sint64Value_;
+      }
+      /**
+       * <code>sint64 sint64Value = 9;</code>
+       */
+      public Builder setSint64Value(long value) {
+        
+        sint64Value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>sint64 sint64Value = 9;</code>
+       */
+      public Builder clearSint64Value() {
+        
+        sint64Value_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int fixed32Value_ ;
+      /**
+       * <code>fixed32 fixed32Value = 10;</code>
+       */
+      public int getFixed32Value() {
+        return fixed32Value_;
+      }
+      /**
+       * <code>fixed32 fixed32Value = 10;</code>
+       */
+      public Builder setFixed32Value(int value) {
+        
+        fixed32Value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>fixed32 fixed32Value = 10;</code>
+       */
+      public Builder clearFixed32Value() {
+        
+        fixed32Value_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long fixed64Value_ ;
+      /**
+       * <code>fixed64 fixed64Value = 11;</code>
+       */
+      public long getFixed64Value() {
+        return fixed64Value_;
+      }
+      /**
+       * <code>fixed64 fixed64Value = 11;</code>
+       */
+      public Builder setFixed64Value(long value) {
+        
+        fixed64Value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>fixed64 fixed64Value = 11;</code>
+       */
+      public Builder clearFixed64Value() {
+        
+        fixed64Value_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int sfixed32Value_ ;
+      /**
+       * <code>sfixed32 sfixed32Value = 12;</code>
+       */
+      public int getSfixed32Value() {
+        return sfixed32Value_;
+      }
+      /**
+       * <code>sfixed32 sfixed32Value = 12;</code>
+       */
+      public Builder setSfixed32Value(int value) {
+        
+        sfixed32Value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>sfixed32 sfixed32Value = 12;</code>
+       */
+      public Builder clearSfixed32Value() {
+        
+        sfixed32Value_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long sfixed64Value_ ;
+      /**
+       * <code>sfixed64 sfixed64Value = 13;</code>
+       */
+      public long getSfixed64Value() {
+        return sfixed64Value_;
+      }
+      /**
+       * <code>sfixed64 sfixed64Value = 13;</code>
+       */
+      public Builder setSfixed64Value(long value) {
+        
+        sfixed64Value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>sfixed64 sfixed64Value = 13;</code>
+       */
+      public Builder clearSfixed64Value() {
+        
+        sfixed64Value_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object stringValue_ = "";
+      /**
+       * <code>string stringValue = 14;</code>
+       */
+      public java.lang.String getStringValue() {
+        java.lang.Object ref = stringValue_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          stringValue_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string stringValue = 14;</code>
+       */
+      public com.google.protobuf.ByteString
+          getStringValueBytes() {
+        java.lang.Object ref = stringValue_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          stringValue_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string stringValue = 14;</code>
+       */
+      public Builder setStringValue(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        stringValue_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string stringValue = 14;</code>
+       */
+      public Builder clearStringValue() {
+        
+        stringValue_ = getDefaultInstance().getStringValue();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string stringValue = 14;</code>
+       */
+      public Builder setStringValueBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        stringValue_ = value;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString bytesValue_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>bytes bytesValue = 15;</code>
+       */
+      public com.google.protobuf.ByteString getBytesValue() {
+        return bytesValue_;
+      }
+      /**
+       * <code>bytes bytesValue = 15;</code>
+       */
+      public Builder setBytesValue(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        bytesValue_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bytes bytesValue = 15;</code>
+       */
+      public Builder clearBytesValue() {
+        
+        bytesValue_ = getDefaultInstance().getBytesValue();
+        onChanged();
+        return this;
+      }
+
+      private int enumValue_ = 0;
+      /**
+       * <code>.PB.allValue.EnumValue enumValue = 16;</code>
+       */
+      public int getEnumValueValue() {
+        return enumValue_;
+      }
+      /**
+       * <code>.PB.allValue.EnumValue enumValue = 16;</code>
+       */
+      public Builder setEnumValueValue(int value) {
+        enumValue_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.PB.allValue.EnumValue enumValue = 16;</code>
+       */
+      public NIO.PB.HelloWorld.Helloworld.allValue.EnumValue getEnumValue() {
+        @SuppressWarnings("deprecation")
+        NIO.PB.HelloWorld.Helloworld.allValue.EnumValue result = NIO.PB.HelloWorld.Helloworld.allValue.EnumValue.valueOf(enumValue_);
+        return result == null ? NIO.PB.HelloWorld.Helloworld.allValue.EnumValue.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.PB.allValue.EnumValue enumValue = 16;</code>
+       */
+      public Builder setEnumValue(NIO.PB.HelloWorld.Helloworld.allValue.EnumValue value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        enumValue_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.PB.allValue.EnumValue enumValue = 16;</code>
+       */
+      public Builder clearEnumValue() {
+        
+        enumValue_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:PB.allValue)
+    }
+
+    // @@protoc_insertion_point(class_scope:PB.allValue)
+    private static final NIO.PB.HelloWorld.Helloworld.allValue DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new NIO.PB.HelloWorld.Helloworld.allValue();
+    }
+
+    public static NIO.PB.HelloWorld.Helloworld.allValue getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<allValue>
+        PARSER = new com.google.protobuf.AbstractParser<allValue>() {
+      @java.lang.Override
+      public allValue parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new allValue(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<allValue> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<allValue> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public NIO.PB.HelloWorld.Helloworld.allValue getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_PB_HelloRequest_descriptor;
   private static final 
@@ -1124,6 +2772,11 @@ public final class Helloworld {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_PB_HelloReply_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PB_allValue_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PB_allValue_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1135,9 +2788,19 @@ public final class Helloworld {
     java.lang.String[] descriptorData = {
       "\n\020helloworld.proto\022\002PB\"\034\n\014HelloRequest\022\014" +
       "\n\004name\030\001 \001(\t\"\035\n\nHelloReply\022\017\n\007message\030\001 " +
-      "\001(\t29\n\007Greeter\022.\n\010SayHello\022\020.PB.HelloReq" +
-      "uest\032\016.PB.HelloReply\"\000B\025\n\021NIO.PB.HelloWo" +
-      "rldP\000b\006proto3"
+      "\001(\t\"\222\003\n\010allValue\022\023\n\013doubleValue\030\001 \001(\001\022\022\n" +
+      "\nfloatValue\030\002 \001(\002\022\021\n\tboolValue\030\003 \001(\010\022\022\n\n" +
+      "int32Value\030\004 \001(\005\022\022\n\nint64Value\030\005 \001(\003\022\023\n\013" +
+      "uint32Value\030\006 \001(\r\022\023\n\013uint64Value\030\007 \001(\004\022\023" +
+      "\n\013sint32Value\030\010 \001(\021\022\023\n\013sint64Value\030\t \001(\022" +
+      "\022\024\n\014fixed32Value\030\n \001(\007\022\024\n\014fixed64Value\030\013" +
+      " \001(\006\022\025\n\rsfixed32Value\030\014 \001(\017\022\025\n\rsfixed64V" +
+      "alue\030\r \001(\020\022\023\n\013stringValue\030\016 \001(\t\022\022\n\nbytes" +
+      "Value\030\017 \001(\014\022)\n\tenumValue\030\020 \001(\0162\026.PB.allV" +
+      "alue.EnumValue\" \n\tEnumValue\022\005\n\001a\020\000\022\005\n\001b\020" +
+      "\001\022\005\n\001c\020\00229\n\007Greeter\022.\n\010SayHello\022\020.PB.Hel" +
+      "loRequest\032\016.PB.HelloReply\"\000B\025\n\021NIO.PB.He" +
+      "lloWorldP\000b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1163,6 +2826,12 @@ public final class Helloworld {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PB_HelloReply_descriptor,
         new java.lang.String[] { "Message", });
+    internal_static_PB_allValue_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_PB_allValue_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PB_allValue_descriptor,
+        new java.lang.String[] { "DoubleValue", "FloatValue", "BoolValue", "Int32Value", "Int64Value", "Uint32Value", "Uint64Value", "Sint32Value", "Sint64Value", "Fixed32Value", "Fixed64Value", "Sfixed32Value", "Sfixed64Value", "StringValue", "BytesValue", "EnumValue", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

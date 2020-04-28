@@ -21,6 +21,7 @@ public class AttributeKeyTest {
 
 		System.out.println(channel.hasAttr(SERVER_TYPE));
 		System.out.println(channel.attr(SERVER_TYPE).get());
+		System.out.println(channel.attr(SERVER_TYPE).get());
 
 		channel.attr(SERVER_TYPE).set("123");
 

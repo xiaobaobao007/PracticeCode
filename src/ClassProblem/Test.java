@@ -1,26 +1,35 @@
 package ClassProblem;
 
-import java.util.HashMap;
-
 /**
  * 类加载的顺序
  */
 public class Test {
 	public static void main(String[] ars) throws IllegalAccessException, InstantiationException, NoSuchMethodException, ClassNotFoundException {
 
-//		new ChildrenTest();//执行到此处,结果: 1a1b2a2b
-//		System.out.println();
-//		AbstractTest ab = new ChildrenTest();//执行到此处,结果: 2a2b
-//		Class name = Class.forName("ChildrenTest");
-//		ChildrenTest childrenTest = (ChildrenTest) name.newInstance();
-//		Constructor<ChildrenTest> declaredConstructor = ChildrenTest.class.getDeclaredConstructor();
+		new ChildrenTest();//执行到此处,结果: 1a1b2a2b
+		System.out.println();
 //
-//		int a = InterfaceTest.a;
+		AbstractTest ab = new ChildrenTest();//执行到此处,结果: 2a2b
+		System.out.println();
 
-		HashMap<Object, Object> map = new HashMap<>();
-		for (int i = 16; i < 600; i += 16) {
-			map.put(i, i);
-		}
+		Class name = Class.forName("ClassProblem.ChildrenTest");//执行到此处,结果空，因为class已经被加载了
+		System.out.println();
 
+		ChildrenTest childrenTest = (ChildrenTest) name.newInstance();//执行到此处,结果: 2a2b
+
+		int a = InterfaceTest.a;//接口定义的变量全局可访问
+
+		test(childrenTest);//多态
+		test1(childrenTest);//多态
 	}
+
+	private static void test(AbstractTest a) {
+		a.abCon();
+	}
+
+	private static void test1(InterfaceTest a) {
+		a.inTe();
+	}
+
+
 }

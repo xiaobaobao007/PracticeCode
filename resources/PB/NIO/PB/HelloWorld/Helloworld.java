@@ -1206,6 +1206,65 @@ public final class Helloworld {
      * <code>.PB.allValue.EnumValue enumValue = 16;</code>
      */
     NIO.PB.HelloWorld.Helloworld.allValue.EnumValue getEnumValue();
+
+    /**
+     * <code>map&lt;string, string&gt; stringMap = 17;</code>
+     */
+    int getStringMapCount();
+    /**
+     * <code>map&lt;string, string&gt; stringMap = 17;</code>
+     */
+    boolean containsStringMap(
+        java.lang.String key);
+    /**
+     * Use {@link #getStringMapMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, java.lang.String>
+    getStringMap();
+    /**
+     * <code>map&lt;string, string&gt; stringMap = 17;</code>
+     */
+    java.util.Map<java.lang.String, java.lang.String>
+    getStringMapMap();
+    /**
+     * <code>map&lt;string, string&gt; stringMap = 17;</code>
+     */
+
+    java.lang.String getStringMapOrDefault(
+        java.lang.String key,
+        java.lang.String defaultValue);
+    /**
+     * <code>map&lt;string, string&gt; stringMap = 17;</code>
+     */
+
+    java.lang.String getStringMapOrThrow(
+        java.lang.String key);
+
+    /**
+     * <pre>
+     * Any对象
+     * </pre>
+     *
+     * <code>.PB.Any any = 18;</code>
+     */
+    boolean hasAny();
+    /**
+     * <pre>
+     * Any对象
+     * </pre>
+     *
+     * <code>.PB.Any any = 18;</code>
+     */
+    NIO.PB.HelloWorld.AnyOuterClass.Any getAny();
+    /**
+     * <pre>
+     * Any对象
+     * </pre>
+     *
+     * <code>.PB.Any any = 18;</code>
+     */
+    NIO.PB.HelloWorld.AnyOuterClass.AnyOrBuilder getAnyOrBuilder();
   }
   /**
    * Protobuf type {@code PB.allValue}
@@ -1344,6 +1403,32 @@ public final class Helloworld {
               enumValue_ = rawValue;
               break;
             }
+            case 138: {
+              if (!((mutable_bitField0_ & 0x00010000) == 0x00010000)) {
+                stringMap_ = com.google.protobuf.MapField.newMapField(
+                    StringMapDefaultEntryHolder.defaultEntry);
+                mutable_bitField0_ |= 0x00010000;
+              }
+              com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
+              stringMap__ = input.readMessage(
+                  StringMapDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              stringMap_.getMutableMap().put(
+                  stringMap__.getKey(), stringMap__.getValue());
+              break;
+            }
+            case 146: {
+              NIO.PB.HelloWorld.AnyOuterClass.Any.Builder subBuilder = null;
+              if (any_ != null) {
+                subBuilder = any_.toBuilder();
+              }
+              any_ = input.readMessage(NIO.PB.HelloWorld.AnyOuterClass.Any.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(any_);
+                any_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -1368,6 +1453,18 @@ public final class Helloworld {
       return NIO.PB.HelloWorld.Helloworld.internal_static_PB_allValue_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    @java.lang.Override
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 17:
+          return internalGetStringMap();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
@@ -1389,13 +1486,13 @@ public final class Helloworld {
        * <code>b = 1;</code>
        */
       b(1),
-      /**
-       * <code>c = 2;</code>
-       */
-      c(2),
       UNRECOGNIZED(-1),
       ;
 
+      /**
+       * <code>c = 1;</code>
+       */
+      public static final EnumValue c = b;
       /**
        * <code>a = 0;</code>
        */
@@ -1405,9 +1502,9 @@ public final class Helloworld {
        */
       public static final int b_VALUE = 1;
       /**
-       * <code>c = 2;</code>
+       * <code>c = 1;</code>
        */
-      public static final int c_VALUE = 2;
+      public static final int c_VALUE = 1;
 
 
       public final int getNumber() {
@@ -1430,7 +1527,6 @@ public final class Helloworld {
         switch (value) {
           case 0: return a;
           case 1: return b;
-          case 2: return c;
           default: return null;
         }
       }
@@ -1460,7 +1556,9 @@ public final class Helloworld {
         return NIO.PB.HelloWorld.Helloworld.allValue.getDescriptor().getEnumTypes().get(0);
       }
 
-      private static final EnumValue[] VALUES = values();
+      private static final EnumValue[] VALUES = {
+        a, b, c, 
+      };
 
       public static EnumValue valueOf(
           com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
@@ -1483,6 +1581,7 @@ public final class Helloworld {
       // @@protoc_insertion_point(enum_scope:PB.allValue.EnumValue)
     }
 
+    private int bitField0_;
     public static final int DOUBLEVALUE_FIELD_NUMBER = 1;
     private double doubleValue_;
     /**
@@ -1660,6 +1759,115 @@ public final class Helloworld {
       return result == null ? NIO.PB.HelloWorld.Helloworld.allValue.EnumValue.UNRECOGNIZED : result;
     }
 
+    public static final int STRINGMAP_FIELD_NUMBER = 17;
+    private static final class StringMapDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, java.lang.String> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, java.lang.String>newDefaultInstance(
+                  NIO.PB.HelloWorld.Helloworld.internal_static_PB_allValue_StringMapEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "");
+    }
+    private com.google.protobuf.MapField<
+        java.lang.String, java.lang.String> stringMap_;
+    private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+    internalGetStringMap() {
+      if (stringMap_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            StringMapDefaultEntryHolder.defaultEntry);
+      }
+      return stringMap_;
+    }
+
+    public int getStringMapCount() {
+      return internalGetStringMap().getMap().size();
+    }
+    /**
+     * <code>map&lt;string, string&gt; stringMap = 17;</code>
+     */
+
+    public boolean containsStringMap(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      return internalGetStringMap().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getStringMapMap()} instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, java.lang.String> getStringMap() {
+      return getStringMapMap();
+    }
+    /**
+     * <code>map&lt;string, string&gt; stringMap = 17;</code>
+     */
+
+    public java.util.Map<java.lang.String, java.lang.String> getStringMapMap() {
+      return internalGetStringMap().getMap();
+    }
+    /**
+     * <code>map&lt;string, string&gt; stringMap = 17;</code>
+     */
+
+    public java.lang.String getStringMapOrDefault(
+        java.lang.String key,
+        java.lang.String defaultValue) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, java.lang.String> map =
+          internalGetStringMap().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;string, string&gt; stringMap = 17;</code>
+     */
+
+    public java.lang.String getStringMapOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, java.lang.String> map =
+          internalGetStringMap().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static final int ANY_FIELD_NUMBER = 18;
+    private NIO.PB.HelloWorld.AnyOuterClass.Any any_;
+    /**
+     * <pre>
+     * Any对象
+     * </pre>
+     *
+     * <code>.PB.Any any = 18;</code>
+     */
+    public boolean hasAny() {
+      return any_ != null;
+    }
+    /**
+     * <pre>
+     * Any对象
+     * </pre>
+     *
+     * <code>.PB.Any any = 18;</code>
+     */
+    public NIO.PB.HelloWorld.AnyOuterClass.Any getAny() {
+      return any_ == null ? NIO.PB.HelloWorld.AnyOuterClass.Any.getDefaultInstance() : any_;
+    }
+    /**
+     * <pre>
+     * Any对象
+     * </pre>
+     *
+     * <code>.PB.Any any = 18;</code>
+     */
+    public NIO.PB.HelloWorld.AnyOuterClass.AnyOrBuilder getAnyOrBuilder() {
+      return getAny();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1721,6 +1929,15 @@ public final class Helloworld {
       }
       if (enumValue_ != NIO.PB.HelloWorld.Helloworld.allValue.EnumValue.a.getNumber()) {
         output.writeEnum(16, enumValue_);
+      }
+      com.google.protobuf.GeneratedMessageV3
+        .serializeStringMapTo(
+          output,
+          internalGetStringMap(),
+          StringMapDefaultEntryHolder.defaultEntry,
+          17);
+      if (any_ != null) {
+        output.writeMessage(18, getAny());
       }
       unknownFields.writeTo(output);
     }
@@ -1794,6 +2011,20 @@ public final class Helloworld {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(16, enumValue_);
       }
+      for (java.util.Map.Entry<java.lang.String, java.lang.String> entry
+           : internalGetStringMap().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
+        stringMap__ = StringMapDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(17, stringMap__);
+      }
+      if (any_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(18, getAny());
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -1845,6 +2076,13 @@ public final class Helloworld {
       result = result && getBytesValue()
           .equals(other.getBytesValue());
       result = result && enumValue_ == other.enumValue_;
+      result = result && internalGetStringMap().equals(
+          other.internalGetStringMap());
+      result = result && (hasAny() == other.hasAny());
+      if (hasAny()) {
+        result = result && getAny()
+            .equals(other.getAny());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -1896,6 +2134,14 @@ public final class Helloworld {
       hash = (53 * hash) + getBytesValue().hashCode();
       hash = (37 * hash) + ENUMVALUE_FIELD_NUMBER;
       hash = (53 * hash) + enumValue_;
+      if (!internalGetStringMap().getMap().isEmpty()) {
+        hash = (37 * hash) + STRINGMAP_FIELD_NUMBER;
+        hash = (53 * hash) + internalGetStringMap().hashCode();
+      }
+      if (hasAny()) {
+        hash = (37 * hash) + ANY_FIELD_NUMBER;
+        hash = (53 * hash) + getAny().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2003,6 +2249,28 @@ public final class Helloworld {
         return NIO.PB.HelloWorld.Helloworld.internal_static_PB_allValue_descriptor;
       }
 
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMapField(
+          int number) {
+        switch (number) {
+          case 17:
+            return internalGetStringMap();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMutableMapField(
+          int number) {
+        switch (number) {
+          case 17:
+            return internalGetMutableStringMap();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
@@ -2061,6 +2329,13 @@ public final class Helloworld {
 
         enumValue_ = 0;
 
+        internalGetMutableStringMap().clear();
+        if (anyBuilder_ == null) {
+          any_ = null;
+        } else {
+          any_ = null;
+          anyBuilder_ = null;
+        }
         return this;
       }
 
@@ -2087,6 +2362,8 @@ public final class Helloworld {
       @java.lang.Override
       public NIO.PB.HelloWorld.Helloworld.allValue buildPartial() {
         NIO.PB.HelloWorld.Helloworld.allValue result = new NIO.PB.HelloWorld.Helloworld.allValue(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
         result.doubleValue_ = doubleValue_;
         result.floatValue_ = floatValue_;
         result.boolValue_ = boolValue_;
@@ -2103,6 +2380,14 @@ public final class Helloworld {
         result.stringValue_ = stringValue_;
         result.bytesValue_ = bytesValue_;
         result.enumValue_ = enumValue_;
+        result.stringMap_ = internalGetStringMap();
+        result.stringMap_.makeImmutable();
+        if (anyBuilder_ == null) {
+          result.any_ = any_;
+        } else {
+          result.any_ = anyBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -2200,6 +2485,11 @@ public final class Helloworld {
         if (other.enumValue_ != 0) {
           setEnumValueValue(other.getEnumValueValue());
         }
+        internalGetMutableStringMap().mergeFrom(
+            other.internalGetStringMap());
+        if (other.hasAny()) {
+          mergeAny(other.getAny());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -2228,6 +2518,7 @@ public final class Helloworld {
         }
         return this;
       }
+      private int bitField0_;
 
       private double doubleValue_ ;
       /**
@@ -2709,6 +3000,282 @@ public final class Helloworld {
         onChanged();
         return this;
       }
+
+      private com.google.protobuf.MapField<
+          java.lang.String, java.lang.String> stringMap_;
+      private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+      internalGetStringMap() {
+        if (stringMap_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              StringMapDefaultEntryHolder.defaultEntry);
+        }
+        return stringMap_;
+      }
+      private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+      internalGetMutableStringMap() {
+        onChanged();;
+        if (stringMap_ == null) {
+          stringMap_ = com.google.protobuf.MapField.newMapField(
+              StringMapDefaultEntryHolder.defaultEntry);
+        }
+        if (!stringMap_.isMutable()) {
+          stringMap_ = stringMap_.copy();
+        }
+        return stringMap_;
+      }
+
+      public int getStringMapCount() {
+        return internalGetStringMap().getMap().size();
+      }
+      /**
+       * <code>map&lt;string, string&gt; stringMap = 17;</code>
+       */
+
+      public boolean containsStringMap(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        return internalGetStringMap().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getStringMapMap()} instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.String> getStringMap() {
+        return getStringMapMap();
+      }
+      /**
+       * <code>map&lt;string, string&gt; stringMap = 17;</code>
+       */
+
+      public java.util.Map<java.lang.String, java.lang.String> getStringMapMap() {
+        return internalGetStringMap().getMap();
+      }
+      /**
+       * <code>map&lt;string, string&gt; stringMap = 17;</code>
+       */
+
+      public java.lang.String getStringMapOrDefault(
+          java.lang.String key,
+          java.lang.String defaultValue) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, java.lang.String> map =
+            internalGetStringMap().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;string, string&gt; stringMap = 17;</code>
+       */
+
+      public java.lang.String getStringMapOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, java.lang.String> map =
+            internalGetStringMap().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+
+      public Builder clearStringMap() {
+        internalGetMutableStringMap().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;string, string&gt; stringMap = 17;</code>
+       */
+
+      public Builder removeStringMap(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableStringMap().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.String>
+      getMutableStringMap() {
+        return internalGetMutableStringMap().getMutableMap();
+      }
+      /**
+       * <code>map&lt;string, string&gt; stringMap = 17;</code>
+       */
+      public Builder putStringMap(
+          java.lang.String key,
+          java.lang.String value) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (value == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableStringMap().getMutableMap()
+            .put(key, value);
+        return this;
+      }
+      /**
+       * <code>map&lt;string, string&gt; stringMap = 17;</code>
+       */
+
+      public Builder putAllStringMap(
+          java.util.Map<java.lang.String, java.lang.String> values) {
+        internalGetMutableStringMap().getMutableMap()
+            .putAll(values);
+        return this;
+      }
+
+      private NIO.PB.HelloWorld.AnyOuterClass.Any any_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          NIO.PB.HelloWorld.AnyOuterClass.Any, NIO.PB.HelloWorld.AnyOuterClass.Any.Builder, NIO.PB.HelloWorld.AnyOuterClass.AnyOrBuilder> anyBuilder_;
+      /**
+       * <pre>
+       * Any对象
+       * </pre>
+       *
+       * <code>.PB.Any any = 18;</code>
+       */
+      public boolean hasAny() {
+        return anyBuilder_ != null || any_ != null;
+      }
+      /**
+       * <pre>
+       * Any对象
+       * </pre>
+       *
+       * <code>.PB.Any any = 18;</code>
+       */
+      public NIO.PB.HelloWorld.AnyOuterClass.Any getAny() {
+        if (anyBuilder_ == null) {
+          return any_ == null ? NIO.PB.HelloWorld.AnyOuterClass.Any.getDefaultInstance() : any_;
+        } else {
+          return anyBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * Any对象
+       * </pre>
+       *
+       * <code>.PB.Any any = 18;</code>
+       */
+      public Builder setAny(NIO.PB.HelloWorld.AnyOuterClass.Any value) {
+        if (anyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          any_ = value;
+          onChanged();
+        } else {
+          anyBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Any对象
+       * </pre>
+       *
+       * <code>.PB.Any any = 18;</code>
+       */
+      public Builder setAny(
+          NIO.PB.HelloWorld.AnyOuterClass.Any.Builder builderForValue) {
+        if (anyBuilder_ == null) {
+          any_ = builderForValue.build();
+          onChanged();
+        } else {
+          anyBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Any对象
+       * </pre>
+       *
+       * <code>.PB.Any any = 18;</code>
+       */
+      public Builder mergeAny(NIO.PB.HelloWorld.AnyOuterClass.Any value) {
+        if (anyBuilder_ == null) {
+          if (any_ != null) {
+            any_ =
+              NIO.PB.HelloWorld.AnyOuterClass.Any.newBuilder(any_).mergeFrom(value).buildPartial();
+          } else {
+            any_ = value;
+          }
+          onChanged();
+        } else {
+          anyBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Any对象
+       * </pre>
+       *
+       * <code>.PB.Any any = 18;</code>
+       */
+      public Builder clearAny() {
+        if (anyBuilder_ == null) {
+          any_ = null;
+          onChanged();
+        } else {
+          any_ = null;
+          anyBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Any对象
+       * </pre>
+       *
+       * <code>.PB.Any any = 18;</code>
+       */
+      public NIO.PB.HelloWorld.AnyOuterClass.Any.Builder getAnyBuilder() {
+        
+        onChanged();
+        return getAnyFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * Any对象
+       * </pre>
+       *
+       * <code>.PB.Any any = 18;</code>
+       */
+      public NIO.PB.HelloWorld.AnyOuterClass.AnyOrBuilder getAnyOrBuilder() {
+        if (anyBuilder_ != null) {
+          return anyBuilder_.getMessageOrBuilder();
+        } else {
+          return any_ == null ?
+              NIO.PB.HelloWorld.AnyOuterClass.Any.getDefaultInstance() : any_;
+        }
+      }
+      /**
+       * <pre>
+       * Any对象
+       * </pre>
+       *
+       * <code>.PB.Any any = 18;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          NIO.PB.HelloWorld.AnyOuterClass.Any, NIO.PB.HelloWorld.AnyOuterClass.Any.Builder, NIO.PB.HelloWorld.AnyOuterClass.AnyOrBuilder> 
+          getAnyFieldBuilder() {
+        if (anyBuilder_ == null) {
+          anyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              NIO.PB.HelloWorld.AnyOuterClass.Any, NIO.PB.HelloWorld.AnyOuterClass.Any.Builder, NIO.PB.HelloWorld.AnyOuterClass.AnyOrBuilder>(
+                  getAny(),
+                  getParentForChildren(),
+                  isClean());
+          any_ = null;
+        }
+        return anyBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2777,6 +3344,11 @@ public final class Helloworld {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_PB_allValue_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PB_allValue_StringMapEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PB_allValue_StringMapEntry_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2786,21 +3358,24 @@ public final class Helloworld {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\020helloworld.proto\022\002PB\"\034\n\014HelloRequest\022\014" +
-      "\n\004name\030\001 \001(\t\"\035\n\nHelloReply\022\017\n\007message\030\001 " +
-      "\001(\t\"\222\003\n\010allValue\022\023\n\013doubleValue\030\001 \001(\001\022\022\n" +
-      "\nfloatValue\030\002 \001(\002\022\021\n\tboolValue\030\003 \001(\010\022\022\n\n" +
-      "int32Value\030\004 \001(\005\022\022\n\nint64Value\030\005 \001(\003\022\023\n\013" +
-      "uint32Value\030\006 \001(\r\022\023\n\013uint64Value\030\007 \001(\004\022\023" +
-      "\n\013sint32Value\030\010 \001(\021\022\023\n\013sint64Value\030\t \001(\022" +
-      "\022\024\n\014fixed32Value\030\n \001(\007\022\024\n\014fixed64Value\030\013" +
-      " \001(\006\022\025\n\rsfixed32Value\030\014 \001(\017\022\025\n\rsfixed64V" +
-      "alue\030\r \001(\020\022\023\n\013stringValue\030\016 \001(\t\022\022\n\nbytes" +
-      "Value\030\017 \001(\014\022)\n\tenumValue\030\020 \001(\0162\026.PB.allV" +
-      "alue.EnumValue\" \n\tEnumValue\022\005\n\001a\020\000\022\005\n\001b\020" +
-      "\001\022\005\n\001c\020\00229\n\007Greeter\022.\n\010SayHello\022\020.PB.Hel" +
-      "loRequest\032\016.PB.HelloReply\"\000B\025\n\021NIO.PB.He" +
-      "lloWorldP\000b\006proto3"
+      "\n\020helloworld.proto\022\002PB\032\tany.proto\"\034\n\014Hel" +
+      "loRequest\022\014\n\004name\030\001 \001(\t\"\035\n\nHelloReply\022\017\n" +
+      "\007message\030\001 \001(\t\"\216\004\n\010allValue\022\023\n\013doubleVal" +
+      "ue\030\001 \001(\001\022\022\n\nfloatValue\030\002 \001(\002\022\021\n\tboolValu" +
+      "e\030\003 \001(\010\022\022\n\nint32Value\030\004 \001(\005\022\022\n\nint64Valu" +
+      "e\030\005 \001(\003\022\023\n\013uint32Value\030\006 \001(\r\022\023\n\013uint64Va" +
+      "lue\030\007 \001(\004\022\023\n\013sint32Value\030\010 \001(\021\022\023\n\013sint64" +
+      "Value\030\t \001(\022\022\024\n\014fixed32Value\030\n \001(\007\022\024\n\014fix" +
+      "ed64Value\030\013 \001(\006\022\025\n\rsfixed32Value\030\014 \001(\017\022\025" +
+      "\n\rsfixed64Value\030\r \001(\020\022\023\n\013stringValue\030\016 \001" +
+      "(\t\022\022\n\nbytesValue\030\017 \001(\014\022)\n\tenumValue\030\020 \001(" +
+      "\0162\026.PB.allValue.EnumValue\022.\n\tstringMap\030\021" +
+      " \003(\0132\033.PB.allValue.StringMapEntry\022\024\n\003any" +
+      "\030\022 \001(\0132\007.PB.Any\0320\n\016StringMapEntry\022\013\n\003key" +
+      "\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"$\n\tEnumValue\022\005" +
+      "\n\001a\020\000\022\005\n\001b\020\001\022\005\n\001c\020\001\032\002\020\00129\n\007Greeter\022.\n\010Sa" +
+      "yHello\022\020.PB.HelloRequest\032\016.PB.HelloReply" +
+      "\"\000B\025\n\021NIO.PB.HelloWorldP\000b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2813,6 +3388,7 @@ public final class Helloworld {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          NIO.PB.HelloWorld.AnyOuterClass.getDescriptor(),
         }, assigner);
     internal_static_PB_HelloRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -2831,7 +3407,14 @@ public final class Helloworld {
     internal_static_PB_allValue_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PB_allValue_descriptor,
-        new java.lang.String[] { "DoubleValue", "FloatValue", "BoolValue", "Int32Value", "Int64Value", "Uint32Value", "Uint64Value", "Sint32Value", "Sint64Value", "Fixed32Value", "Fixed64Value", "Sfixed32Value", "Sfixed64Value", "StringValue", "BytesValue", "EnumValue", });
+        new java.lang.String[] { "DoubleValue", "FloatValue", "BoolValue", "Int32Value", "Int64Value", "Uint32Value", "Uint64Value", "Sint32Value", "Sint64Value", "Fixed32Value", "Fixed64Value", "Sfixed32Value", "Sfixed64Value", "StringValue", "BytesValue", "EnumValue", "StringMap", "Any", });
+    internal_static_PB_allValue_StringMapEntry_descriptor =
+      internal_static_PB_allValue_descriptor.getNestedTypes().get(0);
+    internal_static_PB_allValue_StringMapEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PB_allValue_StringMapEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    NIO.PB.HelloWorld.AnyOuterClass.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

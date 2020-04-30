@@ -1,6 +1,8 @@
 syntax = "proto3";
 package PB;
 
+import "any.proto";
+
 option java_multiple_files = false;
 option java_package = "NIO.PB.HelloWorld";
 
@@ -33,12 +35,15 @@ message allValue {
   sfixed64 sfixed64Value =13;
   string stringValue =14;
   bytes bytesValue =15;
-  EnumValue enumValue =16;
 
+  EnumValue enumValue =16;
   enum EnumValue {
+    option allow_alias =true;//允许有相同的枚举常量
     a = 0;
     b = 1;
-    c = 2;
+    c = 1;
   }
 
+  map<string, string> stringMap = 17;
+  Any any = 18; // Any对象
 }

@@ -13,11 +13,12 @@ public class LinkedHashMapTest<K, V> extends LinkedHashMap<K, V> {
 	}
 
 	public static void main(String[] args) {
-		//第三个参数为是否为访问顺序
+		//第三个参数为是否为访问顺序,true访问顺序，false插入顺序，默认fasle
 		Map<Integer, Integer> map = new LinkedHashMapTest<>(10, 0.75F, true);
 		map.put(1, 1);
 		map.put(2, 2);
 		map.put(3, 3);
+		map.put(4, 4);
 		System.out.println(map.toString());
 		map.get(2);
 		System.out.println(map.toString());

@@ -7,43 +7,44 @@ option java_multiple_files = false;
 option java_package = "NIO.PB.HelloWorld";
 
 service Greeter {
-  rpc SayHello (HelloRequest) returns (HelloReply) {}
+    rpc SayHello (HelloRequest) returns (HelloReply) {
+    }
 }
 
 message HelloRequest {
-  string name = 1;
+    string name = 1;
 }
 
 message HelloReply {
-  string message = 1;
+    string message = 1;
 }
 
 message allValue {
 
-  double doubleValue =1;
-  float floatValue =2;
-  bool boolValue =3;
-  int32 int32Value =4;
-  int64 int64Value =5;
-  uint32 uint32Value =6;
-  uint64 uint64Value =7;
-  sint32 sint32Value =8;
-  sint64 sint64Value =9;
-  fixed32 fixed32Value =10;
-  fixed64 fixed64Value =11;
-  sfixed32 sfixed32Value =12;
-  sfixed64 sfixed64Value =13;
-  string stringValue =14;
-  bytes bytesValue =15;
+    double doubleValue = 1;
+    float floatValue = 2;
+    bool boolValue = 3;
+    int32 int32Value = 4;
+    int64 int64Value = 5;
+    uint32 uint32Value = 6;
+    uint64 uint64Value = 7;
+    sint32 sint32Value = 8;
+    sint64 sint64Value = 9;
+    fixed32 fixed32Value = 10;
+    fixed64 fixed64Value = 11;
+    sfixed32 sfixed32Value = 12;
+    sfixed64 sfixed64Value = 13;
+    string stringValue = 14;
+    bytes bytesValue = 15;
 
-  EnumValue enumValue =16;
-  enum EnumValue {
-    option allow_alias =true;//允许有相同的枚举常量
-    a = 0;
-    b = 1;
-    c = 1;
-  }
+    EnumValue enumValue = 16;
+    enum EnumValue {
+        option allow_alias = true; //允许有相同的枚举常量
+        a = 0;
+        b = 1;
+        c = 1;
+    }
 
-  map<string, string> stringMap = 17;
-  Any any = 18; // Any对象
+    map<string, string> stringMap = 17;
+    Any any = 18; // Any对象
 }

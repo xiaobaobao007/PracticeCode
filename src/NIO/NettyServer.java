@@ -1,16 +1,21 @@
 package NIO;
 
 
+import NIO.PB.HelloWorld.Helloworld;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
+import io.netty.handler.codec.protobuf.ProtobufDecoder;
+import io.netty.handler.codec.protobuf.ProtobufEncoder;
+import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
+import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
+import io.netty.handler.timeout.IdleStateHandler;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author xiaobaobao
@@ -30,9 +35,24 @@ public class NettyServer {
 
 				.childHandler(new ChannelInitializer<NioSocketChannel>() {
 					protected void initChannel(NioSocketChannel ch) {
-						ch.pipeline().addLast(new DelimiterBasedFrameDecoder(Integer.MAX_VALUE,
+						ChannelPipeline p = ch.pipeline();
+						p.addLast(new DelimiterBasedFrameDecoder(Integer.MAX_VALUE,
 								Unpooled.copiedBuffer(System.getProperty("line.separator").getBytes())));
-						ch.pipeline().addLast(new SimpleChannelInboundHandler<String>() {
+
+						//TODO netty如何搭载PB
+						//一次解码器
+						p.addLast(new ProtobufVarint32FrameDecoder());
+						//二次解码器
+						p.addLast(new ProtobufDecoder(Helloworld.Frame.getDefaultInstance()));
+						//一次编码器
+						p.addLast(new ProtobufVarint32LengthFieldPrepender());
+						//二次编码器
+						p.addLast(new ProtobufEncoder());
+
+						//keeplive和idle操作
+						p.addLast("IdleStateHandler", new IdleStateHandler(0, 20, 0, TimeUnit.SECONDS));
+
+						p.addLast(new SimpleChannelInboundHandler<String>() {
 							@Override
 							protected void channelRead0(ChannelHandlerContext ctx, String msg) {
 								System.out.println(msg);

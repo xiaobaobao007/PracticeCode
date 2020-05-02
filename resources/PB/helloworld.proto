@@ -19,6 +19,13 @@ message HelloReply {
     string message = 1;
 }
 
+message Frame {
+    int64 reqId = 1;
+    int32 type = 2;
+    string msgType = 3;
+    bytes data = 4;
+}
+
 message allValue {
 
     double doubleValue = 1;

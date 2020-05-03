@@ -6,6 +6,7 @@ import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.nio.NioChannelOption;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
@@ -49,7 +50,7 @@ public class NettyServer {
 						//二次编码器
 						p.addLast(new ProtobufEncoder());
 
-						//keeplive和idle操作
+						//idle操作
 						p.addLast("IdleStateHandler", new IdleStateHandler(0, 20, 0, TimeUnit.SECONDS));
 
 						p.addLast(new SimpleChannelInboundHandler<String>() {
@@ -60,7 +61,10 @@ public class NettyServer {
 							}
 						});
 					}
-				});
+				})
+				//keeplive
+				.childOption(ChannelOption.SO_KEEPALIVE, true)
+				.childOption(NioChannelOption.SO_KEEPALIVE, true);
 		try {
 			ChannelFuture future = serverBootstrap.bind(8000).sync();
 			future.channel().closeFuture().sync();

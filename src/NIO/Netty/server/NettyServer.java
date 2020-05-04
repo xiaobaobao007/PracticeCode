@@ -4,6 +4,7 @@ import NIO.Netty.JDKDecoder;
 import NIO.Netty.JDKEncoder;
 import NIO.Netty.Msg;
 import io.netty.bootstrap.ServerBootstrap;
+import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
@@ -64,6 +65,10 @@ public class NettyServer {
 				.option(ChannelOption.SO_BACKLOG, 1024)
 				//当服务器成功启动会初始化执行（监听channel的变化）
 //				.handler(new LoggingHandler(LogLevel.INFO))
+				// 堆内外内存
+				.childOption(ChannelOption.ALLOCATOR, new PooledByteBufAllocator(false))
+				// 堆内外内存
+				.childOption(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT)
 				//当客户端连接到服务器的初始化（监听连接成功的channel的变化）
 				.childHandler(new ChannelInitializer<SocketChannel>() {
 					@Override

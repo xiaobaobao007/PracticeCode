@@ -2008,6 +2008,28 @@ public final class Helloworld {
      * <code>.PB.Any any = 18;</code>
      */
     NIO.PB.HelloWorld.AnyOuterClass.AnyOrBuilder getAnyOrBuilder();
+
+    /**
+     * <code>string one1 = 19;</code>
+     */
+    java.lang.String getOne1();
+    /**
+     * <code>string one1 = 19;</code>
+     */
+    com.google.protobuf.ByteString
+        getOne1Bytes();
+
+    /**
+     * <code>string one2 = 20;</code>
+     */
+    java.lang.String getOne2();
+    /**
+     * <code>string one2 = 20;</code>
+     */
+    com.google.protobuf.ByteString
+        getOne2Bytes();
+
+    public NIO.PB.HelloWorld.Helloworld.allValue.TestOneofCase getTestOneofCase();
   }
   /**
    * Protobuf type {@code PB.allValue}
@@ -2172,6 +2194,18 @@ public final class Helloworld {
 
               break;
             }
+            case 154: {
+              java.lang.String s = input.readStringRequireUtf8();
+              testOneofCase_ = 19;
+              testOneof_ = s;
+              break;
+            }
+            case 162: {
+              java.lang.String s = input.readStringRequireUtf8();
+              testOneofCase_ = 20;
+              testOneof_ = s;
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -2325,6 +2359,44 @@ public final class Helloworld {
     }
 
     private int bitField0_;
+    private int testOneofCase_ = 0;
+    private java.lang.Object testOneof_;
+    public enum TestOneofCase
+        implements com.google.protobuf.Internal.EnumLite {
+      ONE1(19),
+      ONE2(20),
+      TESTONEOF_NOT_SET(0);
+      private final int value;
+      private TestOneofCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static TestOneofCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static TestOneofCase forNumber(int value) {
+        switch (value) {
+          case 19: return ONE1;
+          case 20: return ONE2;
+          case 0: return TESTONEOF_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public TestOneofCase
+    getTestOneofCase() {
+      return TestOneofCase.forNumber(
+          testOneofCase_);
+    }
+
     public static final int DOUBLEVALUE_FIELD_NUMBER = 1;
     private double doubleValue_;
     /**
@@ -2611,6 +2683,92 @@ public final class Helloworld {
       return getAny();
     }
 
+    public static final int ONE1_FIELD_NUMBER = 19;
+    /**
+     * <code>string one1 = 19;</code>
+     */
+    public java.lang.String getOne1() {
+      java.lang.Object ref = "";
+      if (testOneofCase_ == 19) {
+        ref = testOneof_;
+      }
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (testOneofCase_ == 19) {
+          testOneof_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>string one1 = 19;</code>
+     */
+    public com.google.protobuf.ByteString
+        getOne1Bytes() {
+      java.lang.Object ref = "";
+      if (testOneofCase_ == 19) {
+        ref = testOneof_;
+      }
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        if (testOneofCase_ == 19) {
+          testOneof_ = b;
+        }
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ONE2_FIELD_NUMBER = 20;
+    /**
+     * <code>string one2 = 20;</code>
+     */
+    public java.lang.String getOne2() {
+      java.lang.Object ref = "";
+      if (testOneofCase_ == 20) {
+        ref = testOneof_;
+      }
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (testOneofCase_ == 20) {
+          testOneof_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>string one2 = 20;</code>
+     */
+    public com.google.protobuf.ByteString
+        getOne2Bytes() {
+      java.lang.Object ref = "";
+      if (testOneofCase_ == 20) {
+        ref = testOneof_;
+      }
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        if (testOneofCase_ == 20) {
+          testOneof_ = b;
+        }
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2681,6 +2839,12 @@ public final class Helloworld {
           17);
       if (any_ != null) {
         output.writeMessage(18, getAny());
+      }
+      if (testOneofCase_ == 19) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 19, testOneof_);
+      }
+      if (testOneofCase_ == 20) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 20, testOneof_);
       }
       unknownFields.writeTo(output);
     }
@@ -2768,6 +2932,12 @@ public final class Helloworld {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(18, getAny());
       }
+      if (testOneofCase_ == 19) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(19, testOneof_);
+      }
+      if (testOneofCase_ == 20) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(20, testOneof_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -2825,6 +2995,21 @@ public final class Helloworld {
       if (hasAny()) {
         result = result && getAny()
             .equals(other.getAny());
+      }
+      result = result && getTestOneofCase().equals(
+          other.getTestOneofCase());
+      if (!result) return false;
+      switch (testOneofCase_) {
+        case 19:
+          result = result && getOne1()
+              .equals(other.getOne1());
+          break;
+        case 20:
+          result = result && getOne2()
+              .equals(other.getOne2());
+          break;
+        case 0:
+        default:
       }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
@@ -2884,6 +3069,18 @@ public final class Helloworld {
       if (hasAny()) {
         hash = (37 * hash) + ANY_FIELD_NUMBER;
         hash = (53 * hash) + getAny().hashCode();
+      }
+      switch (testOneofCase_) {
+        case 19:
+          hash = (37 * hash) + ONE1_FIELD_NUMBER;
+          hash = (53 * hash) + getOne1().hashCode();
+          break;
+        case 20:
+          hash = (37 * hash) + ONE2_FIELD_NUMBER;
+          hash = (53 * hash) + getOne2().hashCode();
+          break;
+        case 0:
+        default:
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -3079,6 +3276,8 @@ public final class Helloworld {
           any_ = null;
           anyBuilder_ = null;
         }
+        testOneofCase_ = 0;
+        testOneof_ = null;
         return this;
       }
 
@@ -3130,7 +3329,14 @@ public final class Helloworld {
         } else {
           result.any_ = anyBuilder_.build();
         }
+        if (testOneofCase_ == 19) {
+          result.testOneof_ = testOneof_;
+        }
+        if (testOneofCase_ == 20) {
+          result.testOneof_ = testOneof_;
+        }
         result.bitField0_ = to_bitField0_;
+        result.testOneofCase_ = testOneofCase_;
         onBuilt();
         return result;
       }
@@ -3233,6 +3439,23 @@ public final class Helloworld {
         if (other.hasAny()) {
           mergeAny(other.getAny());
         }
+        switch (other.getTestOneofCase()) {
+          case ONE1: {
+            testOneofCase_ = 19;
+            testOneof_ = other.testOneof_;
+            onChanged();
+            break;
+          }
+          case ONE2: {
+            testOneofCase_ = 20;
+            testOneof_ = other.testOneof_;
+            onChanged();
+            break;
+          }
+          case TESTONEOF_NOT_SET: {
+            break;
+          }
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -3261,6 +3484,21 @@ public final class Helloworld {
         }
         return this;
       }
+      private int testOneofCase_ = 0;
+      private java.lang.Object testOneof_;
+      public TestOneofCase
+          getTestOneofCase() {
+        return TestOneofCase.forNumber(
+            testOneofCase_);
+      }
+
+      public Builder clearTestOneof() {
+        testOneofCase_ = 0;
+        testOneof_ = null;
+        onChanged();
+        return this;
+      }
+
       private int bitField0_;
 
       private double doubleValue_ ;
@@ -4019,6 +4257,166 @@ public final class Helloworld {
         }
         return anyBuilder_;
       }
+
+      /**
+       * <code>string one1 = 19;</code>
+       */
+      public java.lang.String getOne1() {
+        java.lang.Object ref = "";
+        if (testOneofCase_ == 19) {
+          ref = testOneof_;
+        }
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (testOneofCase_ == 19) {
+            testOneof_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string one1 = 19;</code>
+       */
+      public com.google.protobuf.ByteString
+          getOne1Bytes() {
+        java.lang.Object ref = "";
+        if (testOneofCase_ == 19) {
+          ref = testOneof_;
+        }
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          if (testOneofCase_ == 19) {
+            testOneof_ = b;
+          }
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string one1 = 19;</code>
+       */
+      public Builder setOne1(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  testOneofCase_ = 19;
+        testOneof_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string one1 = 19;</code>
+       */
+      public Builder clearOne1() {
+        if (testOneofCase_ == 19) {
+          testOneofCase_ = 0;
+          testOneof_ = null;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>string one1 = 19;</code>
+       */
+      public Builder setOne1Bytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        testOneofCase_ = 19;
+        testOneof_ = value;
+        onChanged();
+        return this;
+      }
+
+      /**
+       * <code>string one2 = 20;</code>
+       */
+      public java.lang.String getOne2() {
+        java.lang.Object ref = "";
+        if (testOneofCase_ == 20) {
+          ref = testOneof_;
+        }
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (testOneofCase_ == 20) {
+            testOneof_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string one2 = 20;</code>
+       */
+      public com.google.protobuf.ByteString
+          getOne2Bytes() {
+        java.lang.Object ref = "";
+        if (testOneofCase_ == 20) {
+          ref = testOneof_;
+        }
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          if (testOneofCase_ == 20) {
+            testOneof_ = b;
+          }
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string one2 = 20;</code>
+       */
+      public Builder setOne2(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  testOneofCase_ = 20;
+        testOneof_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string one2 = 20;</code>
+       */
+      public Builder clearOne2() {
+        if (testOneofCase_ == 20) {
+          testOneofCase_ = 0;
+          testOneof_ = null;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>string one2 = 20;</code>
+       */
+      public Builder setOne2Bytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        testOneofCase_ = 20;
+        testOneof_ = value;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4110,7 +4508,7 @@ public final class Helloworld {
       "loRequest\022\014\n\004name\030\001 \001(\t\"\035\n\nHelloReply\022\017\n" +
       "\007message\030\001 \001(\t\"C\n\005Frame\022\r\n\005reqId\030\001 \001(\003\022\014" +
       "\n\004type\030\002 \001(\005\022\017\n\007msgType\030\003 \001(\t\022\014\n\004data\030\004 " +
-      "\001(\014\"\216\004\n\010allValue\022\023\n\013doubleValue\030\001 \001(\001\022\022\n" +
+      "\001(\014\"\274\004\n\010allValue\022\023\n\013doubleValue\030\001 \001(\001\022\022\n" +
       "\nfloatValue\030\002 \001(\002\022\021\n\tboolValue\030\003 \001(\010\022\022\n\n" +
       "int32Value\030\004 \001(\005\022\022\n\nint64Value\030\005 \001(\003\022\023\n\013" +
       "uint32Value\030\006 \001(\r\022\023\n\013uint64Value\030\007 \001(\004\022\023" +
@@ -4121,11 +4519,12 @@ public final class Helloworld {
       "Value\030\017 \001(\014\022)\n\tenumValue\030\020 \001(\0162\026.PB.allV" +
       "alue.EnumValue\022.\n\tstringMap\030\021 \003(\0132\033.PB.a" +
       "llValue.StringMapEntry\022\024\n\003any\030\022 \001(\0132\007.PB" +
-      ".Any\0320\n\016StringMapEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005v" +
-      "alue\030\002 \001(\t:\0028\001\"$\n\tEnumValue\022\005\n\001a\020\000\022\005\n\001b\020" +
-      "\001\022\005\n\001c\020\001\032\002\020\00129\n\007Greeter\022.\n\010SayHello\022\020.PB" +
-      ".HelloRequest\032\016.PB.HelloReply\"\000B\025\n\021NIO.P" +
-      "B.HelloWorldP\000b\006proto3"
+      ".Any\022\016\n\004one1\030\023 \001(\tH\000\022\016\n\004one2\030\024 \001(\tH\000\0320\n\016" +
+      "StringMapEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001" +
+      "(\t:\0028\001\"$\n\tEnumValue\022\005\n\001a\020\000\022\005\n\001b\020\001\022\005\n\001c\020\001" +
+      "\032\002\020\001B\014\n\ntest_oneof29\n\007Greeter\022.\n\010SayHell" +
+      "o\022\020.PB.HelloRequest\032\016.PB.HelloReply\"\000B\025\n" +
+      "\021NIO.PB.HelloWorldP\000b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -4163,7 +4562,7 @@ public final class Helloworld {
     internal_static_PB_allValue_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PB_allValue_descriptor,
-        new java.lang.String[] { "DoubleValue", "FloatValue", "BoolValue", "Int32Value", "Int64Value", "Uint32Value", "Uint64Value", "Sint32Value", "Sint64Value", "Fixed32Value", "Fixed64Value", "Sfixed32Value", "Sfixed64Value", "StringValue", "BytesValue", "EnumValue", "StringMap", "Any", });
+        new java.lang.String[] { "DoubleValue", "FloatValue", "BoolValue", "Int32Value", "Int64Value", "Uint32Value", "Uint64Value", "Sint32Value", "Sint64Value", "Fixed32Value", "Fixed64Value", "Sfixed32Value", "Sfixed64Value", "StringValue", "BytesValue", "EnumValue", "StringMap", "Any", "One1", "One2", "TestOneof", });
     internal_static_PB_allValue_StringMapEntry_descriptor =
       internal_static_PB_allValue_descriptor.getNestedTypes().get(0);
     internal_static_PB_allValue_StringMapEntry_fieldAccessorTable = new

@@ -54,4 +54,9 @@ message allValue {
 
     map<string, string> stringMap = 17;
     Any any = 18; // Any对象
+
+    oneof test_oneof {
+        string one1 = 19;
+        string one2 = 20;
+    }
 }

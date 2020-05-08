@@ -63,4 +63,15 @@ public class Main {
 		System.out.println(newBuilder.getFloatValue());
 		System.out.println(newBuilder.getStringValue());
 	}
+
+	@Test
+	public void map_test() {
+		Helloworld.allValue.Builder builder = Helloworld.allValue.newBuilder();
+		builder.putInt32Map(1, 2);
+		System.out.println(builder.getInt32MapMap());
+		builder.putInt32Map(1, 3);
+		System.out.println(builder.getInt32MapMap());
+		builder.putInt32Map(2, 3);
+		System.out.println(builder.getInt32MapMap());
+	}
 }

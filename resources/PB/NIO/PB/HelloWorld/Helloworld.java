@@ -1985,6 +1985,40 @@ public final class Helloworld {
         java.lang.String key);
 
     /**
+     * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
+     */
+    int getInt32MapCount();
+    /**
+     * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
+     */
+    boolean containsInt32Map(
+        int key);
+    /**
+     * Use {@link #getInt32MapMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.Integer, java.lang.Integer>
+    getInt32Map();
+    /**
+     * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
+     */
+    java.util.Map<java.lang.Integer, java.lang.Integer>
+    getInt32MapMap();
+    /**
+     * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
+     */
+
+    int getInt32MapOrDefault(
+        int key,
+        int defaultValue);
+    /**
+     * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
+     */
+
+    int getInt32MapOrThrow(
+        int key);
+
+    /**
      * <pre>
      * Any对象
      * </pre>
@@ -2206,6 +2240,19 @@ public final class Helloworld {
               testOneof_ = s;
               break;
             }
+            case 170: {
+              if (!((mutable_bitField0_ & 0x00020000) == 0x00020000)) {
+                int32Map_ = com.google.protobuf.MapField.newMapField(
+                    Int32MapDefaultEntryHolder.defaultEntry);
+                mutable_bitField0_ |= 0x00020000;
+              }
+              com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Integer>
+              int32Map__ = input.readMessage(
+                  Int32MapDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              int32Map_.getMutableMap().put(
+                  int32Map__.getKey(), int32Map__.getValue());
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -2237,6 +2284,8 @@ public final class Helloworld {
       switch (number) {
         case 17:
           return internalGetStringMap();
+        case 21:
+          return internalGetInt32Map();
         default:
           throw new RuntimeException(
               "Invalid map field number: " + number);
@@ -2650,6 +2699,82 @@ public final class Helloworld {
       return map.get(key);
     }
 
+    public static final int INT32MAP_FIELD_NUMBER = 21;
+    private static final class Int32MapDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.Integer, java.lang.Integer> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.Integer, java.lang.Integer>newDefaultInstance(
+                  NIO.PB.HelloWorld.Helloworld.internal_static_PB_allValue_Int32MapEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  0,
+                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  0);
+    }
+    private com.google.protobuf.MapField<
+        java.lang.Integer, java.lang.Integer> int32Map_;
+    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
+    internalGetInt32Map() {
+      if (int32Map_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            Int32MapDefaultEntryHolder.defaultEntry);
+      }
+      return int32Map_;
+    }
+
+    public int getInt32MapCount() {
+      return internalGetInt32Map().getMap().size();
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
+     */
+
+    public boolean containsInt32Map(
+        int key) {
+      
+      return internalGetInt32Map().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getInt32MapMap()} instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, java.lang.Integer> getInt32Map() {
+      return getInt32MapMap();
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
+     */
+
+    public java.util.Map<java.lang.Integer, java.lang.Integer> getInt32MapMap() {
+      return internalGetInt32Map().getMap();
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
+     */
+
+    public int getInt32MapOrDefault(
+        int key,
+        int defaultValue) {
+      
+      java.util.Map<java.lang.Integer, java.lang.Integer> map =
+          internalGetInt32Map().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
+     */
+
+    public int getInt32MapOrThrow(
+        int key) {
+      
+      java.util.Map<java.lang.Integer, java.lang.Integer> map =
+          internalGetInt32Map().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
     public static final int ANY_FIELD_NUMBER = 18;
     private NIO.PB.HelloWorld.AnyOuterClass.Any any_;
     /**
@@ -2846,6 +2971,12 @@ public final class Helloworld {
       if (testOneofCase_ == 20) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 20, testOneof_);
       }
+      com.google.protobuf.GeneratedMessageV3
+        .serializeIntegerMapTo(
+          output,
+          internalGetInt32Map(),
+          Int32MapDefaultEntryHolder.defaultEntry,
+          21);
       unknownFields.writeTo(output);
     }
 
@@ -2938,6 +3069,16 @@ public final class Helloworld {
       if (testOneofCase_ == 20) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(20, testOneof_);
       }
+      for (java.util.Map.Entry<java.lang.Integer, java.lang.Integer> entry
+           : internalGetInt32Map().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Integer>
+        int32Map__ = Int32MapDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(21, int32Map__);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -2991,6 +3132,8 @@ public final class Helloworld {
       result = result && enumValue_ == other.enumValue_;
       result = result && internalGetStringMap().equals(
           other.internalGetStringMap());
+      result = result && internalGetInt32Map().equals(
+          other.internalGetInt32Map());
       result = result && (hasAny() == other.hasAny());
       if (hasAny()) {
         result = result && getAny()
@@ -3065,6 +3208,10 @@ public final class Helloworld {
       if (!internalGetStringMap().getMap().isEmpty()) {
         hash = (37 * hash) + STRINGMAP_FIELD_NUMBER;
         hash = (53 * hash) + internalGetStringMap().hashCode();
+      }
+      if (!internalGetInt32Map().getMap().isEmpty()) {
+        hash = (37 * hash) + INT32MAP_FIELD_NUMBER;
+        hash = (53 * hash) + internalGetInt32Map().hashCode();
       }
       if (hasAny()) {
         hash = (37 * hash) + ANY_FIELD_NUMBER;
@@ -3195,6 +3342,8 @@ public final class Helloworld {
         switch (number) {
           case 17:
             return internalGetStringMap();
+          case 21:
+            return internalGetInt32Map();
           default:
             throw new RuntimeException(
                 "Invalid map field number: " + number);
@@ -3206,6 +3355,8 @@ public final class Helloworld {
         switch (number) {
           case 17:
             return internalGetMutableStringMap();
+          case 21:
+            return internalGetMutableInt32Map();
           default:
             throw new RuntimeException(
                 "Invalid map field number: " + number);
@@ -3270,6 +3421,7 @@ public final class Helloworld {
         enumValue_ = 0;
 
         internalGetMutableStringMap().clear();
+        internalGetMutableInt32Map().clear();
         if (anyBuilder_ == null) {
           any_ = null;
         } else {
@@ -3324,6 +3476,8 @@ public final class Helloworld {
         result.enumValue_ = enumValue_;
         result.stringMap_ = internalGetStringMap();
         result.stringMap_.makeImmutable();
+        result.int32Map_ = internalGetInt32Map();
+        result.int32Map_.makeImmutable();
         if (anyBuilder_ == null) {
           result.any_ = any_;
         } else {
@@ -3436,6 +3590,8 @@ public final class Helloworld {
         }
         internalGetMutableStringMap().mergeFrom(
             other.internalGetStringMap());
+        internalGetMutableInt32Map().mergeFrom(
+            other.internalGetInt32Map());
         if (other.hasAny()) {
           mergeAny(other.getAny());
         }
@@ -4105,6 +4261,129 @@ public final class Helloworld {
         return this;
       }
 
+      private com.google.protobuf.MapField<
+          java.lang.Integer, java.lang.Integer> int32Map_;
+      private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
+      internalGetInt32Map() {
+        if (int32Map_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              Int32MapDefaultEntryHolder.defaultEntry);
+        }
+        return int32Map_;
+      }
+      private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
+      internalGetMutableInt32Map() {
+        onChanged();;
+        if (int32Map_ == null) {
+          int32Map_ = com.google.protobuf.MapField.newMapField(
+              Int32MapDefaultEntryHolder.defaultEntry);
+        }
+        if (!int32Map_.isMutable()) {
+          int32Map_ = int32Map_.copy();
+        }
+        return int32Map_;
+      }
+
+      public int getInt32MapCount() {
+        return internalGetInt32Map().getMap().size();
+      }
+      /**
+       * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
+       */
+
+      public boolean containsInt32Map(
+          int key) {
+        
+        return internalGetInt32Map().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getInt32MapMap()} instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Integer, java.lang.Integer> getInt32Map() {
+        return getInt32MapMap();
+      }
+      /**
+       * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
+       */
+
+      public java.util.Map<java.lang.Integer, java.lang.Integer> getInt32MapMap() {
+        return internalGetInt32Map().getMap();
+      }
+      /**
+       * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
+       */
+
+      public int getInt32MapOrDefault(
+          int key,
+          int defaultValue) {
+        
+        java.util.Map<java.lang.Integer, java.lang.Integer> map =
+            internalGetInt32Map().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
+       */
+
+      public int getInt32MapOrThrow(
+          int key) {
+        
+        java.util.Map<java.lang.Integer, java.lang.Integer> map =
+            internalGetInt32Map().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+
+      public Builder clearInt32Map() {
+        internalGetMutableInt32Map().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
+       */
+
+      public Builder removeInt32Map(
+          int key) {
+        
+        internalGetMutableInt32Map().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Integer, java.lang.Integer>
+      getMutableInt32Map() {
+        return internalGetMutableInt32Map().getMutableMap();
+      }
+      /**
+       * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
+       */
+      public Builder putInt32Map(
+          int key,
+          int value) {
+        
+        
+        internalGetMutableInt32Map().getMutableMap()
+            .put(key, value);
+        return this;
+      }
+      /**
+       * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
+       */
+
+      public Builder putAllInt32Map(
+          java.util.Map<java.lang.Integer, java.lang.Integer> values) {
+        internalGetMutableInt32Map().getMutableMap()
+            .putAll(values);
+        return this;
+      }
+
       private NIO.PB.HelloWorld.AnyOuterClass.Any any_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
           NIO.PB.HelloWorld.AnyOuterClass.Any, NIO.PB.HelloWorld.AnyOuterClass.Any.Builder, NIO.PB.HelloWorld.AnyOuterClass.AnyOrBuilder> anyBuilder_;
@@ -4495,6 +4774,11 @@ public final class Helloworld {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_PB_allValue_StringMapEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PB_allValue_Int32MapEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PB_allValue_Int32MapEntry_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -4508,7 +4792,7 @@ public final class Helloworld {
       "loRequest\022\014\n\004name\030\001 \001(\t\"\035\n\nHelloReply\022\017\n" +
       "\007message\030\001 \001(\t\"C\n\005Frame\022\r\n\005reqId\030\001 \001(\003\022\014" +
       "\n\004type\030\002 \001(\005\022\017\n\007msgType\030\003 \001(\t\022\014\n\004data\030\004 " +
-      "\001(\014\"\274\004\n\010allValue\022\023\n\013doubleValue\030\001 \001(\001\022\022\n" +
+      "\001(\014\"\233\005\n\010allValue\022\023\n\013doubleValue\030\001 \001(\001\022\022\n" +
       "\nfloatValue\030\002 \001(\002\022\021\n\tboolValue\030\003 \001(\010\022\022\n\n" +
       "int32Value\030\004 \001(\005\022\022\n\nint64Value\030\005 \001(\003\022\023\n\013" +
       "uint32Value\030\006 \001(\r\022\023\n\013uint64Value\030\007 \001(\004\022\023" +
@@ -4518,13 +4802,16 @@ public final class Helloworld {
       "alue\030\r \001(\020\022\023\n\013stringValue\030\016 \001(\t\022\022\n\nbytes" +
       "Value\030\017 \001(\014\022)\n\tenumValue\030\020 \001(\0162\026.PB.allV" +
       "alue.EnumValue\022.\n\tstringMap\030\021 \003(\0132\033.PB.a" +
-      "llValue.StringMapEntry\022\024\n\003any\030\022 \001(\0132\007.PB" +
-      ".Any\022\016\n\004one1\030\023 \001(\tH\000\022\016\n\004one2\030\024 \001(\tH\000\0320\n\016" +
-      "StringMapEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001" +
-      "(\t:\0028\001\"$\n\tEnumValue\022\005\n\001a\020\000\022\005\n\001b\020\001\022\005\n\001c\020\001" +
-      "\032\002\020\001B\014\n\ntest_oneof29\n\007Greeter\022.\n\010SayHell" +
-      "o\022\020.PB.HelloRequest\032\016.PB.HelloReply\"\000B\025\n" +
-      "\021NIO.PB.HelloWorldP\000b\006proto3"
+      "llValue.StringMapEntry\022,\n\010int32Map\030\025 \003(\013" +
+      "2\032.PB.allValue.Int32MapEntry\022\024\n\003any\030\022 \001(" +
+      "\0132\007.PB.Any\022\016\n\004one1\030\023 \001(\tH\000\022\016\n\004one2\030\024 \001(\t" +
+      "H\000\0320\n\016StringMapEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005val" +
+      "ue\030\002 \001(\t:\0028\001\032/\n\rInt32MapEntry\022\013\n\003key\030\001 \001" +
+      "(\005\022\r\n\005value\030\002 \001(\005:\0028\001\"$\n\tEnumValue\022\005\n\001a\020" +
+      "\000\022\005\n\001b\020\001\022\005\n\001c\020\001\032\002\020\001B\014\n\ntest_oneof29\n\007Gre" +
+      "eter\022.\n\010SayHello\022\020.PB.HelloRequest\032\016.PB." +
+      "HelloReply\"\000B\025\n\021NIO.PB.HelloWorldP\000b\006pro" +
+      "to3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -4562,12 +4849,18 @@ public final class Helloworld {
     internal_static_PB_allValue_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PB_allValue_descriptor,
-        new java.lang.String[] { "DoubleValue", "FloatValue", "BoolValue", "Int32Value", "Int64Value", "Uint32Value", "Uint64Value", "Sint32Value", "Sint64Value", "Fixed32Value", "Fixed64Value", "Sfixed32Value", "Sfixed64Value", "StringValue", "BytesValue", "EnumValue", "StringMap", "Any", "One1", "One2", "TestOneof", });
+        new java.lang.String[] { "DoubleValue", "FloatValue", "BoolValue", "Int32Value", "Int64Value", "Uint32Value", "Uint64Value", "Sint32Value", "Sint64Value", "Fixed32Value", "Fixed64Value", "Sfixed32Value", "Sfixed64Value", "StringValue", "BytesValue", "EnumValue", "StringMap", "Int32Map", "Any", "One1", "One2", "TestOneof", });
     internal_static_PB_allValue_StringMapEntry_descriptor =
       internal_static_PB_allValue_descriptor.getNestedTypes().get(0);
     internal_static_PB_allValue_StringMapEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PB_allValue_StringMapEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_PB_allValue_Int32MapEntry_descriptor =
+      internal_static_PB_allValue_descriptor.getNestedTypes().get(1);
+    internal_static_PB_allValue_Int32MapEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PB_allValue_Int32MapEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     NIO.PB.HelloWorld.AnyOuterClass.getDescriptor();
   }

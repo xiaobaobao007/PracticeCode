@@ -1,6 +1,9 @@
 package ThreadProblem;
 
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author xiaobaobao
@@ -8,64 +11,25 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class Demo2 {
 
-	private int a;
-
-	public int get() {
-		return a;
-	}
-
-	public void add1() {
-		this.a++;
-	}
-
-	public synchronized void add2() {
-		this.a++;
-	}
-
 	public static void main(String[] args) throws InterruptedException {
-		ReentrantLock lock = new ReentrantLock();
-		lock.lock();
-		lock.lock();
-//		Demo2 demo2 = new Demo2();
-//		CountDownLatch count = new CountDownLatch(2);
-//		Thread thread = new Thread(() -> {
-//			for (int i = 0; i < 10000; i++) {
-//				demo2.add1();
-//			}
-//			count.countDown();
-//		});
-//		Thread thread1 = new Thread(() -> {
-//			for (int i = 0; i < 10000; i++) {
-//				demo2.add2();
-//			}
-//			count.countDown();
-//		});
-//		thread.start();
-//		thread1.start();
-//		count.await();
-//		System.out.println(demo2.get());
+		ScheduledExecutorService pool = Executors.newScheduledThreadPool(10);
+		Future<?> submit = pool.submit(Demo2::bmy);
+		while (true) {
+			TimeUnit.SECONDS.sleep(1);
+			System.out.println(submit.isDone());
+		}
 	}
+
+	private static void bmy() {
+		int i = 10;
+		while (i-- > 0) {
+			try {
+				TimeUnit.SECONDS.sleep(1);
+				System.out.println(i);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 }
-
-//public class Lock {
-//	boolean isLocked = false;
-//	Thread lockedBy = null;
-//	int lockedCount = 0;
-//	public synchronized void lock() throws InterruptedException {
-//		Thread thread = Thread.currentThread();
-//		while (isLocked && lockedBy != thread) {wait();}
-//		isLocked = true;
-//		lockedCount++;
-//		lockedBy = thread;
-//	}
-//	public synchronized void unlock() {
-//		if (Thread.currentThread() == this.lockedBy) {
-//			lockedCount--;
-//			if (lockedCount == 0) {
-//				isLocked = false;
-//				notify();
-//			}
-//		}
-//	}
-//}
-

@@ -1,10 +1,10 @@
 package Jedis;
 
 import org.junit.Test;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.JedisPoolConfig;
+import redis.clients.jedis.*;
 
+import java.io.IOException;
+import java.util.*;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -111,6 +111,130 @@ public class JedisDemoTest {
 		}
 
 	}
+
+	@Test
+	public void test5() {
+		Jedis jedis = new Jedis("127.0.0.1", 6379);
+		Transaction t = jedis.multi();
+		t.set("a", "abc");
+		t.exec();
+
+		ScanResult<String> scan = jedis.scan("0");
+		System.out.println(scan.getCursor());
+		System.out.println(scan.getResult());
+	}
+
+	@Test
+	public void addCluster() throws IOException {
+		JedisPoolConfig poolConfig = new JedisPoolConfig();
+		poolConfig.setMaxTotal(50);
+
+		List<JedisShardInfo> shards = new ArrayList<>();
+		shards.add(new JedisShardInfo("127.0.0.1", 6379));
+		shards.add(new JedisShardInfo("127.0.0.1", 6380));
+		shards.add(new JedisShardInfo("127.0.0.1", 6381));
+		shards.add(new JedisShardInfo("127.0.0.1", 6382));
+		shards.add(new JedisShardInfo("127.0.0.1", 6383));
+		shards.add(new JedisShardInfo("127.0.0.1", 6384));
+
+		ShardedJedisPool shardedJedisPool = new ShardedJedisPool(poolConfig, shards);
+		ShardedJedis shardedJedis = null;
+
+		try {
+			// 从连接池中获取到jedis分片对象
+			shardedJedis = shardedJedisPool.getResource();
+			System.out.println(shardedJedis.set("a", "qwe"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (null != shardedJedis) {
+				shardedJedis.close();
+			}
+		}
+		shardedJedisPool.close();
+	}
+
+	@Test
+	public void testJedisCluster() {
+		HashSet<HostAndPort> nodes = new HashSet<>();
+		nodes.add(new HostAndPort("127.0.0.1", 6379));
+		nodes.add(new HostAndPort("127.0.0.1", 6380));
+		nodes.add(new HostAndPort("127.0.0.1", 6381));
+		nodes.add(new HostAndPort("127.0.0.1", 6382));
+		nodes.add(new HostAndPort("127.0.0.1", 6383));
+		nodes.add(new HostAndPort("127.0.0.1", 6384));
+
+		JedisCluster cluster = new JedisCluster(nodes);
+
+		cluster.set("key1", "1000");
+		System.out.println(cluster.get("key1"));
+
+
+		cluster.close();
+	}
+
+	@Test
+	public void pipeCompare() {
+		Jedis redis = new Jedis("127.0.0.1", 6379);
+//		redis.auth("12345678");//授权密码 对应redis.conf的requirepass密码
+		Map<String, String> data = new HashMap<String, String>();
+//		redis.select(8);//使用第8个库
+//		redis.flushDB();//清空第8个库所有数据
+		// hmset
+		long start = System.currentTimeMillis();
+		// 直接hmset
+		for (int i = 0; i < 10000; i++) {
+			data.clear();  //清空map
+			data.put("k_" + i, "v_" + i);
+			redis.hmset("key_" + i, data); //循环执行10000条数据插入redis
+		}
+		long end = System.currentTimeMillis();
+		System.out.println("    共插入:[" + redis.dbSize() + "]条 .. ");
+		System.out.println("1,未使用PIPE批量设值耗时" + (end - start) / 1000 + "秒..");
+		redis.select(8);
+		redis.flushDB();
+		// 使用pipeline hmset
+		Pipeline pipe = redis.pipelined();
+		start = System.currentTimeMillis();
+		//
+		for (int i = 0; i < 10000; i++) {
+			data.clear();
+			data.put("k_" + i, "v_" + i);
+			pipe.hmset("key_" + i, data); //将值封装到PIPE对象，此时并未执行，还停留在客户端
+		}
+		pipe.sync(); //将封装后的PIPE一次性发给redis
+		end = System.currentTimeMillis();
+		System.out.println("    PIPE共插入:[" + redis.dbSize() + "]条 .. ");
+		System.out.println("2,使用PIPE批量设值耗时" + (end - start) / 1000 + "秒 ..");
+//--------------------------------------------------------------------------------------------------
+		// hmget
+		Set<String> keys = redis.keys("key_*"); //将上面设值所有结果键查询出来
+		// 直接使用Jedis hgetall
+		start = System.currentTimeMillis();
+		Map<String, Map<String, String>> result = new HashMap<String, Map<String, String>>();
+		for (String key : keys) {
+			//此处keys根据以上的设值结果，共有10000个，循环10000次
+			result.put(key, redis.hgetAll(key)); //使用redis对象根据键值去取值，将结果放入result对象
+		}
+		end = System.currentTimeMillis();
+		System.out.println("    共取值:[" + redis.dbSize() + "]条 .. ");
+		System.out.println("3,未使用PIPE批量取值耗时 " + (end - start) / 1000 + "秒 ..");
+
+		// 使用pipeline hgetall
+		result.clear();
+		start = System.currentTimeMillis();
+		for (String key : keys) {
+			pipe.hgetAll(key); //使用PIPE封装需要取值的key,此时还停留在客户端，并未真正执行查询请求
+		}
+		pipe.sync();  //提交到redis进行查询
+
+		end = System.currentTimeMillis();
+		System.out.println("    PIPE共取值:[" + redis.dbSize() + "]条 .. ");
+		System.out.println("4,使用PIPE批量取值耗时" + (end - start) / 1000 + "秒 ..");
+
+		redis.disconnect();
+	}
+
 
 }
 

@@ -1,8 +1,9 @@
 package Compare;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
-public class Person implements Serializable, Comparable<Person> {//实体
+public class Person implements Serializable, Comparable<Person>, Comparator<Person> {//实体
 
 	/**
 	 *
@@ -14,6 +15,9 @@ public class Person implements Serializable, Comparable<Person> {//实体
 	private Integer age;
 	private String school;
 	private String[] hobby;
+
+	public Person() {
+	}
 
 	public Person(Integer age) {
 		this.age = age;
@@ -85,5 +89,10 @@ public class Person implements Serializable, Comparable<Person> {//实体
 	@Override
 	public String toString() {
 		return "Person{" + "sex=" + sex + ", age=" + age + '}';
+	}
+
+	@Override
+	public int compare(Person o1, Person o2) {
+		return o1.getAge().equals(o2.getAge()) ? o1.getAge() - o2.getSex() : o1.getAge() - o2.getAge();
 	}
 }

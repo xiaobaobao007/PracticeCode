@@ -5,6 +5,7 @@ import NIO.PB.HelloWorld.Helloworld.HelloRequest;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
+import java.util.Arrays;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.googlecode.protobuf.format.JsonFormat;
@@ -73,5 +74,36 @@ public class Main {
 		System.out.println(builder.getInt32MapMap());
 		builder.putInt32Map(2, 3);
 		System.out.println(builder.getInt32MapMap());
+	}
+
+	@Test
+	public void sint() {
+		Helloworld.allValue.Builder a = Helloworld.allValue.newBuilder();
+		a.setSint32Value(0);
+		System.out.println(Arrays.toString(a.build().toByteArray()));
+
+		Helloworld.allValue.Builder b = Helloworld.allValue.newBuilder();
+		b.setSint32Value(1);
+		System.out.println(Arrays.toString(b.build().toByteArray()));
+
+		Helloworld.allValue.Builder c = Helloworld.allValue.newBuilder();
+		c.setSint32Value(-1);
+		System.out.println(Arrays.toString(c.build().toByteArray()));
+	}
+
+	@Test
+	public void uint() {
+		int test = -1;
+		Helloworld.allValue.Builder a = Helloworld.allValue.newBuilder();
+		a.setUint32Value(test);
+		System.out.println(Arrays.toString(a.build().toByteArray()));
+
+		Helloworld.allValue.Builder b = Helloworld.allValue.newBuilder();
+		b.setSint32Value(test);
+		System.out.println(Arrays.toString(b.build().toByteArray()));
+
+		Helloworld.allValue.Builder c = Helloworld.allValue.newBuilder();
+		c.setInt32Value(test);
+		System.out.println(Arrays.toString(c.build().toByteArray()));
 	}
 }

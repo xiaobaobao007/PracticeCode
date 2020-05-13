@@ -169,7 +169,6 @@ public class JedisDemoTest {
 		cluster.set("key1", "1000");
 		System.out.println(cluster.get("key1"));
 
-
 		cluster.close();
 	}
 

@@ -28,7 +28,7 @@ public class ConcurrentHashMapTest implements Runnable {
 		Random random = new Random();
 		try {
 			while (true) {
-				Thread.sleep(1000);
+				Thread.sleep(2000);
 				int i = random.nextInt(10);
 				Integer value = map.getOrDefault(i, 0);
 				map.put(i, value + 1);

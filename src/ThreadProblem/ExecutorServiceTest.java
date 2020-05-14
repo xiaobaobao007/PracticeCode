@@ -1,5 +1,6 @@
 package ThreadProblem;
 
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
@@ -12,7 +13,7 @@ public class ExecutorServiceTest {
 	}
 
 	public static void moreThread() {
-		java.util.concurrent.ExecutorService exe = Executors.newScheduledThreadPool(10);
+		ExecutorService exe = Executors.newScheduledThreadPool(10);
 		try {
 			int threadNum = 0;
 			for (int i = 0; i < 10; i++) {

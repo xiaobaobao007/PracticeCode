@@ -24,9 +24,6 @@ public class ReferenceTest {
 	public void FinalReferenceTest() {
 		/**
 		 * 可达性分析
-		 *
-		 *
-		 *
 		 */
 	}
 
@@ -36,50 +33,65 @@ public class ReferenceTest {
 	@Test
 	public void SoftReferenceTest() {
 		System.out.println("↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓软引用↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
-		List<SoftReference> list = new ArrayList<>();
+		List<SoftReference<byte[]>> list = new ArrayList<>();
 		for (int i = 0; i < 10; i++) {
-			byte[] buff = new byte[1024 * 300];
+			byte[] buff = new byte[1024 * 1024];
 			SoftReference<byte[]> sr = new SoftReference<>(buff);
 			list.add(sr);
 		}
-		System.gc();
+		for (int i = 0; i < 10; i++) {
+			System.gc();
+		}
 		int aliveNums = 0;
-		for (SoftReference softReference : list) {
+		for (SoftReference<byte[]> softReference : list) {
 			aliveNums++;
 			if (softReference.get() != null) {
-				System.out.println(aliveNums);//只会输出10
+				System.out.println(aliveNums);//不会全部输出
 			}
 		}
 	}
 
 	/**
 	 * 弱引用：只要GC就会清除
+	 * java.lang.Object@3d82c5f3
+	 * null
+	 * null
+	 * java.lang.ref.WeakReference@2b05039f
 	 */
 	@Test
 	public void WeakReferenceTest() {
 		System.out.println("↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓弱引用↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
-		MainTest obj = new MainTest();
-		WeakReference sf = new WeakReference(obj);
-		System.out.println("是否被回收" + sf.get());
-		obj = null;
-		System.out.println("是否被回收" + sf.get());
-		System.gc();
-		System.out.println("是否被回收" + sf.get());
+		Object obj = new Object();
+		ReferenceQueue<Object> queue = new ReferenceQueue<>();
+		WeakReference<Object> weak = new WeakReference<>(obj, queue);
+		System.out.println(queue.poll());
+		System.out.println(weak.get());
+		for (int i = 0; i < 20; i++) {
+			System.gc();
+		}
+		System.out.println(queue.poll());
+		System.out.println(weak.get());
 	}
 
+	/**
+	 * null
+	 * null
+	 * null
+	 * java.lang.ref.PhantomReference@3d82c5f3
+	 */
 	@Test
 	public void PhantomReference() {
 		System.out.println("↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓虚引用↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
-		MainTest obj = new MainTest();
-		ReferenceQueue referenceQueue = new ReferenceQueue<>();
-		PhantomReference sf = new PhantomReference<>(obj, referenceQueue);
-		System.out.println(referenceQueue.poll());
-		System.out.println("是否被回收" + sf.get());
+		Object obj = new Object();
+		ReferenceQueue<Object> queue = new ReferenceQueue<>();
+		PhantomReference<Object> phantom = new PhantomReference<>(obj, queue);
+		System.out.println(queue.poll());
+		System.out.println(phantom.get());
 		obj = null;
-		System.out.println(referenceQueue.poll());
-		System.out.println("是否被回收" + sf.get());
-		System.gc();
-		System.out.println(referenceQueue.poll());
-		System.out.println("是否被回收" + sf.get());
+		for (int i = 0; i < 20; i++) {
+			System.gc();
+		}
+		System.out.println(queue.poll());
+		System.out.println(phantom.get());
 	}
 }

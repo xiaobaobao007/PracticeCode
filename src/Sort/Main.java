@@ -2,7 +2,6 @@ package Sort;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -29,23 +28,28 @@ public class Main {
 
 //		main.write();
 		main.read();
-//
-		//交换排序
-//		main.bubbleSort("冒泡   排序");
-//		main.cocktailSort("鸡尾酒 排序");
+
+		//双重循环单方向遍历
+		main.bubbleSort("冒泡   排序");
+		//双重循环，内层循环两个方向遍历
+		main.cocktailSort("鸡尾酒 排序");
+		//递归，根据锚点分为两堆，再分别排序
 		main.quicklySort("快速   排序");
-		//插入排序
-//		main.insertionSort("插入   排序");
-//		main.shellSort("希尔   排序");
-//		//选择排序
-//		main.selectionSort("选择   排序");
-//		//归并排序
-//		main.mergeSort("归并   排序");
-//		//非比较排序
+		//遍历元素，找其合适的位置
+		main.insertionSort("插入   排序");
+		//3n+1的滑窗排序
+		main.shellSort("希尔   排序");
+		//选择最值进行排序
+		main.selectionSort("选择   排序");
+		//分成小堆，再一一合并
+		main.mergeSort("归并   排序");
+		//找桶
 //		main.countingSort("计数   排序");
-//		//鬼畜排序
-////        main.sleepSort("睡觉   排序");
-//		main.heapSort("堆     排序");
+		// 大顶堆
+		main.heapSort("堆     排序");
+		//定时输出
+//   	main.sleepSort("睡觉   排序");
+		//猴子排序，随机打乱
 	}
 
 	/**
@@ -271,10 +275,9 @@ public class Main {
 				array[i++] = nums[y++];
 			}
 		}
-		for (int j = left; j < right; j++) {
-			nums[j] = array[j - left];
+		if (right - left >= 0) {
+			System.arraycopy(array, 0, nums, left, right - left);
 		}
-
 	}
 
 	/**
@@ -307,7 +310,7 @@ public class Main {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				synchronized (num) {
+				synchronized (this) {
 					System.out.println(num);
 				}
 			}).start();
@@ -327,11 +330,9 @@ public class Main {
 		for (int i = nums.length / 2 - 1; i >= 0; i--) {
 			judgeHeap(nums, i, nums.length);
 		}
-		System.out.println(Arrays.toString(nums));
 		for (int j = nums.length - 1; j > 0; j--) {
 			swap(nums, 0, j);
 			judgeHeap(nums, 0, j);
-			System.out.println(Arrays.toString(nums));
 		}
 		sout(name, nums, time);
 	}
@@ -423,9 +424,8 @@ public class Main {
 			return;
 		}
 		if (isTest) {
-//			testNums = new int[]{27, 1, 2, 10, 4, 20, 6, 7, 37, 20, 38, 25, 15, 12, 32, 3, 14, 15, 13, 31, 30, 9, 21, 22,
-//					23, 30, 11, 26, 39, 25, 35, 24, 19, 33, 5, 18, 36, 8, 29, 17};
-			testNums = new int[]{5, 7, 6};
+			testNums = new int[]{27, 1, 2, 10, 4, 20, 6, 7, 37, 20, 38, 25, 15, 12, 32, 3, 14, 15, 13, 31, 30, 9, 21, 22,
+					23, 30, 11, 26, 39, 25, 35, 24, 19, 33, 5, 18, 36, 8, 29, 17};
 		} else {
 			BufferedReader in = new BufferedReader(new FileReader(path));
 			String str = in.readLine();

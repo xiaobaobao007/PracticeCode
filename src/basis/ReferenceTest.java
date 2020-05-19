@@ -59,39 +59,34 @@ public class ReferenceTest {
 	 * java.lang.ref.WeakReference@2b05039f
 	 */
 	@Test
-	public void WeakReferenceTest() {
+	public void WeakReferenceTest() throws InterruptedException {
 		System.out.println("↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓弱引用↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
 		Object obj = new Object();
 		ReferenceQueue<Object> queue = new ReferenceQueue<>();
 		WeakReference<Object> weak = new WeakReference<>(obj, queue);
-		System.out.println(queue.poll());
-		System.out.println(weak.get());
+		System.out.println(queue.poll());//null
+		System.out.println(weak.get());//not null
+		obj = null;
 		for (int i = 0; i < 20; i++) {
 			System.gc();
 		}
-		System.out.println(queue.poll());
-		System.out.println(weak.get());
+		System.out.println(queue.poll());//not null
+		System.out.println(weak.get());//null
 	}
 
-	/**
-	 * null
-	 * null
-	 * null
-	 * java.lang.ref.PhantomReference@3d82c5f3
-	 */
 	@Test
 	public void PhantomReference() {
 		System.out.println("↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓虚引用↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
 		Object obj = new Object();
 		ReferenceQueue<Object> queue = new ReferenceQueue<>();
 		PhantomReference<Object> phantom = new PhantomReference<>(obj, queue);
-		System.out.println(queue.poll());
-		System.out.println(phantom.get());
+		System.out.println(queue.poll());//null
+		System.out.println(phantom.get());//null
 		obj = null;
 		for (int i = 0; i < 20; i++) {
 			System.gc();
 		}
-		System.out.println(queue.poll());
-		System.out.println(phantom.get());
+		System.out.println(queue.poll());//not null
+		System.out.println(phantom.get());//null
 	}
 }

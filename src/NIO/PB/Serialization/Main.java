@@ -92,18 +92,12 @@ public class Main {
 	}
 
 	@Test
-	public void uint() {
-		int test = -1;
+	public void oneof() {
 		Helloworld.allValue.Builder a = Helloworld.allValue.newBuilder();
-		a.setUint32Value(test);
-		System.out.println(Arrays.toString(a.build().toByteArray()));
-
-		Helloworld.allValue.Builder b = Helloworld.allValue.newBuilder();
-		b.setSint32Value(test);
-		System.out.println(Arrays.toString(b.build().toByteArray()));
-
-		Helloworld.allValue.Builder c = Helloworld.allValue.newBuilder();
-		c.setInt32Value(test);
-		System.out.println(Arrays.toString(c.build().toByteArray()));
+		System.out.println(a.getTestOneofCase());
+		a.setOne1("111");
+		System.out.println(a.getTestOneofCase());
+		a.setOne2("222");
+		System.out.println(a.getTestOneofCase());
 	}
 }

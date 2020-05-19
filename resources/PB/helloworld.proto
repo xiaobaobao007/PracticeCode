@@ -56,8 +56,11 @@ message allValue {
     map<int32, int32> int32Map = 21;
     Any any = 18; // Any对象
 
+    //最多只有一个值可以被设置
     oneof test_oneof {
         string one1 = 19;
         string one2 = 20;
     }
+
+    repeated int32 intList = 22;
 }

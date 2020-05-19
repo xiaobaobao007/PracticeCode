@@ -2,6 +2,7 @@ package Sort;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -26,30 +27,29 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		Main main = new Main();
 
-		main.write();
+//		main.write();
 		main.read();
-
+//
 		//交换排序
-		main.bubbleSort("冒泡   排序");
-		main.cocktailSort("鸡尾酒 排序");
+//		main.bubbleSort("冒泡   排序");
+//		main.cocktailSort("鸡尾酒 排序");
 		main.quicklySort("快速   排序");
 		//插入排序
-		main.insertionSort("插入   排序");
-		main.shellSort("希尔   排序");
-		//选择排序
-		main.selectionSort("选择   排序");
-		//归并排序
-		main.mergeSort("归并   排序");
-		//非比较排序
-		main.countingSort("计数   排序");
-		//鬼畜排序
-//        main.sleepSort("睡觉   排序");
+//		main.insertionSort("插入   排序");
+//		main.shellSort("希尔   排序");
+//		//选择排序
+//		main.selectionSort("选择   排序");
+//		//归并排序
+//		main.mergeSort("归并   排序");
+//		//非比较排序
+//		main.countingSort("计数   排序");
+//		//鬼畜排序
+////        main.sleepSort("睡觉   排序");
+//		main.heapSort("堆     排序");
 	}
 
 	/**
 	 * 冒泡排序
-	 *
-	 * @param name
 	 */
 	private void bubbleSort(String name) {
 		findTimes = 0;
@@ -60,10 +60,8 @@ public class Main {
 			for (int j = i + 1; j < nums.length; j++) {
 				findTimes++;
 				if (nums[i] > nums[j]) {
-					nums[i] = nums[i] ^ nums[j];
-					nums[j] = nums[i] ^ nums[j];
-					nums[i] = nums[i] ^ nums[j];
-					changeTimes++;
+					swap(nums, i, j);
+
 				}
 			}
 		}
@@ -72,8 +70,6 @@ public class Main {
 
 	/**
 	 * 鸡尾酒排序
-	 *
-	 * @param name
 	 */
 	private void cocktailSort(String name) {
 		findTimes = 0;
@@ -84,19 +80,15 @@ public class Main {
 			for (int j = i; j < nums.length - i - 1; j++) {
 				findTimes++;
 				if (nums[j] > nums[j + 1]) {
-					changeTimes++;
-					nums[j + 1] = nums[j + 1] ^ nums[j];
-					nums[j] = nums[j + 1] ^ nums[j];
-					nums[j + 1] = nums[j + 1] ^ nums[j];
+
+					swap(nums, j + 1, j);
 				}
 			}
 			for (int j = nums.length - i - 2; j > i; j--) {
 				findTimes++;
 				if (nums[j - 1] > nums[j]) {
-					changeTimes++;
-					nums[j - 1] = nums[j - 1] ^ nums[j];
-					nums[j] = nums[j - 1] ^ nums[j];
-					nums[j - 1] = nums[j - 1] ^ nums[j];
+
+					swap(nums, j - 1, j);
 				}
 			}
 		}
@@ -105,8 +97,6 @@ public class Main {
 
 	/**
 	 * 选取锚点左边比锚点小右边比锚点大
-	 *
-	 * @param name
 	 */
 	private void quicklySort(String name) {
 		findTimes = 0;
@@ -121,9 +111,9 @@ public class Main {
 		if (min >= max) {
 			return;
 		}
+		int point = nums[min];
 		int i = min;
 		int j = max;
-		int point = nums[i];
 		while (i < j) {
 			while (i < j && nums[j] >= point) {
 				findTimes++;
@@ -134,10 +124,7 @@ public class Main {
 				i++;
 			}
 			if (i < j) {
-				changeTimes++;
-				nums[j] = nums[i] ^ nums[j];
-				nums[i] = nums[i] ^ nums[j];
-				nums[j] = nums[i] ^ nums[j];
+				swap(nums, i, j);
 			}
 		}
 		nums[min] = nums[i];
@@ -149,8 +136,6 @@ public class Main {
 	/**
 	 * 插入排序
 	 * 从后往前比较插入
-	 *
-	 * @param name
 	 */
 	private void insertionSort(String name) {
 		findTimes = 0;
@@ -175,8 +160,6 @@ public class Main {
 
 	/**
 	 * 增量排列，序列：3b+1
-	 *
-	 * @param name
 	 */
 	private void shellSort(String name) {
 		findTimes = 0;
@@ -214,8 +197,6 @@ public class Main {
 	/**
 	 * 选择排序
 	 * 找到最值进行排序
-	 *
-	 * @param name
 	 */
 	private void selectionSort(String name) {
 		findTimes = 0;
@@ -233,18 +214,14 @@ public class Main {
 			if (minIndex == i) {
 				continue;
 			}
-			nums[i] = nums[i] ^ nums[minIndex];
-			nums[minIndex] = nums[i] ^ nums[minIndex];
-			nums[i] = nums[i] ^ nums[minIndex];
-			changeTimes++;
+			swap(nums, i, minIndex);
+
 		}
 		sout(name, nums, time);
 	}
 
 	/**
 	 * 归并排序
-	 *
-	 * @param name
 	 */
 	private void mergeSort(String name) {
 		findTimes = 0;
@@ -261,9 +238,7 @@ public class Main {
 		}
 		if (left + 1 == right) {
 			if (right != nums.length && nums[left] > nums[right]) {
-				nums[left] = nums[left] ^ nums[right];
-				nums[right] = nums[left] ^ nums[right];
-				nums[left] = nums[left] ^ nums[right];
+				swap(nums, right, left);
 			}
 			return;
 		}
@@ -275,10 +250,10 @@ public class Main {
 		while (true) {
 			if (x == middle && y == right) {
 				break;
-			} else if (x == middle && y != right) {
+			} else if (x == middle) {
 				findTimes = ++changeTimes;
 				array[i++] = nums[y++];
-			} else if (x != middle && y == right) {
+			} else if (y == right) {
 				findTimes = ++changeTimes;
 				array[i++] = nums[x++];
 			} else if (nums[x] > nums[y]) {
@@ -301,8 +276,6 @@ public class Main {
 
 	/**
 	 * 计数算法
-	 *
-	 * @param name
 	 */
 	private void countingSort(String name) {
 		findTimes = 0;
@@ -311,15 +284,13 @@ public class Main {
 		long time = System.nanoTime();
 		int[] counts = new int[nums.length];
 		for (int i = 0; i < nums.length; i++) {
-			counts[nums[i]] = 1;
+			counts[nums[i]]++;
 		}
-		sout(name, nums, time);
+		soutByCount(name, counts, time);
 	}
 
 	/**
-	 * 计数算法
-	 *
-	 * @param name
+	 * 睡眠算法
 	 */
 	private void sleepSort(String name) {
 		findTimes = 0;
@@ -341,11 +312,75 @@ public class Main {
 		sout(name, nums, time);
 	}
 
+	/**
+	 * 堆排序
+	 */
+	public void heapSort(String name) {
+		findTimes = 0;
+		changeTimes = 0;
+		int[] nums = testNums.clone();
+		long time = System.nanoTime();
+		//从最后一个非叶子节点开始遍历寻找是否满足上大于下的问题
+		for (int i = nums.length / 2 - 1; i >= 0; i--) {
+			judgeHeap(nums, i, nums.length);
+		}
+		System.out.println(Arrays.toString(nums));
+		for (int j = nums.length - 1; j > 0; j--) {
+			swap(nums, 0, j);
+			judgeHeap(nums, 0, j);
+			System.out.println(Arrays.toString(nums));
+		}
+		sout(name, nums, time);
+	}
+
+	public void judgeHeap(int[] array, int i, int j) {
+		int temp = array[i];
+		for (int k = i * 2 + 1; k < j; k = k * 2 + 1) {
+			findTimes++;
+			//找到当前i节点下的两个最大的节点
+			if (k + 1 < j && array[k] < array[k + 1]) {
+				k++;
+			}
+			//更大交换
+			if (array[k] > temp) {
+				array[i] = array[k];
+				i = k;
+			} else {
+				break;
+			}
+		}
+		array[i] = temp;
+	}
+
+	public void swap(int[] array, int i, int j) {
+		changeTimes++;
+		array[i] = array[i] ^ array[j];
+		array[j] = array[i] ^ array[j];
+		array[i] = array[i] ^ array[j];
+	}
+
+
 	private void sout(String name, int[] nums, long time) {
 		System.out.printf("%s：%15fms,%13d次查找,%13d次交换,", name, (System.nanoTime() - time) * 1.0 / 1000000.0, findTimes, changeTimes);
 		if (isTest) {
 			for (int num : nums) {
 				System.out.printf("%3d", num);
+			}
+		}
+		System.out.println();
+	}
+
+	private void soutByCount(String name, int[] nums, long time) {
+		System.out.printf("%s：%15fms,%13d次查找,%13d次交换,", name, (System.nanoTime() - time) * 1.0 / 1000000.0, findTimes, changeTimes);
+		if (isTest) {
+			for (int i = 0; i < nums.length; i++) {
+				int num = nums[i];
+				if (num <= 0) {
+					continue;
+				}
+				while (num-- > 0) {
+					System.out.printf("%3d", i);
+				}
 			}
 		}
 		System.out.println();
@@ -360,9 +395,7 @@ public class Main {
 		for (int i = 0; i < length / 2; i++) {
 			int a = random.nextInt(length);
 			int b = random.nextInt(length);
-			num[a] = num[a] ^ num[b];
-			num[b] = num[a] ^ num[b];
-			num[a] = num[a] ^ num[b];
+			swap(num, a, b);
 		}
 		if (path == null || "".equals(path)) {
 			testNums = num;
@@ -383,22 +416,24 @@ public class Main {
 	}
 
 	private void read() throws IOException {
-		if (path == null || "".equals(path)) {
+		if (!isTest && (path == null || "".equals(path))) {
 			return;
 		}
 		if (isTest) {
-			testNums = new int[]{6, 10, 11, 15, 8, 0, 9, 12, 18, 19, 5, 7, 3, 1, 2, 16, 17, 4, 13, 14};
-			System.out.printf("排序%d个随机数\n", testNums.length);
-			return;
+//			testNums = new int[]{27, 1, 2, 10, 4, 20, 6, 7, 37, 20, 38, 25, 15, 12, 32, 3, 14, 15, 13, 31, 30, 9, 21, 22,
+//					23, 30, 11, 26, 39, 25, 35, 24, 19, 33, 5, 18, 36, 8, 29, 17};
+			testNums = new int[]{8, 7, 9, 6, 5};
+		} else {
+			BufferedReader in = new BufferedReader(new FileReader(path));
+			String str = in.readLine();
+			String[] split = str.split(",");
+			testNums = new int[split.length];
+			for (int i = 0; i < split.length; i++) {
+				testNums[i] = Integer.parseInt(split[i]);
+			}
+			in.close();
 		}
-		BufferedReader in = new BufferedReader(new FileReader(path));
-		String str = in.readLine();
-		String[] split = str.split(",");
-		testNums = new int[split.length];
-		for (int i = 0; i < split.length; i++) {
-			testNums[i] = Integer.parseInt(split[i]);
-		}
-		System.out.printf("排序%d个随机数\n", split.length);
-		in.close();
+		length = testNums.length;
+		System.out.printf("排序%d个随机数\n", length);
 	}
 }

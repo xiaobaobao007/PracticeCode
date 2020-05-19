@@ -127,8 +127,11 @@ public class Main {
 				swap(nums, i, j);
 			}
 		}
-		nums[min] = nums[i];
-		nums[i] = point;
+		if (i != min) {
+			changeTimes++;
+			nums[min] = nums[i];
+			nums[i] = point;
+		}
 		quickly(nums, min, i - 1);
 		quickly(nums, i + 1, max);
 	}
@@ -422,7 +425,7 @@ public class Main {
 		if (isTest) {
 //			testNums = new int[]{27, 1, 2, 10, 4, 20, 6, 7, 37, 20, 38, 25, 15, 12, 32, 3, 14, 15, 13, 31, 30, 9, 21, 22,
 //					23, 30, 11, 26, 39, 25, 35, 24, 19, 33, 5, 18, 36, 8, 29, 17};
-			testNums = new int[]{8, 7, 9, 6, 5};
+			testNums = new int[]{5, 7, 6};
 		} else {
 			BufferedReader in = new BufferedReader(new FileReader(path));
 			String str = in.readLine();

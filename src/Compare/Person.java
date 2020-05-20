@@ -11,8 +11,8 @@ public class Person implements Serializable, Comparable<Person>, Comparator<Pers
 	private static final long serialVersionUID = 3193754045080382621L;
 
 	private String name;
-	private Integer sex;
 	private Integer age;
+	private Integer sex;
 	private String school;
 	private String[] hobby;
 
@@ -78,21 +78,16 @@ public class Person implements Serializable, Comparable<Person>, Comparator<Pers
 
 	@Override
 	public int compareTo(Person o) {
-		if (o.getAge() > this.getAge()) {
-			return 1;
-		} else if (o.getAge() < this.getAge()) {
-			return -1;
-		}
-		return o.getSex() - this.getSex() > 0 ? 1 : 0;
+		return this.getAge().equals(o.getAge()) ? this.getSex() - o.getSex() : this.getAge() - o.getAge();
 	}
 
 	@Override
 	public String toString() {
-		return "Person{" + "sex=" + sex + ", age=" + age + '}';
+		return "{" + "age=" + age + ",sex=" + sex + '}';
 	}
 
 	@Override
 	public int compare(Person o1, Person o2) {
-		return o1.getAge().equals(o2.getAge()) ? o1.getAge() - o2.getSex() : o1.getAge() - o2.getAge();
+		return o1.getAge().equals(o2.getAge()) ? o1.getSex() - o2.getSex() : o1.getAge() - o2.getAge();
 	}
 }

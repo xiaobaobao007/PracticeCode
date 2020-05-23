@@ -8,6 +8,7 @@ import java.util.Random;
 /**
  * @author xiaobaobao
  * @date 2019/6/24 9:36
+ * 都能使用lambdas
  */
 public class Main {
 	public static void main(String[] args) {
@@ -33,6 +34,7 @@ public class Main {
 
 		//利用comparator-compare
 		personList.sort(new Person());
+//		personList.sort((a, b) -> a.getAge() - b.getAge());
 		sout(personList);
 		swap(personList);
 

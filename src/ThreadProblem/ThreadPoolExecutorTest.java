@@ -13,6 +13,7 @@ public class ThreadPoolExecutorTest {
 //        ExecutorService threadPool = Executors.newFixedThreadPool(2);
 //        ExecutorService threadPool = Executors.newCachedThreadPool();
 		ExecutorService threadPool = Executors.newSingleThreadExecutor();
+		String s="♥，👈，👉";
 		for (int i = 1; i < 5; i++) {
 			final int taskID = i;
 			threadPool.execute(() -> {

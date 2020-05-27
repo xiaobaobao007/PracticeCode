@@ -2,12 +2,10 @@ package basis;
 
 import org.junit.Test;
 
-import java.lang.ref.PhantomReference;
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.SoftReference;
-import java.lang.ref.WeakReference;
+import java.lang.ref.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.WeakHashMap;
 
 /**
  * -Xmx2m -Xms2m
@@ -88,5 +86,11 @@ public class ReferenceTest {
 		}
 		System.out.println(queue.poll());//not null
 		System.out.println(phantom.get());//null
+	}
+
+	@Test
+	public void WeakHashMap() {
+		//java.util
+		WeakHashMap<Integer, Integer> weakHashMap = new WeakHashMap<>();
 	}
 }

@@ -2063,6 +2063,19 @@ public final class Helloworld {
     com.google.protobuf.ByteString
         getOne2Bytes();
 
+    /**
+     * <code>repeated int32 intList = 22;</code>
+     */
+    java.util.List<java.lang.Integer> getIntListList();
+    /**
+     * <code>repeated int32 intList = 22;</code>
+     */
+    int getIntListCount();
+    /**
+     * <code>repeated int32 intList = 22;</code>
+     */
+    int getIntList(int index);
+
     public NIO.PB.HelloWorld.Helloworld.allValue.TestOneofCase getTestOneofCase();
   }
   /**
@@ -2094,6 +2107,7 @@ public final class Helloworld {
       stringValue_ = "";
       bytesValue_ = com.google.protobuf.ByteString.EMPTY;
       enumValue_ = 0;
+      intList_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -2253,6 +2267,27 @@ public final class Helloworld {
                   int32Map__.getKey(), int32Map__.getValue());
               break;
             }
+            case 176: {
+              if (!((mutable_bitField0_ & 0x00200000) == 0x00200000)) {
+                intList_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00200000;
+              }
+              intList_.add(input.readInt32());
+              break;
+            }
+            case 178: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00200000) == 0x00200000) && input.getBytesUntilLimit() > 0) {
+                intList_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00200000;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                intList_.add(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -2268,6 +2303,9 @@ public final class Helloworld {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00200000) == 0x00200000)) {
+          intList_ = java.util.Collections.unmodifiableList(intList_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -2894,6 +2932,29 @@ public final class Helloworld {
       }
     }
 
+    public static final int INTLIST_FIELD_NUMBER = 22;
+    private java.util.List<java.lang.Integer> intList_;
+    /**
+     * <code>repeated int32 intList = 22;</code>
+     */
+    public java.util.List<java.lang.Integer>
+        getIntListList() {
+      return intList_;
+    }
+    /**
+     * <code>repeated int32 intList = 22;</code>
+     */
+    public int getIntListCount() {
+      return intList_.size();
+    }
+    /**
+     * <code>repeated int32 intList = 22;</code>
+     */
+    public int getIntList(int index) {
+      return intList_.get(index);
+    }
+    private int intListMemoizedSerializedSize = -1;
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2908,6 +2969,7 @@ public final class Helloworld {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      getSerializedSize();
       if (doubleValue_ != 0D) {
         output.writeDouble(1, doubleValue_);
       }
@@ -2977,6 +3039,13 @@ public final class Helloworld {
           internalGetInt32Map(),
           Int32MapDefaultEntryHolder.defaultEntry,
           21);
+      if (getIntListList().size() > 0) {
+        output.writeUInt32NoTag(178);
+        output.writeUInt32NoTag(intListMemoizedSerializedSize);
+      }
+      for (int i = 0; i < intList_.size(); i++) {
+        output.writeInt32NoTag(intList_.get(i));
+      }
       unknownFields.writeTo(output);
     }
 
@@ -3079,6 +3148,20 @@ public final class Helloworld {
         size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(21, int32Map__);
       }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < intList_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(intList_.get(i));
+        }
+        size += dataSize;
+        if (!getIntListList().isEmpty()) {
+          size += 2;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        intListMemoizedSerializedSize = dataSize;
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -3139,6 +3222,8 @@ public final class Helloworld {
         result = result && getAny()
             .equals(other.getAny());
       }
+      result = result && getIntListList()
+          .equals(other.getIntListList());
       result = result && getTestOneofCase().equals(
           other.getTestOneofCase());
       if (!result) return false;
@@ -3216,6 +3301,10 @@ public final class Helloworld {
       if (hasAny()) {
         hash = (37 * hash) + ANY_FIELD_NUMBER;
         hash = (53 * hash) + getAny().hashCode();
+      }
+      if (getIntListCount() > 0) {
+        hash = (37 * hash) + INTLIST_FIELD_NUMBER;
+        hash = (53 * hash) + getIntListList().hashCode();
       }
       switch (testOneofCase_) {
         case 19:
@@ -3428,6 +3517,8 @@ public final class Helloworld {
           any_ = null;
           anyBuilder_ = null;
         }
+        intList_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00200000);
         testOneofCase_ = 0;
         testOneof_ = null;
         return this;
@@ -3489,6 +3580,11 @@ public final class Helloworld {
         if (testOneofCase_ == 20) {
           result.testOneof_ = testOneof_;
         }
+        if (((bitField0_ & 0x00200000) == 0x00200000)) {
+          intList_ = java.util.Collections.unmodifiableList(intList_);
+          bitField0_ = (bitField0_ & ~0x00200000);
+        }
+        result.intList_ = intList_;
         result.bitField0_ = to_bitField0_;
         result.testOneofCase_ = testOneofCase_;
         onBuilt();
@@ -3594,6 +3690,16 @@ public final class Helloworld {
             other.internalGetInt32Map());
         if (other.hasAny()) {
           mergeAny(other.getAny());
+        }
+        if (!other.intList_.isEmpty()) {
+          if (intList_.isEmpty()) {
+            intList_ = other.intList_;
+            bitField0_ = (bitField0_ & ~0x00200000);
+          } else {
+            ensureIntListIsMutable();
+            intList_.addAll(other.intList_);
+          }
+          onChanged();
         }
         switch (other.getTestOneofCase()) {
           case ONE1: {
@@ -4696,6 +4802,72 @@ public final class Helloworld {
         onChanged();
         return this;
       }
+
+      private java.util.List<java.lang.Integer> intList_ = java.util.Collections.emptyList();
+      private void ensureIntListIsMutable() {
+        if (!((bitField0_ & 0x00200000) == 0x00200000)) {
+          intList_ = new java.util.ArrayList<java.lang.Integer>(intList_);
+          bitField0_ |= 0x00200000;
+         }
+      }
+      /**
+       * <code>repeated int32 intList = 22;</code>
+       */
+      public java.util.List<java.lang.Integer>
+          getIntListList() {
+        return java.util.Collections.unmodifiableList(intList_);
+      }
+      /**
+       * <code>repeated int32 intList = 22;</code>
+       */
+      public int getIntListCount() {
+        return intList_.size();
+      }
+      /**
+       * <code>repeated int32 intList = 22;</code>
+       */
+      public int getIntList(int index) {
+        return intList_.get(index);
+      }
+      /**
+       * <code>repeated int32 intList = 22;</code>
+       */
+      public Builder setIntList(
+          int index, int value) {
+        ensureIntListIsMutable();
+        intList_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 intList = 22;</code>
+       */
+      public Builder addIntList(int value) {
+        ensureIntListIsMutable();
+        intList_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 intList = 22;</code>
+       */
+      public Builder addAllIntList(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureIntListIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, intList_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 intList = 22;</code>
+       */
+      public Builder clearIntList() {
+        intList_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00200000);
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4792,7 +4964,7 @@ public final class Helloworld {
       "loRequest\022\014\n\004name\030\001 \001(\t\"\035\n\nHelloReply\022\017\n" +
       "\007message\030\001 \001(\t\"C\n\005Frame\022\r\n\005reqId\030\001 \001(\003\022\014" +
       "\n\004type\030\002 \001(\005\022\017\n\007msgType\030\003 \001(\t\022\014\n\004data\030\004 " +
-      "\001(\014\"\233\005\n\010allValue\022\023\n\013doubleValue\030\001 \001(\001\022\022\n" +
+      "\001(\014\"\254\005\n\010allValue\022\023\n\013doubleValue\030\001 \001(\001\022\022\n" +
       "\nfloatValue\030\002 \001(\002\022\021\n\tboolValue\030\003 \001(\010\022\022\n\n" +
       "int32Value\030\004 \001(\005\022\022\n\nint64Value\030\005 \001(\003\022\023\n\013" +
       "uint32Value\030\006 \001(\r\022\023\n\013uint64Value\030\007 \001(\004\022\023" +
@@ -4805,13 +4977,13 @@ public final class Helloworld {
       "llValue.StringMapEntry\022,\n\010int32Map\030\025 \003(\013" +
       "2\032.PB.allValue.Int32MapEntry\022\024\n\003any\030\022 \001(" +
       "\0132\007.PB.Any\022\016\n\004one1\030\023 \001(\tH\000\022\016\n\004one2\030\024 \001(\t" +
-      "H\000\0320\n\016StringMapEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005val" +
-      "ue\030\002 \001(\t:\0028\001\032/\n\rInt32MapEntry\022\013\n\003key\030\001 \001" +
-      "(\005\022\r\n\005value\030\002 \001(\005:\0028\001\"$\n\tEnumValue\022\005\n\001a\020" +
-      "\000\022\005\n\001b\020\001\022\005\n\001c\020\001\032\002\020\001B\014\n\ntest_oneof29\n\007Gre" +
-      "eter\022.\n\010SayHello\022\020.PB.HelloRequest\032\016.PB." +
-      "HelloReply\"\000B\025\n\021NIO.PB.HelloWorldP\000b\006pro" +
-      "to3"
+      "H\000\022\017\n\007intList\030\026 \003(\005\0320\n\016StringMapEntry\022\013\n" +
+      "\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\032/\n\rInt32Ma" +
+      "pEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\005:\0028\001\"$" +
+      "\n\tEnumValue\022\005\n\001a\020\000\022\005\n\001b\020\001\022\005\n\001c\020\001\032\002\020\001B\014\n\n" +
+      "test_oneof29\n\007Greeter\022.\n\010SayHello\022\020.PB.H" +
+      "elloRequest\032\016.PB.HelloReply\"\000B\025\n\021NIO.PB." +
+      "HelloWorldP\000b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -4849,7 +5021,7 @@ public final class Helloworld {
     internal_static_PB_allValue_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PB_allValue_descriptor,
-        new java.lang.String[] { "DoubleValue", "FloatValue", "BoolValue", "Int32Value", "Int64Value", "Uint32Value", "Uint64Value", "Sint32Value", "Sint64Value", "Fixed32Value", "Fixed64Value", "Sfixed32Value", "Sfixed64Value", "StringValue", "BytesValue", "EnumValue", "StringMap", "Int32Map", "Any", "One1", "One2", "TestOneof", });
+        new java.lang.String[] { "DoubleValue", "FloatValue", "BoolValue", "Int32Value", "Int64Value", "Uint32Value", "Uint64Value", "Sint32Value", "Sint64Value", "Fixed32Value", "Fixed64Value", "Sfixed32Value", "Sfixed64Value", "StringValue", "BytesValue", "EnumValue", "StringMap", "Int32Map", "Any", "One1", "One2", "IntList", "TestOneof", });
     internal_static_PB_allValue_StringMapEntry_descriptor =
       internal_static_PB_allValue_descriptor.getNestedTypes().get(0);
     internal_static_PB_allValue_StringMapEntry_fieldAccessorTable = new

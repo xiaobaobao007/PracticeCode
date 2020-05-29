@@ -14,6 +14,25 @@ public class HashMapTest {
 		map.put(0, 100);
 		map.computeIfPresent(0, (k, v) -> v + 10);
 		System.out.println(map.get(0));
+
+		//对value存不存在分别计算
+		map.compute(1, (k, v) -> {
+			if (v == null) {
+				return 10;
+			} else {
+				return v + 1;
+			}
+		});
+		System.out.println(map.get(1));
+
+		map.compute(1, (k, v) -> {
+			if (v == null) {
+				return 10;
+			} else {
+				return v + 1;
+			}
+		});
+		System.out.println(map.get(1));
 	}
 
 }

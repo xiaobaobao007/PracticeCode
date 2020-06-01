@@ -11,9 +11,9 @@ public class ThreadLocalTest {
 
 	/**
 	 * get删除null expungeStaleEntry
-	 *
+	 * 向后搜索只要不为空，重置，遇到不在位置的重新计算。
+	 * <p>
 	 * set删除null replaceStaleEntry
-	 *
 	 */
 	public static ThreadLocal<Integer> threadLocal1 = new ThreadLocal<>();
 	public static ThreadLocal<Integer> threadLocal2 = new InheritableThreadLocal<>();
@@ -27,10 +27,7 @@ public class ThreadLocalTest {
 		//默认继承的
 		Thread thread = new MyThread();
 		thread.start();
-		System.out.println("main = " + threadLocal1.get());
-		System.out.println("main = " + threadLocal2.get());
 	}
-
 
 	static class MyThread extends Thread {
 		@Override

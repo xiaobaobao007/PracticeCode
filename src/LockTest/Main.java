@@ -1,6 +1,8 @@
 package LockTest;
 
 import java.util.Scanner;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author xiaobaobao
@@ -11,9 +13,8 @@ public class Main {
 	static int _1M = 1024 * 1024;
 
 	public static void main(String[] args) {
-//		ReentrantLock r = new ReentrantLock();
-//
-//		Condition condition = r.newCondition();
+		ReentrantLock r = new ReentrantLock();
+		Condition condition = r.newCondition();
 //		condition.
 //
 //		System.out.println(r.getHoldCount());

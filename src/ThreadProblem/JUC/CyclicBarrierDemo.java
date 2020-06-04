@@ -1,4 +1,4 @@
-package ThreadProblem.AQS;
+package ThreadProblem.JUC;
 
 import java.util.concurrent.CyclicBarrier;
 
@@ -6,8 +6,7 @@ import java.util.concurrent.CyclicBarrier;
  * @author xiaobaobao
  * @date 2020/5/11，23:34
  *
- * 相比较与CountDownLatch,更能重复利用
- *
+ *  相比较与CountDownLatch,更能重复利用
  */
 public class CyclicBarrierDemo {
 
@@ -22,15 +21,12 @@ public class CyclicBarrierDemo {
 		@Override
 		public void run() {
 			try {
-				Thread.sleep(1000);
 				System.out.println(getName() + " 到达栅栏 A");
 				barrier.await();
-				System.out.println(getName() + " 冲破栅栏 A");
 
-				Thread.sleep(2000);
+				Thread.sleep(3000);
 				System.out.println(getName() + " 到达栅栏 B");
 				barrier.await();
-				System.out.println(getName() + " 冲破栅栏 B");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

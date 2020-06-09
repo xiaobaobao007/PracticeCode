@@ -102,4 +102,16 @@ public class Main {
 		a.setOne2("222");
 		System.out.println(a.getTestOneofCase());
 	}
+
+	@Test
+	public void size() {
+		Helloworld.allValue.Builder a = Helloworld.allValue.newBuilder();
+		System.out.println(a.getIntListCount());
+		a.addIntList(1);
+		System.out.println(a.getIntListCount());
+		a.addIntList(1);
+		System.out.println(a.getIntListCount());
+		a.addIntList(1);
+		System.out.println(a.getIntListCount());
+	}
 }

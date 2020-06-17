@@ -3,6 +3,7 @@ package Collection.Queue;
 import java.util.LinkedList;
 
 public class LinkedListTest {
+
 	public static void main(String[] args) {
 		test();
 	}
@@ -15,30 +16,23 @@ public class LinkedListTest {
 		linkedList.add(3);
 		linkedList.add(4);
 		linkedList.add(5);
-		linkedList.addLast(6);
-		linkedList.addFirst(0);
 
-		linkedList.removeFirst();
-		linkedList.removeLast();
+		doAndSout(() -> linkedList.addFirst(0), linkedList);
+		doAndSout(() -> linkedList.addLast(6), linkedList);
+		doAndSout(() -> linkedList.removeFirst(), linkedList);
+		doAndSout(() -> linkedList.removeLast(), linkedList);
 
-		sout(linkedList);
+		doAndSout(() -> linkedList.peek(), linkedList);
+		doAndSout(() -> linkedList.poll(), linkedList);
 
-		System.out.println(linkedList.peek());
-
-		linkedList.poll();
-		sout(linkedList);
-
-		sout(linkedList);
 	}
 
-	private static void sout(LinkedList<Integer> linkedList) {
+	private static void doAndSout(Runnable runnable, LinkedList<Integer> linkedList) {
+		runnable.run();
 		for (Integer next : linkedList) {
-			System.out.printf("%4d", next);
+			System.out.printf("%-4d", next);
 		}
 		System.out.println();
 	}
 
-	private int test11() {
-		return 1;
-	}
 }

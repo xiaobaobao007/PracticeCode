@@ -5,9 +5,7 @@ import NIO.PB.HelloWorld.Helloworld.HelloRequest;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.googlecode.protobuf.format.JsonFormat;
@@ -103,9 +101,4 @@ public class Main {
 		System.out.println(a.getTestOneofCase());
 	}
 
-	@Test
-	public void size() {
-		Helloworld.allValue.Builder a = Helloworld.allValue.newBuilder();
-		a.addIntList(1).build();
-	}
 }

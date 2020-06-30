@@ -1,7 +1,11 @@
 package basis;
 
+import org.junit.Test;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author xiaobaobao
@@ -43,5 +47,21 @@ public class main {
 		System.out.println(s + "\n" + sUsual + "\n" + sReflection);
 		System.out.println("正常情况下，实例化两个实例是否相同：" + (s == sUsual));
 		System.out.println("通过反射攻击单例模式情况下，实例化两个实例是否相同：" + (s == sReflection));
+	}
+
+	@Test
+	@SuppressWarnings("OctalInteger")
+	public void BaseSystem() {
+		System.out.println(0B10);
+		System.out.println(017);
+		System.out.println(0XF);
+	}
+
+	@Test
+	public void test() {
+		List<String> b = new ArrayList<>();
+		b.add("1");
+		b.add("12");
+		b.add("123");
 	}
 }

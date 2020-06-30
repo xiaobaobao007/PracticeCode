@@ -1,5 +1,7 @@
 package Collection.Map;
 
+import org.junit.Test;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,6 +35,36 @@ public class HashMapTest {
 			}
 		});
 		System.out.println(map.get(1));
+	}
+
+	@Test
+	public void add() {
+		System.out.println(calcuteSeasonMvp(1, 2));
+		System.out.println(calcuteSeasonMvp(1, 2));
+		System.out.println(calcuteSeasonMvp(1, 2));
+	}
+
+	private Map<Integer, Integer> seasonMvpIdTimesMap;
+
+	public boolean calcuteSeasonMvp(int newMvpId, int oldMvpId) {
+		return calcuteMvp(seasonMvpIdTimesMap, newMvpId, oldMvpId);
+	}
+
+	public boolean calcuteMvp(Map<Integer, Integer> map, int newMvpId, int oldMvpId) {
+		if (map == null) {
+			map = new HashMap<>();
+			map.put(newMvpId, 1);
+			return true;
+		}
+		int newNum = map.compute(newMvpId, (k, v) -> v == null ? 1 : v + 1);
+		if (oldMvpId == 0) {
+			return true;
+		}
+		int oldNum = map.getOrDefault(oldMvpId, 0);
+		if (newNum > oldNum) {
+			return true;
+		}
+		return false;
 	}
 
 }

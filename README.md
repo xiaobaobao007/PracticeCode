@@ -5,7 +5,7 @@
 * CowStory：递归<br/>
 * Date：Calendar的使用<br/>
 * Num17：递归<br/>
-* Others<br/>
+* Arithmetic<br/>
     >dynamicPlanning：动态规划<br/>
     kaixinxioaxiaole：swing的开心消消乐，待续<br/>
     ProducerAndConsumer：生产者和消费者<br/>

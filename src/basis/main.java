@@ -64,4 +64,25 @@ public class main {
 		b.add("12");
 		b.add("123");
 	}
+
+	abstract class A {
+
+	}
+
+	class B extends A {
+
+	}
+
+	class C extends A {
+
+	}
+
+	@Test
+	public void Instanceof() {
+		A a = new B();
+		A b = (B) a;
+		System.out.println(b instanceof A);
+		System.out.println(b instanceof B);
+		System.out.println(b instanceof C);
+	}
 }

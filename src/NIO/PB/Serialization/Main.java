@@ -101,4 +101,30 @@ public class Main {
 		System.out.println(a.getTestOneofCase());
 	}
 
+	@Test
+	public void negativeTest() {
+		int n = 128;
+		System.out.println((n << 1) ^ (n >> 31));
+		n = -128;
+		System.out.println((n << 1) ^ (n >> 31));
+
+		Helloworld.allValue.Builder a = Helloworld.allValue.newBuilder();
+		a.setInt32Value(n);
+		System.out.println(Arrays.toString(a.build().toByteArray()));
+		a.setInt32Value(-n);
+		System.out.println(Arrays.toString(a.build().toByteArray()));
+		a.clear();
+		System.out.println("=============");
+		a.setSint32Value(n);
+		System.out.println(Arrays.toString(a.build().toByteArray()));
+		a.setSint32Value(-n);
+		System.out.println(Arrays.toString(a.build().toByteArray()));
+		a.clear();
+		System.out.println("=============");
+		a.setUint32Value(n);
+		System.out.println(Arrays.toString(a.build().toByteArray()));
+		a.setUint32Value(-n);
+		System.out.println(Arrays.toString(a.build().toByteArray()));
+	}
+
 }

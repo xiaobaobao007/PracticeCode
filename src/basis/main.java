@@ -85,4 +85,46 @@ public class main {
 		System.out.println(b instanceof B);
 		System.out.println(b instanceof C);
 	}
+
+	enum BMY {
+		Q(1),
+		QW(12),
+		QE(13);
+
+		private int a;
+
+		BMY(int a) {
+			this.a = a;
+		}
+	}
+
+	static int SIZE;
+
+	static {
+		SIZE = BMY.values().length;
+	}
+
+	@Test
+	public void enumTest() {
+		System.out.println(SIZE);
+		for (BMY value : BMY.values()) {
+			System.out.println(value.name() + ":" + value.a);
+		}
+	}
+
+	@Test
+	public void subListTest() {
+		List<Integer> list = new ArrayList<>();
+		for (int i = 0; i < 10; i++) {
+			list.add(i);
+		}
+//		System.out.println(list.size());
+//		list.subList(1, 5).remove(0);
+//		System.out.println(list.size());
+		System.out.println(list.subList(0, 2).size());
+		for (Integer integer : list.subList(0, 2)) {
+			System.out.println(integer);
+		}
+
+	}
 }

@@ -102,12 +102,28 @@ public class Main {
 	}
 
 	@Test
-	public void negativeTest() {
+	public void toBinaryString() {
 		int n = 128;
-		System.out.println((n << 1) ^ (n >> 31));
+		sout(Integer.toBinaryString(n << 1), 9);
+		sout(Integer.toBinaryString(n >> 31), 9);
+		sout(Integer.toBinaryString((n << 1) ^ (n >> 31)), 9);
+		System.out.println();
 		n = -128;
-		System.out.println((n << 1) ^ (n >> 31));
+		sout(Integer.toBinaryString(n << 1), 32);
+		sout(Integer.toBinaryString(n >> 31), 32);
+		sout(Integer.toBinaryString((n << 1) ^ (n >> 31)), 32);
+	}
 
+	public void sout(String s, int length) {
+		for (int i = 0; i < length - s.length(); i++) {
+			System.out.print(0);
+		}
+		System.out.println(s);
+	}
+
+	@Test
+	public void negativeTest() {
+		int n = 985;
 		Helloworld.allValue.Builder a = Helloworld.allValue.newBuilder();
 		a.setInt32Value(n);
 		System.out.println(Arrays.toString(a.build().toByteArray()));

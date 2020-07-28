@@ -58,7 +58,9 @@ public class ChangeCharset {
 
 	public static void main(String[] args) throws UnsupportedEncodingException {
 		ChangeCharset test = new ChangeCharset();
-		String str = "This is a 中文的 String!";
+//		String str = "if (type == 1) {// 1瀛︿範鎶�鑳� 2閬楀繕鎶�鑳� 3鍗囩骇鎶�鑳�";
+		String str = "if (type == 1) {//// 1锁定 2，升级 3进阶，4，升星 5祭祀 6置换 7回退 8转换 9转换保存";
+//		String str = "This is a 中文的 String!";
 		System.out.println("str: " + str);
 		String gbk = test.toGBK(str);
 		System.out.println("转换成GBK码: " + gbk);

@@ -8,6 +8,7 @@ import java.io.ByteArrayInputStream;
 import java.util.Arrays;
 
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.Message;
 import com.googlecode.protobuf.format.JsonFormat;
 
 /**
@@ -79,16 +80,24 @@ public class Main {
 	@Test
 	public void sint() {
 		Helloworld.allValue.Builder a = Helloworld.allValue.newBuilder();
-		a.setSint32Value(0);
-		System.out.println(Arrays.toString(a.build().toByteArray()));
+		a.setSint32Value(123);
+		a.setInt32Value(3);
+		System.out.println(debugInfo(a.build()));
+//		System.out.println(Arrays.toString(a.build().toByteArray()));
+//
+//		Helloworld.allValue.Builder b = Helloworld.allValue.newBuilder();
+//		b.setSint32Value(1);
+//		System.out.println(Arrays.toString(b.build().toByteArray()));
+//
+//		Helloworld.allValue.Builder c = Helloworld.allValue.newBuilder();
+//		c.setSint32Value(-1);
+//		System.out.println(Arrays.toString(c.build().toByteArray()));
+	}
 
-		Helloworld.allValue.Builder b = Helloworld.allValue.newBuilder();
-		b.setSint32Value(1);
-		System.out.println(Arrays.toString(b.build().toByteArray()));
-
-		Helloworld.allValue.Builder c = Helloworld.allValue.newBuilder();
-		c.setSint32Value(-1);
-		System.out.println(Arrays.toString(c.build().toByteArray()));
+	public static String debugInfo(Message message) {
+		return new JsonFormat().printToString(message);
+//		message.getAllFields().forEach();
+//		return message.toString().replaceAll("\n", " , ");
 	}
 
 	@Test

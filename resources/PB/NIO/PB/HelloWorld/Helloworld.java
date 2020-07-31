@@ -2076,6 +2076,21 @@ public final class Helloworld {
      */
     int getIntList(int index);
 
+    /**
+     * <code>int64 long_int64 = 23;</code>
+     */
+    long getLongInt64();
+
+    /**
+     * <code>sint64 long_sint64 = 24;</code>
+     */
+    long getLongSint64();
+
+    /**
+     * <code>uint64 long_uint64 = 25;</code>
+     */
+    long getLongUint64();
+
     public NIO.PB.HelloWorld.Helloworld.allValue.TestOneofCase getTestOneofCase();
   }
   /**
@@ -2108,6 +2123,9 @@ public final class Helloworld {
       bytesValue_ = com.google.protobuf.ByteString.EMPTY;
       enumValue_ = 0;
       intList_ = java.util.Collections.emptyList();
+      longInt64_ = 0L;
+      longSint64_ = 0L;
+      longUint64_ = 0L;
     }
 
     @java.lang.Override
@@ -2286,6 +2304,21 @@ public final class Helloworld {
                 intList_.add(input.readInt32());
               }
               input.popLimit(limit);
+              break;
+            }
+            case 184: {
+
+              longInt64_ = input.readInt64();
+              break;
+            }
+            case 192: {
+
+              longSint64_ = input.readSInt64();
+              break;
+            }
+            case 200: {
+
+              longUint64_ = input.readUInt64();
               break;
             }
             default: {
@@ -2955,6 +2988,33 @@ public final class Helloworld {
     }
     private int intListMemoizedSerializedSize = -1;
 
+    public static final int LONG_INT64_FIELD_NUMBER = 23;
+    private long longInt64_;
+    /**
+     * <code>int64 long_int64 = 23;</code>
+     */
+    public long getLongInt64() {
+      return longInt64_;
+    }
+
+    public static final int LONG_SINT64_FIELD_NUMBER = 24;
+    private long longSint64_;
+    /**
+     * <code>sint64 long_sint64 = 24;</code>
+     */
+    public long getLongSint64() {
+      return longSint64_;
+    }
+
+    public static final int LONG_UINT64_FIELD_NUMBER = 25;
+    private long longUint64_;
+    /**
+     * <code>uint64 long_uint64 = 25;</code>
+     */
+    public long getLongUint64() {
+      return longUint64_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -3045,6 +3105,15 @@ public final class Helloworld {
       }
       for (int i = 0; i < intList_.size(); i++) {
         output.writeInt32NoTag(intList_.get(i));
+      }
+      if (longInt64_ != 0L) {
+        output.writeInt64(23, longInt64_);
+      }
+      if (longSint64_ != 0L) {
+        output.writeSInt64(24, longSint64_);
+      }
+      if (longUint64_ != 0L) {
+        output.writeUInt64(25, longUint64_);
       }
       unknownFields.writeTo(output);
     }
@@ -3162,6 +3231,18 @@ public final class Helloworld {
         }
         intListMemoizedSerializedSize = dataSize;
       }
+      if (longInt64_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(23, longInt64_);
+      }
+      if (longSint64_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeSInt64Size(24, longSint64_);
+      }
+      if (longUint64_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(25, longUint64_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -3224,6 +3305,12 @@ public final class Helloworld {
       }
       result = result && getIntListList()
           .equals(other.getIntListList());
+      result = result && (getLongInt64()
+          == other.getLongInt64());
+      result = result && (getLongSint64()
+          == other.getLongSint64());
+      result = result && (getLongUint64()
+          == other.getLongUint64());
       result = result && getTestOneofCase().equals(
           other.getTestOneofCase());
       if (!result) return false;
@@ -3306,6 +3393,15 @@ public final class Helloworld {
         hash = (37 * hash) + INTLIST_FIELD_NUMBER;
         hash = (53 * hash) + getIntListList().hashCode();
       }
+      hash = (37 * hash) + LONG_INT64_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getLongInt64());
+      hash = (37 * hash) + LONG_SINT64_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getLongSint64());
+      hash = (37 * hash) + LONG_UINT64_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getLongUint64());
       switch (testOneofCase_) {
         case 19:
           hash = (37 * hash) + ONE1_FIELD_NUMBER;
@@ -3519,6 +3615,12 @@ public final class Helloworld {
         }
         intList_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00200000);
+        longInt64_ = 0L;
+
+        longSint64_ = 0L;
+
+        longUint64_ = 0L;
+
         testOneofCase_ = 0;
         testOneof_ = null;
         return this;
@@ -3585,6 +3687,9 @@ public final class Helloworld {
           bitField0_ = (bitField0_ & ~0x00200000);
         }
         result.intList_ = intList_;
+        result.longInt64_ = longInt64_;
+        result.longSint64_ = longSint64_;
+        result.longUint64_ = longUint64_;
         result.bitField0_ = to_bitField0_;
         result.testOneofCase_ = testOneofCase_;
         onBuilt();
@@ -3700,6 +3805,15 @@ public final class Helloworld {
             intList_.addAll(other.intList_);
           }
           onChanged();
+        }
+        if (other.getLongInt64() != 0L) {
+          setLongInt64(other.getLongInt64());
+        }
+        if (other.getLongSint64() != 0L) {
+          setLongSint64(other.getLongSint64());
+        }
+        if (other.getLongUint64() != 0L) {
+          setLongUint64(other.getLongUint64());
         }
         switch (other.getTestOneofCase()) {
           case ONE1: {
@@ -4868,6 +4982,84 @@ public final class Helloworld {
         onChanged();
         return this;
       }
+
+      private long longInt64_ ;
+      /**
+       * <code>int64 long_int64 = 23;</code>
+       */
+      public long getLongInt64() {
+        return longInt64_;
+      }
+      /**
+       * <code>int64 long_int64 = 23;</code>
+       */
+      public Builder setLongInt64(long value) {
+        
+        longInt64_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 long_int64 = 23;</code>
+       */
+      public Builder clearLongInt64() {
+        
+        longInt64_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long longSint64_ ;
+      /**
+       * <code>sint64 long_sint64 = 24;</code>
+       */
+      public long getLongSint64() {
+        return longSint64_;
+      }
+      /**
+       * <code>sint64 long_sint64 = 24;</code>
+       */
+      public Builder setLongSint64(long value) {
+        
+        longSint64_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>sint64 long_sint64 = 24;</code>
+       */
+      public Builder clearLongSint64() {
+        
+        longSint64_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long longUint64_ ;
+      /**
+       * <code>uint64 long_uint64 = 25;</code>
+       */
+      public long getLongUint64() {
+        return longUint64_;
+      }
+      /**
+       * <code>uint64 long_uint64 = 25;</code>
+       */
+      public Builder setLongUint64(long value) {
+        
+        longUint64_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 long_uint64 = 25;</code>
+       */
+      public Builder clearLongUint64() {
+        
+        longUint64_ = 0L;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4964,7 +5156,7 @@ public final class Helloworld {
       "loRequest\022\014\n\004name\030\001 \001(\t\"\035\n\nHelloReply\022\017\n" +
       "\007message\030\001 \001(\t\"C\n\005Frame\022\r\n\005reqId\030\001 \001(\003\022\014" +
       "\n\004type\030\002 \001(\005\022\017\n\007msgType\030\003 \001(\t\022\014\n\004data\030\004 " +
-      "\001(\014\"\254\005\n\010allValue\022\023\n\013doubleValue\030\001 \001(\001\022\022\n" +
+      "\001(\014\"\352\005\n\010allValue\022\023\n\013doubleValue\030\001 \001(\001\022\022\n" +
       "\nfloatValue\030\002 \001(\002\022\021\n\tboolValue\030\003 \001(\010\022\022\n\n" +
       "int32Value\030\004 \001(\005\022\022\n\nint64Value\030\005 \001(\003\022\023\n\013" +
       "uint32Value\030\006 \001(\r\022\023\n\013uint64Value\030\007 \001(\004\022\023" +
@@ -4977,13 +5169,15 @@ public final class Helloworld {
       "llValue.StringMapEntry\022,\n\010int32Map\030\025 \003(\013" +
       "2\032.PB.allValue.Int32MapEntry\022\024\n\003any\030\022 \001(" +
       "\0132\007.PB.Any\022\016\n\004one1\030\023 \001(\tH\000\022\016\n\004one2\030\024 \001(\t" +
-      "H\000\022\017\n\007intList\030\026 \003(\005\0320\n\016StringMapEntry\022\013\n" +
-      "\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\032/\n\rInt32Ma" +
-      "pEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\005:\0028\001\"$" +
-      "\n\tEnumValue\022\005\n\001a\020\000\022\005\n\001b\020\001\022\005\n\001c\020\001\032\002\020\001B\014\n\n" +
-      "test_oneof29\n\007Greeter\022.\n\010SayHello\022\020.PB.H" +
-      "elloRequest\032\016.PB.HelloReply\"\000B\025\n\021NIO.PB." +
-      "HelloWorldP\000b\006proto3"
+      "H\000\022\017\n\007intList\030\026 \003(\005\022\022\n\nlong_int64\030\027 \001(\003\022" +
+      "\023\n\013long_sint64\030\030 \001(\022\022\023\n\013long_uint64\030\031 \001(" +
+      "\004\0320\n\016StringMapEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005valu" +
+      "e\030\002 \001(\t:\0028\001\032/\n\rInt32MapEntry\022\013\n\003key\030\001 \001(" +
+      "\005\022\r\n\005value\030\002 \001(\005:\0028\001\"$\n\tEnumValue\022\005\n\001a\020\000" +
+      "\022\005\n\001b\020\001\022\005\n\001c\020\001\032\002\020\001B\014\n\ntest_oneof29\n\007Gree" +
+      "ter\022.\n\010SayHello\022\020.PB.HelloRequest\032\016.PB.H" +
+      "elloReply\"\000B\025\n\021NIO.PB.HelloWorldP\000b\006prot" +
+      "o3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -5021,7 +5215,7 @@ public final class Helloworld {
     internal_static_PB_allValue_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PB_allValue_descriptor,
-        new java.lang.String[] { "DoubleValue", "FloatValue", "BoolValue", "Int32Value", "Int64Value", "Uint32Value", "Uint64Value", "Sint32Value", "Sint64Value", "Fixed32Value", "Fixed64Value", "Sfixed32Value", "Sfixed64Value", "StringValue", "BytesValue", "EnumValue", "StringMap", "Int32Map", "Any", "One1", "One2", "IntList", "TestOneof", });
+        new java.lang.String[] { "DoubleValue", "FloatValue", "BoolValue", "Int32Value", "Int64Value", "Uint32Value", "Uint64Value", "Sint32Value", "Sint64Value", "Fixed32Value", "Fixed64Value", "Sfixed32Value", "Sfixed64Value", "StringValue", "BytesValue", "EnumValue", "StringMap", "Int32Map", "Any", "One1", "One2", "IntList", "LongInt64", "LongSint64", "LongUint64", "TestOneof", });
     internal_static_PB_allValue_StringMapEntry_descriptor =
       internal_static_PB_allValue_descriptor.getNestedTypes().get(0);
     internal_static_PB_allValue_StringMapEntry_fieldAccessorTable = new

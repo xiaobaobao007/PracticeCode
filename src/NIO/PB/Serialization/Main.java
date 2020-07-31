@@ -1,9 +1,5 @@
 package NIO.PB.Serialization;
 
-import NIO.PB.HelloWorld.Helloworld;
-import NIO.PB.HelloWorld.Helloworld.HelloRequest;
-import org.junit.Test;
-
 import java.io.ByteArrayInputStream;
 import java.util.Arrays;
 
@@ -11,7 +7,17 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.googlecode.protobuf.format.JsonFormat;
 
+import NIO.PB.HelloWorld.Helloworld;
+import NIO.PB.HelloWorld.Helloworld.HelloRequest;
+import org.junit.Test;
+
 /**
+ * int32  负数存的long型
+ * <p>
+ * uint32 负数存的int型
+ * <p>
+ * sint32 正负数n*
+ *
  * @author xiaobaobao
  * @date 2020/3/22，15:08
  */
@@ -132,24 +138,53 @@ public class Main {
 
 	@Test
 	public void negativeTest() {
-		int n = 985;
+		int n = 10;
 		Helloworld.allValue.Builder a = Helloworld.allValue.newBuilder();
-		a.setInt32Value(n);
-		System.out.println(Arrays.toString(a.build().toByteArray()));
+//		a.setInt32Value(n);
+//		System.out.println(Arrays.toString(a.build().toByteArray()));
 		a.setInt32Value(-n);
 		System.out.println(Arrays.toString(a.build().toByteArray()));
+
+//		a.clear();
+//		System.out.println("=============");
+//		a.setSint32Value(n);
+//		System.out.println(Arrays.toString(a.build().toByteArray()));
+//		a.setSint32Value(-n);
+//		System.out.println(Arrays.toString(a.build().toByteArray()));
+
 		a.clear();
 		System.out.println("=============");
-		a.setSint32Value(n);
-		System.out.println(Arrays.toString(a.build().toByteArray()));
-		a.setSint32Value(-n);
-		System.out.println(Arrays.toString(a.build().toByteArray()));
-		a.clear();
-		System.out.println("=============");
-		a.setUint32Value(n);
-		System.out.println(Arrays.toString(a.build().toByteArray()));
+//		a.setUint32Value(n);
+//		System.out.println(Arrays.toString(a.build().toByteArray()));
 		a.setUint32Value(-n);
 		System.out.println(Arrays.toString(a.build().toByteArray()));
+	}
+
+	@Test
+	public void timeSize() {
+		int time = -(int) (System.currentTimeMillis() / 1000);
+		Helloworld.allValue.Builder a = Helloworld.allValue.newBuilder();
+		a.setInt32Value(time);
+		System.out.println(Arrays.toString(a.build().toByteArray()));
+		a.clear();
+		System.out.println("=============");
+		a.setSint32Value(time);
+		System.out.println(Arrays.toString(a.build().toByteArray()));
+		a.clear();
+		System.out.println("=============");
+		a.setUint32Value(time);
+		System.out.println(Arrays.toString(a.build().toByteArray()));
+	}
+
+	/**
+	 * 只有int64支持long型
+	 */
+	@Test
+	public void longTest() {
+		Helloworld.allValue.Builder a = Helloworld.allValue.newBuilder();
+		a.setLongInt64(123L);
+//		a.setUint32Value(123L);
+//		a.setUint32Value(123L);
 	}
 
 }

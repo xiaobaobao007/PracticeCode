@@ -63,4 +63,7 @@ message allValue {
     }
 
     repeated int32 intList = 22;
+    int64 long_int64 = 23;
+    sint64 long_sint64 = 24;
+    uint64 long_uint64 = 25;
 }

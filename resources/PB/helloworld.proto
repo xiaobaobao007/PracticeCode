@@ -1,7 +1,7 @@
 syntax = "proto3";
 package PB;
 
-import "any.proto";
+import "PB/any.proto";
 
 option java_multiple_files = false;
 option java_package = "NIO.PB.HelloWorld";
@@ -66,4 +66,8 @@ message allValue {
     int64 long_int64 = 23;
     sint64 long_sint64 = 24;
     uint64 long_uint64 = 25;
+}
+
+message eachOtherB {
+
 }

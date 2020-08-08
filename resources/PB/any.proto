@@ -1,6 +1,8 @@
 syntax = "proto3";
 package PB;
 
+import "PB/helloworld.proto";
+
 option java_multiple_files = false;
 option java_package = "NIO.PB.HelloWorld";
 
@@ -10,4 +12,8 @@ option objc_class_prefix = "GPB";
 message Any {
     string type_url = 1;
     bytes value = 2;
+}
+
+message eachOtherA {
+    eachOtherB b = 1;
 }

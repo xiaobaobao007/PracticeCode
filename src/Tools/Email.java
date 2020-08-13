@@ -7,41 +7,70 @@ package Tools;
 
 import java.util.Properties;
 
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
+import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class Email {
 
-	public static void main(String[] args) throws MessagingException {
+	public static final String FROM = "";
+	public static final String TO = "";
+	public static final String CODE = "";
+
+	public static void main(String[] args) throws Exception {
+		long start = System.currentTimeMillis();
+
 		Properties properties = new Properties();
-		properties.put("mail.transport.protocol", "smtp");// 连接协议
-		properties.put("mail.smtp.host", "smtp.qq.com");// 主机名
-		properties.put("mail.smtp.port", 465);// 端口号
-		properties.put("mail.smtp.auth", "true");
-		properties.put("mail.smtp.ssl.enable", "true");// 设置是否使用ssl安全连接 ---一般都使用
-		properties.put("mail.debug", "true");// 设置是否显示debug信息 true 会在控制台显示相关信息
-		// 得到回话对象
-		Session session = Session.getInstance(properties);
-		// 获取邮件对象
-		Message message = new MimeMessage(session);
-		// 设置发件人邮箱地址
-		message.setFrom(new InternetAddress("932824098@qq.com"));
-		// 设置收件人邮箱地址
-		message.setRecipients(Message.RecipientType.TO, new InternetAddress[]{new InternetAddress("932824098@qq.com")});
-		// 设置邮件标题
-		message.setSubject("xmqtest");
-		// 设置邮件内容
-		message.setText("邮件内容邮件内容邮件内容xmqtest");
-		// 得到邮差对象
-		Transport transport = session.getTransport();
-		// 连接自己的邮箱账户
-		transport.connect("932824098@qq.com", "");// 密码为QQ邮箱开通的stmp服务后得到的客户端授权码
-		// 发送邮件
-		transport.sendMessage(message, message.getAllRecipients());
-		transport.close();
+		properties.setProperty("mail.smtp.auth", "true");
+		properties.setProperty("mail.transport.protocol", "smtp");
+		properties.setProperty("mail.smtp.host", "smtp.sina.com");
+		// properties.setProperty("mail.debug", "true");
+
+		int times = 1;
+		while (times-- > 0) {
+			sendEmail(properties);
+			System.out.println("剩余：" + times);
+			// TimeUnit.SECONDS.sleep(5);
+		}
+
+		System.out.printf("耗时%.3fS", (System.currentTimeMillis() - start) / 1000.0);
 	}
+
+	public static void sendEmail(Properties properties) throws Exception {
+		Session session = Session.getInstance(properties, new Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(FROM, CODE);
+			}
+		});
+
+		Message message = new MimeMessage(session);
+		message.setFrom(new InternetAddress(FROM));
+		message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(TO));
+		message.setSubject("998服出错");
+
+		try {
+			doSS();
+		} catch (Exception e) {
+			message.setText(me(e));
+		}
+		Transport.send(message);
+	}
+
+	public static void doSS() {
+		doSS1();
+	}
+
+	public static void doSS1() {
+		System.out.println(1 / 0);
+	}
+
+	public static String me(Exception e) {
+		StringBuilder s = new StringBuilder(e.toString());
+		for (StackTraceElement element : e.getStackTrace()) {
+			s.append("\n");
+			s.append(element);
+		}
+		return s.append("\n\n").toString();
+	}
+
 }

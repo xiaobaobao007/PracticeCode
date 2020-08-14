@@ -6,34 +6,63 @@ package Tools;
  */
 
 import java.util.Properties;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Semaphore;
 
 import javax.mail.*;
+import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
+import Util.DateUtil;
 
 public class Email {
 
 	public static final String FROM = "";
-	public static final String TO = "";
+	public static final String[] email = {""};
+	public static final InternetAddress[] TO = new InternetAddress[email.length];
 	public static final String CODE = "";
 
-	public static void main(String[] args) throws Exception {
-		long start = System.currentTimeMillis();
+	static {
+		try {
+			for (int i = email.length - 1; i >= 0; i--) {
+				TO[i] = new InternetAddress(email[i]);
+			}
+		} catch (AddressException e) {
+			e.printStackTrace();
+		}
+	}
 
+	public static int THREAD_NUM = 1;
+	public static final ExecutorService pool = Executors.newFixedThreadPool(THREAD_NUM);
+	public static final Semaphore semaphore = new Semaphore(THREAD_NUM);
+	public static final CountDownLatch down = new CountDownLatch(THREAD_NUM);
+
+	public static void main(String[] args) throws Exception {
 		Properties properties = new Properties();
 		properties.setProperty("mail.smtp.auth", "true");
 		properties.setProperty("mail.transport.protocol", "smtp");
 		properties.setProperty("mail.smtp.host", "smtp.sina.com");
 		// properties.setProperty("mail.debug", "true");
 
-		int times = 1;
-		while (times-- > 0) {
-			sendEmail(properties);
-			System.out.println("剩余：" + times);
-			// TimeUnit.SECONDS.sleep(5);
+		int times = THREAD_NUM;
+		while (--times >= 0) {
+			pool.execute(() -> {
+				try {
+					sendEmail(properties);
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					semaphore.release();
+					down.countDown();
+				}
+			});
 		}
 
-		System.out.printf("耗时%.3fS", (System.currentTimeMillis() - start) / 1000.0);
+		down.await();
+		pool.shutdown();
 	}
 
 	public static void sendEmail(Properties properties) throws Exception {
@@ -45,15 +74,17 @@ public class Email {
 
 		Message message = new MimeMessage(session);
 		message.setFrom(new InternetAddress(FROM));
-		message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(TO));
-		message.setSubject("998服出错");
+		message.addRecipients(MimeMessage.RecipientType.TO, TO);
+		message.setSubject((Thread.currentThread().getId() % 100) + "服出错");
 
 		try {
 			doSS();
 		} catch (Exception e) {
 			message.setText(me(e));
 		}
+		semaphore.acquire();
 		Transport.send(message);
+		System.out.println(Thread.currentThread().getId() + " is over");
 	}
 
 	public static void doSS() {
@@ -65,7 +96,7 @@ public class Email {
 	}
 
 	public static String me(Exception e) {
-		StringBuilder s = new StringBuilder(e.toString());
+		StringBuilder s = new StringBuilder(DateUtil.formatDate()).append("\n").append(e.toString());
 		for (StackTraceElement element : e.getStackTrace()) {
 			s.append("\n");
 			s.append(element);

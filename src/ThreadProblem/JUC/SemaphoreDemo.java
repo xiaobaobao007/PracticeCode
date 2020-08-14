@@ -1,21 +1,22 @@
 package ThreadProblem.JUC;
 
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author xiaobaobao
  * @date 2020/5/13，22:41
- *
- *  只允许设定得线程数进入,设定1时候即保证线程安全
+ * <p>
+ * 只允许设定得线程数进入,设定1时候即保证线程安全
  */
 public class SemaphoreDemo implements Runnable {
 
 	private int i;
-	private Semaphore semaphore;
+	private final Semaphore semaphore;
 
 	public SemaphoreDemo() {
 		i = 0;
-		semaphore = new Semaphore(1);
+		semaphore = new Semaphore(2);
 	}
 
 	public int getI() {
@@ -28,7 +29,12 @@ public class SemaphoreDemo implements Runnable {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		this.i++;
+		System.out.println(this.i++);
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		semaphore.release();
 	}
 
@@ -54,7 +60,7 @@ public class SemaphoreDemo implements Runnable {
 
 	@Override
 	public void run() {
-		for (int j = 0; j < 100000; j++) {
+		for (int j = 0; j < 10; j++) {
 			addI();
 		}
 	}

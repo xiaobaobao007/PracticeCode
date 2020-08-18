@@ -13,7 +13,7 @@ public class Main {
 	private int length = 10000;
 	private int[] testNums;
 	//测试文本路径
-	private String path = "./src/resouse/sord.txt";
+	private String path = "resources\\Serialize\\sord.txt";
 	//	private String path = "";
 	//fasle用文本数据
 	private boolean isTest = true;

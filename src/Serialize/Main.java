@@ -8,14 +8,13 @@ import java.text.MessageFormat;
  */
 public class Main {
 
-	private static String path = "./src/resouse/Model.Person.txt";
+	private static String path = "resources\\Serialize\\Person.txt";
 
 	public static void main(String[] args) {
 		try {
 			SerializePerson();//序列化Person对象
 			Person p = DeserializePerson();//反序列Perons对象
-			System.out.println(MessageFormat.format("name={0},age={1},sex={2}",
-					p.getName(), p.getAge(), p.getSex()));
+			System.out.println(MessageFormat.format("name={0},age={1},sex={2}", p.getName(), p.getAge(), p.getSex()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

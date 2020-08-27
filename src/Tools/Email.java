@@ -5,6 +5,7 @@ package Tools;
  * @date 2019/8/23 9:29
  */
 
+import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -15,6 +16,8 @@ import javax.mail.*;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
+import com.sun.mail.util.MailSSLSocketFactory;
 
 import Util.DateUtil;
 
@@ -44,8 +47,13 @@ public class Email {
 		Properties properties = new Properties();
 		properties.setProperty("mail.smtp.auth", "true");
 		properties.setProperty("mail.transport.protocol", "smtp");
-		properties.setProperty("mail.smtp.host", "smtp.sina.com");
 		// properties.setProperty("mail.debug", "true");
+		// properties.setProperty("mail.smtp.host", "smtp.sina.com");
+		properties.setProperty("mail.smtp.host", "smtp.qq.com");
+		properties.setProperty("mail.smtp.auth", "true");
+		properties.setProperty("mail.port", "465");
+		properties.setProperty("mail.smtp.ssl.enable", "smtp");
+		properties.put("Mail.smtp.ssl.socketFactory", new MailSSLSocketFactory());
 
 		int times = THREAD_NUM;
 		while (--times >= 0) {
@@ -73,9 +81,15 @@ public class Email {
 		});
 
 		Message message = new MimeMessage(session);
-		message.setFrom(new InternetAddress(FROM));
+		String nick = "";
+		try {
+			nick = javax.mail.internet.MimeUtility.encodeText("燃烧内网服务器");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		message.setFrom(new InternetAddress(nick + " <" + FROM + ">"));
 		message.addRecipients(MimeMessage.RecipientType.TO, TO);
-		message.setSubject((Thread.currentThread().getId() % 100) + "服出错");
+		message.setSubject((Thread.currentThread().getId() % 100) + "服,出错警告");
 
 		try {
 			doSS();
@@ -83,7 +97,9 @@ public class Email {
 			message.setText(me(e));
 		}
 		semaphore.acquire();
+		long start = System.currentTimeMillis();
 		Transport.send(message);
+		System.out.println(System.currentTimeMillis() - start);
 		System.out.println(Thread.currentThread().getId() + " is over");
 	}
 

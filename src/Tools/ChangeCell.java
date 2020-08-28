@@ -1,4 +1,4 @@
-package Arithmetic;
+package Tools;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

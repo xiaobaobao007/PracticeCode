@@ -1,4 +1,4 @@
-package ThreadProblem.JUC;
+package ThreadProblem.JUC.Semaphore;
 
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;

@@ -6,8 +6,12 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author xiaobaobao
  * @date 2020/5/13，22:41
- * <p>
- * 只允许设定得线程数进入,设定1时候即保证线程安全
+ *
+ * 允许初始化为 多个凭证，或者0个凭证
+ *
+ * acquire 消耗凭证，必须有剩余的凭证存在，否则阻塞等待凭证的产生
+ *
+ * release 释放凭证
  */
 public class SemaphoreDemo implements Runnable {
 

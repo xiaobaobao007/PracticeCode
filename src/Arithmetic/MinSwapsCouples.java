@@ -1,8 +1,5 @@
 package Arithmetic;
 
-import java.util.Arrays;
-import java.util.Random;
-
 /**
  * @author xiaobaobao
  * @date 2020/8/27，17:26
@@ -17,23 +14,25 @@ import java.util.Random;
 public class MinSwapsCouples {
 
 	public static void main(String[] args) {
-		int length = 3;
-		int[] array = new int[length *= 2];
-		Random random = new Random();
-		for (int i = 0; i < length; i++) {
-			array[i] = i;
-		}
-		for (int i = 0; i < length; i++) {
-			int a = random.nextInt(length);
-			int b;
-			while ((b = random.nextInt(length)) != a) {
-				int c = array[a];
-				array[a] = array[b];
-				array[b] = c;
-				break;
-			}
-		}
-		System.out.println(Arrays.toString(array));
+		// int length = 3;
+		// int[] array = new int[length *= 2];
+		// Random random = new Random();
+		// for (int i = 0; i < length; i++) {
+		// 	array[i] = i;
+		// }
+		// for (int i = 0; i < length; i++) {
+		// 	int a = random.nextInt(length);
+		// 	int b;
+		// 	while ((b = random.nextInt(length)) != a) {
+		// 		int c = array[a];
+		// 		array[a] = array[b];
+		// 		array[b] = c;
+		// 		break;
+		// 	}
+		// }
+		// System.out.println(Arrays.toString(array));
+
+		int[] array = new int[]{2, 3, 5, 0, 1, 4};
 		System.out.println(new MinSwapsCouples().minSwapsCouples(array));
 	}
 

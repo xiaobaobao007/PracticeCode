@@ -1,4 +1,5 @@
 package Tools;
+
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,9 +8,9 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.*;
-
 import com.alibaba.fastjson.JSONObject;
+
+import javax.swing.*;
 
 /**
  * @author xiaobaobao
@@ -43,7 +44,7 @@ public class JFrameTools extends JPanel {
 		this.setBounds(0, 0, JFRAME_WIDTH, JFRAME_HEIGHT);
 		this.setLayout(null);
 
-		srcText = new JTextArea("{g:1,p: {20: 11, 30: 480}}");
+		srcText = new JTextArea("{g:1,p: {20: 11, 30: 480}}\n{g: [500], p: {10: [2]}}");
 		JScrollPane scroll1 = new JScrollPane(srcText);
 		scroll1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scroll1.setBounds(10, 10, 490, 400);
@@ -71,6 +72,7 @@ public class JFrameTools extends JPanel {
 
 			String text = srcText.getText();
 			String[] split = text.split("\n");
+			int failNum = 0;
 			for (String s : split) {
 
 				StringBuilder sb = new StringBuilder("[");
@@ -88,6 +90,8 @@ public class JFrameTools extends JPanel {
 								item = getItem(entry.getKey(), null, entry.getValue().toString());
 								if (item != null) {
 									sb.append(item).append(",");
+								} else {
+									outText(tipsText, "未匹配【" + entry.getKey() + "】【" + entry.getValue() + "】", false, false);
 								}
 								break;
 							case "p":
@@ -97,19 +101,26 @@ public class JFrameTools extends JPanel {
 									item = getItem(entry.getKey(), ent.getKey(), ent.getValue().toString());
 									if (item != null) {
 										sb.append(item).append(",");
+									} else {
+										outText(tipsText, "未匹配【" + ent.getKey() + "】【" + ent.getValue() + "】", false, false);
 									}
 								}
 								break;
+							default:
+								outText(tipsText, "未匹配【" + entry.getKey() + "】【" + entry.getValue() + "】", false, false);
+								failNum++;
 						}
 					}
 					if (sb.length() > 1) {
-						allSB.append(sb.substring(0, sb.length() - 1)).append("]").append("\n");
+						allSB.append(sb.substring(0, sb.length() - 1)).append("]");
 					}
+					allSB.append("\n");
 				} catch (Exception e) {
 					outText(tipsText, e);
 				}
 			}
 			outText(destText, allSB.toString().substring(0, allSB.length() - 1), true, true);
+			outText(tipsText, "转换失败数【" + failNum + "】", true, false);
 		});
 
 		JButton button2 = new JButton("重新加载配置数据【tool.txt】");
@@ -197,7 +208,7 @@ public class JFrameTools extends JPanel {
 
 		public Item(String id, String num) {
 			this.id = id;
-			this.num = num;
+			this.num = num.replace("[", "").replace("]", "");
 		}
 
 		@Override

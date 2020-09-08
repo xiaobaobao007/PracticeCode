@@ -1,5 +1,8 @@
 package Random;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Random;
 
 import org.junit.Test;
@@ -42,16 +45,19 @@ public class RandomTest {
 
 	@Test
 	public void test() {
-		int TIMES = 0;
-		int n = 20;
-		for (int i = 0; -i < n; i--) {
-			TIMES++;
-			if (TIMES > 20) {
-				System.out.println("ERROR");
-				return;
-			}
+		System.out.println(parseDate("2020-09-07"));
+
+
+		System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()));
+	}
+
+	public static int parseDate(String dateStr) {
+		try {
+			return (int) (new SimpleDateFormat("yyyyMMdd").parse(dateStr).getTime() / 1000);
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
-		System.out.println(TIMES);
+		return 0;
 	}
 
 }

@@ -62,12 +62,10 @@ public class RotationMatrix extends JPanel {
 				double x = i * 30.0;
 				double y = j * 30.0;
 
-				double r = Math.sqrt(x * x + y * y);
-				double circle = Math.toRadians(degrees + Math.asin(y / r) / 2 / Math.PI * 360.0);
-				x = Math.sin(circle) * r;
-				y = Math.cos(circle) * r;
+				double _x = x * Math.cos(Math.toRadians(degrees)) - y * Math.sin(Math.toRadians(degrees));
+				double _y = x * Math.sin(Math.toRadians(degrees)) + y * Math.cos(Math.toRadians(degrees));
 
-				g.fillOval(400 + (int) x, 400 + (int) y, 10, 10);
+				g.fillOval(400 + (int) _x, 400 + (int) _y, 10, 10);
 			}
 		}
 	}

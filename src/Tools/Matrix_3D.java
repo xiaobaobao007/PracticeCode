@@ -12,12 +12,16 @@ public class Matrix_3D extends JPanel {
 	static double length = 300.0;
 	static double[][] points = {{-length, -length, length}, {length, -length, length}, {length, length, length}, {-length, length, length},
 			{-length, -length, -length}, {length, -length, -length}, {length, length, -length}, {-length, length, -length}};
-
+	//投影平面的中心点
 	static double[] canvas = {0, 500, 500};
+	//投影平面的法向量
 	static double[] canvas_c = {0, 100, 100};
+	//投影平面的上的一点，此点到canvas视为投影平面的最上方
 	static double[] canvas_p = {0, 400, 600};
-	static double[] e = {0, 600, 600};
+	//摄像机位置
+	static double[] eye = {0, 600, 600};
 
+	//计算结果缓存
 	double[][] d = new double[8][3];
 	int[][] b = new int[8][2];
 
@@ -167,13 +171,13 @@ public class Matrix_3D extends JPanel {
 		n2 = canvas[1];
 		n3 = canvas[2];
 		// 直线的方向向量
-		v1 = e[0] - linePoint[0];
-		v2 = e[1] - linePoint[1];
-		v3 = e[2] - linePoint[2];
+		v1 = eye[0] - linePoint[0];
+		v2 = eye[1] - linePoint[1];
+		v3 = eye[2] - linePoint[2];
 		// 直线经过的一点坐标
-		m1 = e[0];
-		m2 = e[1];
-		m3 = e[2];
+		m1 = eye[0];
+		m2 = eye[1];
+		m3 = eye[2];
 		vpt = v1 * vp1 + v2 * vp2 + v3 * vp3;
 		if (vpt == 0) {
 			returnResult = null;

@@ -7,9 +7,6 @@ import javax.swing.*;
 
 import org.apache.commons.lang.math.RandomUtils;
 
-/**
- * 旋转的矩阵
- */
 public class RandomPoint extends JPanel {
 
 	public static JFrame jFrame;

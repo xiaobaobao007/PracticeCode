@@ -23,8 +23,9 @@ public class Matrix_3D extends JPanel {
 
 	//计算结果缓存
 	double[][] d = new double[8][3];
+	//立方体的各个面的法向量
+	double[] o_o = new double[3];
 	int[][] b = new int[8][2];
-
 	int center_x = 500;
 	int center_y = 500;
 	int JFRAME_WIDTH = 1000;
@@ -32,8 +33,8 @@ public class Matrix_3D extends JPanel {
 
 	enum XYZ {
 
-		X(0, 0),
-		Y(0, 0),
+		X(0, 0.1),
+		Y(0, 0.1),
 		Z(0, 0.1);
 
 		private final double change;
@@ -106,21 +107,64 @@ public class Matrix_3D extends JPanel {
 			get(i);
 		}
 
-		paint___(g, 0, 1);
-		paint___(g, 1, 2);
-		paint___(g, 2, 3);
-		paint___(g, 3, 0);
+		calcute_o_o(g, 0, 1, 2, 3);
+		calcute_o_o(g, 3, 2, 6, 7);
+		calcute_o_o(g, 2, 6, 5, 1);
+		calcute_o_o(g, 1, 5, 4, 0);
+		calcute_o_o(g, 0, 4, 7, 3);
+		calcute_o_o(g, 4, 5, 6, 7);
 
-		paint___(g, 0, 4);
-		paint___(g, 1, 5);
-		paint___(g, 2, 6);
-		paint___(g, 3, 7);
+		hadPoint = 0;
+		hadPoint_1 = 0;
+	}
 
-		paint___(g, 4, 5);
-		paint___(g, 5, 6);
-		paint___(g, 6, 7);
-		paint___(g, 7, 4);
+	static int hadPoint = 0;
+	static int hadPoint_1 = 0;
 
+	static int had = 0;
+	static int had_1 = 0;
+
+	/**
+	 * 画过的线不会画第二遍
+	 */
+	public static boolean judgeAndPoint(int a, int b) {
+		if (a > b) {
+			had = (hadPoint | (1 << a));
+			had_1 = hadPoint_1 | (1 << b);
+		} else {
+			had = (hadPoint | (1 << b));
+			had_1 = hadPoint_1 | (1 << a);
+		}
+		if (had == hadPoint_1 && had_1 == hadPoint) {
+			return false;
+		}
+		hadPoint = had;
+		hadPoint_1 = had_1;
+		return true;
+	}
+
+	public void calcute_o_o(Graphics g, int a1, int a2, int a3, int a4) {
+		for (int i = 0; i < 3; i++) {
+			o_o[i] = (d[a1][i] + d[a2][i] + d[a3][i] + d[a4][i]) / 4;
+		}
+		int j = 0;
+		for (int i = 0; i < 3; i++) {
+			j += o_o[i] * (eye[i] - o_o[i]);
+		}
+		if (j >= 0) {
+			if (judgeAndPoint(a1, a2)) {
+				paint___(g, a1, a2);
+			}
+			if (judgeAndPoint(a2, a3)) {
+				paint___(g, a2, a3);
+			}
+			if (judgeAndPoint(a3, a4)) {
+				paint___(g, a3, a4);
+			}
+			if (judgeAndPoint(a4, a1)) {
+				paint___(g, a4, a1);
+			}
+		}
 	}
 
 	public void paint___(Graphics g, int i, int j) {

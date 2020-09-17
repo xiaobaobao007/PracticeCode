@@ -8,6 +8,8 @@ import javax.swing.*;
 public class Matrix_3D extends JPanel {
 
 	public static JFrame jFrame;
+	int JFrame_WIDTH = 1000;
+	int JFrame_HEIGHT = 1000;
 
 	//正方体边长的一半长度
 	static double length = 300.0;
@@ -28,8 +30,8 @@ public class Matrix_3D extends JPanel {
 	static double[] canvas = {0, 500, 500};
 	//投影平面的法向量
 	static double[] canvas_c = {0, 100, 100};
-	//投影平面的上的一点，此点到canvas视为投影平面的最上方
-	static double[] canvas_p = {0, 400, 600};
+	//投影平面的上的一点，此点到canvas视为投影平面朝上的位置,一定要确保canvas_c*canvas_p=0，即保证垂直
+	static double[] canvas_p = {0, -100, 100};
 	//摄像机向量
 	static double[] eye = {0, 1000, 1000};
 	//计算结果缓存
@@ -40,11 +42,14 @@ public class Matrix_3D extends JPanel {
 	int[][] b = new int[8][2];
 	int center_x = 500;
 	int center_y = 500;
-	int JFRAME_WIDTH = 1000;
-	int JFRAME_HEIGHT = 1000;
+
+	static {
+		for (int i = 0; i < 3; i++) {
+			canvas_p[i] += canvas[i];
+		}
+	}
 
 	enum XYZ {
-
 		//起始旋转角度和变化量
 		X(0, 0.1),
 		Y(0, 0.1),
@@ -78,15 +83,14 @@ public class Matrix_3D extends JPanel {
 	}
 
 	public Matrix_3D() {
-
 		jFrame = new JFrame();
 		Dimension ScreenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int JFrame_X = (int) (ScreenSize.getWidth() - JFRAME_WIDTH) / 2;
-		int JFrame_Y = (int) (ScreenSize.getHeight() - JFRAME_HEIGHT) / 2;
+		int JFrame_X = (int) (ScreenSize.getWidth() - JFrame_WIDTH) / 2;
+		int JFrame_Y = (int) (ScreenSize.getHeight() - JFrame_HEIGHT) / 2;
 		jFrame.setLocation(JFrame_X, JFrame_Y);
-		jFrame.setSize(JFRAME_WIDTH, JFRAME_HEIGHT);
+		jFrame.setSize(JFrame_WIDTH, JFrame_HEIGHT);
 		jFrame.setLayout(null);
-		this.setBounds(0, 0, JFRAME_WIDTH, JFRAME_HEIGHT);
+		this.setBounds(0, 0, JFrame_WIDTH, JFrame_HEIGHT);
 		this.setLayout(null);
 
 		jFrame.add(this);
@@ -199,31 +203,19 @@ public class Matrix_3D extends JPanel {
 	//计算点经过投影在投影平面的3d坐标
 	private double[] calPlaneLineIntersectPoint(double[] linePoint) {
 		double[] returnResult = new double[3];
-		double vp1, vp2, vp3, n1, n2, n3, v1, v2, v3, m1, m2, m3, t, vpt;
-		// 平面的法线向量
-		vp1 = canvas_c[0];
-		vp2 = canvas_c[1];
-		vp3 = canvas_c[2];
-		// 平面经过的一点坐标
-		n1 = canvas[0];
-		n2 = canvas[1];
-		n3 = canvas[2];
+		double v1, v2, v3, t, vpt;
 		// 直线的方向向量
-		v1 = eye[0] - linePoint[0];
-		v2 = eye[1] - linePoint[1];
-		v3 = eye[2] - linePoint[2];
-		// 直线经过的一点坐标
-		m1 = eye[0];
-		m2 = eye[1];
-		m3 = eye[2];
-		vpt = v1 * vp1 + v2 * vp2 + v3 * vp3;
+		v1 = linePoint[0] - eye[0];
+		v2 = linePoint[1] - eye[1];
+		v3 = linePoint[2] - eye[2];
+		vpt = v1 * canvas_c[0] + v2 * canvas_c[1] + v3 * canvas_c[2];
 		if (vpt == 0) {
 			returnResult = null;
 		} else {
-			t = ((n1 - m1) * vp1 + (n2 - m2) * vp2 + (n3 - m3) * vp3) / vpt;
-			returnResult[0] = m1 + v1 * t;
-			returnResult[1] = m2 + v2 * t;
-			returnResult[2] = m3 + v3 * t;
+			t = ((canvas[0] - eye[0]) * canvas_c[0] + (canvas[1] - eye[1]) * canvas_c[1] + (canvas[2] - eye[2]) * canvas_c[2]) / vpt;
+			returnResult[0] = eye[0] + v1 * t;
+			returnResult[1] = eye[1] + v2 * t;
+			returnResult[2] = eye[2] + v3 * t;
 		}
 		return returnResult;
 	}

@@ -1,4 +1,5 @@
 package Tools;
+
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -119,7 +120,8 @@ public class JFrameTools extends JPanel {
 		outText(srcText, "更新日志\n" +
 								 "1：奖励、战斗、空白行、异常，数据也输出，做到数据行数一致\n" +
 								 "2：概率转换\n" +
-								 "3：会对输入数据进行重排序，用来一一对应输出数据，不会对数据更改\n" +
+								 "3：会对每一行输入数据道具进行重排序，用来一一对应输出数据，\n" +
+								 "      不会对数据更改，也不会修改行的顺序\n" +
 								 "4：未匹配数据展示【-1】或者【null】", true, true);
 
 		outText(tipsText, "系统成功启动有问题找包蒙阳", true, false);
@@ -445,7 +447,16 @@ public class JFrameTools extends JPanel {
 		destText.setText("");
 		destText_2.setText("");
 		String text = srcText.getText();
-		return text == null || "".equals(text);
+
+		if (text == null || "".equals(text)) {
+			return false;
+		} else if (text.startsWith("更新日志")) {
+			srcText.setText("");
+			destText.setText("");
+			destText_2.setText("");
+			return true;
+		}
+		return false;
 	}
 
 	public Item getItem(String type, String id, String num) {

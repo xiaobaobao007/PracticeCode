@@ -1,4 +1,4 @@
-package AAA_doing;
+package Arithmetic;
 
 /**
  * @author xiaobaobao

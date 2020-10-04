@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 
-import com.alibaba.fastjson.JSONArray;
+import Util.CommonUtil;
 
 /**
  * <pre>
@@ -31,12 +31,7 @@ import com.alibaba.fastjson.JSONArray;
  */
 public class TopKFrequent {
 	public static void main(String[] args) {
-		JSONArray array = JSONArray.parseArray("[4,1,-1,2,-1,2,3]");
-		int[] num = new int[array.size()];
-		for (int i = array.size() - 1; i >= 0; i--) {
-			num[i] = (int) array.get(i);
-		}
-		System.out.println(Arrays.toString(new TopKFrequent().topKFrequent(num, 2)));
+		System.out.println(Arrays.toString(new TopKFrequent().topKFrequent(CommonUtil.coverString2OneInt("[4,1,-1,2,-1,2,3]"), 2)));
 	}
 
 	public int[] topKFrequent(int[] nums, int k) {

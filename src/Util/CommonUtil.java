@@ -51,6 +51,14 @@ public class CommonUtil {
 		return s.replaceAll(" ", "");
 	}
 
+	public static String toBinaryString(int i) {
+		StringBuilder s = new StringBuilder(Integer.toBinaryString(i));
+		for (int j = s.length(); j < 32; j++) {
+			s.insert(0, "0");
+		}
+		return s.toString();
+	}
+
 	public static void main(String[] args) {
 		// System.out.println(Arrays.toString(coverString2OneInt("[4,1,-1,2,-1,2,3]")));
 		System.out.println(Arrays.deepToString(coverString2TwoChar("[\n" +

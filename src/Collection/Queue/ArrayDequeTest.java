@@ -5,6 +5,11 @@ import java.util.ArrayDeque;
 import org.junit.Test;
 
 /**
+ * <pre>
+ *     		用数组完成链表结构
+ *     		维护head和tail下坐标，很巧妙
+ * </pre>
+ *
  * @author xiaobaobao
  * @date 2020/10/7，23:03
  */
@@ -12,13 +17,17 @@ public class ArrayDequeTest {
 	@Test
 	public void add() {
 		ArrayDeque<Integer> deque = new ArrayDeque<>();
-		for (int i = 0; i < 15; i++) {
-			deque.add(i);
-		}
-		deque.add(666);
-		deque.forEach((a) -> System.out.print(a + "_"));
-		System.out.println();
+		deque.add(1);
+		deque.add(2);
+		deque.add(3);
+		deque.addFirst(4);
+		deque.addFirst(4);
+		deque.addLast(5);
+		deque.addLast(5);
 		deque.removeFirst();
+		deque.removeLast();
+		deque.getFirst();
+		deque.getLast();
 		deque.forEach((a) -> System.out.print(a + "_"));
 	}
 }

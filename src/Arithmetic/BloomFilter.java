@@ -9,10 +9,10 @@ import java.util.BitSet;
  * 布隆过滤器
  */
 public class BloomFilter {
-	private static final int DEFAULT_SIZE = 2 << 24;
+	private static final int DEFAULT_SIZE = 1 << 24;
 	private static final int[] seeds = new int[]{5, 7, 11, 13, 31, 37, 61};
-	private BitSet bits = new BitSet(DEFAULT_SIZE);
-	private SimpleHash[] func = new SimpleHash[seeds.length];
+	private final BitSet bits = new BitSet(DEFAULT_SIZE);
+	private final SimpleHash[] func = new SimpleHash[seeds.length];
 
 	public BloomFilter() {
 		for (int i = 0; i < seeds.length; i++) {
@@ -22,7 +22,7 @@ public class BloomFilter {
 
 	public void add(String value) {
 		for (SimpleHash f : func) {
-			bits.set(f.hashAndGetIndex(value), true);
+			bits.set(f.hashAndGetIndex(value));
 		}
 	}
 
@@ -41,8 +41,8 @@ public class BloomFilter {
 	// 内部类，simpleHash
 	public static class SimpleHash {
 
-		private int cap;
-		private int seed;
+		private final int cap;
+		private final int seed;
 
 		public SimpleHash(int cap, int seed) {
 			this.cap = cap;

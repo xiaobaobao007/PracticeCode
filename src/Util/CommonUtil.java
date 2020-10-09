@@ -51,12 +51,12 @@ public class CommonUtil {
 		return s.replaceAll(" ", "");
 	}
 
-	public static String toBinaryString(int i) {
+	public static void toBinaryString(int i) {
 		StringBuilder s = new StringBuilder(Integer.toBinaryString(i));
 		for (int j = s.length(); j < 32; j++) {
 			s.insert(0, "0");
 		}
-		return s.toString();
+		System.out.println(s);
 	}
 
 	public static void main(String[] args) {

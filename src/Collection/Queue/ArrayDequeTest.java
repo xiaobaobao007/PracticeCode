@@ -17,17 +17,18 @@ public class ArrayDequeTest {
 	@Test
 	public void add() {
 		ArrayDeque<Integer> deque = new ArrayDeque<>();
-		deque.add(1);
-		deque.add(2);
-		deque.add(3);
-		deque.addFirst(4);
-		deque.addFirst(4);
-		deque.addLast(5);
-		deque.addLast(5);
-		deque.removeFirst();
-		deque.removeLast();
-		deque.getFirst();
-		deque.getLast();
-		deque.forEach((a) -> System.out.print(a + "_"));
+		System.out.println(deque.size());
+		// deque.add(1);
+		// deque.add(2);
+		// deque.add(3);
+		// deque.addFirst(4);
+		// deque.addFirst(4);
+		// deque.addLast(5);
+		// deque.addLast(5);
+		// deque.removeFirst();
+		// deque.removeLast();
+		// deque.getFirst();
+		// deque.getLast();
+		// deque.forEach((a) -> System.out.print(a + "_"));
 	}
 }

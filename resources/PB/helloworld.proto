@@ -67,3 +67,11 @@ message allValue {
     sint64 long_sint64 = 24;
     uint64 long_uint64 = 25;
 }
+
+message test_int32{
+    int32 _32 =1;
+}
+
+message test_int64{
+    int64 _64 =1;
+}

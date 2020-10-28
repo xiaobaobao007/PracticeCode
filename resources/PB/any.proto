@@ -1,7 +1,7 @@
 syntax = "proto3";
 package PB;
 
-import "helloworld.proto";
+//import "helloworld.proto"; 不允许重复引用 File recursively imports itself: helloworld.proto -> any.proto -> helloworld.proto
 
 option java_multiple_files = false;
 option java_package = "NIO.PB.HelloWorld";

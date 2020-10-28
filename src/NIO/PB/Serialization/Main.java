@@ -181,10 +181,29 @@ public class Main {
 	 */
 	@Test
 	public void longTest() {
-		Helloworld.allValue.Builder a = Helloworld.allValue.newBuilder();
-		a.setLongInt64(123L);
-//		a.setUint32Value(123L);
-//		a.setUint32Value(123L);
+		int[] test = {-1, 0, 1, Integer.MAX_VALUE, Integer.MIN_VALUE};
+		Helloworld.test_int32.Builder a = Helloworld.test_int32.newBuilder();
+		Helloworld.test_int64.Builder b = Helloworld.test_int64.newBuilder();
+		for (int i : test) {
+			byte[] bytes1 = a.set32(i).build().toByteArray();
+			byte[] bytes2 = b.set64(i).build().toByteArray();
+			System.out.println(Arrays.toString(bytes1));
+			System.out.println(Arrays.toString(bytes2));
+			System.out.println(testTwo(bytes1, bytes2));
+			System.out.println("-------------------------------");
+		}
+	}
+
+	public boolean testTwo(byte[] bytes1, byte[] bytes2) {
+		if (bytes1.length != bytes2.length) {
+			return false;
+		}
+		for (int i = 0; i < bytes1.length; i++) {
+			if (bytes1[i] != bytes2[i]) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 }

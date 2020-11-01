@@ -1,5 +1,7 @@
 package basis.FalseSharing;
 
+import sun.misc.Contended;
+
 public class FALSESHARE_0_TEST implements Runnable {
 	public static int NUM_THREADS = 4;
 	public final static long ITERATIONS = 500L * 1000L * 1000L;
@@ -48,6 +50,7 @@ public class FALSESHARE_0_TEST implements Runnable {
 	}
 
 	public final static class VolatileLong {
+		// @Contended //
 		public volatile long value = 0L;
 		// public long p1, p2, p3, p4, p5, p6;
 	}

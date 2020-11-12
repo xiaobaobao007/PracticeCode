@@ -30,6 +30,7 @@ public class LockSupportDemo {
 
 		TimeUnit.SECONDS.sleep(1);
 
+		System.out.println("can do it");
 		LockSupport.unpark(thread);
 	}
 

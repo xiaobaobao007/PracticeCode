@@ -2,6 +2,7 @@ package com.intion.app.fight.constant;
 
 import com.intion.app.fight.buff.SubHpBuff;
 import com.intion.app.fight.domain.Buff;
+import com.intion.app.fight.effect.RepelEffect;
 
 /**
  * @author xiaobaobao
@@ -11,7 +12,7 @@ public enum BuffType {
 
 	//效果技能
 	ATTACK(10001, new SubHpBuff()),//普通攻击
-	REPEL(10002, new SubHpBuff()),//击退
+	REPEL(10002, new RepelEffect()),//击退
 	TRANSPOSITION(10003, new SubHpBuff()),//换位
 	// RESURGENCE(10004, new SubHpBuff()),//复活
 	SUMMON(10005, new SubHpBuff()),//召唤

@@ -81,37 +81,37 @@ public class FightUnit {
 	}
 
 	public boolean checkError(int operationType) {
-		return checkError(operationType, 0, 0, 0, 0, 0);
+		return checkError(operationType, null, FightConstant.STAY_POSITION, FightConstant.STAY_POSITION, 0, 0);
 	}
 
 	public boolean checkError(int operationType, int moveToX, int moveToY) {
-		return checkError(operationType, 0, moveToX, moveToY, 0, 0);
+		return checkError(operationType, null, moveToX, moveToY, 0, 0);
 	}
 
-	public boolean checkError(int operationType, int skillId, int moveToX, int moveToY, int fightX, int fightY) {
+	public boolean checkError(int operationType, Skill skill, int moveToX, int moveToY, int fightX, int fightY) {
 		switch (operationType) {
 			case FightConstant.OPERATION_TYPE:
-				return alive && myBuffsHas(BuffConstant.NOT_OPERATION_BUFF_SET);
+				return !alive || myBuffsHas(BuffConstant.NOT_OPERATION_BUFF_SET);
 			case FightConstant.SKILL_TYPE:
-				Skill skill = getSkillById(skillId);
-				if (skill == null) {
-					return false;
-				}
 				if (moveToX >= 0 && moveToY >= 0) {
-					return alive && myBuffsHas(BuffType.SILENCE) && canMoveTo(moveToX, moveToY) && FightConstant.calcuteDistance(moveToX, moveToY, fightX, fightY) <= skill.getDistance();
+					return moveError(moveToX, moveToY) || FightConstant.calculateDistance(moveToX, moveToY, fightX, fightY) > skill.getDistance();
 				}
-				return alive && myBuffsHas(BuffType.SILENCE) && FightConstant.calcuteDistance(positionX, positionY, fightX, fightY) <= skill.getDistance();
+				return !alive || myBuffsHas(BuffType.SILENCE) || FightConstant.calculateDistance(positionX, positionY, fightX, fightY) > skill.getDistance();
 			case FightConstant.MOVE_TYPE:
-				return alive && myBuffsHas(BuffType.GROUNDED) && canMoveTo(moveToX, moveToY);
+				if (moveError(moveToX, moveToY)) {
+					return true;
+				}
+			case FightConstant.ONLY_MOVE_TYPE:
+				return !alive || myBuffsHas(BuffType.GROUNDED);
 			case FightConstant.NORMAL_ATTACK_TYPE:
 				if (moveToX >= 0 && moveToY >= 0) {
-					return alive && myBuffsHas(BuffType.SEAL) && canMoveTo(moveToX, moveToY) && FightConstant.calcuteDistance(moveToX, moveToY, fightX, fightY) <= heroConfig.getDistance();
+					return moveError(moveToX, moveToY) || FightConstant.calculateDistance(moveToX, moveToY, fightX, fightY) > skill.getDistance();
 				}
-				return alive && myBuffsHas(BuffType.SEAL) && FightConstant.calcuteDistance(positionX, positionY, fightX, fightY) <= heroConfig.getDistance();
+				return !alive || myBuffsHas(BuffType.SEAL) || FightConstant.calculateDistance(positionX, positionY, fightX, fightY) > skill.getDistance();
 			case FightConstant.BE_ATTACK_TYPE:
-				return alive && myBuffsHas(BuffType.STEALTH);
+				return !alive || myBuffsHas(BuffType.STEALTH);
 			default:
-				return false;
+				return true;
 		}
 	}
 
@@ -129,9 +129,9 @@ public class FightUnit {
 	/**
 	 * 能否进行移动,判断地图位置和移动距离限制
 	 */
-	private boolean canMoveTo(int moveToX, int moveToY) {
+	private boolean moveError(int moveToX, int moveToY) {
 		int move = getMove();
-		return FightConstant.calcuteDistance(positionX, positionY, moveToX, moveToY) <= move && area.canMoveOnArea(moveToX, moveToY, move);
+		return !area.canMoveOnArea(moveToX, moveToY) || FightConstant.calculateDistance(positionX, positionY, moveToX, moveToY) > move;
 	}
 
 	/**

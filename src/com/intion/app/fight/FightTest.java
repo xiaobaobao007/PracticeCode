@@ -1,8 +1,8 @@
 package com.intion.app.fight;
 
-import com.intion.app.fight.buff.SubHpBuff;
 import com.intion.app.fight.constant.BuffType;
 import com.intion.app.fight.domain.*;
+import com.intion.app.fight.effect.RepelEffect;
 import com.intion.app.po.hero.UserHero;
 import com.intion.app.service.AFightService;
 import com.intion.app.xmlConfig.hero.HeroConfig;
@@ -32,9 +32,17 @@ public class FightTest {
 
 	static long id = 0L;
 
-	static int[][] atkUnit = {{1000, 0, 2}, {1001, 0, 3}, {1002, 1, 2}, {1003, 1, 3}, {1004, 1, 4}};
+	//正常阵位
+	// static int[][] atkUnit = {{1000, 0, 2}, {1001, 0, 3}, {1002, 1, 2}, {1003, 1, 3}, {1004, 1, 4}};
 	// int[][] defUnit = {{1005, 4, 0}, {1006, 4, 1}, {1007, 4, 2}, {1008, 5, 1}, {1009, 5, 2}};
-	static int[][] defUnit = {{1005, 3, 2}, {1006, 4, 2}, {1007, 3, 1}, {1008, 4, 1}, {1009, 3, 3}};
+
+	//防守方全部前移1格
+	// static int[][] atkUnit = {{1000, 0, 2}, {1001, 0, 3}, {1002, 1, 2}, {1003, 1, 3}, {1004, 1, 4}};
+	// static int[][] defUnit = {{1005, 3, 2}, {1006, 4, 2}, {1007, 3, 1}, {1008, 4, 1}, {1009, 3, 3}};
+
+	//测试技能效果，防守方包裹一个攻击方
+	static int[][] atkUnit = {{1000, 1, 1}};
+	static int[][] defUnit = {{1005, 2, 1}, {1006, 0, 1}, {1007, 1, 2}, {1008, 1, 0}};
 
 	static long userIdA = 1L;
 	static long userIdB = 2L;
@@ -72,30 +80,13 @@ public class FightTest {
 	//随机得到一个技能
 	public static void setSkill(FightUnit fightUnit) {
 
-		SubHpBuff attack_onlyOne = new SubHpBuff();
-		attack_onlyOne.init(BuffType.ATTACK, 1, fightUnit.isAttack, TargetType.CIRCLE, new int[]{1});
+		Buff attack_onlyOne = new RepelEffect();
+		attack_onlyOne.init(BuffType.REPEL, 1, fightUnit.isAttack, TargetType.ONLY_THE_POSITION, new int[]{3, 2});
 
 		Skill skill_1 = new Skill(1001, 1);
 		skill_1.addBuffList(attack_onlyOne);
 
 		fightUnit.atkSkills = new Skill[]{skill_1};
-
-		// Skill atkSkill_2 = new Skill();
-		//
-		// SubHpBuff attack_onlyOne_1 = new SubHpBuff();
-		// attack_onlyOne_1.init(0, 1, fightUnit.isAttack, TargetType.CIRCLE, 2);
-		// atkSkill_2.addBuffList(attack_onlyOne_1);
-		// fightUnit.defSkills = new Skill[]{atkSkill_2};
-
-
-		// SubHpBuff attack_cross = new SubHpBuff();//十字斩，攻击范围1，最多影响到5个格子}
-		// attack_cross.init(1, !isAttack, TargetType.CROSS_THE_POSITION, 1);
-		// skill.addBuffList(attack_cross);
-
-		// SubHpBuff poison_onlyOne = new SubHpBuff();//毒药单点攻击，持续三回合
-		// poison_onlyOne.init(3, !isAttack, TargetType.ONLY_THE_POSITION);
-		// poison_onlyOne.init(3, !isAttack, TargetType.CROSS_THE_POSITION);
-		// skill.addBuffList(poison_onlyOne);
 	}
 
 }

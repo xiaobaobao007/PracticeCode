@@ -35,6 +35,9 @@ public class RoundEvent {
 	}
 
 	public void addAttackEvents(AttackEvent attackEvent) {
+		if (attackEvent == null) {
+			return;
+		}
 		if (attackEvents == null) {
 			attackEvents = new LinkedList<>();
 		}

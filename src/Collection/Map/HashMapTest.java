@@ -32,18 +32,18 @@ public class HashMapTest {
 
 	@Test
 	public void add() {
-		System.out.println(calcuteSeasonMvp(1, 2));
-		System.out.println(calcuteSeasonMvp(1, 2));
-		System.out.println(calcuteSeasonMvp(1, 2));
+		System.out.println(calculateSeasonMvp(1, 2));
+		System.out.println(calculateSeasonMvp(1, 2));
+		System.out.println(calculateSeasonMvp(1, 2));
 	}
 
 	private Map<Integer, Integer> seasonMvpIdTimesMap;
 
-	public boolean calcuteSeasonMvp(int newMvpId, int oldMvpId) {
-		return calcuteMvp(seasonMvpIdTimesMap, newMvpId, oldMvpId);
+	public boolean calculateSeasonMvp(int newMvpId, int oldMvpId) {
+		return calculateMvp(seasonMvpIdTimesMap, newMvpId, oldMvpId);
 	}
 
-	public boolean calcuteMvp(Map<Integer, Integer> map, int newMvpId, int oldMvpId) {
+	public boolean calculateMvp(Map<Integer, Integer> map, int newMvpId, int oldMvpId) {
 		if (map == null) {
 			map = new HashMap<>();
 			map.put(newMvpId, 1);

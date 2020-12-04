@@ -17,7 +17,13 @@ public class Skill {
 
 	private int skillId;
 	private int distance;
-	private final LinkedList<Buff> buffList = new LinkedList<>();
+	private boolean isNormalAttack;
+	private LinkedList<Buff> buffList;
+
+	public Skill(int distance) {
+		isNormalAttack = true;
+		this.distance = distance;
+	}
 
 	public Skill(int skillId, int distance) {
 		this.skillId = skillId;
@@ -31,6 +37,9 @@ public class Skill {
 	 * @param counter 能否触发反击技能，反击之后不能再被反击
 	 */
 	public void doEffect(RoundEvent roundEvent, FightUnit atk, Area area, int defX, int defY, boolean counter) {
+		if (buffList == null) {
+			return;
+		}
 		for (Buff buff : buffList) {
 			LinkedList<FightUnit> defUnitList = area.getTargetUnit(atk.isAttack, defX, defY, buff.targetType, buff.targetParams[0]);
 			if (defUnitList != null && defUnitList.size() > 0) {
@@ -71,6 +80,9 @@ public class Skill {
 	}
 
 	public void addBuffList(Buff buff) {
+		if (buffList == null) {
+			buffList = new LinkedList<>();
+		}
 		buffList.add(buff);
 	}
 
@@ -78,15 +90,11 @@ public class Skill {
 		return skillId;
 	}
 
-	public void setSkillId(int skillId) {
-		this.skillId = skillId;
-	}
-
 	public int getDistance() {
 		return distance;
 	}
 
-	public void setDistance(int distance) {
-		this.distance = distance;
+	public boolean isNormalAttack() {
+		return isNormalAttack;
 	}
 }

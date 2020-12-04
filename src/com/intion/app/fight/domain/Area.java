@@ -40,7 +40,7 @@ public class Area {
 		fightUnitMap.put(fightUnit.heroId, fightUnit);
 	}
 
-	public boolean canMoveOnArea(int moveX, int moveY,int move) {
+	public boolean canMoveOnArea(int moveX, int moveY) {
 		return FightConstant.fightUnitCanMove(moveX, moveY) && areaMap[moveY][moveX] == null;
 	}
 

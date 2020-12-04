@@ -67,9 +67,10 @@ public class FightConstant {
 	//检测玩家操作的事件
 	public static final int OPERATION_TYPE = 1;//能否控制
 	public static final int SKILL_TYPE = 2;//能否使用技能
-	public static final int MOVE_TYPE = 3;//能否移动
-	public static final int NORMAL_ATTACK_TYPE = 4;//能否普通攻击
-	public static final int BE_ATTACK_TYPE = 5;//能否被选中
+	public static final int MOVE_TYPE = 3;//能否移动并检测移动距离
+	public static final int ONLY_MOVE_TYPE = 4;//能否移动不检测移动距离
+	public static final int NORMAL_ATTACK_TYPE = 5;//能否普通攻击
+	public static final int BE_ATTACK_TYPE = 6;//能否被选中
 
 	//地图位置参数
 	public static final int STAY_POSITION = -1;//不移动的位置设置参数
@@ -86,11 +87,11 @@ public class FightConstant {
 
 	//能否移动到指定位置
 	public static boolean fightUnitCanMove(int x, int y) {
-		return x >= 0 && x < AREA_WIDTH && y >= 0 && y <= AREA_HEIGHT;
+		return x >= 0 && x < AREA_WIDTH && y >= 0 && y < AREA_HEIGHT;
 	}
 
 	//计算两点间距离
-	public static int calcuteDistance(int x, int y, int x1, int y1) {
+	public static int calculateDistance(int x, int y, int x1, int y1) {
 		return Math.abs(x1 - x) + Math.abs(y1 - y);
 	}
 

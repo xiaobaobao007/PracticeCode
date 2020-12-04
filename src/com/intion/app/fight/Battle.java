@@ -14,6 +14,7 @@ import com.intion.app.fight.data.RoundEvent;
 import com.intion.app.fight.domain.Area;
 import com.intion.app.fight.domain.Buff;
 import com.intion.app.fight.domain.FightUnit;
+import com.intion.app.fight.domain.Skill;
 
 /**
  * 一场战斗的内部管理
@@ -223,18 +224,21 @@ public class Battle {
 		FightUnit atkUnit = area.fightUnitMap.get(atkHeroId);
 		if (atkUnit == null) {
 			return -3;
-		} else if (atkUserId != getTheRoundUserId()) {
-			return -4;
 		} else if (atkUnit.isAttack == defUnit.isAttack) {
 			return -7;
-		} else if (skillId > 0) {
-			if (atkUnit.checkError(FightConstant.SKILL_TYPE, skillId, moveX, moveY, defUnit.positionX, defUnit.positionY)) {
+		}
+
+		Skill skill = atkUnit.getSkillById(skillId);
+
+		if (skill == null) {
+			return -8;
+		}
+		if (skill.isNormalAttack()) {
+			if (atkUnit.checkError(FightConstant.NORMAL_ATTACK_TYPE, skill, moveX, moveY, defUnit.positionX, defUnit.positionY)) {
 				return -5;
 			}
-		} else {
-			if (atkUnit.checkError(FightConstant.NORMAL_ATTACK_TYPE, 0, moveX, moveY, defUnit.positionX, defUnit.positionY)) {
-				return -5;
-			}
+		} else if (atkUnit.checkError(FightConstant.SKILL_TYPE, skill, moveX, moveY, defUnit.positionX, defUnit.positionY)) {
+			return -5;
 		}
 
 		//回合前，先结算buff
@@ -246,7 +250,8 @@ public class Battle {
 		//添加回合事件
 		RoundEvent roundEvent = addAttackEvent(atkHeroId, skillId, moveX, moveY);
 		//开始战斗,测试阶段，未有选择技能的选项，只执行第一个技能
-		atkUnit.getSkillById(skillId).doEffect(roundEvent, atkUnit, area, defUnit.positionX, defUnit.positionY, true);
+		// atkUnit.getSkillById(skillId).doEffect(roundEvent, atkUnit, area, defUnit.positionX, defUnit.positionY, true);
+		skill.doEffect(roundEvent, atkUnit, area, defUnit.positionX, defUnit.positionY, true);
 
 		return 1;
 	}

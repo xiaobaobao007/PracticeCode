@@ -124,11 +124,11 @@ public class Matrix_3D extends JPanel {
 		super.paint(g);
 		//计算八个点投影后的坐标
 		for (int i = 0; i < 8; i++) {
-			calcute_3d_2d(i);
+			calculate_3d_2d(i);
 		}
 		//绘图
 		for (int i = side.length - 1; i >= 0; i--) {
-			calcute_o_o(g, i, side[i]);
+			calculate_o_o(g, i, side[i]);
 		}
 	}
 
@@ -136,7 +136,7 @@ public class Matrix_3D extends JPanel {
 	int[] xx = new int[4];
 	int[] yy = new int[4];
 
-	public void calcute_o_o(Graphics g, int index, int[] a1) {
+	public void calculate_o_o(Graphics g, int index, int[] a1) {
 		for (int i = 0; i < 3; i++) {
 			o_o[i] = (d[a1[0]][i] + d[a1[1]][i] + d[a1[2]][i] + d[a1[3]][i]) / 4;
 		}
@@ -162,7 +162,7 @@ public class Matrix_3D extends JPanel {
 	}
 
 	//计算3d点到2d点
-	public void calcute_3d_2d(int index) {
+	public void calculate_3d_2d(int index) {
 		d[index][0] = points[index][0];
 		d[index][1] = points[index][1] * XYZ.X.cos - points[index][2] * XYZ.X.sin;
 		d[index][2] = points[index][1] * XYZ.X.sin + points[index][2] * XYZ.X.cos;

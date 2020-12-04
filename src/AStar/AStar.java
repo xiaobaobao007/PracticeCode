@@ -1,7 +1,7 @@
 package AStar;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AStar {
 
@@ -17,120 +17,189 @@ public class AStar {
 			{0, 0, 0, 1, 0, 0, 0, 1, 0},
 	};
 
-	int[][] xyOperation = {{0, -1}, {0, 1}, {1, 0}, {-1, 0}};
-	int splitX = 8;
-	int splitY = (1 << splitX) - 1;
+	public static final int STEP = 10;
 
-	private int startX;
-	private int startY;
-	private int endX;
-	private int endY;
-	private int endXY;
+	private final ArrayList<Node> openList = new ArrayList<>();
+	private final ArrayList<Node> closeList = new ArrayList<>();
 
-	private Map<Integer, Integer> openMap = new HashMap<>();//边界所有值
-	private Map<Integer, Integer> closeMap = new HashMap<>();//已经全部遍历过的
-
-	public AStar(int startX, int startY, int endX, int endY) {
-		this.startX = startX;
-		this.startY = startY;
-		this.endX = endX;
-		this.endY = endY;
-		this.endXY = calcuteXY(endX, endY);
-	}
-
-	public Map.Entry<Integer, Integer> findMinFNodeInOpneList() {
-		Map.Entry<Integer, Integer> min = null;
-		for (Map.Entry<Integer, Integer> entry : openMap.entrySet()) {
-			if (min == null) {
-				min = entry;
-				continue;
-			}
-			if (entry.getValue() < min.getValue()) {
-				min = entry;
+	public Node findMinFNodeInOpneList() {
+		Node tempNode = openList.get(0);
+		for (Node node : openList) {
+			if (node.F < tempNode.F) {
+				tempNode = node;
 			}
 		}
-		return min;
+		return tempNode;
 	}
 
-	public void findNeighborNodes(int x, int y) {
-		int X;
-		int Y;
-		Integer XY;
-		for (int[] ints : xyOperation) {
-			X = x + ints[0];
-			Y = y + ints[1];
-			if (canReach(X, Y) && !openMap.containsKey(XY = calcuteXY(X, Y)) && !closeMap.containsKey(XY)) {
-				openMap.put(XY, calcuteF(X, Y));
-			}
+	public ArrayList<Node> findNeighborNodes(Node currentNode) {
+		ArrayList<Node> arrayList = new ArrayList<>();
+		// 只考虑上下左右，不考虑斜对角
+		int topX = currentNode.x;
+		int topY = currentNode.y - 1;
+		if (canReach(topX, topY) && !exists(closeList, topX, topY)) {
+			arrayList.add(new Node(topX, topY));
 		}
+		int bottomX = currentNode.x;
+		int bottomY = currentNode.y + 1;
+		if (canReach(bottomX, bottomY) && !exists(closeList, bottomX, bottomY)) {
+			arrayList.add(new Node(bottomX, bottomY));
+		}
+		int leftX = currentNode.x - 1;
+		int leftY = currentNode.y;
+		if (canReach(leftX, leftY) && !exists(closeList, leftX, leftY)) {
+			arrayList.add(new Node(leftX, leftY));
+		}
+		int rightX = currentNode.x + 1;
+		int rightY = currentNode.y;
+		if (canReach(rightX, rightY) && !exists(closeList, rightX, rightY)) {
+			arrayList.add(new Node(rightX, rightY));
+		}
+		return arrayList;
 	}
 
 	public boolean canReach(int x, int y) {
-		if (y >= 0 && y < NODES.length && x >= 0 && x < NODES[0].length) {
-			return NODES[y][x] == 0;
+		if (x >= 0 && x < NODES.length && y >= 0 && y < NODES[0].length) {
+			return NODES[x][y] == 0;
 		}
 		return false;
 	}
 
-	public boolean findPath() {
+	public Node findPath(Node startNode, Node endNode) {
 
-		int xy = calcuteXY(startX, startY);
-		closeMap.put(xy, calcuteF(startX, startY));
-		findNeighborNodes(startX, startY);
-		if (openMap.containsKey(endXY)) {
-			return true;
-		}
+		// 把起点加入 open list
+		openList.add(startNode);
 
-		while (openMap.size() > 0) {
-			for (int i = 0; i < NODES.length; i++) {
-				for (int j = 0; j < NODES[0].length; j++) {
-					int iii = calcuteXY(j, i);
-					if (iii == endXY) {
-						System.out.print("# ");
-					} else if (openMap.containsKey(iii)) {
-						System.out.print(". ");
-					} else if (closeMap.containsKey(iii)) {
-						System.out.print("  ");
-					} else {
-						System.out.print(NODES[i][j] + " ");
-					}
+		while (openList.size() > 0) {
+			// 遍历 open list ，查找 F值最小的节点，把它作为当前要处理的节点
+			Node currentNode = findMinFNodeInOpneList();
+			// 从open list中移除
+			openList.remove(currentNode);
+			// 把这个节点移到 close list
+			closeList.add(currentNode);
+
+			ArrayList<Node> neighborNodes = findNeighborNodes(currentNode);
+			for (Node node : neighborNodes) {
+				if (exists(openList, node)) {
+					foundPoint(currentNode, node);
+				} else {
+					notFoundPoint(currentNode, endNode, node);
 				}
-				System.out.println();
 			}
-			System.out.println();
-
-			Map.Entry<Integer, Integer> entry = findMinFNodeInOpneList();
-			openMap.remove(entry.getKey());
-			closeMap.put(entry.getKey(), entry.getValue());
-
-			findNeighborNodes(entry.getKey() >> splitX, entry.getKey() & splitY);
-
-			if (openMap.containsKey(endXY)) {
-				return true;
+			if (find(openList, endNode) != null) {
+				return find(openList, endNode);
 			}
 		}
 
-		return false;
+		return find(openList, endNode);
 	}
 
-	public int calcuteF(int x, int y) {
-		return Math.abs(x - startX) + Math.abs(y - startY) + Math.abs(x - endX) + Math.abs(y - endY);
+	private void foundPoint(Node tempStart, Node node) {
+		int G = calcG(node);
+		if (G < node.G) {
+			node.parent = tempStart;
+			node.G = G;
+			node.calcF();
+		}
+	}
+
+	private void notFoundPoint(Node tempStart, Node end, Node node) {
+		node.parent = tempStart;
+		node.G = calcG(node);
+		node.H = calcH(end, node);
+		node.calcF();
+		openList.add(node);
+	}
+
+	private int calcG(Node node) {
+		int parentG = node.parent != null ? node.parent.G : 0;
+		return STEP + parentG;
+	}
+
+	private int calcH(Node end, Node node) {
+		int step = Math.abs(node.x - end.x) + Math.abs(node.y - end.y);
+		return step * STEP;
 	}
 
 	public static void main(String[] args) {
-		new AStar(0, 0, NODES[0].length - 1, NODES.length - 1).main();
+		main();
 	}
 
-	public void main() {
-		if (!findPath()) {
-			System.out.println("not");
-			return;
+	public static void main() {
+		Node startNode = new Node(0, 0);
+		Node endNode = new Node(NODES[0].length - 1, NODES.length - 1);
+		Node parent = new AStar().findPath(startNode, endNode);
+
+		// for (int[] node : NODES) {
+		// 	for (int j = 0; j < NODES[0].length; j++) {
+		// 		System.out.print(node[j] + ", ");
+		// 	}
+		// 	System.out.println();
+		// }
+		// ArrayList<Node> arrayList = new ArrayList<>();
+		//
+		// while (parent != null) {
+		// 	arrayList.add(new Node(parent.x, parent.y));
+		// 	parent = parent.parent;
+		// }
+		// System.out.println("\n");
+		//
+		// for (int i = 0; i < NODES.length; i++) {
+		// 	for (int j = 0; j < NODES[0].length; j++) {
+		// 		if (exists(arrayList, i, j)) {
+		// 			System.out.print("@, ");
+		// 		} else {
+		// 			System.out.print(NODES[i][j] + ", ");
+		// 		}
+		//
+		// 	}
+		// 	System.out.println();
+		// }
+	}
+
+	public static Node find(List<Node> nodes, Node point) {
+		for (Node n : nodes)
+			if ((n.x == point.x) && (n.y == point.y)) {
+				return n;
+			}
+		return null;
+	}
+
+	public static boolean exists(List<Node> nodes, Node node) {
+		for (Node n : nodes) {
+			if ((n.x == node.x) && (n.y == node.y)) {
+				return true;
+			}
 		}
-		System.out.println("yes");
+		return false;
 	}
 
-	public int calcuteXY(int x, int y) {
-		return (x << splitX) + y;
+	public static boolean exists(List<Node> nodes, int x, int y) {
+		for (Node n : nodes) {
+			if ((n.x == x) && (n.y == y)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
+	public static class Node {
+		public Node(int x, int y) {
+			this.x = x;
+			this.y = y;
+		}
+
+		public int x;
+		public int y;
+
+		public int F;
+		public int G;
+		public int H;
+
+		public void calcF() {
+			this.F = this.G + this.H;
+		}
+
+		public Node parent;
+	}
 }

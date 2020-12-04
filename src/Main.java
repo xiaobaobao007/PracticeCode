@@ -1,21 +1,15 @@
-import sun.misc.Unsafe;
-
-class Solution implements Runnable {
-	volatile int a = 0;
-
-	@Override
-	public void run() {
-		for (int i = 0; i < 10000; i++) {
-			a++;
-		}
-	}
-}
-
+import org.junit.Test;
 
 public class Main {
 
-	public static void main(String[] args) {
-		Unsafe unsafe = Unsafe.getUnsafe();
-		unsafe.allocateMemory(1024);
+	int maxLength = 6;
+
+	@Test
+	public void main() {
 	}
+
+	public int get(int a, int b, int c, int d, int e) {
+		return a << (6 + b);
+	}
+
 }

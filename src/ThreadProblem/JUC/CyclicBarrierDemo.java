@@ -1,12 +1,15 @@
 package ThreadProblem.JUC;
 
+import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /**
  * @author xiaobaobao
  * @date 2020/5/11，23:34
- *
- *  相比较与CountDownLatch,更能重复利用
+ * <p>
+ * 相比较与CountDownLatch,更能重复利用
  */
 public class CyclicBarrierDemo {
 
@@ -34,12 +37,23 @@ public class CyclicBarrierDemo {
 	}
 
 	public static void main(String[] args) {
-		int threadNum = 5;
-		CyclicBarrier barrier = new CyclicBarrier(threadNum, () -> System.out.println(Thread.currentThread().getName() + " 完成最后任务"));
-
-		for (int i = 0; i < threadNum; i++) {
-			new TaskThread(barrier).start();
+		CyclicBarrier cyclicBarrier = new CyclicBarrier(1);
+		int await = -1000;
+		try {
+			System.out.println("start");
+			// await = cyclicBarrier.await(2, TimeUnit.SECONDS);
+			await = cyclicBarrier.await();
+			System.out.println("end");
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (BrokenBarrierException e) {
+			e.printStackTrace();
+		// } catch (TimeoutException e) {
+		// 	e.printStackTrace();
+		} finally {
+			System.out.println(await);
 		}
+
 	}
 
 }

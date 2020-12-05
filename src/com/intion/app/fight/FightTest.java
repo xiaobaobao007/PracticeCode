@@ -2,7 +2,6 @@ package com.intion.app.fight;
 
 import com.intion.app.fight.constant.BuffType;
 import com.intion.app.fight.domain.*;
-import com.intion.app.fight.effect.RepelEffect;
 import com.intion.app.po.hero.UserHero;
 import com.intion.app.service.AFightService;
 import com.intion.app.xmlConfig.hero.HeroConfig;
@@ -73,20 +72,22 @@ public class FightTest {
 
 		FightUnit fightUnit = new FightUnit();
 		fightUnit.init(isAttack, positionX, positionY, userHero, area);
-		setSkill(fightUnit);
+		setSkill(fightUnit, 1001, BuffType.REPEL);
 		return fightUnit;
 	}
 
 	//随机得到一个技能
-	public static void setSkill(FightUnit fightUnit) {
+	public static void setSkill(FightUnit fightUnit, int skillId, BuffType... buffType) {
 
-		Buff attack_onlyOne = new RepelEffect();
-		attack_onlyOne.init(BuffType.REPEL, 1, fightUnit.isAttack, TargetType.ONLY_THE_POSITION, new int[]{3, 2});
+		Skill skill = new Skill(skillId, 1);
 
-		Skill skill_1 = new Skill(1001, 1);
-		skill_1.addBuffList(attack_onlyOne);
+		for (BuffType type : buffType) {
+			Buff buff = type.cloneNew();
+			buff.init(type, 1, fightUnit.isAttack, TargetType.ONLY_THE_POSITION, new int[]{3, 2});
+			skill.addBuffList(buff);
+		}
 
-		fightUnit.atkSkills = new Skill[]{skill_1};
+		fightUnit.atkSkills = new Skill[]{skill};
 	}
 
 }

@@ -46,7 +46,7 @@ public class Skill {
 				for (FightUnit def : defUnitList) {
 					buff.restart();
 					roundEvent.addAttackEvents(buff.doEffect(atk, def));
-					if (!buff.canRemove()) {
+					if (!(buff instanceof Effect) && !buff.canRemove()) {
 						//此处克隆一个新对象
 						def.addBuffEffect(buff.clone(atk));
 

@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 import com.intion.app.fight.FightTest;
+import com.intion.app.fight.constant.AStar;
 import com.intion.app.fight.constant.BuffConstant;
 import com.intion.app.fight.constant.BuffType;
 import com.intion.app.fight.constant.FightConstant;
@@ -127,11 +128,12 @@ public class FightUnit {
 	}
 
 	/**
-	 * 能否进行移动,判断地图位置和移动距离限制
+	 * 能否进行移动,判断地图位置和移动距离限制, 当移动记录大于1，进行A*算法计算
 	 */
 	private boolean moveError(int moveToX, int moveToY) {
 		int move = getMove();
-		return !area.canMoveOnArea(moveToX, moveToY) || FightConstant.calculateDistance(positionX, positionY, moveToX, moveToY) > move;
+		return !area.canMoveOnArea(moveToX, moveToY) || FightConstant.calculateDistance(positionX, positionY, moveToX, moveToY) > move
+					   || (move != 1 && !AStar.calculate(positionX, positionY, moveToX, moveToY, move, area.areaMap));
 	}
 
 	/**

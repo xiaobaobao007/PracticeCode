@@ -71,6 +71,7 @@ public class FightConstant {
 	public static final int ONLY_MOVE_TYPE = 4;//能否移动不检测移动距离
 	public static final int NORMAL_ATTACK_TYPE = 5;//能否普通攻击
 	public static final int BE_ATTACK_TYPE = 6;//能否被选中
+	public static final int BE_ATTACK_RETURN_TYPE = 7;//能否进行反击
 
 	//地图位置参数
 	public static final int STAY_POSITION = -1;//不移动的位置设置参数

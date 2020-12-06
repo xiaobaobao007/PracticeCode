@@ -1,16 +1,14 @@
-package com.intion.app.fight.buff;
+package com.intion.app.fight.domain;
 
 import com.intion.app.fight.data.AttackEvent;
-import com.intion.app.fight.domain.Buff;
-import com.intion.app.fight.domain.FightUnit;
 
 /**
- * 缠绕，禁足：无法移动
+ * 没有任何技能效果，只是根据unit是否包含buffId来执行相应的操作(禁止移动，不允许释放技能等)
  *
  * @author xiaobaobao
  * @date 2020/12/2，20:17
  */
-public class NotMoveBuff extends Buff {
+public class CommonBuff extends Buff {
 	@Override
 	public AttackEvent effect(FightUnit atk, FightUnit def) {
 		afterBuffEffect();

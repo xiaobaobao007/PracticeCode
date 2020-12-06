@@ -35,8 +35,7 @@ public class FightUnit {
 	public boolean alive = true;
 
 	public Area area;
-	public Skill[] defSkills;//被动技能等
-	public Skill[] atkSkills;//主动技能等
+	public Skill[] atkSkills;//主动技能等，0一定是普攻
 
 	public Map<Integer, LinkedList<Buff>> buffEffectMapList;
 
@@ -111,6 +110,8 @@ public class FightUnit {
 				return !alive || myBuffsHas(BuffType.SEAL) || FightConstant.calculateDistance(positionX, positionY, fightX, fightY) > skill.getDistance();
 			case FightConstant.BE_ATTACK_TYPE:
 				return !alive || myBuffsHas(BuffType.STEALTH);
+			case FightConstant.BE_ATTACK_RETURN_TYPE:
+				return !alive || myBuffsHas(BuffType.DAZE) || !myBuffsHas(BuffType.THEINJURY);
 			default:
 				return true;
 		}

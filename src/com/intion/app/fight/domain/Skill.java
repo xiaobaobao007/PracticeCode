@@ -57,7 +57,7 @@ public class Skill {
 						roundEvent.addBuffEvents(buffEvent);
 					}
 					//触发反击效果等
-					if (counter && def.defSkills != null) {
+					if (counter && !def.checkError(FightConstant.BE_ATTACK_RETURN_TYPE)) {
 
 						RoundEvent passiveRound = new RoundEvent();
 						passiveRound.setEventType(FightConstant.FIGHT_PLAYER_OPERATION_TYPE_ATTACK);
@@ -69,10 +69,7 @@ public class Skill {
 						passiveRound.setFightData(roundEvent.getFightData());
 						roundEvent.getFightData().addLast(passiveRound);
 
-						for (Skill defSkill : def.defSkills) {
-							defSkill.doEffect(passiveRound, def, area, atk.positionX, atk.positionY, false);
-						}
-
+						def.atkSkills[0].doEffect(passiveRound, def, area, atk.positionX, atk.positionY, false);
 					}
 				}
 			}

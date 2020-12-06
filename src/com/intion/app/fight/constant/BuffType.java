@@ -1,8 +1,11 @@
 package com.intion.app.fight.constant;
 
-import com.intion.app.fight.buff.*;
-import com.intion.app.fight.domain.*;
-import com.intion.app.fight.effect.*;
+import com.intion.app.fight.buff.SubHpBuff;
+import com.intion.app.fight.domain.Buff;
+import com.intion.app.fight.domain.CommonBuff;
+import com.intion.app.fight.domain.________________;
+import com.intion.app.fight.effect.RepelEffect;
+import com.intion.app.fight.effect.SubHpEffect;
 
 /**
  * @author xiaobaobao
@@ -18,10 +21,10 @@ public enum BuffType {
 	SUMMON(10005, new ________________()),//召唤
 	PURIFICATION(10006, new ________________()),//净化
 	//不能进行主动操作
-	BE_STONE(20001, 1, new ________________()),//石化：无法进行任何操作
-	VERTIGO(20002, 1, new ________________()),//眩晕：无法进行任何操作
-	FROZEN(20003, 1, new ________________()),//冰冻：无法进行任何操作
-	WINDING(20004, 1, new ________________()),//缠绕：无法进行任何操作
+	BE_STONE(20001, 1, new CommonBuff()),//石化：无法进行任何操作
+	VERTIGO(20002, 1, new CommonBuff()),//眩晕：无法进行任何操作
+	FROZEN(20003, 1, new CommonBuff()),//冰冻：无法进行任何操作
+	WINDING(20004, 1, new CommonBuff()),//缠绕：无法进行任何操作
 	BE_SARCASM(20008, 1, new ________________()),//被嘲讽：不受控制，自动攻击某个目标
 	FEAR(20020, 1, new ________________()),//恐惧：不受控制，自动远离目标
 	//回合前需要判定的
@@ -29,15 +32,15 @@ public enum BuffType {
 	POISONING(20012, 1, new SubHpBuff()),//中毒：每回合受伤害
 	ADD_BLOOD(20012, 1, new ________________()),//加血：每回合加血
 	//其他单一效果
-	SILENCE(20007, 1, new ________________()),//沉默：无法放主动技能
-	GROUNDED(20005, 1, new NotMoveBuff()),//禁足：无法移动
-	SEAL(20006, 1, new ________________()),//封印：无法普通攻击
-	DAZE(20009, 1, new ________________()),//发呆：无法反击
+	SILENCE(20007, 1, new CommonBuff()),//沉默：无法放主动技能
+	GROUNDED(20005, 1, new CommonBuff()),//禁足：无法移动
+	SEAL(20006, 1, new CommonBuff()),//封印：无法普通攻击
+	DAZE(20009, 1, new CommonBuff()),//发呆：无法反击
 	SLOW_DOWN(20010, 1, new ________________()),//减速：降低移动x格
 	CHAOS(20013, 1, new ________________()),//混乱：对敌我都有伤害
-	ANELECTRICSHOCK(20014, 1, new ________________()),//电击：释放技能会受到伤害
+	ELECTRIC_SHOCK(20014, 1, new ________________()),//电击：释放技能会受到伤害
 	LEG(20015, 1, new ________________()),//断腿：移动会受到伤害
-	THEINJURY(20016, 1, new ________________()),//反伤：攻击者会受到伤害
+	THEINJURY(20016, 1, new CommonBuff()),//反伤：攻击者会受到伤害
 	INVINCIBLE(20017, 1, new ________________()),//无敌：不受伤害和控制
 	CONFUSED(20018, 1, new ________________()),//迷惑：敌人变为我方单位
 	STEALTH(20019, 1, new ________________()),//隐身：不能被作为目标

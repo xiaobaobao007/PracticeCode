@@ -1,5 +1,7 @@
 package com.intion.app.fight.data;
 
+import java.util.LinkedList;
+
 /**
  * buff的表现
  */
@@ -7,7 +9,7 @@ public class BuffEvent {
 
 	private int status;//0清除，1新增，2已存在的生效
 	private int buffId;//buff的id
-	private long targetId;//影响到的英雄id
+	private LinkedList<Long> targetIds;//影响到的英雄id
 
 	public BuffEvent() {
 	}
@@ -28,11 +30,10 @@ public class BuffEvent {
 		this.buffId = buffId;
 	}
 
-	public long getTargetId() {
-		return targetId;
-	}
-
-	public void setTargetId(long targetId) {
-		this.targetId = targetId;
+	public void addTargetId(long targetId) {
+		if (targetIds == null) {
+			targetIds = new LinkedList<>();
+		}
+		targetIds.add(targetId);
 	}
 }

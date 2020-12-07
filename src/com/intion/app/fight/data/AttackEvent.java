@@ -1,7 +1,5 @@
 package com.intion.app.fight.data;
 
-import com.intion.app.fight.constant.FightConstant;
-
 /**
  * 攻击动作结果
  *
@@ -15,8 +13,7 @@ public class AttackEvent {
 	private boolean miss;// 是否miss
 	private float hp;//被攻击方剩余的血量
 	private float spSub;//血量增加正值，减少负值
-	private int moveToX = FightConstant.STAY_POSITION;
-	private int moveToY = FightConstant.STAY_POSITION;
+	private int[][] xy;//移动
 
 	public AttackEvent() {
 	}
@@ -69,19 +66,11 @@ public class AttackEvent {
 		this.spSub = spSub;
 	}
 
-	public int getMoveToX() {
-		return moveToX;
+	public int[][] getXy() {
+		return xy;
 	}
 
-	public void setMoveToX(int moveToX) {
-		this.moveToX = moveToX;
-	}
-
-	public int getMoveToY() {
-		return moveToY;
-	}
-
-	public void setMoveToY(int moveToY) {
-		this.moveToY = moveToY;
+	public void setXy(int[][] xy) {
+		this.xy = xy;
 	}
 }

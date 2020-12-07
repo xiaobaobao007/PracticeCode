@@ -96,4 +96,9 @@ public class FightConstant {
 		return Math.abs(x1 - x) + Math.abs(y1 - y);
 	}
 
+	public static int calculateDistance(int[][] xy, int x1, int y1) {
+		int index = xy.length - 1;
+		return Math.abs(x1 - xy[index][0]) + Math.abs(y1 - xy[index][1]);
+	}
+
 }

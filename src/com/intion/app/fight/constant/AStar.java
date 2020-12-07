@@ -14,7 +14,7 @@ import com.intion.app.fight.domain.FightUnit;
 public class AStar {
 	private FightUnit[][] fightMap;
 
-	private final static byte[][] xyOperation = {{0, -1}, {0, 1}, {1, 0}, {-1, 0}};
+	private final static byte[][] xyOperation = {{0, -1, 0}, {0, 1, 1}, {1, 0, 2}, {-1, 0, 3}};//上，下，右，左
 	private final static byte splitX = 3;
 	private final static byte splitY = (1 << splitX) - 1;//最大值为7，实际值为4，所以足够用
 

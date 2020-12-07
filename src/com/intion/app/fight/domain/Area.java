@@ -111,11 +111,21 @@ public class Area {
 		return hasDefHero ? FightConstant.FIGHT_RESULT_DEF_WIN : FightConstant.FIGHT_RESULT_ATK_WIN;
 	}
 
-	public void move(FightUnit moveUnit, int moveX, int moveY) {
+	public void move(FightUnit moveUnit, int x, int y) {
 		areaMap[moveUnit.positionY][moveUnit.positionX] = null;
-		areaMap[moveY][moveX] = moveUnit;
-		moveUnit.positionX = moveX;
-		moveUnit.positionY = moveY;
+		areaMap[y][x] = moveUnit;
+		moveUnit.positionX = x;
+		moveUnit.positionY = y;
+	}
+
+	public void move(FightUnit moveUnit, int[][] xy) {
+		int index = xy.length - 1;
+		int x = xy[index][0];
+		int y = xy[index][1];
+		areaMap[moveUnit.positionY][moveUnit.positionX] = null;
+		areaMap[y][x] = moveUnit;
+		moveUnit.positionX = x;
+		moveUnit.positionY = y;
 	}
 
 

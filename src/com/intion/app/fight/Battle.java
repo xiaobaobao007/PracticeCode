@@ -61,7 +61,7 @@ public class Battle {
 		}
 	}
 
-	public FightData playerOperation(long userId, int operationType, int atkHeroId, int defHeroId, int x, int y, int skillId) {
+	public FightData playerOperation(long userId, int operationType, int atkHeroId, int defHeroId, int[][] xy, int skillId) {
 
 		FightData fightData = new FightData();
 		if (getTheRoundUserId() != userId) {
@@ -103,10 +103,10 @@ public class Battle {
 						doNothing();
 						break;
 					case FightConstant.FIGHT_PLAYER_OPERATION_TYPE_ATTACK:
-						result = attack(atkHeroId, defHeroId, x, y, skillId);
+						result = attack(atkHeroId, defHeroId, xy, skillId);
 						break;
 					case FightConstant.FIGHT_PLAYER_OPERATION_TYPE_MOVE:
-						result = move(atkHeroId, x, y);
+						result = move(atkHeroId, xy);
 						break;
 				}
 				if (result == 1) {
@@ -184,7 +184,7 @@ public class Battle {
 
 					BuffEvent buffEvent = new BuffEvent();
 					buffEvent.setBuffId(buff.buffType.buffId);
-					buffEvent.setTargetId(unit.heroId);
+					buffEvent.addTargetId(unit.heroId);
 
 					if (buff.canRemove()) {
 						buff.remove(unit);
@@ -205,14 +205,13 @@ public class Battle {
 	}
 
 	private void doNothing() {
-
 		//回合前，先结算buff
 		beforeOrAfterRoundBuffEffect(isAtkRound, true);
 		//添加待命事件
 		addNothingEvent();
 	}
 
-	private int attack(long atkHeroId, long defHeroId, int moveX, int moveY, int skillId) {
+	private int attack(long atkHeroId, long defHeroId, int[][] xy, int skillId) {
 
 		FightUnit defUnit = area.fightUnitMap.get(defHeroId);
 		if (defUnit == null) {
@@ -234,45 +233,49 @@ public class Battle {
 			return -8;
 		}
 		if (skill.isNormalAttack()) {
-			if (atkUnit.checkError(FightConstant.NORMAL_ATTACK_TYPE, skill, moveX, moveY, defUnit.positionX, defUnit.positionY)) {
+			if (atkUnit.checkError(FightConstant.NORMAL_ATTACK_TYPE, skill, xy, defUnit.positionX, defUnit.positionY)) {
 				return -5;
 			}
-		} else if (atkUnit.checkError(FightConstant.SKILL_TYPE, skill, moveX, moveY, defUnit.positionX, defUnit.positionY)) {
+		} else if (atkUnit.checkError(FightConstant.SKILL_TYPE, skill, xy, defUnit.positionX, defUnit.positionY)) {
 			return -5;
 		}
 
 		//回合前，先结算buff
 		beforeOrAfterRoundBuffEffect(isAtkRound, true);
 		//先进行移动
-		if (moveX >= 0 && moveY >= 0) {
-			area.move(atkUnit, moveX, moveY);
+		if (xy != null) {
+			int index = xy.length - 1;
+			area.move(atkUnit, xy[index][0], xy[index][1]);
 		}
 		//添加回合事件
-		RoundEvent roundEvent = addAttackEvent(atkHeroId, skillId, moveX, moveY);
+		RoundEvent roundEvent = addAttackEvent(atkHeroId, skillId, xy);
 		//开始战斗,测试阶段，未有选择技能的选项，只执行第一个技能
 		// atkUnit.getSkillById(skillId).doEffect(roundEvent, atkUnit, area, defUnit.positionX, defUnit.positionY, true);
 		skill.doEffect(roundEvent, atkUnit, area, defUnit.positionX, defUnit.positionY, true);
 
+		//回合结束，再次结算buff
+		beforeOrAfterRoundBuffEffect(isAtkRound, true);
+
 		return 1;
 	}
 
-	private int move(long moveHeroId, int moveX, int moveY) {
+	private int move(long moveHeroId, int[][] xy) {
 
 		FightUnit moveUnit = area.fightUnitMap.get(moveHeroId);
 		if (moveUnit == null) {
 			return -1;
-		} else if (moveUnit.checkError(FightConstant.OPERATION_TYPE, moveX, moveY)) {
+		} else if (moveUnit.checkError(FightConstant.OPERATION_TYPE, xy)) {
 			return -2;
-		} else if (moveUnit.checkError(FightConstant.MOVE_TYPE, moveX, moveY)) {
+		} else if (moveUnit.checkError(FightConstant.MOVE_TYPE, xy)) {
 			return -3;
 		}
 
 		//回合前，先结算buff
 		beforeOrAfterRoundBuffEffect(isAtkRound, true);
 		//移动
-		area.move(moveUnit, moveX, moveY);
+		area.move(moveUnit, xy);
 		//添加移动事件
-		addMoveEvent(moveHeroId, moveX, moveY);
+		addMoveEvent(moveHeroId, xy);
 
 		return 1;
 	}
@@ -290,25 +293,24 @@ public class Battle {
 		fightAllData.getLast().addLast(roundEvent);
 	}
 
-	private RoundEvent addAttackEvent(long heroId, int skillId, int x, int y) {
+	private RoundEvent addAttackEvent(long heroId, int skillId, int[][] xy) {
 		RoundEvent roundEvent = new RoundEvent();
 		roundEvent.setSkillId(skillId);
 		roundEvent.setEventType(FightConstant.FIGHT_PLAYER_OPERATION_TYPE_ATTACK);
-		return getRoundEvent(heroId, x, y, roundEvent);
+		return getRoundEvent(heroId, xy, roundEvent);
 	}
 
-	private void addMoveEvent(long heroId, int x, int y) {
+	private void addMoveEvent(long heroId, int[][] xy) {
 		RoundEvent roundEvent = new RoundEvent();
 		roundEvent.setEventType(FightConstant.FIGHT_PLAYER_OPERATION_TYPE_MOVE);
-		getRoundEvent(heroId, x, y, roundEvent);
+		getRoundEvent(heroId, xy, roundEvent);
 	}
 
-	private RoundEvent getRoundEvent(long heroId, int x, int y, RoundEvent roundEvent) {
+	private RoundEvent getRoundEvent(long heroId, int[][] xy, RoundEvent roundEvent) {
 		roundEvent.setRound(round);
 		roundEvent.setUserId(getTheRoundUserId());
 		roundEvent.setHeroId(heroId);
-		roundEvent.setMoveToX(x);
-		roundEvent.setMoveToY(y);
+		roundEvent.setXy(xy);
 
 		roundEvent.setFightData(fightAllData.getLast());
 		fightAllData.getLast().addLast(roundEvent);

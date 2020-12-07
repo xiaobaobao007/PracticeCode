@@ -16,8 +16,7 @@ public class RoundEvent {
 
 	private int skillId;//攻击方释放的技能id,0代表未做任何动作
 
-	private int moveToX;//此次攻击先移动至x处
-	private int moveToY;//此次攻击先移动至y处
+	private int[][] xy;//移动距离，xy
 
 	private LinkedList<BuffEvent> buffEvents;
 	private LinkedList<AttackEvent> attackEvents;
@@ -43,7 +42,6 @@ public class RoundEvent {
 		}
 		attackEvents.addLast(attackEvent);
 	}
-
 
 	public int getEventType() {
 		return eventType;
@@ -85,20 +83,12 @@ public class RoundEvent {
 		this.skillId = skillId;
 	}
 
-	public int getMoveToX() {
-		return moveToX;
+	public int[][] getXy() {
+		return xy;
 	}
 
-	public void setMoveToX(int moveToX) {
-		this.moveToX = moveToX;
-	}
-
-	public int getMoveToY() {
-		return moveToY;
-	}
-
-	public void setMoveToY(int moveToY) {
-		this.moveToY = moveToY;
+	public void setXy(int[][] xy) {
+		this.xy = xy;
 	}
 
 	public LinkedList<RoundEvent> getFightData() {

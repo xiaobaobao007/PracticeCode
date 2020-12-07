@@ -1,10 +1,10 @@
 package com.intion.app.fight.constant;
 
+import com.intion.app.fight.buff.RepelBuff;
 import com.intion.app.fight.buff.SubHpBuff;
 import com.intion.app.fight.domain.Buff;
 import com.intion.app.fight.domain.CommonBuff;
 import com.intion.app.fight.domain.________________;
-import com.intion.app.fight.effect.RepelEffect;
 import com.intion.app.fight.effect.SubHpEffect;
 
 /**
@@ -15,7 +15,7 @@ public enum BuffType {
 
 	//效果技能
 	ATTACK(10001, new SubHpEffect()),//普通攻击
-	REPEL(10002, new RepelEffect()),//击退
+	REPEL(10002, new RepelBuff()),//击退
 	TRANSPOSITION(10003, new ________________()),//换位
 	RESURGENCE(10004, new ________________()),//复活
 	SUMMON(10005, new ________________()),//召唤
@@ -30,13 +30,13 @@ public enum BuffType {
 	//回合前需要判定的
 	BLEEDING(20011, 1, new SubHpBuff()),//流血：每回合受伤害
 	POISONING(20012, 1, new SubHpBuff()),//中毒：每回合受伤害
-	ADD_BLOOD(20012, 1, new ________________()),//加血：每回合加血
+	ADD_BLOOD(20012, 1, new ________________()),//加一回合血
 	//其他单一效果
 	SILENCE(20007, 1, new CommonBuff()),//沉默：无法放主动技能
 	GROUNDED(20005, 1, new CommonBuff()),//禁足：无法移动
 	SEAL(20006, 1, new CommonBuff()),//封印：无法普通攻击
 	DAZE(20009, 1, new CommonBuff()),//发呆：无法反击
-	SLOW_DOWN(20010, 1, new ________________()),//减速：降低移动x格
+	SLOW_DOWN(20010, 1, new CommonBuff()),//减速：降低移动x格
 	CHAOS(20013, 1, new ________________()),//混乱：对敌我都有伤害
 	ELECTRIC_SHOCK(20014, 1, new ________________()),//电击：释放技能会受到伤害
 	LEG(20015, 1, new ________________()),//断腿：移动会受到伤害

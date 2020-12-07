@@ -43,6 +43,7 @@ public class Skill {
 		for (Buff buff : buffList) {
 			LinkedList<FightUnit> defUnitList = area.getTargetUnit(atk.isAttack, defX, defY, buff.targetType, buff.targetParams[0]);
 			if (defUnitList != null && defUnitList.size() > 0) {
+				BuffEvent buffEvent = null;
 				for (FightUnit def : defUnitList) {
 					buff.restart();
 					roundEvent.addAttackEvents(buff.doEffect(atk, def));
@@ -50,11 +51,14 @@ public class Skill {
 						//此处克隆一个新对象
 						def.addBuffEffect(buff.clone(atk));
 
-						BuffEvent buffEvent = new BuffEvent();
-						buffEvent.setStatus(FightConstant.BUFF_ADD);
-						buffEvent.setBuffId(buff.buffType.buffId);
-						buffEvent.setTargetId(def.heroId);
-						roundEvent.addBuffEvents(buffEvent);
+						if (buffEvent == null) {
+							buffEvent = new BuffEvent();
+							buffEvent.setStatus(FightConstant.BUFF_ADD);
+							buffEvent.setBuffId(buff.buffType.buffId);
+							roundEvent.addBuffEvents(buffEvent);
+						}
+
+						buffEvent.addTargetId(def.heroId);
 					}
 					//触发反击效果等
 					if (counter && !def.checkError(FightConstant.BE_ATTACK_RETURN_TYPE)) {

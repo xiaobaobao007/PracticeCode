@@ -82,12 +82,11 @@ public abstract class Buff {
 		return attackEvent;
 	}
 
-	public AttackEvent getAttackEvent(FightUnit def, int x, int y) {
+	public AttackEvent getAttackEvent(FightUnit def, int[][] xy) {
 		AttackEvent attackEvent = new AttackEvent();
 		attackEvent.setHeroId(def.heroId);
 		attackEvent.setDead(!def.alive);
-		attackEvent.setMoveToX(x);
-		attackEvent.setMoveToY(y);
+		attackEvent.setXy(xy);
 		return attackEvent;
 	}
 

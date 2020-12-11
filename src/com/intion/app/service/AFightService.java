@@ -151,25 +151,21 @@ public class AFightService extends JPanel implements MouseListener {
 
 		JButton button = new JButton("待命");
 		button.addActionListener((q) -> {
-			System.out.println("操作结果：\n" + JSON.toJSONString(battle.playerOperation(getAUId(), FightConstant.FIGHT_PLAYER_OPERATION_TYPE_NOTHING, 0, 0, 0, 0, 1001)));
 			this.repaint();
 		});
 
 		JButton button1 = new JButton("攻击");
 		button1.addActionListener((q) -> {
-			System.out.println("操作结果：\n" + JSON.toJSONString(battle.playerOperation(getAUId(), FightConstant.FIGHT_PLAYER_OPERATION_TYPE_ATTACK, getAAtkId(), getADefId(), getAXX(), getAYY(), 1001)));
 			this.repaint();
 		});
 
 		JButton button2 = new JButton("移动");
 		button2.addActionListener((q) -> {
-			System.out.println("操作结果：\n" + JSON.toJSONString(battle.playerOperation(getAUId(), FightConstant.FIGHT_PLAYER_OPERATION_TYPE_MOVE, getAAtkId(), getADefId(), getAXX(), getAYY(), 1001)));
 			this.repaint();
 		});
 
 		JButton button3 = new JButton("战斗播放完成");
 		button3.addActionListener((q) -> {
-			System.out.println("操作结果：\n" + JSON.toJSONString(battle.playerOperation(getAUId(), FightConstant.FIGHT_PLAYER_OPERATION_TYPE_SHOW_OVER, 0, 0, 0, 0, 1001)));
 			this.repaint();
 		});
 
@@ -180,25 +176,21 @@ public class AFightService extends JPanel implements MouseListener {
 
 		JButton button5 = new JButton("待命");
 		button5.addActionListener((q) -> {
-			System.out.println("操作结果：\n" + JSON.toJSONString(battle.playerOperation(getDUId(), FightConstant.FIGHT_PLAYER_OPERATION_TYPE_NOTHING, 0, 0, 0, 0, 1001)));
 			this.repaint();
 		});
 
 		JButton button6 = new JButton("攻击");
 		button6.addActionListener((q) -> {
-			System.out.println("操作结果：\n" + JSON.toJSONString(battle.playerOperation(getDUId(), FightConstant.FIGHT_PLAYER_OPERATION_TYPE_ATTACK, getDAtkId(), getDDefId(), getDXX(), getDYY(), 1001)));
 			this.repaint();
 		});
 
 		JButton button7 = new JButton("移动");
 		button7.addActionListener((q) -> {
-			System.out.println("操作结果：\n" + JSON.toJSONString(battle.playerOperation(getDUId(), FightConstant.FIGHT_PLAYER_OPERATION_TYPE_MOVE, getDAtkId(), getDDefId(), getDXX(), getDYY(), 1001)));
 			this.repaint();
 		});
 
 		JButton button8 = new JButton("战斗播放完成");
 		button8.addActionListener((q) -> {
-			System.out.println("操作结果：\n" + JSON.toJSONString(battle.playerOperation(getDUId(), FightConstant.FIGHT_PLAYER_OPERATION_TYPE_SHOW_OVER, 0, 0, 0, 0, 1001)));
 			this.repaint();
 		});
 

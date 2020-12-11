@@ -68,8 +68,6 @@ public class Skill {
 						passiveRound.setRound(roundEvent.getRound());
 						passiveRound.setUserId(def.userId);
 						passiveRound.setHeroId(def.heroId);
-						passiveRound.setMoveToX(FightConstant.STAY_POSITION);
-						passiveRound.setMoveToY(FightConstant.STAY_POSITION);
 						passiveRound.setFightData(roundEvent.getFightData());
 						roundEvent.getFightData().addLast(passiveRound);
 

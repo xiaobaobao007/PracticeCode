@@ -64,6 +64,6 @@ public class RepelEffect extends Buff {
 		}
 
 		def.area.move(def, x, y);
-		return getAttackEvent(def, x, y);
+		return getAttackEvent(def, 1.0F);
 	}
 }

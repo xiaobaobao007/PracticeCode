@@ -1,0 +1,1 @@
+java -jar cfr.jar sdk.jar --outputdir out/

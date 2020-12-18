@@ -1,0 +1,117 @@
+package com.mqtt.yiyi.core.db;
+
+import com.mongodb.*;
+import com.mqtt.yiyi.core.util.ConfigService;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.data.mongodb.core.MongoTemplate;
+
+/**
+ *@Description:
+ * @Author: qi
+ * @Email: banzhuabc@qq.com
+ * @UpdateData: 2018年1月11日
+ */
+public class MongoTemplateFactory {
+    private static MongoTemplate mongoTemplate;
+    private static MongoTemplate mongoTemplate_GM;
+    private static Object lock = new Object();
+
+    private MongoTemplateFactory() {
+    }
+
+    public static MongoTemplate getMongoTemplate() {
+        if (mongoTemplate != null) {
+            return mongoTemplate;
+        }
+        synchronized (lock) {
+            if (mongoTemplate == null) {
+                String host = ConfigService.getProperty("mongo.host", "127.0.0.1");
+                String port = ConfigService.getProperty("mongo.port", "27017");
+                String dbName = ConfigService.getProperty("mongo.name", "test");
+                MongoClient mongo = null;    // 创建mongoTemplate实例
+                try {
+//                    System.out.println(ConfigService.getProperty("mongo.connectionsPerHost", "8"));
+//                    System.out.println(ConfigService.getProperty("mongo.threadsAllowedToBlockForConnectionMultiplier", "8"));
+//                    MongoClientOptions.Builder optionsClient = MongoClientOptions.builder();
+//                    optionsClient.connectionsPerHost(Integer.getInteger(ConfigService.getProperty("mongo.connectionsPerHost", "8")));
+//                    optionsClient.threadsAllowedToBlockForConnectionMultiplier(Integer.getInteger(ConfigService.getProperty("mongo.threadsAllowedToBlockForConnectionMultiplier", "4")));
+//                    optionsClient.connectTimeout(Integer.getInteger(ConfigService.getProperty("mongo.connectTimeout", "1000")));
+//                    optionsClient.maxWaitTime(Integer.getInteger(ConfigService.getProperty("mongo.maxWaitTime", "1500")));
+//                    optionsClient.socketKeepAlive(Boolean.getBoolean(ConfigService.getProperty("mongo.socketKeepAlive", "true")));
+//                    optionsClient.socketTimeout(Integer.getInteger(ConfigService.getProperty("mongo.socketTimeout", "1500")));
+                    //auto-connect-retry="${mongo.autoConnectRetry}"
+                    //slave-ok="${mongo.slaveOk}"
+                    //write-number="1"
+                    //write-timeout="0"
+                    //write-fsync="true"
+//                    MongoOptions options = new MongoOptions(optionsClient.build());
+ /*               	MongoClientURI uri=new MongoClientURI(" ");
+                	Mongo.Holder mongo1=new Mongo.Holder();
+                	Mongo mongo2=mongo1.connect(uri);
+                	mongo=mongo1*/
+                	List<MongoCredential> auth=new ArrayList<MongoCredential>();
+                	auth.add(MongoCredential.createCredential("TestPlayer","test","lititestplayer".toCharArray()));
+                	//auth.add(MongoCredential.createCredential("GM_Regular","regular","litigm".toCharArray()));
+                    ServerAddress address = new ServerAddress(host, Integer.parseInt(port));
+                    //mongo = new MongoClient(address,auth);
+                    mongo = new MongoClient(address,auth);
+//                    mongo = new Mongo(address, options);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                mongoTemplate = new MongoTemplate(mongo, "test");
+            }
+        }
+        return mongoTemplate;
+    }
+    public static MongoTemplate getMongoGMTemplate() {
+        if (mongoTemplate_GM != null) {
+            return mongoTemplate_GM;
+        }
+        synchronized (lock) {
+            if (mongoTemplate_GM == null) {
+                String host = ConfigService.getProperty("mongo.host", "127.0.0.1");
+                String port = ConfigService.getProperty("mongo.port", "27017");
+                //String dbName = ConfigService.getProperty("mongo.name", "test");
+                MongoClient mongo = null;    // 创建mongoTemplate实例
+                try {
+//                    System.out.println(ConfigService.getProperty("mongo.connectionsPerHost", "8"));
+//                    System.out.println(ConfigService.getProperty("mongo.threadsAllowedToBlockForConnectionMultiplier", "8"));
+//                    MongoClientOptions.Builder optionsClient = MongoClientOptions.builder();
+//                    optionsClient.connectionsPerHost(Integer.getInteger(ConfigService.getProperty("mongo.connectionsPerHost", "8")));
+//                    optionsClient.threadsAllowedToBlockForConnectionMultiplier(Integer.getInteger(ConfigService.getProperty("mongo.threadsAllowedToBlockForConnectionMultiplier", "4")));
+//                    optionsClient.connectTimeout(Integer.getInteger(ConfigService.getProperty("mongo.connectTimeout", "1000")));
+//                    optionsClient.maxWaitTime(Integer.getInteger(ConfigService.getProperty("mongo.maxWaitTime", "1500")));
+//                    optionsClient.socketKeepAlive(Boolean.getBoolean(ConfigService.getProperty("mongo.socketKeepAlive", "true")));
+//                    optionsClient.socketTimeout(Integer.getInteger(ConfigService.getProperty("mongo.socketTimeout", "1500")));
+                    //auto-connect-retry="${mongo.autoConnectRetry}"
+                    //slave-ok="${mongo.slaveOk}"
+                    //write-number="1"
+                    //write-timeout="0"
+                    //write-fsync="true"
+//                    MongoOptions options = new MongoOptions(optionsClient.build());
+ /*               	MongoClientURI uri=new MongoClientURI(" ");
+                	Mongo.Holder mongo1=new Mongo.Holder();
+                	Mongo mongo2=mongo1.connect(uri);
+                	mongo=mongo1*/
+                	List<MongoCredential> auth=new ArrayList<MongoCredential>();
+                	auth.add(MongoCredential.createCredential("GM_Regular","test","litigm".toCharArray()));
+                	//auth.add(MongoCredential.createCredential("GM_Regular","regular","litigm".toCharArray()));
+                    ServerAddress address = new ServerAddress(host, Integer.parseInt(port));
+                    mongo = new MongoClient(address);
+//                    mongo = new Mongo(address, options);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                mongoTemplate_GM = new MongoTemplate(mongo, "gm");
+            }
+        }
+        return mongoTemplate_GM;
+    }
+
+}
+
+

@@ -83,7 +83,7 @@ public class UTF8BOMConverter extends Reader {
 	public static void main(String[] args) throws Exception {
 		String suffix = ".java";
 		List<String> paths = new ArrayList<String>();
-		paths = getAllFilePaths(new File("D:\\learn\\Swing_Client\\src"), paths);
+		paths = getAllFilePaths(new File("D:\\code\\neuralnet\\src"), paths);
 		List<String> pathList = new ArrayList<String>();
 		for (String path : paths) {
 			if (path.endsWith(suffix)) {

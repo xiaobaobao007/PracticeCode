@@ -76,7 +76,7 @@ public abstract class NeuralLayer {
 	}
 
 	protected void calc() {
-		if (input != null && neuron != null) {
+		if (input != null && !neuron.isEmpty()) {
 			for (int i = 0; i < numberOfNeuronsInLayer; i++) {
 				neuron.get(i).setInputs(this.input);
 				neuron.get(i).calc();

@@ -16,8 +16,7 @@ public class NeuralNetConsoleTest {
 		IActivationFunction[] hiddenAcFnc = {new Sigmoid(1.0)};
 		Linear outputAcFnc = new Linear(1.0);
 		System.out.println("Creating Neural Netword...");
-		NeuralNet nn = new NeuralNet(numberOfInputs, numberOfOutputs,
-				numberOfHiddenNeurons, hiddenAcFnc, outputAcFnc);
+		NeuralNet nn = new NeuralNet(numberOfInputs, numberOfOutputs, numberOfHiddenNeurons, hiddenAcFnc, outputAcFnc);
 		System.out.println("Neural Network Network...");
 
 		double[] neuralInput = {1.5, 0.5};

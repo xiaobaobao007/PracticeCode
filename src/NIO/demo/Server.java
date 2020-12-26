@@ -12,6 +12,7 @@ import io.netty.handler.codec.string.StringEncoder;
 import io.netty.util.CharsetUtil;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 public class Server {
 
@@ -35,6 +36,11 @@ public class Server {
 								@Override
 								protected void channelRead0(ChannelHandlerContext ctx, String msg) {
 									System.out.println(ctx.channel().remoteAddress() + ", " + msg);
+									try {
+										TimeUnit.SECONDS.sleep(1);
+									} catch (InterruptedException e) {
+										e.printStackTrace();
+									}
 									ctx.channel().writeAndFlush("from server:" + UUID.randomUUID());
 								}
 							});

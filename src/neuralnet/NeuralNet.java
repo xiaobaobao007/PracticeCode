@@ -24,8 +24,7 @@ public class NeuralNet {
 	private ArrayList<Double> input;
 	private ArrayList<Double> output;
 
-	public NeuralNet(int numberofinputs, int numberofoutputs,
-					 int[] numberofhiddenneurons, IActivationFunction[] hiddenAcFnc,
+	public NeuralNet(int numberofinputs, int numberofoutputs, int[] numberofhiddenneurons, IActivationFunction[] hiddenAcFnc,
 					 IActivationFunction outputAcFnc) {
 		numberOfHiddenLayers = numberofhiddenneurons.length;
 		numberOfInputs = numberofinputs;

@@ -19,7 +19,7 @@ public class Main {
 		int times = 100000;
 		long start = System.nanoTime();
 		for (int i = 0; i < times; i++) {
-			AStarNew.main();
+			AStarNew.main(null);
 		}
 		System.out.println(System.nanoTime() - start);
 

@@ -13,6 +13,7 @@ public class UTF8BOMConverter extends Reader {
 	PushbackInputStream internalIn;//回退流对象
 	InputStreamReader internalIn2 = null;
 	String defaultEnc;//格式
+
 	/**
 	 * @param in         inputstream to be read
 	 * @param defaultEnc default encoding if stream does not have
@@ -60,11 +61,16 @@ public class UTF8BOMConverter extends Reader {
 	/**
 	 * 获取某个目录下所有的文件路径
 	 * 使用递归
+	 *
 	 * @param filePath
 	 * @param filePaths
 	 * @return
 	 */
 	private static List<String> getAllFilePaths(File filePath, List<String> filePaths) {
+		if (!filePath.isDirectory()) {
+			filePaths.add(filePath.getPath());
+			return filePaths;
+		}
 		File[] files = filePath.listFiles();
 		if (files == null) {
 			return filePaths;
@@ -81,14 +87,14 @@ public class UTF8BOMConverter extends Reader {
 	}
 
 	public static void main(String[] args) throws Exception {
-		String suffix = ".java";
+		// String suffix = ".java";
 		List<String> paths = new ArrayList<String>();
-		paths = getAllFilePaths(new File("D:\\code\\neuralnet\\src"), paths);
+		paths = getAllFilePaths(new File("F:\\code\\qun-game\\GameServer\\src\\main\\resources\\config\\jdbc.properties"), paths);
 		List<String> pathList = new ArrayList<String>();
 		for (String path : paths) {
-			if (path.endsWith(suffix)) {
-				pathList.add(path);
-			}
+			// if (path.endsWith(suffix)) {
+			pathList.add(path);
+			// }
 		}
 		for (String path : pathList) {
 			readContentAndSaveWithEncoding(path, "UTF-8", "UTF-8");

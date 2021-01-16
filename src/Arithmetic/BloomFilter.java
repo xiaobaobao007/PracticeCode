@@ -58,18 +58,17 @@ public class BloomFilter {
 	}
 
 	public static void main(String[] args) {
-		for (int i = 0; i < 5; i++) {
-			System.out.println(new BloomFilter().hashCode());
-		}
-		// bf.add("rewc");
-		// bf.add("test");
-		// bf.add("tefdsafst");
-		// bf.add("vzcv");
-		// bf.add("ewfa");
-		// bf.add("tesvart");
-		//
-		// System.out.println(bf.contains("343"));
-		// System.out.println(bf.contains("vzcv"));
+		BloomFilter bf = new BloomFilter();
+
+		bf.add("rewc");
+		bf.add("test");
+		bf.add("tefdsafst");
+		bf.add("vzcv");
+		bf.add("ewfa");
+		bf.add("tesvart");
+
+		System.out.println(bf.contains("343"));
+		System.out.println(bf.contains("vzcv"));
 	}
 
 }

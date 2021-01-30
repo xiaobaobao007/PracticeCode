@@ -7,6 +7,9 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 
+import Util.BufferUtil;
+import Util.RandomUtil;
+import io.netty.buffer.ByteBufUtil;
 import org.junit.Test;
 
 public class Main {
@@ -161,9 +164,5 @@ public class Main {
 
 	}
 
-	@Test
-	public void test8() {
-		System.out.println(Runtime.getRuntime().availableProcessors());
-	}
 
 }

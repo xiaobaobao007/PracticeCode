@@ -12,4 +12,8 @@ public class RandomUtil {
 	public static int nextInt(int i) {
 		return RANDOM.nextInt(i);
 	}
+
+	public static boolean getTrue() {
+		return RANDOM.nextInt(2) == 0;
+	}
 }

@@ -10,6 +10,9 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+/**
+ *解析压缩过的配置数据
+ */
 public class BinaryBat2Excel {
 
 	public static final String IN_PATH = "resources\\srcDir\\";

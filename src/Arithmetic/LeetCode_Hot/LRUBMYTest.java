@@ -8,7 +8,7 @@ import org.junit.Test;
  * @author xiaobaobao
  * @date 2020/10/9，18:06
  */
-public class LRUCacheTest {
+public class LRUBMYTest {
 
 	class LRUCache {
 

@@ -9,6 +9,7 @@ import com.googlecode.protobuf.format.JsonFormat;
 
 import NIO.PB.HelloWorld.Helloworld;
 import NIO.PB.HelloWorld.Helloworld.HelloRequest;
+import NIO.PB.HelloWorld.User;
 import org.junit.Test;
 
 /**
@@ -204,6 +205,13 @@ public class Main {
 			}
 		}
 		return true;
+	}
+
+
+	public static void main(String[] args) {
+		User.loginBack.Builder builder = User.loginBack.newBuilder();
+		builder.setName("hello");
+		System.out.println(Arrays.toString(builder.build().toByteArray()));
 	}
 
 }

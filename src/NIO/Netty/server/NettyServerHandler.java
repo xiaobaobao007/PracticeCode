@@ -37,11 +37,13 @@ public class NettyServerHandler extends SimpleChannelInboundHandler {
 		super.channelActive(ctx);
 	}
 
+	@Override
 	public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
 		super.handlerAdded(ctx);
 		System.out.println("收到新的客户端连接：" + ctx.name());
 	}
 
+	@Override
 	public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
 		super.handlerRemoved(ctx);
 		System.out.println("客户端断开");

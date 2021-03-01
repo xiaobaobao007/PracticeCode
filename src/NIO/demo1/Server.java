@@ -1,5 +1,6 @@
 package NIO.demo1;
 
+import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -40,6 +41,14 @@ public class Server {
 										4,     // lengthFieldLength
 										0,     // lengthAdjustment
 										4))     // initalBytesToStrip 跳过2字节，也就是跳过长度域)
+								// .addLast(new LengthFieldBasedFrameDecoder(
+								// 		ByteOrder.LITTLE_ENDIAN,
+								// 		Integer.MAX_VALUE,  // maxFrameLength
+								// 		0,     // lengthFieldOffset
+								// 		4,     // lengthFieldLength
+								// 		0,     // lengthAdjustment
+								// 		4,// initalBytesToStrip 跳过2字节，也就是跳过长度域)
+								// 		true))
 								.addLast(new ChannelInboundHandlerAdapter() {
 									@Override
 									public void channelRead(ChannelHandlerContext ctx, Object msg) {

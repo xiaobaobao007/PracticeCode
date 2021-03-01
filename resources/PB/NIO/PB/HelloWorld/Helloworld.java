@@ -20,10 +20,12 @@ public final class Helloworld {
 
     /**
      * <code>string name = 1;</code>
+     * @return The name.
      */
     java.lang.String getName();
     /**
      * <code>string name = 1;</code>
+     * @return The bytes for name.
      */
     com.google.protobuf.ByteString
         getNameBytes();
@@ -31,7 +33,7 @@ public final class Helloworld {
   /**
    * Protobuf type {@code PB.HelloRequest}
    */
-  public  static final class HelloRequest extends
+  public static final class HelloRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:PB.HelloRequest)
       HelloRequestOrBuilder {
@@ -42,6 +44,13 @@ public final class Helloworld {
     }
     private HelloRequest() {
       name_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new HelloRequest();
     }
 
     @java.lang.Override
@@ -57,7 +66,6 @@ public final class Helloworld {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -75,7 +83,7 @@ public final class Helloworld {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -110,7 +118,9 @@ public final class Helloworld {
     private volatile java.lang.Object name_;
     /**
      * <code>string name = 1;</code>
+     * @return The name.
      */
+    @java.lang.Override
     public java.lang.String getName() {
       java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
@@ -125,7 +135,9 @@ public final class Helloworld {
     }
     /**
      * <code>string name = 1;</code>
+     * @return The bytes for name.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getNameBytes() {
       java.lang.Object ref = name_;
@@ -184,11 +196,10 @@ public final class Helloworld {
       }
       NIO.PB.HelloWorld.Helloworld.HelloRequest other = (NIO.PB.HelloWorld.Helloworld.HelloRequest) obj;
 
-      boolean result = true;
-      result = result && getName()
-          .equals(other.getName());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getName()
+          .equals(other.getName())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -368,35 +379,35 @@ public final class Helloworld {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -446,6 +457,7 @@ public final class Helloworld {
       private java.lang.Object name_ = "";
       /**
        * <code>string name = 1;</code>
+       * @return The name.
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -461,6 +473,7 @@ public final class Helloworld {
       }
       /**
        * <code>string name = 1;</code>
+       * @return The bytes for name.
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -477,6 +490,8 @@ public final class Helloworld {
       }
       /**
        * <code>string name = 1;</code>
+       * @param value The name to set.
+       * @return This builder for chaining.
        */
       public Builder setName(
           java.lang.String value) {
@@ -490,6 +505,7 @@ public final class Helloworld {
       }
       /**
        * <code>string name = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearName() {
         
@@ -499,6 +515,8 @@ public final class Helloworld {
       }
       /**
        * <code>string name = 1;</code>
+       * @param value The bytes for name to set.
+       * @return This builder for chaining.
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -514,7 +532,7 @@ public final class Helloworld {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -570,10 +588,12 @@ public final class Helloworld {
 
     /**
      * <code>string message = 1;</code>
+     * @return The message.
      */
     java.lang.String getMessage();
     /**
      * <code>string message = 1;</code>
+     * @return The bytes for message.
      */
     com.google.protobuf.ByteString
         getMessageBytes();
@@ -581,7 +601,7 @@ public final class Helloworld {
   /**
    * Protobuf type {@code PB.HelloReply}
    */
-  public  static final class HelloReply extends
+  public static final class HelloReply extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:PB.HelloReply)
       HelloReplyOrBuilder {
@@ -592,6 +612,13 @@ public final class Helloworld {
     }
     private HelloReply() {
       message_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new HelloReply();
     }
 
     @java.lang.Override
@@ -607,7 +634,6 @@ public final class Helloworld {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -625,7 +651,7 @@ public final class Helloworld {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -660,7 +686,9 @@ public final class Helloworld {
     private volatile java.lang.Object message_;
     /**
      * <code>string message = 1;</code>
+     * @return The message.
      */
+    @java.lang.Override
     public java.lang.String getMessage() {
       java.lang.Object ref = message_;
       if (ref instanceof java.lang.String) {
@@ -675,7 +703,9 @@ public final class Helloworld {
     }
     /**
      * <code>string message = 1;</code>
+     * @return The bytes for message.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getMessageBytes() {
       java.lang.Object ref = message_;
@@ -734,11 +764,10 @@ public final class Helloworld {
       }
       NIO.PB.HelloWorld.Helloworld.HelloReply other = (NIO.PB.HelloWorld.Helloworld.HelloReply) obj;
 
-      boolean result = true;
-      result = result && getMessage()
-          .equals(other.getMessage());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getMessage()
+          .equals(other.getMessage())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -918,35 +947,35 @@ public final class Helloworld {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -996,6 +1025,7 @@ public final class Helloworld {
       private java.lang.Object message_ = "";
       /**
        * <code>string message = 1;</code>
+       * @return The message.
        */
       public java.lang.String getMessage() {
         java.lang.Object ref = message_;
@@ -1011,6 +1041,7 @@ public final class Helloworld {
       }
       /**
        * <code>string message = 1;</code>
+       * @return The bytes for message.
        */
       public com.google.protobuf.ByteString
           getMessageBytes() {
@@ -1027,6 +1058,8 @@ public final class Helloworld {
       }
       /**
        * <code>string message = 1;</code>
+       * @param value The message to set.
+       * @return This builder for chaining.
        */
       public Builder setMessage(
           java.lang.String value) {
@@ -1040,6 +1073,7 @@ public final class Helloworld {
       }
       /**
        * <code>string message = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearMessage() {
         
@@ -1049,6 +1083,8 @@ public final class Helloworld {
       }
       /**
        * <code>string message = 1;</code>
+       * @param value The bytes for message to set.
+       * @return This builder for chaining.
        */
       public Builder setMessageBytes(
           com.google.protobuf.ByteString value) {
@@ -1064,7 +1100,7 @@ public final class Helloworld {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -1120,33 +1156,38 @@ public final class Helloworld {
 
     /**
      * <code>int64 reqId = 1;</code>
+     * @return The reqId.
      */
     long getReqId();
 
     /**
      * <code>int32 type = 2;</code>
+     * @return The type.
      */
     int getType();
 
     /**
      * <code>string msgType = 3;</code>
+     * @return The msgType.
      */
     java.lang.String getMsgType();
     /**
      * <code>string msgType = 3;</code>
+     * @return The bytes for msgType.
      */
     com.google.protobuf.ByteString
         getMsgTypeBytes();
 
     /**
      * <code>bytes data = 4;</code>
+     * @return The data.
      */
     com.google.protobuf.ByteString getData();
   }
   /**
    * Protobuf type {@code PB.Frame}
    */
-  public  static final class Frame extends
+  public static final class Frame extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:PB.Frame)
       FrameOrBuilder {
@@ -1156,10 +1197,15 @@ public final class Helloworld {
       super(builder);
     }
     private Frame() {
-      reqId_ = 0L;
-      type_ = 0;
       msgType_ = "";
       data_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Frame();
     }
 
     @java.lang.Override
@@ -1175,7 +1221,6 @@ public final class Helloworld {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -1208,7 +1253,7 @@ public final class Helloworld {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -1243,7 +1288,9 @@ public final class Helloworld {
     private long reqId_;
     /**
      * <code>int64 reqId = 1;</code>
+     * @return The reqId.
      */
+    @java.lang.Override
     public long getReqId() {
       return reqId_;
     }
@@ -1252,7 +1299,9 @@ public final class Helloworld {
     private int type_;
     /**
      * <code>int32 type = 2;</code>
+     * @return The type.
      */
+    @java.lang.Override
     public int getType() {
       return type_;
     }
@@ -1261,7 +1310,9 @@ public final class Helloworld {
     private volatile java.lang.Object msgType_;
     /**
      * <code>string msgType = 3;</code>
+     * @return The msgType.
      */
+    @java.lang.Override
     public java.lang.String getMsgType() {
       java.lang.Object ref = msgType_;
       if (ref instanceof java.lang.String) {
@@ -1276,7 +1327,9 @@ public final class Helloworld {
     }
     /**
      * <code>string msgType = 3;</code>
+     * @return The bytes for msgType.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getMsgTypeBytes() {
       java.lang.Object ref = msgType_;
@@ -1295,7 +1348,9 @@ public final class Helloworld {
     private com.google.protobuf.ByteString data_;
     /**
      * <code>bytes data = 4;</code>
+     * @return The data.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getData() {
       return data_;
     }
@@ -1365,17 +1420,16 @@ public final class Helloworld {
       }
       NIO.PB.HelloWorld.Helloworld.Frame other = (NIO.PB.HelloWorld.Helloworld.Frame) obj;
 
-      boolean result = true;
-      result = result && (getReqId()
-          == other.getReqId());
-      result = result && (getType()
-          == other.getType());
-      result = result && getMsgType()
-          .equals(other.getMsgType());
-      result = result && getData()
-          .equals(other.getData());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (getReqId()
+          != other.getReqId()) return false;
+      if (getType()
+          != other.getType()) return false;
+      if (!getMsgType()
+          .equals(other.getMsgType())) return false;
+      if (!getData()
+          .equals(other.getData())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -1571,35 +1625,35 @@ public final class Helloworld {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1658,12 +1712,16 @@ public final class Helloworld {
       private long reqId_ ;
       /**
        * <code>int64 reqId = 1;</code>
+       * @return The reqId.
        */
+      @java.lang.Override
       public long getReqId() {
         return reqId_;
       }
       /**
        * <code>int64 reqId = 1;</code>
+       * @param value The reqId to set.
+       * @return This builder for chaining.
        */
       public Builder setReqId(long value) {
         
@@ -1673,6 +1731,7 @@ public final class Helloworld {
       }
       /**
        * <code>int64 reqId = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearReqId() {
         
@@ -1684,12 +1743,16 @@ public final class Helloworld {
       private int type_ ;
       /**
        * <code>int32 type = 2;</code>
+       * @return The type.
        */
+      @java.lang.Override
       public int getType() {
         return type_;
       }
       /**
        * <code>int32 type = 2;</code>
+       * @param value The type to set.
+       * @return This builder for chaining.
        */
       public Builder setType(int value) {
         
@@ -1699,6 +1762,7 @@ public final class Helloworld {
       }
       /**
        * <code>int32 type = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearType() {
         
@@ -1710,6 +1774,7 @@ public final class Helloworld {
       private java.lang.Object msgType_ = "";
       /**
        * <code>string msgType = 3;</code>
+       * @return The msgType.
        */
       public java.lang.String getMsgType() {
         java.lang.Object ref = msgType_;
@@ -1725,6 +1790,7 @@ public final class Helloworld {
       }
       /**
        * <code>string msgType = 3;</code>
+       * @return The bytes for msgType.
        */
       public com.google.protobuf.ByteString
           getMsgTypeBytes() {
@@ -1741,6 +1807,8 @@ public final class Helloworld {
       }
       /**
        * <code>string msgType = 3;</code>
+       * @param value The msgType to set.
+       * @return This builder for chaining.
        */
       public Builder setMsgType(
           java.lang.String value) {
@@ -1754,6 +1822,7 @@ public final class Helloworld {
       }
       /**
        * <code>string msgType = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearMsgType() {
         
@@ -1763,6 +1832,8 @@ public final class Helloworld {
       }
       /**
        * <code>string msgType = 3;</code>
+       * @param value The bytes for msgType to set.
+       * @return This builder for chaining.
        */
       public Builder setMsgTypeBytes(
           com.google.protobuf.ByteString value) {
@@ -1779,12 +1850,16 @@ public final class Helloworld {
       private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes data = 4;</code>
+       * @return The data.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getData() {
         return data_;
       }
       /**
        * <code>bytes data = 4;</code>
+       * @param value The data to set.
+       * @return This builder for chaining.
        */
       public Builder setData(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -1797,6 +1872,7 @@ public final class Helloworld {
       }
       /**
        * <code>bytes data = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearData() {
         
@@ -1807,7 +1883,7 @@ public final class Helloworld {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -1863,90 +1939,108 @@ public final class Helloworld {
 
     /**
      * <code>double doubleValue = 1;</code>
+     * @return The doubleValue.
      */
     double getDoubleValue();
 
     /**
      * <code>float floatValue = 2;</code>
+     * @return The floatValue.
      */
     float getFloatValue();
 
     /**
      * <code>bool boolValue = 3;</code>
+     * @return The boolValue.
      */
     boolean getBoolValue();
 
     /**
      * <code>int32 int32Value = 4;</code>
+     * @return The int32Value.
      */
     int getInt32Value();
 
     /**
      * <code>int64 int64Value = 5;</code>
+     * @return The int64Value.
      */
     long getInt64Value();
 
     /**
      * <code>uint32 uint32Value = 6;</code>
+     * @return The uint32Value.
      */
     int getUint32Value();
 
     /**
      * <code>uint64 uint64Value = 7;</code>
+     * @return The uint64Value.
      */
     long getUint64Value();
 
     /**
      * <code>sint32 sint32Value = 8;</code>
+     * @return The sint32Value.
      */
     int getSint32Value();
 
     /**
      * <code>sint64 sint64Value = 9;</code>
+     * @return The sint64Value.
      */
     long getSint64Value();
 
     /**
      * <code>fixed32 fixed32Value = 10;</code>
+     * @return The fixed32Value.
      */
     int getFixed32Value();
 
     /**
      * <code>fixed64 fixed64Value = 11;</code>
+     * @return The fixed64Value.
      */
     long getFixed64Value();
 
     /**
      * <code>sfixed32 sfixed32Value = 12;</code>
+     * @return The sfixed32Value.
      */
     int getSfixed32Value();
 
     /**
      * <code>sfixed64 sfixed64Value = 13;</code>
+     * @return The sfixed64Value.
      */
     long getSfixed64Value();
 
     /**
      * <code>string stringValue = 14;</code>
+     * @return The stringValue.
      */
     java.lang.String getStringValue();
     /**
      * <code>string stringValue = 14;</code>
+     * @return The bytes for stringValue.
      */
     com.google.protobuf.ByteString
         getStringValueBytes();
 
     /**
      * <code>bytes bytesValue = 15;</code>
+     * @return The bytesValue.
      */
     com.google.protobuf.ByteString getBytesValue();
 
     /**
      * <code>.PB.allValue.EnumValue enumValue = 16;</code>
+     * @return The enum numeric value on the wire for enumValue.
      */
     int getEnumValueValue();
     /**
      * <code>.PB.allValue.EnumValue enumValue = 16;</code>
+     * @return The enumValue.
      */
     NIO.PB.HelloWorld.Helloworld.allValue.EnumValue getEnumValue();
 
@@ -2024,6 +2118,7 @@ public final class Helloworld {
      * </pre>
      *
      * <code>.PB.Any any = 18;</code>
+     * @return Whether the any field is set.
      */
     boolean hasAny();
     /**
@@ -2032,6 +2127,7 @@ public final class Helloworld {
      * </pre>
      *
      * <code>.PB.Any any = 18;</code>
+     * @return The any.
      */
     NIO.PB.HelloWorld.AnyOuterClass.Any getAny();
     /**
@@ -2045,49 +2141,70 @@ public final class Helloworld {
 
     /**
      * <code>string one1 = 19;</code>
+     * @return Whether the one1 field is set.
+     */
+    boolean hasOne1();
+    /**
+     * <code>string one1 = 19;</code>
+     * @return The one1.
      */
     java.lang.String getOne1();
     /**
      * <code>string one1 = 19;</code>
+     * @return The bytes for one1.
      */
     com.google.protobuf.ByteString
         getOne1Bytes();
 
     /**
      * <code>string one2 = 20;</code>
+     * @return Whether the one2 field is set.
+     */
+    boolean hasOne2();
+    /**
+     * <code>string one2 = 20;</code>
+     * @return The one2.
      */
     java.lang.String getOne2();
     /**
      * <code>string one2 = 20;</code>
+     * @return The bytes for one2.
      */
     com.google.protobuf.ByteString
         getOne2Bytes();
 
     /**
      * <code>repeated int32 intList = 22;</code>
+     * @return A list containing the intList.
      */
     java.util.List<java.lang.Integer> getIntListList();
     /**
      * <code>repeated int32 intList = 22;</code>
+     * @return The count of intList.
      */
     int getIntListCount();
     /**
      * <code>repeated int32 intList = 22;</code>
+     * @param index The index of the element to return.
+     * @return The intList at the given index.
      */
     int getIntList(int index);
 
     /**
      * <code>int64 long_int64 = 23;</code>
+     * @return The longInt64.
      */
     long getLongInt64();
 
     /**
      * <code>sint64 long_sint64 = 24;</code>
+     * @return The longSint64.
      */
     long getLongSint64();
 
     /**
      * <code>uint64 long_uint64 = 25;</code>
+     * @return The longUint64.
      */
     long getLongUint64();
 
@@ -2096,7 +2213,7 @@ public final class Helloworld {
   /**
    * Protobuf type {@code PB.allValue}
    */
-  public  static final class allValue extends
+  public static final class allValue extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:PB.allValue)
       allValueOrBuilder {
@@ -2106,26 +2223,17 @@ public final class Helloworld {
       super(builder);
     }
     private allValue() {
-      doubleValue_ = 0D;
-      floatValue_ = 0F;
-      boolValue_ = false;
-      int32Value_ = 0;
-      int64Value_ = 0L;
-      uint32Value_ = 0;
-      uint64Value_ = 0L;
-      sint32Value_ = 0;
-      sint64Value_ = 0L;
-      fixed32Value_ = 0;
-      fixed64Value_ = 0L;
-      sfixed32Value_ = 0;
-      sfixed64Value_ = 0L;
       stringValue_ = "";
       bytesValue_ = com.google.protobuf.ByteString.EMPTY;
       enumValue_ = 0;
-      intList_ = java.util.Collections.emptyList();
-      longInt64_ = 0L;
-      longSint64_ = 0L;
-      longUint64_ = 0L;
+      intList_ = emptyIntList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new allValue();
     }
 
     @java.lang.Override
@@ -2235,10 +2343,10 @@ public final class Helloworld {
               break;
             }
             case 138: {
-              if (!((mutable_bitField0_ & 0x00010000) == 0x00010000)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 stringMap_ = com.google.protobuf.MapField.newMapField(
                     StringMapDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00010000;
+                mutable_bitField0_ |= 0x00000001;
               }
               com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
               stringMap__ = input.readMessage(
@@ -2273,10 +2381,10 @@ public final class Helloworld {
               break;
             }
             case 170: {
-              if (!((mutable_bitField0_ & 0x00020000) == 0x00020000)) {
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
                 int32Map_ = com.google.protobuf.MapField.newMapField(
                     Int32MapDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00020000;
+                mutable_bitField0_ |= 0x00000002;
               }
               com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Integer>
               int32Map__ = input.readMessage(
@@ -2286,22 +2394,22 @@ public final class Helloworld {
               break;
             }
             case 176: {
-              if (!((mutable_bitField0_ & 0x00200000) == 0x00200000)) {
-                intList_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00200000;
+              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+                intList_ = newIntList();
+                mutable_bitField0_ |= 0x00000004;
               }
-              intList_.add(input.readInt32());
+              intList_.addInt(input.readInt32());
               break;
             }
             case 178: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00200000) == 0x00200000) && input.getBytesUntilLimit() > 0) {
-                intList_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00200000;
+              if (!((mutable_bitField0_ & 0x00000004) != 0) && input.getBytesUntilLimit() > 0) {
+                intList_ = newIntList();
+                mutable_bitField0_ |= 0x00000004;
               }
               while (input.getBytesUntilLimit() > 0) {
-                intList_.add(input.readInt32());
+                intList_.addInt(input.readInt32());
               }
               input.popLimit(limit);
               break;
@@ -2322,7 +2430,7 @@ public final class Helloworld {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -2336,8 +2444,8 @@ public final class Helloworld {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00200000) == 0x00200000)) {
-          intList_ = java.util.Collections.unmodifiableList(intList_);
+        if (((mutable_bitField0_ & 0x00000004) != 0)) {
+          intList_.makeImmutable(); // C
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -2413,6 +2521,8 @@ public final class Helloworld {
       }
 
       /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
        * @deprecated Use {@link #forNumber(int)} instead.
        */
       @java.lang.Deprecated
@@ -2420,6 +2530,10 @@ public final class Helloworld {
         return forNumber(value);
       }
 
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       */
       public static EnumValue forNumber(int value) {
         switch (value) {
           case 0: return a;
@@ -2442,6 +2556,10 @@ public final class Helloworld {
 
       public final com.google.protobuf.Descriptors.EnumValueDescriptor
           getValueDescriptor() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalStateException(
+              "Can't get the descriptor of an unrecognized enum value.");
+        }
         return getDescriptor().getValues().get(ordinal());
       }
       public final com.google.protobuf.Descriptors.EnumDescriptor
@@ -2453,10 +2571,12 @@ public final class Helloworld {
         return NIO.PB.HelloWorld.Helloworld.allValue.getDescriptor().getEnumTypes().get(0);
       }
 
-      private static final EnumValue[] VALUES = {
-        a, b, c, 
-      };
-
+      private static final EnumValue[] VALUES = getStaticValuesArray();
+      private static EnumValue[] getStaticValuesArray() {
+        return new EnumValue[] {
+          a, b, c, 
+        };
+      }
       public static EnumValue valueOf(
           com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
@@ -2478,11 +2598,11 @@ public final class Helloworld {
       // @@protoc_insertion_point(enum_scope:PB.allValue.EnumValue)
     }
 
-    private int bitField0_;
     private int testOneofCase_ = 0;
     private java.lang.Object testOneof_;
     public enum TestOneofCase
-        implements com.google.protobuf.Internal.EnumLite {
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
       ONE1(19),
       ONE2(20),
       TESTONEOF_NOT_SET(0);
@@ -2491,6 +2611,8 @@ public final class Helloworld {
         this.value = value;
       }
       /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
        * @deprecated Use {@link #forNumber(int)} instead.
        */
       @java.lang.Deprecated
@@ -2521,7 +2643,9 @@ public final class Helloworld {
     private double doubleValue_;
     /**
      * <code>double doubleValue = 1;</code>
+     * @return The doubleValue.
      */
+    @java.lang.Override
     public double getDoubleValue() {
       return doubleValue_;
     }
@@ -2530,7 +2654,9 @@ public final class Helloworld {
     private float floatValue_;
     /**
      * <code>float floatValue = 2;</code>
+     * @return The floatValue.
      */
+    @java.lang.Override
     public float getFloatValue() {
       return floatValue_;
     }
@@ -2539,7 +2665,9 @@ public final class Helloworld {
     private boolean boolValue_;
     /**
      * <code>bool boolValue = 3;</code>
+     * @return The boolValue.
      */
+    @java.lang.Override
     public boolean getBoolValue() {
       return boolValue_;
     }
@@ -2548,7 +2676,9 @@ public final class Helloworld {
     private int int32Value_;
     /**
      * <code>int32 int32Value = 4;</code>
+     * @return The int32Value.
      */
+    @java.lang.Override
     public int getInt32Value() {
       return int32Value_;
     }
@@ -2557,7 +2687,9 @@ public final class Helloworld {
     private long int64Value_;
     /**
      * <code>int64 int64Value = 5;</code>
+     * @return The int64Value.
      */
+    @java.lang.Override
     public long getInt64Value() {
       return int64Value_;
     }
@@ -2566,7 +2698,9 @@ public final class Helloworld {
     private int uint32Value_;
     /**
      * <code>uint32 uint32Value = 6;</code>
+     * @return The uint32Value.
      */
+    @java.lang.Override
     public int getUint32Value() {
       return uint32Value_;
     }
@@ -2575,7 +2709,9 @@ public final class Helloworld {
     private long uint64Value_;
     /**
      * <code>uint64 uint64Value = 7;</code>
+     * @return The uint64Value.
      */
+    @java.lang.Override
     public long getUint64Value() {
       return uint64Value_;
     }
@@ -2584,7 +2720,9 @@ public final class Helloworld {
     private int sint32Value_;
     /**
      * <code>sint32 sint32Value = 8;</code>
+     * @return The sint32Value.
      */
+    @java.lang.Override
     public int getSint32Value() {
       return sint32Value_;
     }
@@ -2593,7 +2731,9 @@ public final class Helloworld {
     private long sint64Value_;
     /**
      * <code>sint64 sint64Value = 9;</code>
+     * @return The sint64Value.
      */
+    @java.lang.Override
     public long getSint64Value() {
       return sint64Value_;
     }
@@ -2602,7 +2742,9 @@ public final class Helloworld {
     private int fixed32Value_;
     /**
      * <code>fixed32 fixed32Value = 10;</code>
+     * @return The fixed32Value.
      */
+    @java.lang.Override
     public int getFixed32Value() {
       return fixed32Value_;
     }
@@ -2611,7 +2753,9 @@ public final class Helloworld {
     private long fixed64Value_;
     /**
      * <code>fixed64 fixed64Value = 11;</code>
+     * @return The fixed64Value.
      */
+    @java.lang.Override
     public long getFixed64Value() {
       return fixed64Value_;
     }
@@ -2620,7 +2764,9 @@ public final class Helloworld {
     private int sfixed32Value_;
     /**
      * <code>sfixed32 sfixed32Value = 12;</code>
+     * @return The sfixed32Value.
      */
+    @java.lang.Override
     public int getSfixed32Value() {
       return sfixed32Value_;
     }
@@ -2629,7 +2775,9 @@ public final class Helloworld {
     private long sfixed64Value_;
     /**
      * <code>sfixed64 sfixed64Value = 13;</code>
+     * @return The sfixed64Value.
      */
+    @java.lang.Override
     public long getSfixed64Value() {
       return sfixed64Value_;
     }
@@ -2638,7 +2786,9 @@ public final class Helloworld {
     private volatile java.lang.Object stringValue_;
     /**
      * <code>string stringValue = 14;</code>
+     * @return The stringValue.
      */
+    @java.lang.Override
     public java.lang.String getStringValue() {
       java.lang.Object ref = stringValue_;
       if (ref instanceof java.lang.String) {
@@ -2653,7 +2803,9 @@ public final class Helloworld {
     }
     /**
      * <code>string stringValue = 14;</code>
+     * @return The bytes for stringValue.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getStringValueBytes() {
       java.lang.Object ref = stringValue_;
@@ -2672,7 +2824,9 @@ public final class Helloworld {
     private com.google.protobuf.ByteString bytesValue_;
     /**
      * <code>bytes bytesValue = 15;</code>
+     * @return The bytesValue.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getBytesValue() {
       return bytesValue_;
     }
@@ -2681,14 +2835,16 @@ public final class Helloworld {
     private int enumValue_;
     /**
      * <code>.PB.allValue.EnumValue enumValue = 16;</code>
+     * @return The enum numeric value on the wire for enumValue.
      */
-    public int getEnumValueValue() {
+    @java.lang.Override public int getEnumValueValue() {
       return enumValue_;
     }
     /**
      * <code>.PB.allValue.EnumValue enumValue = 16;</code>
+     * @return The enumValue.
      */
-    public NIO.PB.HelloWorld.Helloworld.allValue.EnumValue getEnumValue() {
+    @java.lang.Override public NIO.PB.HelloWorld.Helloworld.allValue.EnumValue getEnumValue() {
       @SuppressWarnings("deprecation")
       NIO.PB.HelloWorld.Helloworld.allValue.EnumValue result = NIO.PB.HelloWorld.Helloworld.allValue.EnumValue.valueOf(enumValue_);
       return result == null ? NIO.PB.HelloWorld.Helloworld.allValue.EnumValue.UNRECOGNIZED : result;
@@ -2724,6 +2880,7 @@ public final class Helloworld {
      * <code>map&lt;string, string&gt; stringMap = 17;</code>
      */
 
+    @java.lang.Override
     public boolean containsStringMap(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
@@ -2732,6 +2889,7 @@ public final class Helloworld {
     /**
      * Use {@link #getStringMapMap()} instead.
      */
+    @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, java.lang.String> getStringMap() {
       return getStringMapMap();
@@ -2739,6 +2897,7 @@ public final class Helloworld {
     /**
      * <code>map&lt;string, string&gt; stringMap = 17;</code>
      */
+    @java.lang.Override
 
     public java.util.Map<java.lang.String, java.lang.String> getStringMapMap() {
       return internalGetStringMap().getMap();
@@ -2746,6 +2905,7 @@ public final class Helloworld {
     /**
      * <code>map&lt;string, string&gt; stringMap = 17;</code>
      */
+    @java.lang.Override
 
     public java.lang.String getStringMapOrDefault(
         java.lang.String key,
@@ -2758,6 +2918,7 @@ public final class Helloworld {
     /**
      * <code>map&lt;string, string&gt; stringMap = 17;</code>
      */
+    @java.lang.Override
 
     public java.lang.String getStringMapOrThrow(
         java.lang.String key) {
@@ -2800,6 +2961,7 @@ public final class Helloworld {
      * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
      */
 
+    @java.lang.Override
     public boolean containsInt32Map(
         int key) {
       
@@ -2808,6 +2970,7 @@ public final class Helloworld {
     /**
      * Use {@link #getInt32MapMap()} instead.
      */
+    @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<java.lang.Integer, java.lang.Integer> getInt32Map() {
       return getInt32MapMap();
@@ -2815,6 +2978,7 @@ public final class Helloworld {
     /**
      * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
      */
+    @java.lang.Override
 
     public java.util.Map<java.lang.Integer, java.lang.Integer> getInt32MapMap() {
       return internalGetInt32Map().getMap();
@@ -2822,6 +2986,7 @@ public final class Helloworld {
     /**
      * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
      */
+    @java.lang.Override
 
     public int getInt32MapOrDefault(
         int key,
@@ -2834,6 +2999,7 @@ public final class Helloworld {
     /**
      * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
      */
+    @java.lang.Override
 
     public int getInt32MapOrThrow(
         int key) {
@@ -2854,7 +3020,9 @@ public final class Helloworld {
      * </pre>
      *
      * <code>.PB.Any any = 18;</code>
+     * @return Whether the any field is set.
      */
+    @java.lang.Override
     public boolean hasAny() {
       return any_ != null;
     }
@@ -2864,7 +3032,9 @@ public final class Helloworld {
      * </pre>
      *
      * <code>.PB.Any any = 18;</code>
+     * @return The any.
      */
+    @java.lang.Override
     public NIO.PB.HelloWorld.AnyOuterClass.Any getAny() {
       return any_ == null ? NIO.PB.HelloWorld.AnyOuterClass.Any.getDefaultInstance() : any_;
     }
@@ -2875,6 +3045,7 @@ public final class Helloworld {
      *
      * <code>.PB.Any any = 18;</code>
      */
+    @java.lang.Override
     public NIO.PB.HelloWorld.AnyOuterClass.AnyOrBuilder getAnyOrBuilder() {
       return getAny();
     }
@@ -2882,6 +3053,14 @@ public final class Helloworld {
     public static final int ONE1_FIELD_NUMBER = 19;
     /**
      * <code>string one1 = 19;</code>
+     * @return Whether the one1 field is set.
+     */
+    public boolean hasOne1() {
+      return testOneofCase_ == 19;
+    }
+    /**
+     * <code>string one1 = 19;</code>
+     * @return The one1.
      */
     public java.lang.String getOne1() {
       java.lang.Object ref = "";
@@ -2902,6 +3081,7 @@ public final class Helloworld {
     }
     /**
      * <code>string one1 = 19;</code>
+     * @return The bytes for one1.
      */
     public com.google.protobuf.ByteString
         getOne1Bytes() {
@@ -2925,6 +3105,14 @@ public final class Helloworld {
     public static final int ONE2_FIELD_NUMBER = 20;
     /**
      * <code>string one2 = 20;</code>
+     * @return Whether the one2 field is set.
+     */
+    public boolean hasOne2() {
+      return testOneofCase_ == 20;
+    }
+    /**
+     * <code>string one2 = 20;</code>
+     * @return The one2.
      */
     public java.lang.String getOne2() {
       java.lang.Object ref = "";
@@ -2945,6 +3133,7 @@ public final class Helloworld {
     }
     /**
      * <code>string one2 = 20;</code>
+     * @return The bytes for one2.
      */
     public com.google.protobuf.ByteString
         getOne2Bytes() {
@@ -2966,25 +3155,30 @@ public final class Helloworld {
     }
 
     public static final int INTLIST_FIELD_NUMBER = 22;
-    private java.util.List<java.lang.Integer> intList_;
+    private com.google.protobuf.Internal.IntList intList_;
     /**
      * <code>repeated int32 intList = 22;</code>
+     * @return A list containing the intList.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Integer>
         getIntListList() {
       return intList_;
     }
     /**
      * <code>repeated int32 intList = 22;</code>
+     * @return The count of intList.
      */
     public int getIntListCount() {
       return intList_.size();
     }
     /**
      * <code>repeated int32 intList = 22;</code>
+     * @param index The index of the element to return.
+     * @return The intList at the given index.
      */
     public int getIntList(int index) {
-      return intList_.get(index);
+      return intList_.getInt(index);
     }
     private int intListMemoizedSerializedSize = -1;
 
@@ -2992,7 +3186,9 @@ public final class Helloworld {
     private long longInt64_;
     /**
      * <code>int64 long_int64 = 23;</code>
+     * @return The longInt64.
      */
+    @java.lang.Override
     public long getLongInt64() {
       return longInt64_;
     }
@@ -3001,7 +3197,9 @@ public final class Helloworld {
     private long longSint64_;
     /**
      * <code>sint64 long_sint64 = 24;</code>
+     * @return The longSint64.
      */
+    @java.lang.Override
     public long getLongSint64() {
       return longSint64_;
     }
@@ -3010,7 +3208,9 @@ public final class Helloworld {
     private long longUint64_;
     /**
      * <code>uint64 long_uint64 = 25;</code>
+     * @return The longUint64.
      */
+    @java.lang.Override
     public long getLongUint64() {
       return longUint64_;
     }
@@ -3104,7 +3304,7 @@ public final class Helloworld {
         output.writeUInt32NoTag(intListMemoizedSerializedSize);
       }
       for (int i = 0; i < intList_.size(); i++) {
-        output.writeInt32NoTag(intList_.get(i));
+        output.writeInt32NoTag(intList_.getInt(i));
       }
       if (longInt64_ != 0L) {
         output.writeInt64(23, longInt64_);
@@ -3221,7 +3421,7 @@ public final class Helloworld {
         int dataSize = 0;
         for (int i = 0; i < intList_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(intList_.get(i));
+            .computeInt32SizeNoTag(intList_.getInt(i));
         }
         size += dataSize;
         if (!getIntListList().isEmpty()) {
@@ -3258,76 +3458,71 @@ public final class Helloworld {
       }
       NIO.PB.HelloWorld.Helloworld.allValue other = (NIO.PB.HelloWorld.Helloworld.allValue) obj;
 
-      boolean result = true;
-      result = result && (
-          java.lang.Double.doubleToLongBits(getDoubleValue())
-          == java.lang.Double.doubleToLongBits(
-              other.getDoubleValue()));
-      result = result && (
-          java.lang.Float.floatToIntBits(getFloatValue())
-          == java.lang.Float.floatToIntBits(
-              other.getFloatValue()));
-      result = result && (getBoolValue()
-          == other.getBoolValue());
-      result = result && (getInt32Value()
-          == other.getInt32Value());
-      result = result && (getInt64Value()
-          == other.getInt64Value());
-      result = result && (getUint32Value()
-          == other.getUint32Value());
-      result = result && (getUint64Value()
-          == other.getUint64Value());
-      result = result && (getSint32Value()
-          == other.getSint32Value());
-      result = result && (getSint64Value()
-          == other.getSint64Value());
-      result = result && (getFixed32Value()
-          == other.getFixed32Value());
-      result = result && (getFixed64Value()
-          == other.getFixed64Value());
-      result = result && (getSfixed32Value()
-          == other.getSfixed32Value());
-      result = result && (getSfixed64Value()
-          == other.getSfixed64Value());
-      result = result && getStringValue()
-          .equals(other.getStringValue());
-      result = result && getBytesValue()
-          .equals(other.getBytesValue());
-      result = result && enumValue_ == other.enumValue_;
-      result = result && internalGetStringMap().equals(
-          other.internalGetStringMap());
-      result = result && internalGetInt32Map().equals(
-          other.internalGetInt32Map());
-      result = result && (hasAny() == other.hasAny());
+      if (java.lang.Double.doubleToLongBits(getDoubleValue())
+          != java.lang.Double.doubleToLongBits(
+              other.getDoubleValue())) return false;
+      if (java.lang.Float.floatToIntBits(getFloatValue())
+          != java.lang.Float.floatToIntBits(
+              other.getFloatValue())) return false;
+      if (getBoolValue()
+          != other.getBoolValue()) return false;
+      if (getInt32Value()
+          != other.getInt32Value()) return false;
+      if (getInt64Value()
+          != other.getInt64Value()) return false;
+      if (getUint32Value()
+          != other.getUint32Value()) return false;
+      if (getUint64Value()
+          != other.getUint64Value()) return false;
+      if (getSint32Value()
+          != other.getSint32Value()) return false;
+      if (getSint64Value()
+          != other.getSint64Value()) return false;
+      if (getFixed32Value()
+          != other.getFixed32Value()) return false;
+      if (getFixed64Value()
+          != other.getFixed64Value()) return false;
+      if (getSfixed32Value()
+          != other.getSfixed32Value()) return false;
+      if (getSfixed64Value()
+          != other.getSfixed64Value()) return false;
+      if (!getStringValue()
+          .equals(other.getStringValue())) return false;
+      if (!getBytesValue()
+          .equals(other.getBytesValue())) return false;
+      if (enumValue_ != other.enumValue_) return false;
+      if (!internalGetStringMap().equals(
+          other.internalGetStringMap())) return false;
+      if (!internalGetInt32Map().equals(
+          other.internalGetInt32Map())) return false;
+      if (hasAny() != other.hasAny()) return false;
       if (hasAny()) {
-        result = result && getAny()
-            .equals(other.getAny());
+        if (!getAny()
+            .equals(other.getAny())) return false;
       }
-      result = result && getIntListList()
-          .equals(other.getIntListList());
-      result = result && (getLongInt64()
-          == other.getLongInt64());
-      result = result && (getLongSint64()
-          == other.getLongSint64());
-      result = result && (getLongUint64()
-          == other.getLongUint64());
-      result = result && getTestOneofCase().equals(
-          other.getTestOneofCase());
-      if (!result) return false;
+      if (!getIntListList()
+          .equals(other.getIntListList())) return false;
+      if (getLongInt64()
+          != other.getLongInt64()) return false;
+      if (getLongSint64()
+          != other.getLongSint64()) return false;
+      if (getLongUint64()
+          != other.getLongUint64()) return false;
+      if (!getTestOneofCase().equals(other.getTestOneofCase())) return false;
       switch (testOneofCase_) {
         case 19:
-          result = result && getOne1()
-              .equals(other.getOne1());
+          if (!getOne1()
+              .equals(other.getOne1())) return false;
           break;
         case 20:
-          result = result && getOne2()
-              .equals(other.getOne2());
+          if (!getOne2()
+              .equals(other.getOne2())) return false;
           break;
         case 0:
         default:
       }
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -3613,8 +3808,8 @@ public final class Helloworld {
           any_ = null;
           anyBuilder_ = null;
         }
-        intList_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00200000);
+        intList_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000004);
         longInt64_ = 0L;
 
         longSint64_ = 0L;
@@ -3650,7 +3845,6 @@ public final class Helloworld {
       public NIO.PB.HelloWorld.Helloworld.allValue buildPartial() {
         NIO.PB.HelloWorld.Helloworld.allValue result = new NIO.PB.HelloWorld.Helloworld.allValue(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.doubleValue_ = doubleValue_;
         result.floatValue_ = floatValue_;
         result.boolValue_ = boolValue_;
@@ -3682,15 +3876,14 @@ public final class Helloworld {
         if (testOneofCase_ == 20) {
           result.testOneof_ = testOneof_;
         }
-        if (((bitField0_ & 0x00200000) == 0x00200000)) {
-          intList_ = java.util.Collections.unmodifiableList(intList_);
-          bitField0_ = (bitField0_ & ~0x00200000);
+        if (((bitField0_ & 0x00000004) != 0)) {
+          intList_.makeImmutable();
+          bitField0_ = (bitField0_ & ~0x00000004);
         }
         result.intList_ = intList_;
         result.longInt64_ = longInt64_;
         result.longSint64_ = longSint64_;
         result.longUint64_ = longUint64_;
-        result.bitField0_ = to_bitField0_;
         result.testOneofCase_ = testOneofCase_;
         onBuilt();
         return result;
@@ -3698,35 +3891,35 @@ public final class Helloworld {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -3799,7 +3992,7 @@ public final class Helloworld {
         if (!other.intList_.isEmpty()) {
           if (intList_.isEmpty()) {
             intList_ = other.intList_;
-            bitField0_ = (bitField0_ & ~0x00200000);
+            bitField0_ = (bitField0_ & ~0x00000004);
           } else {
             ensureIntListIsMutable();
             intList_.addAll(other.intList_);
@@ -3880,12 +4073,16 @@ public final class Helloworld {
       private double doubleValue_ ;
       /**
        * <code>double doubleValue = 1;</code>
+       * @return The doubleValue.
        */
+      @java.lang.Override
       public double getDoubleValue() {
         return doubleValue_;
       }
       /**
        * <code>double doubleValue = 1;</code>
+       * @param value The doubleValue to set.
+       * @return This builder for chaining.
        */
       public Builder setDoubleValue(double value) {
         
@@ -3895,6 +4092,7 @@ public final class Helloworld {
       }
       /**
        * <code>double doubleValue = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearDoubleValue() {
         
@@ -3906,12 +4104,16 @@ public final class Helloworld {
       private float floatValue_ ;
       /**
        * <code>float floatValue = 2;</code>
+       * @return The floatValue.
        */
+      @java.lang.Override
       public float getFloatValue() {
         return floatValue_;
       }
       /**
        * <code>float floatValue = 2;</code>
+       * @param value The floatValue to set.
+       * @return This builder for chaining.
        */
       public Builder setFloatValue(float value) {
         
@@ -3921,6 +4123,7 @@ public final class Helloworld {
       }
       /**
        * <code>float floatValue = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearFloatValue() {
         
@@ -3932,12 +4135,16 @@ public final class Helloworld {
       private boolean boolValue_ ;
       /**
        * <code>bool boolValue = 3;</code>
+       * @return The boolValue.
        */
+      @java.lang.Override
       public boolean getBoolValue() {
         return boolValue_;
       }
       /**
        * <code>bool boolValue = 3;</code>
+       * @param value The boolValue to set.
+       * @return This builder for chaining.
        */
       public Builder setBoolValue(boolean value) {
         
@@ -3947,6 +4154,7 @@ public final class Helloworld {
       }
       /**
        * <code>bool boolValue = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearBoolValue() {
         
@@ -3958,12 +4166,16 @@ public final class Helloworld {
       private int int32Value_ ;
       /**
        * <code>int32 int32Value = 4;</code>
+       * @return The int32Value.
        */
+      @java.lang.Override
       public int getInt32Value() {
         return int32Value_;
       }
       /**
        * <code>int32 int32Value = 4;</code>
+       * @param value The int32Value to set.
+       * @return This builder for chaining.
        */
       public Builder setInt32Value(int value) {
         
@@ -3973,6 +4185,7 @@ public final class Helloworld {
       }
       /**
        * <code>int32 int32Value = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearInt32Value() {
         
@@ -3984,12 +4197,16 @@ public final class Helloworld {
       private long int64Value_ ;
       /**
        * <code>int64 int64Value = 5;</code>
+       * @return The int64Value.
        */
+      @java.lang.Override
       public long getInt64Value() {
         return int64Value_;
       }
       /**
        * <code>int64 int64Value = 5;</code>
+       * @param value The int64Value to set.
+       * @return This builder for chaining.
        */
       public Builder setInt64Value(long value) {
         
@@ -3999,6 +4216,7 @@ public final class Helloworld {
       }
       /**
        * <code>int64 int64Value = 5;</code>
+       * @return This builder for chaining.
        */
       public Builder clearInt64Value() {
         
@@ -4010,12 +4228,16 @@ public final class Helloworld {
       private int uint32Value_ ;
       /**
        * <code>uint32 uint32Value = 6;</code>
+       * @return The uint32Value.
        */
+      @java.lang.Override
       public int getUint32Value() {
         return uint32Value_;
       }
       /**
        * <code>uint32 uint32Value = 6;</code>
+       * @param value The uint32Value to set.
+       * @return This builder for chaining.
        */
       public Builder setUint32Value(int value) {
         
@@ -4025,6 +4247,7 @@ public final class Helloworld {
       }
       /**
        * <code>uint32 uint32Value = 6;</code>
+       * @return This builder for chaining.
        */
       public Builder clearUint32Value() {
         
@@ -4036,12 +4259,16 @@ public final class Helloworld {
       private long uint64Value_ ;
       /**
        * <code>uint64 uint64Value = 7;</code>
+       * @return The uint64Value.
        */
+      @java.lang.Override
       public long getUint64Value() {
         return uint64Value_;
       }
       /**
        * <code>uint64 uint64Value = 7;</code>
+       * @param value The uint64Value to set.
+       * @return This builder for chaining.
        */
       public Builder setUint64Value(long value) {
         
@@ -4051,6 +4278,7 @@ public final class Helloworld {
       }
       /**
        * <code>uint64 uint64Value = 7;</code>
+       * @return This builder for chaining.
        */
       public Builder clearUint64Value() {
         
@@ -4062,12 +4290,16 @@ public final class Helloworld {
       private int sint32Value_ ;
       /**
        * <code>sint32 sint32Value = 8;</code>
+       * @return The sint32Value.
        */
+      @java.lang.Override
       public int getSint32Value() {
         return sint32Value_;
       }
       /**
        * <code>sint32 sint32Value = 8;</code>
+       * @param value The sint32Value to set.
+       * @return This builder for chaining.
        */
       public Builder setSint32Value(int value) {
         
@@ -4077,6 +4309,7 @@ public final class Helloworld {
       }
       /**
        * <code>sint32 sint32Value = 8;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSint32Value() {
         
@@ -4088,12 +4321,16 @@ public final class Helloworld {
       private long sint64Value_ ;
       /**
        * <code>sint64 sint64Value = 9;</code>
+       * @return The sint64Value.
        */
+      @java.lang.Override
       public long getSint64Value() {
         return sint64Value_;
       }
       /**
        * <code>sint64 sint64Value = 9;</code>
+       * @param value The sint64Value to set.
+       * @return This builder for chaining.
        */
       public Builder setSint64Value(long value) {
         
@@ -4103,6 +4340,7 @@ public final class Helloworld {
       }
       /**
        * <code>sint64 sint64Value = 9;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSint64Value() {
         
@@ -4114,12 +4352,16 @@ public final class Helloworld {
       private int fixed32Value_ ;
       /**
        * <code>fixed32 fixed32Value = 10;</code>
+       * @return The fixed32Value.
        */
+      @java.lang.Override
       public int getFixed32Value() {
         return fixed32Value_;
       }
       /**
        * <code>fixed32 fixed32Value = 10;</code>
+       * @param value The fixed32Value to set.
+       * @return This builder for chaining.
        */
       public Builder setFixed32Value(int value) {
         
@@ -4129,6 +4371,7 @@ public final class Helloworld {
       }
       /**
        * <code>fixed32 fixed32Value = 10;</code>
+       * @return This builder for chaining.
        */
       public Builder clearFixed32Value() {
         
@@ -4140,12 +4383,16 @@ public final class Helloworld {
       private long fixed64Value_ ;
       /**
        * <code>fixed64 fixed64Value = 11;</code>
+       * @return The fixed64Value.
        */
+      @java.lang.Override
       public long getFixed64Value() {
         return fixed64Value_;
       }
       /**
        * <code>fixed64 fixed64Value = 11;</code>
+       * @param value The fixed64Value to set.
+       * @return This builder for chaining.
        */
       public Builder setFixed64Value(long value) {
         
@@ -4155,6 +4402,7 @@ public final class Helloworld {
       }
       /**
        * <code>fixed64 fixed64Value = 11;</code>
+       * @return This builder for chaining.
        */
       public Builder clearFixed64Value() {
         
@@ -4166,12 +4414,16 @@ public final class Helloworld {
       private int sfixed32Value_ ;
       /**
        * <code>sfixed32 sfixed32Value = 12;</code>
+       * @return The sfixed32Value.
        */
+      @java.lang.Override
       public int getSfixed32Value() {
         return sfixed32Value_;
       }
       /**
        * <code>sfixed32 sfixed32Value = 12;</code>
+       * @param value The sfixed32Value to set.
+       * @return This builder for chaining.
        */
       public Builder setSfixed32Value(int value) {
         
@@ -4181,6 +4433,7 @@ public final class Helloworld {
       }
       /**
        * <code>sfixed32 sfixed32Value = 12;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSfixed32Value() {
         
@@ -4192,12 +4445,16 @@ public final class Helloworld {
       private long sfixed64Value_ ;
       /**
        * <code>sfixed64 sfixed64Value = 13;</code>
+       * @return The sfixed64Value.
        */
+      @java.lang.Override
       public long getSfixed64Value() {
         return sfixed64Value_;
       }
       /**
        * <code>sfixed64 sfixed64Value = 13;</code>
+       * @param value The sfixed64Value to set.
+       * @return This builder for chaining.
        */
       public Builder setSfixed64Value(long value) {
         
@@ -4207,6 +4464,7 @@ public final class Helloworld {
       }
       /**
        * <code>sfixed64 sfixed64Value = 13;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSfixed64Value() {
         
@@ -4218,6 +4476,7 @@ public final class Helloworld {
       private java.lang.Object stringValue_ = "";
       /**
        * <code>string stringValue = 14;</code>
+       * @return The stringValue.
        */
       public java.lang.String getStringValue() {
         java.lang.Object ref = stringValue_;
@@ -4233,6 +4492,7 @@ public final class Helloworld {
       }
       /**
        * <code>string stringValue = 14;</code>
+       * @return The bytes for stringValue.
        */
       public com.google.protobuf.ByteString
           getStringValueBytes() {
@@ -4249,6 +4509,8 @@ public final class Helloworld {
       }
       /**
        * <code>string stringValue = 14;</code>
+       * @param value The stringValue to set.
+       * @return This builder for chaining.
        */
       public Builder setStringValue(
           java.lang.String value) {
@@ -4262,6 +4524,7 @@ public final class Helloworld {
       }
       /**
        * <code>string stringValue = 14;</code>
+       * @return This builder for chaining.
        */
       public Builder clearStringValue() {
         
@@ -4271,6 +4534,8 @@ public final class Helloworld {
       }
       /**
        * <code>string stringValue = 14;</code>
+       * @param value The bytes for stringValue to set.
+       * @return This builder for chaining.
        */
       public Builder setStringValueBytes(
           com.google.protobuf.ByteString value) {
@@ -4287,12 +4552,16 @@ public final class Helloworld {
       private com.google.protobuf.ByteString bytesValue_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes bytesValue = 15;</code>
+       * @return The bytesValue.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getBytesValue() {
         return bytesValue_;
       }
       /**
        * <code>bytes bytesValue = 15;</code>
+       * @param value The bytesValue to set.
+       * @return This builder for chaining.
        */
       public Builder setBytesValue(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -4305,6 +4574,7 @@ public final class Helloworld {
       }
       /**
        * <code>bytes bytesValue = 15;</code>
+       * @return This builder for chaining.
        */
       public Builder clearBytesValue() {
         
@@ -4316,21 +4586,27 @@ public final class Helloworld {
       private int enumValue_ = 0;
       /**
        * <code>.PB.allValue.EnumValue enumValue = 16;</code>
+       * @return The enum numeric value on the wire for enumValue.
        */
-      public int getEnumValueValue() {
+      @java.lang.Override public int getEnumValueValue() {
         return enumValue_;
       }
       /**
        * <code>.PB.allValue.EnumValue enumValue = 16;</code>
+       * @param value The enum numeric value on the wire for enumValue to set.
+       * @return This builder for chaining.
        */
       public Builder setEnumValueValue(int value) {
+        
         enumValue_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>.PB.allValue.EnumValue enumValue = 16;</code>
+       * @return The enumValue.
        */
+      @java.lang.Override
       public NIO.PB.HelloWorld.Helloworld.allValue.EnumValue getEnumValue() {
         @SuppressWarnings("deprecation")
         NIO.PB.HelloWorld.Helloworld.allValue.EnumValue result = NIO.PB.HelloWorld.Helloworld.allValue.EnumValue.valueOf(enumValue_);
@@ -4338,6 +4614,8 @@ public final class Helloworld {
       }
       /**
        * <code>.PB.allValue.EnumValue enumValue = 16;</code>
+       * @param value The enumValue to set.
+       * @return This builder for chaining.
        */
       public Builder setEnumValue(NIO.PB.HelloWorld.Helloworld.allValue.EnumValue value) {
         if (value == null) {
@@ -4350,6 +4628,7 @@ public final class Helloworld {
       }
       /**
        * <code>.PB.allValue.EnumValue enumValue = 16;</code>
+       * @return This builder for chaining.
        */
       public Builder clearEnumValue() {
         
@@ -4388,6 +4667,7 @@ public final class Helloworld {
        * <code>map&lt;string, string&gt; stringMap = 17;</code>
        */
 
+      @java.lang.Override
       public boolean containsStringMap(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
@@ -4396,6 +4676,7 @@ public final class Helloworld {
       /**
        * Use {@link #getStringMapMap()} instead.
        */
+      @java.lang.Override
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, java.lang.String> getStringMap() {
         return getStringMapMap();
@@ -4403,6 +4684,7 @@ public final class Helloworld {
       /**
        * <code>map&lt;string, string&gt; stringMap = 17;</code>
        */
+      @java.lang.Override
 
       public java.util.Map<java.lang.String, java.lang.String> getStringMapMap() {
         return internalGetStringMap().getMap();
@@ -4410,6 +4692,7 @@ public final class Helloworld {
       /**
        * <code>map&lt;string, string&gt; stringMap = 17;</code>
        */
+      @java.lang.Override
 
       public java.lang.String getStringMapOrDefault(
           java.lang.String key,
@@ -4422,6 +4705,7 @@ public final class Helloworld {
       /**
        * <code>map&lt;string, string&gt; stringMap = 17;</code>
        */
+      @java.lang.Override
 
       public java.lang.String getStringMapOrThrow(
           java.lang.String key) {
@@ -4511,6 +4795,7 @@ public final class Helloworld {
        * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
        */
 
+      @java.lang.Override
       public boolean containsInt32Map(
           int key) {
         
@@ -4519,6 +4804,7 @@ public final class Helloworld {
       /**
        * Use {@link #getInt32MapMap()} instead.
        */
+      @java.lang.Override
       @java.lang.Deprecated
       public java.util.Map<java.lang.Integer, java.lang.Integer> getInt32Map() {
         return getInt32MapMap();
@@ -4526,6 +4812,7 @@ public final class Helloworld {
       /**
        * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
        */
+      @java.lang.Override
 
       public java.util.Map<java.lang.Integer, java.lang.Integer> getInt32MapMap() {
         return internalGetInt32Map().getMap();
@@ -4533,6 +4820,7 @@ public final class Helloworld {
       /**
        * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
        */
+      @java.lang.Override
 
       public int getInt32MapOrDefault(
           int key,
@@ -4545,6 +4833,7 @@ public final class Helloworld {
       /**
        * <code>map&lt;int32, int32&gt; int32Map = 21;</code>
        */
+      @java.lang.Override
 
       public int getInt32MapOrThrow(
           int key) {
@@ -4604,7 +4893,7 @@ public final class Helloworld {
         return this;
       }
 
-      private NIO.PB.HelloWorld.AnyOuterClass.Any any_ = null;
+      private NIO.PB.HelloWorld.AnyOuterClass.Any any_;
       private com.google.protobuf.SingleFieldBuilderV3<
           NIO.PB.HelloWorld.AnyOuterClass.Any, NIO.PB.HelloWorld.AnyOuterClass.Any.Builder, NIO.PB.HelloWorld.AnyOuterClass.AnyOrBuilder> anyBuilder_;
       /**
@@ -4613,6 +4902,7 @@ public final class Helloworld {
        * </pre>
        *
        * <code>.PB.Any any = 18;</code>
+       * @return Whether the any field is set.
        */
       public boolean hasAny() {
         return anyBuilder_ != null || any_ != null;
@@ -4623,6 +4913,7 @@ public final class Helloworld {
        * </pre>
        *
        * <code>.PB.Any any = 18;</code>
+       * @return The any.
        */
       public NIO.PB.HelloWorld.AnyOuterClass.Any getAny() {
         if (anyBuilder_ == null) {
@@ -4759,7 +5050,17 @@ public final class Helloworld {
 
       /**
        * <code>string one1 = 19;</code>
+       * @return Whether the one1 field is set.
        */
+      @java.lang.Override
+      public boolean hasOne1() {
+        return testOneofCase_ == 19;
+      }
+      /**
+       * <code>string one1 = 19;</code>
+       * @return The one1.
+       */
+      @java.lang.Override
       public java.lang.String getOne1() {
         java.lang.Object ref = "";
         if (testOneofCase_ == 19) {
@@ -4779,7 +5080,9 @@ public final class Helloworld {
       }
       /**
        * <code>string one1 = 19;</code>
+       * @return The bytes for one1.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString
           getOne1Bytes() {
         java.lang.Object ref = "";
@@ -4800,6 +5103,8 @@ public final class Helloworld {
       }
       /**
        * <code>string one1 = 19;</code>
+       * @param value The one1 to set.
+       * @return This builder for chaining.
        */
       public Builder setOne1(
           java.lang.String value) {
@@ -4813,6 +5118,7 @@ public final class Helloworld {
       }
       /**
        * <code>string one1 = 19;</code>
+       * @return This builder for chaining.
        */
       public Builder clearOne1() {
         if (testOneofCase_ == 19) {
@@ -4824,6 +5130,8 @@ public final class Helloworld {
       }
       /**
        * <code>string one1 = 19;</code>
+       * @param value The bytes for one1 to set.
+       * @return This builder for chaining.
        */
       public Builder setOne1Bytes(
           com.google.protobuf.ByteString value) {
@@ -4839,7 +5147,17 @@ public final class Helloworld {
 
       /**
        * <code>string one2 = 20;</code>
+       * @return Whether the one2 field is set.
        */
+      @java.lang.Override
+      public boolean hasOne2() {
+        return testOneofCase_ == 20;
+      }
+      /**
+       * <code>string one2 = 20;</code>
+       * @return The one2.
+       */
+      @java.lang.Override
       public java.lang.String getOne2() {
         java.lang.Object ref = "";
         if (testOneofCase_ == 20) {
@@ -4859,7 +5177,9 @@ public final class Helloworld {
       }
       /**
        * <code>string one2 = 20;</code>
+       * @return The bytes for one2.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString
           getOne2Bytes() {
         java.lang.Object ref = "";
@@ -4880,6 +5200,8 @@ public final class Helloworld {
       }
       /**
        * <code>string one2 = 20;</code>
+       * @param value The one2 to set.
+       * @return This builder for chaining.
        */
       public Builder setOne2(
           java.lang.String value) {
@@ -4893,6 +5215,7 @@ public final class Helloworld {
       }
       /**
        * <code>string one2 = 20;</code>
+       * @return This builder for chaining.
        */
       public Builder clearOne2() {
         if (testOneofCase_ == 20) {
@@ -4904,6 +5227,8 @@ public final class Helloworld {
       }
       /**
        * <code>string one2 = 20;</code>
+       * @param value The bytes for one2 to set.
+       * @return This builder for chaining.
        */
       public Builder setOne2Bytes(
           com.google.protobuf.ByteString value) {
@@ -4917,53 +5242,65 @@ public final class Helloworld {
         return this;
       }
 
-      private java.util.List<java.lang.Integer> intList_ = java.util.Collections.emptyList();
+      private com.google.protobuf.Internal.IntList intList_ = emptyIntList();
       private void ensureIntListIsMutable() {
-        if (!((bitField0_ & 0x00200000) == 0x00200000)) {
-          intList_ = new java.util.ArrayList<java.lang.Integer>(intList_);
-          bitField0_ |= 0x00200000;
+        if (!((bitField0_ & 0x00000004) != 0)) {
+          intList_ = mutableCopy(intList_);
+          bitField0_ |= 0x00000004;
          }
       }
       /**
        * <code>repeated int32 intList = 22;</code>
+       * @return A list containing the intList.
        */
       public java.util.List<java.lang.Integer>
           getIntListList() {
-        return java.util.Collections.unmodifiableList(intList_);
+        return ((bitField0_ & 0x00000004) != 0) ?
+                 java.util.Collections.unmodifiableList(intList_) : intList_;
       }
       /**
        * <code>repeated int32 intList = 22;</code>
+       * @return The count of intList.
        */
       public int getIntListCount() {
         return intList_.size();
       }
       /**
        * <code>repeated int32 intList = 22;</code>
+       * @param index The index of the element to return.
+       * @return The intList at the given index.
        */
       public int getIntList(int index) {
-        return intList_.get(index);
+        return intList_.getInt(index);
       }
       /**
        * <code>repeated int32 intList = 22;</code>
+       * @param index The index to set the value at.
+       * @param value The intList to set.
+       * @return This builder for chaining.
        */
       public Builder setIntList(
           int index, int value) {
         ensureIntListIsMutable();
-        intList_.set(index, value);
+        intList_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
        * <code>repeated int32 intList = 22;</code>
+       * @param value The intList to add.
+       * @return This builder for chaining.
        */
       public Builder addIntList(int value) {
         ensureIntListIsMutable();
-        intList_.add(value);
+        intList_.addInt(value);
         onChanged();
         return this;
       }
       /**
        * <code>repeated int32 intList = 22;</code>
+       * @param values The intList to add.
+       * @return This builder for chaining.
        */
       public Builder addAllIntList(
           java.lang.Iterable<? extends java.lang.Integer> values) {
@@ -4975,10 +5312,11 @@ public final class Helloworld {
       }
       /**
        * <code>repeated int32 intList = 22;</code>
+       * @return This builder for chaining.
        */
       public Builder clearIntList() {
-        intList_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00200000);
+        intList_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
@@ -4986,12 +5324,16 @@ public final class Helloworld {
       private long longInt64_ ;
       /**
        * <code>int64 long_int64 = 23;</code>
+       * @return The longInt64.
        */
+      @java.lang.Override
       public long getLongInt64() {
         return longInt64_;
       }
       /**
        * <code>int64 long_int64 = 23;</code>
+       * @param value The longInt64 to set.
+       * @return This builder for chaining.
        */
       public Builder setLongInt64(long value) {
         
@@ -5001,6 +5343,7 @@ public final class Helloworld {
       }
       /**
        * <code>int64 long_int64 = 23;</code>
+       * @return This builder for chaining.
        */
       public Builder clearLongInt64() {
         
@@ -5012,12 +5355,16 @@ public final class Helloworld {
       private long longSint64_ ;
       /**
        * <code>sint64 long_sint64 = 24;</code>
+       * @return The longSint64.
        */
+      @java.lang.Override
       public long getLongSint64() {
         return longSint64_;
       }
       /**
        * <code>sint64 long_sint64 = 24;</code>
+       * @param value The longSint64 to set.
+       * @return This builder for chaining.
        */
       public Builder setLongSint64(long value) {
         
@@ -5027,6 +5374,7 @@ public final class Helloworld {
       }
       /**
        * <code>sint64 long_sint64 = 24;</code>
+       * @return This builder for chaining.
        */
       public Builder clearLongSint64() {
         
@@ -5038,12 +5386,16 @@ public final class Helloworld {
       private long longUint64_ ;
       /**
        * <code>uint64 long_uint64 = 25;</code>
+       * @return The longUint64.
        */
+      @java.lang.Override
       public long getLongUint64() {
         return longUint64_;
       }
       /**
        * <code>uint64 long_uint64 = 25;</code>
+       * @param value The longUint64 to set.
+       * @return This builder for chaining.
        */
       public Builder setLongUint64(long value) {
         
@@ -5053,6 +5405,7 @@ public final class Helloworld {
       }
       /**
        * <code>uint64 long_uint64 = 25;</code>
+       * @return This builder for chaining.
        */
       public Builder clearLongUint64() {
         
@@ -5063,7 +5416,7 @@ public final class Helloworld {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -5119,13 +5472,14 @@ public final class Helloworld {
 
     /**
      * <code>int32 _32 = 1;</code>
+     * @return The 32.
      */
     int get32();
   }
   /**
    * Protobuf type {@code PB.test_int32}
    */
-  public  static final class test_int32 extends
+  public static final class test_int32 extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:PB.test_int32)
       test_int32OrBuilder {
@@ -5135,7 +5489,13 @@ public final class Helloworld {
       super(builder);
     }
     private test_int32() {
-      _32_ = 0;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new test_int32();
     }
 
     @java.lang.Override
@@ -5151,7 +5511,6 @@ public final class Helloworld {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -5168,7 +5527,7 @@ public final class Helloworld {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -5203,7 +5562,9 @@ public final class Helloworld {
     private int _32_;
     /**
      * <code>int32 _32 = 1;</code>
+     * @return The 32.
      */
+    @java.lang.Override
     public int get32() {
       return _32_;
     }
@@ -5253,11 +5614,10 @@ public final class Helloworld {
       }
       NIO.PB.HelloWorld.Helloworld.test_int32 other = (NIO.PB.HelloWorld.Helloworld.test_int32) obj;
 
-      boolean result = true;
-      result = result && (get32()
-          == other.get32());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (get32()
+          != other.get32()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -5437,35 +5797,35 @@ public final class Helloworld {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -5514,12 +5874,16 @@ public final class Helloworld {
       private int _32_ ;
       /**
        * <code>int32 _32 = 1;</code>
+       * @return The 32.
        */
+      @java.lang.Override
       public int get32() {
         return _32_;
       }
       /**
        * <code>int32 _32 = 1;</code>
+       * @param value The 32 to set.
+       * @return This builder for chaining.
        */
       public Builder set32(int value) {
         
@@ -5529,6 +5893,7 @@ public final class Helloworld {
       }
       /**
        * <code>int32 _32 = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clear32() {
         
@@ -5539,7 +5904,7 @@ public final class Helloworld {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -5595,13 +5960,14 @@ public final class Helloworld {
 
     /**
      * <code>int64 _64 = 1;</code>
+     * @return The 64.
      */
     long get64();
   }
   /**
    * Protobuf type {@code PB.test_int64}
    */
-  public  static final class test_int64 extends
+  public static final class test_int64 extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:PB.test_int64)
       test_int64OrBuilder {
@@ -5611,7 +5977,13 @@ public final class Helloworld {
       super(builder);
     }
     private test_int64() {
-      _64_ = 0L;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new test_int64();
     }
 
     @java.lang.Override
@@ -5627,7 +5999,6 @@ public final class Helloworld {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -5644,7 +6015,7 @@ public final class Helloworld {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -5679,7 +6050,9 @@ public final class Helloworld {
     private long _64_;
     /**
      * <code>int64 _64 = 1;</code>
+     * @return The 64.
      */
+    @java.lang.Override
     public long get64() {
       return _64_;
     }
@@ -5729,11 +6102,10 @@ public final class Helloworld {
       }
       NIO.PB.HelloWorld.Helloworld.test_int64 other = (NIO.PB.HelloWorld.Helloworld.test_int64) obj;
 
-      boolean result = true;
-      result = result && (get64()
-          == other.get64());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (get64()
+          != other.get64()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -5914,35 +6286,35 @@ public final class Helloworld {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -5991,12 +6363,16 @@ public final class Helloworld {
       private long _64_ ;
       /**
        * <code>int64 _64 = 1;</code>
+       * @return The 64.
        */
+      @java.lang.Override
       public long get64() {
         return _64_;
       }
       /**
        * <code>int64 _64 = 1;</code>
+       * @param value The 64 to set.
+       * @return This builder for chaining.
        */
       public Builder set64(long value) {
         
@@ -6006,6 +6382,7 @@ public final class Helloworld {
       }
       /**
        * <code>int64 _64 = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clear64() {
         
@@ -6016,7 +6393,7 @@ public final class Helloworld {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -6143,19 +6520,11 @@ public final class Helloworld {
       "Request\032\016.PB.HelloReply\"\000B\025\n\021NIO.PB.Hell" +
       "oWorldP\000b\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           NIO.PB.HelloWorld.AnyOuterClass.getDescriptor(),
-        }, assigner);
+        });
     internal_static_PB_HelloRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_PB_HelloRequest_fieldAccessorTable = new

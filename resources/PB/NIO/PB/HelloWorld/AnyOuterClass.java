@@ -20,23 +20,26 @@ public final class AnyOuterClass {
 
     /**
      * <code>string type_url = 1;</code>
+     * @return The typeUrl.
      */
     java.lang.String getTypeUrl();
     /**
      * <code>string type_url = 1;</code>
+     * @return The bytes for typeUrl.
      */
     com.google.protobuf.ByteString
         getTypeUrlBytes();
 
     /**
      * <code>bytes value = 2;</code>
+     * @return The value.
      */
     com.google.protobuf.ByteString getValue();
   }
   /**
    * Protobuf type {@code PB.Any}
    */
-  public  static final class Any extends
+  public static final class Any extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:PB.Any)
       AnyOrBuilder {
@@ -48,6 +51,13 @@ public final class AnyOuterClass {
     private Any() {
       typeUrl_ = "";
       value_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Any();
     }
 
     @java.lang.Override
@@ -63,7 +73,6 @@ public final class AnyOuterClass {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -86,7 +95,7 @@ public final class AnyOuterClass {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -121,7 +130,9 @@ public final class AnyOuterClass {
     private volatile java.lang.Object typeUrl_;
     /**
      * <code>string type_url = 1;</code>
+     * @return The typeUrl.
      */
+    @java.lang.Override
     public java.lang.String getTypeUrl() {
       java.lang.Object ref = typeUrl_;
       if (ref instanceof java.lang.String) {
@@ -136,7 +147,9 @@ public final class AnyOuterClass {
     }
     /**
      * <code>string type_url = 1;</code>
+     * @return The bytes for typeUrl.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getTypeUrlBytes() {
       java.lang.Object ref = typeUrl_;
@@ -155,7 +168,9 @@ public final class AnyOuterClass {
     private com.google.protobuf.ByteString value_;
     /**
      * <code>bytes value = 2;</code>
+     * @return The value.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getValue() {
       return value_;
     }
@@ -211,13 +226,12 @@ public final class AnyOuterClass {
       }
       NIO.PB.HelloWorld.AnyOuterClass.Any other = (NIO.PB.HelloWorld.AnyOuterClass.Any) obj;
 
-      boolean result = true;
-      result = result && getTypeUrl()
-          .equals(other.getTypeUrl());
-      result = result && getValue()
-          .equals(other.getValue());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getTypeUrl()
+          .equals(other.getTypeUrl())) return false;
+      if (!getValue()
+          .equals(other.getValue())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -402,35 +416,35 @@ public final class AnyOuterClass {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -483,6 +497,7 @@ public final class AnyOuterClass {
       private java.lang.Object typeUrl_ = "";
       /**
        * <code>string type_url = 1;</code>
+       * @return The typeUrl.
        */
       public java.lang.String getTypeUrl() {
         java.lang.Object ref = typeUrl_;
@@ -498,6 +513,7 @@ public final class AnyOuterClass {
       }
       /**
        * <code>string type_url = 1;</code>
+       * @return The bytes for typeUrl.
        */
       public com.google.protobuf.ByteString
           getTypeUrlBytes() {
@@ -514,6 +530,8 @@ public final class AnyOuterClass {
       }
       /**
        * <code>string type_url = 1;</code>
+       * @param value The typeUrl to set.
+       * @return This builder for chaining.
        */
       public Builder setTypeUrl(
           java.lang.String value) {
@@ -527,6 +545,7 @@ public final class AnyOuterClass {
       }
       /**
        * <code>string type_url = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearTypeUrl() {
         
@@ -536,6 +555,8 @@ public final class AnyOuterClass {
       }
       /**
        * <code>string type_url = 1;</code>
+       * @param value The bytes for typeUrl to set.
+       * @return This builder for chaining.
        */
       public Builder setTypeUrlBytes(
           com.google.protobuf.ByteString value) {
@@ -552,12 +573,16 @@ public final class AnyOuterClass {
       private com.google.protobuf.ByteString value_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes value = 2;</code>
+       * @return The value.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getValue() {
         return value_;
       }
       /**
        * <code>bytes value = 2;</code>
+       * @param value The value to set.
+       * @return This builder for chaining.
        */
       public Builder setValue(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -570,6 +595,7 @@ public final class AnyOuterClass {
       }
       /**
        * <code>bytes value = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearValue() {
         
@@ -580,7 +606,7 @@ public final class AnyOuterClass {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -649,18 +675,10 @@ public final class AnyOuterClass {
       "\003GPB\252\002\036Google.Protobuf.WellKnownTypesb\006p" +
       "roto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-        }, assigner);
+        });
     internal_static_PB_Any_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_PB_Any_fieldAccessorTable = new

@@ -13,10 +13,10 @@ import org.bson.Document;
 
 public class MongoDBTest {
 
-	static String Collection_Name = "user";
+    static String COLLECTION_NAME = "user";
 
-	public static void main(String[] args) {
-		try {
+    public static void main(String[] args) {
+        try {
             // MongoCredential credential = MongoCredential.createCredential("bmy", "admin", "".toCharArray());
             MongoClientSettings settings = MongoClientSettings.builder()
                                                    // .credential(credential)
@@ -36,7 +36,10 @@ public class MongoDBTest {
             // add(mongoDatabase);
 
             //查看数据
-            find(mongoDatabase);
+            // findAll(mongoDatabase);
+
+            //查找单个数据
+            findOne(mongoDatabase);
 
             //修改数据
             // update(mongoDatabase);
@@ -45,36 +48,56 @@ public class MongoDBTest {
             // delete(mongoDatabase);
 
         } catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+            e.printStackTrace();
+        }
+    }
 
-	public static void create(MongoDatabase a) {
-		try {
-			MongoIterable<String> strings = a.listCollectionNames();
-			a.createCollection(Collection_Name);
-			System.out.println("集合创建成功");
-		} catch (Exception e) {
-			System.err.println("！！集合创建异常：" + e.getMessage());
-		}
-	}
+    public static void create(MongoDatabase a) {
+        try {
+            MongoIterable<String> strings = a.listCollectionNames();
+            a.createCollection(COLLECTION_NAME);
+            System.out.println("集合创建成功");
+        } catch (Exception e) {
+            System.err.println("！！集合创建异常：" + e.getMessage());
+        }
+    }
 
-	public static void find(MongoDatabase a) {
-		try {
-            MongoCollection<Document> list = a.getCollection(Collection_Name);
+    public static void findAll(MongoDatabase a) {
+        try {
+            MongoCollection<Document> list = a.getCollection(COLLECTION_NAME);
             FindIterable<Document> findIterable = list.find();
             for (Document document : findIterable) {
                 System.out.println("查询的数据:" + document);
             }
         } catch (Exception e) {
-			System.err.println("！！数据查询异常：" + e.getMessage());
-		}
-	}
+            System.err.println("！！数据查询异常：" + e.getMessage());
+        }
+    }
 
-	public static void add(MongoDatabase a) {
-		try {
+    public static void findOne(MongoDatabase a) {
+        // 筛选的数据
+        Document document = new Document();
+        document.append("age", 30);
+
+        // 筛选的列数据
+        Document name = new Document();
+        name.append("age", 1);
+
+        try {
+            MongoCollection<Document> list = a.getCollection(COLLECTION_NAME);
+            FindIterable<Document> findIterable = list.find(document).projection(name);
+            for (Document one : findIterable) {
+                System.out.println("查询的数据:" + one);
+            }
+        } catch (Exception e) {
+            System.err.println("！！数据查询异常：" + e.getMessage());
+        }
+    }
+
+    public static void add(MongoDatabase a) {
+        try {
             //新增两个学生和教师的数据
-            MongoCollection<Document> collections = a.getCollection(Collection_Name);
+            MongoCollection<Document> collections = a.getCollection(COLLECTION_NAME);
             Document document1 = new Document("name", "学生").append("age", 18).append("type", "学生").append("likesport", "打乒乓球");
             Document document2 = new Document("name", "学生").append("age", 19).append("type", "学生").append("likesport", "打羽毛球");
             Document document3 = new Document("name", "老师").append("age", 33).append("type", "教师").append("likeTv", "湖南Tv");
@@ -93,7 +116,7 @@ public class MongoDBTest {
 
 	public static void update(MongoDatabase a) {
 		try {
-            MongoCollection<Document> mongoCollection = a.getCollection(Collection_Name);
+            MongoCollection<Document> mongoCollection = a.getCollection(COLLECTION_NAME);
             //修改满足条件的第一条数据
             mongoCollection.updateOne(Filters.eq("name", "老师"), new Document("$set", new Document("address", "深圳市福田区")));
             //修改所以满足条件的数据
@@ -109,7 +132,7 @@ public class MongoDBTest {
 
 	public static void delete(MongoDatabase a) {
 		try {
-            MongoCollection<Document> collection = a.getCollection(Collection_Name);
+            MongoCollection<Document> collection = a.getCollection(COLLECTION_NAME);
             //删除符合条件的第一个文档
             collection.deleteOne(Filters.eq("name", "老师"));
             //删除所有符合条件的文档

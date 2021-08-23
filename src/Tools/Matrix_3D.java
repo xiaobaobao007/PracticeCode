@@ -8,11 +8,12 @@ import javax.swing.*;
 public class Matrix_3D extends JPanel {
 
 	public static JFrame jFrame;
-	int JFrame_WIDTH = 1000;
-	int JFrame_HEIGHT = 1000;
+	private static final int multiply_size = 3;
+	int JFrame_WIDTH = 100 * multiply_size;
+	int JFrame_HEIGHT = 100 * multiply_size;
 
 	//正方体边长的一半长度
-	static double length = 300.0;
+	static double length = 30.0 * multiply_size;
 	//正方体坐标
 	static double[][] points = {{-length, -length, length}, {length, -length, length}, {length, length, length}, {-length, length, length},
 			{-length, -length, -length}, {length, -length, -length}, {length, length, -length}, {-length, length, -length}};
@@ -27,21 +28,32 @@ public class Matrix_3D extends JPanel {
 	//每个面对应的颜色
 	static Color[] colors = {Color.RED, Color.ORANGE, Color.BLUE, Color.YELLOW, Color.MAGENTA, Color.GREEN};
 	//投影平面的中心点
-	static double[] canvas = {0, 500, 500};
+	static double[] canvas = {0, 50 * multiply_size, 50 * multiply_size};
 	//投影平面的法向量
-	static double[] canvas_c = {0, 100, 100};
+	static double[] canvas_c = {0, 10 * multiply_size, 10 * multiply_size};
 	//投影平面的上的一点，此点到canvas视为投影平面朝上的位置,一定要确保canvas_c*canvas_p=0，即保证垂直
-	static double[] canvas_p = {0, -100, 100};
+	static double[] canvas_p = {0, -10 * multiply_size, 10 * multiply_size};
 	//摄像机向量
-	static double[] eye = {0, 1000, 1000};
+	static double[] eye = {0, 100 * multiply_size, 100 * multiply_size};
 	//计算结果缓存
 	double[][] d = new double[8][3];
 	//立方体的各个面的法向量
 	double[] o_o = new double[3];
 	//缓存二维坐标
 	int[][] b = new int[8][2];
-	int center_x = 500;
-	int center_y = 500;
+	//中心点横坐标
+	int center_x = 50 * multiply_size;
+	//中心点纵坐标
+	int center_y = 50 * multiply_size;
+	//绘画类型
+	PaintType paintType = PaintType.COLOR;
+
+	enum PaintType {
+		BLACK_LINE,//全部显示黑线
+		WHITE_LINE,//全部显示黑线
+		POINT_LINE,//全部显示黑线
+		COLOR,//显示颜色
+	}
 
 	static {
 		for (int i = 0; i < 3; i++) {
@@ -155,9 +167,17 @@ public class Matrix_3D extends JPanel {
 			yy[1] = center_y + b[a1[1]][1];
 			yy[2] = center_y + b[a1[2]][1];
 			yy[3] = center_y + b[a1[3]][1];
-
-			g.setColor(colors[index]);
-			g.fillPolygon(xx, yy, 4);
+			if (paintType == PaintType.COLOR) {
+				g.setColor(colors[index]);
+				g.fillPolygon(xx, yy, 4);
+			} else {
+				// BasicStroke stroke1 = new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 10.0f, new float[]{10, 10}, 0);
+				// ((Graphics2D) g).setStroke(stroke1);
+				g.drawLine(xx[0], yy[0], xx[1], yy[1]);
+				g.drawLine(xx[1], yy[1], xx[2], yy[2]);
+				g.drawLine(xx[2], yy[2], xx[3], yy[3]);
+				g.drawLine(xx[3], yy[3], xx[0], yy[0]);
+			}
 		}
 	}
 

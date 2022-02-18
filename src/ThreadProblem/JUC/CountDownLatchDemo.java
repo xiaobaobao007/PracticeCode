@@ -1,6 +1,7 @@
 package ThreadProblem.JUC;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author xiaobaobao
@@ -10,21 +11,24 @@ import java.util.concurrent.CountDownLatch;
  */
 public class CountDownLatchDemo {
 
-	static final CountDownLatch latch = new CountDownLatch(10);
+    static final CountDownLatch latch = new CountDownLatch(1);
 
-	static int i = 0;
+    static int i = 0;
 
-	public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
 
-		new Thread(() -> {
-			for (; ; ) {
-				i++;
-				latch.countDown();
-			}
-		}).start();
+        new Thread(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            i = 100;
+            latch.countDown();
+        }).start();
 
-		latch.await();
+        latch.await();
 
-		System.out.println(i);
-	}
+        System.out.println(i);
+    }
 }

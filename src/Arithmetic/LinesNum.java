@@ -10,12 +10,10 @@ import java.util.Set;
 public class LinesNum {
 
     //    String path = "C:\\Users\\Administrator\\Desktop\\Game-Server\\src";
-    String path = "E:\\PracticeCode\\src";
+    String path = "E:\\GameTemplateServer\\src\\main\\java";
     static Set<String> ignoreDirectorySet = new HashSet<>();
 
     static {
-        ignoreDirectorySet.add("E:\\PracticeCode\\src\\NIO\\PB");
-        ignoreDirectorySet.add("E:\\PracticeCode\\src\\com\\intion\\app\\packets");
     }
 
     int lins = 0;//总行数

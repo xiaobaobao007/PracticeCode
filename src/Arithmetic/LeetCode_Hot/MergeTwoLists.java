@@ -39,14 +39,14 @@ package Arithmetic.LeetCode_Hot;
 public class MergeTwoLists {
     public static void main(String[] args) {
         {
-            MergeTwoLists.ListNode a = new MergeTwoLists.ListNode(
-                    1, new MergeTwoLists.ListNode(
-                    2, new MergeTwoLists.ListNode(
+            ListNode a = new ListNode(
+                    1, new ListNode(
+                    2, new ListNode(
                     4)));
 
-            MergeTwoLists.ListNode b = new MergeTwoLists.ListNode(
-                    1, new MergeTwoLists.ListNode(
-                    3, new MergeTwoLists.ListNode(
+            ListNode b = new ListNode(
+                    1, new ListNode(
+                    3, new ListNode(
                     4)));
 
 
@@ -60,14 +60,14 @@ public class MergeTwoLists {
         System.out.println("============================================");
 
         {
-            MergeTwoLists.ListNode a = new MergeTwoLists.ListNode(
-                    1, new MergeTwoLists.ListNode(
-                    2, new MergeTwoLists.ListNode(
+            ListNode a = new ListNode(
+                    1, new ListNode(
+                    2, new ListNode(
                     4)));
 
-            MergeTwoLists.ListNode b = new MergeTwoLists.ListNode(
-                    1, new MergeTwoLists.ListNode(
-                    3, new MergeTwoLists.ListNode(
+            ListNode b = new ListNode(
+                    1, new ListNode(
+                    3, new ListNode(
                     4)));
 
 
@@ -140,24 +140,5 @@ public class MergeTwoLists {
                 return list2;
             }
         }
-    }
-
-    static class ListNode {
-        int val;
-
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-
     }
 }

@@ -11,21 +11,6 @@ package Arithmetic.LeetCode_Hot;
  * @create: 2022-11-29 11:12
  */
 public class SortList {
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-
-    }
-
     public static void main(String[] args) {
         ListNode next = new ListNode(
                 4, new ListNode(

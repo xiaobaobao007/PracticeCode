@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class CommonUtil {
 
     public static int[] coverString2OneInt(String s) {
-        JSONArray array = JSONArray.parseArray(s);
+        JSONArray array = JSONArray.parseArray(s.trim());
         int[] num = new int[array.size()];
         for (int i = array.size() - 1; i >= 0; i--) {
             num[i] = (int) array.get(i);
@@ -19,7 +19,7 @@ public class CommonUtil {
     }
 
     public static int[][] coverString2TwoInt(String s) {
-        JSONArray array = JSONArray.parseArray(filter(s));
+        JSONArray array = JSONArray.parseArray(filter(s.trim()));
         int[][] num = new int[array.size()][];
         for (int i = array.size() - 1; i >= 0; i--) {
             num[i] = coverString2OneInt(array.get(i).toString());
@@ -28,7 +28,7 @@ public class CommonUtil {
     }
 
     public static char[] coverString2OneChar(String s) {
-        JSONArray array = JSONArray.parseArray(s);
+        JSONArray array = JSONArray.parseArray(s.trim());
         char[] num = new char[array.size()];
         for (int i = array.size() - 1; i >= 0; i--) {
             num[i] = array.get(i).toString().charAt(0);
@@ -37,7 +37,7 @@ public class CommonUtil {
     }
 
     public static char[][] coverString2TwoChar(String s) {
-        JSONArray array = JSONArray.parseArray(filter(s));
+        JSONArray array = JSONArray.parseArray(filter(s.trim()));
         char[][] num = new char[array.size()][];
         for (int i = array.size() - 1; i >= 0; i--) {
             num[i] = coverString2OneChar(array.get(i).toString());
@@ -46,7 +46,7 @@ public class CommonUtil {
     }
 
     public static String filter(String s) {
-        s = s.replaceAll("\n", "");
+        s = s.trim().replaceAll("\n", "");
         return s.replaceAll(" ", "");
     }
 

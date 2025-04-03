@@ -57,30 +57,11 @@ public class _88_Merge {
     }
 
     static void test(int[] array, int m, int[] nums2, int n) {
-        new MySolution().merge(array, m, nums2, n);
+        new BeautifulSolution().merge(array, m, nums2, n);
         System.out.println(Arrays.toString(array));
     }
 
-    static class MySolution {
-        public void merge(int[] array, int p, int[] nums2, int q) {
-            int m = 0, n = 0, i, k;
-            while (n < q) {
-                if (array[m] <= array[n]) {
-                    m++;
-                    continue;
-                }
-                k = array[n];
-                for (i = n; i > m; i--) {
-                    array[i] = array[i - 1];
-                }
-                array[m] = k;
-                m++;
-                n++;
-            }
-        }
-    }
-
-    class BeautifulSolution {
+    static class BeautifulSolution {
         public void merge(int[] nums1, int m, int[] nums2, int n) {
             int p1 = m - 1;
             int p2 = n - 1;
